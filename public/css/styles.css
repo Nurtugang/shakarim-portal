@@ -1,0 +1,2994 @@
+/* Общие стили для всего сайта */
+
+
+/* Импорт шрифтов с Google Fonts (Roboto для основного текста, Open Sans для заголовков) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+/* 
+ * CSS-переменные для единообразия стилей по всему сайту 
+ * Использование переменных позволяет легко менять цветовую схему и другие параметры
+ */
+:root {
+    --primary-color: #006DB6;         /* Основной синий цвет университета */
+    --secondary-color: #00427A;       /* Темно-синий цвет для акцентов */
+    --accent-color: #FFB800;          /* Акцентный золотой цвет */
+    --text-color: #212B36;            /* Основной цвет текста (темный) */
+    --light-text: #6B7280;            /* Светлый цвет для параграфов */
+    --background-color: #FFFFFF;      /* Цвет фона (белый) */
+    --section-bg: #F7F9FC;            /* Светлый фон для секций */
+    --border-color: #E5E7EB;          /* Цвет границ */
+    --success-color: #10B981;         /* Зеленый цвет для успешных уведомлений */
+    --warning-color: #F59E0B;         /* Оранжевый для предупреждений */
+    --danger-color: #EF4444;          /* Красный для ошибок */
+    --container-width: 1280px;        /* Максимальная ширина контейнера */
+    --header-height: 80px;            /* Высота шапки сайта */
+    --border-radius: 8px;             /* Скругление углов */
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Тень для блоков */
+    --transition: all 0.3s ease;      /* Стандартное время перехода анимации */
+}
+
+/* 
+ * Базовые стили для тега body 
+ * Задаем основной шрифт, цвета и размеры для всего сайта
+ */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+/* 
+ * Контейнер для центрирования содержимого
+ * Используется для ограничения максимальной ширины контента и центрирования на странице
+ */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+/* 
+ * Стили для всех заголовков 
+ * Используем Open Sans для более читаемых заголовков
+ */
+/* h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin-bottom: 0.5em;
+    line-height: 1.3;
+    color: var(--secondary-color);
+} */
+
+/* Отступы для основных секций сайта */
+section {
+    padding: 60px 0;
+}
+
+
+/* JavaScript классы для скрытия/показа элементов */
+.search-active .search-form {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.lang-active .lang-dropdown {
+    display: block;
+}
+
+/* Поведение при скролле */
+.hide-top-header .top-header {
+    transform: none;
+}
+
+.hide-top-header .bottom-header {
+    position: relative;
+    top: auto;
+    left: auto;
+    box-shadow: var(--box-shadow);
+}
+
+.hide-all-headers {
+    transform: none;
+}
+
+/* Слайдер */
+.slider {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    margin-top: 0;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    background-size: cover;
+    background-position: top;
+    background-image: linear-gradient(to bottom, 
+                      rgba(0, 0, 0, 0.2) 0%, 
+                      rgba(0, 0, 0, 0.4) 50%, 
+                      rgba(0, 0, 0, 0.7) 100%), 
+                      url('../img/building.png');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+    animation: slideUp 1.2s ease forwards;
+    opacity: 0;
+    transition-delay: 0.5s;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+.slide h1:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 25px auto 20px;
+}
+
+.slide p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.slide-cta {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 600;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    font-size: 16px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.slide-cta:hover {
+    background-color: #ffc72c;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slider-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.slider:hover .slider-nav button {
+    opacity: 1;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.slider-nav button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.dot.active {
+    background: var(--accent-color);
+    transform: scale(1.2);
+    border-color: white;
+}
+
+/* Stats Section */
+.stats {
+    background-color: var(--section-bg);
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats:before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom right, transparent 49%, var(--section-bg) 50%);
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    animation: fadeUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.2s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+.stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.icon-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    position: relative;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.stat-item:hover .icon-circle {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+    color: var(--primary-color);
+    font-size: 3rem;
+    transition: var(--transition);
+}
+
+.stat-item:hover .icon {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.stat-name {
+    font-size: 1.1rem;
+    color: var(--light-text);
+    font-weight: 500;
+}
+
+/* Меню */
+.menu-container {
+    position: relative;
+}
+
+.menu-toggle:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.menu-toggle i {
+    margin-right: 0; /* Remove margin to center the icon properly */
+}
+
+/* Мега-меню */
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 280px;
+    background: white;
+    box-shadow: var(--box-shadow);
+    z-index: 1000;
+    display: none;
+    border-top: 3px solid var(--primary-color);
+    animation: fadeIn 0.3s ease;
+}
+
+.menu-container.active .mega-menu {
+    display: block;
+}
+
+.category {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-item {
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.category-link {
+    display: block;
+    padding: 12px 20px;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 15px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.category-link:hover {
+    color: var(--primary-color);
+    background-color: var(--section-bg);
+    padding-left: 25px;
+}
+
+.subcategories {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 280px;
+    background: white;
+    box-shadow: var(--box-shadow);
+    z-index: 1001;
+    border-left: 3px solid var(--primary-color);
+}
+
+.category-item:hover > .subcategories {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.subcategory {
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.subcategory-link {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-color);
+    font-size: 14px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.subcategory-link:hover {
+    color: var(--primary-color);
+    background-color: var(--section-bg);
+    padding-left: 25px;
+}
+
+.subsubcategories {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 280px;
+    background: white;
+    box-shadow: var(--box-shadow);
+    z-index: 1002;
+    border-left: 3px solid var(--accent-color);
+}
+
+.subcategory:hover > .subsubcategories {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.subsubcategory a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-color);
+    font-size: 13px;
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.subsubcategory a:hover {
+    color: var(--primary-color);
+    background-color: var(--section-bg);
+    padding-left: 25px;
+}
+
+.category-item.has-children > .category-link::after,
+.subcategory.has-children > .subcategory-link::after {
+    content: '\f054';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: rgba(0,0,0,0.3);
+    transition: var(--transition);
+}
+
+.category-item.has-children:hover > .category-link::after,
+.subcategory.has-children:hover > .subcategory-link::after {
+    color: var(--primary-color);
+}
+
+/* Add padding to the content to account for fixed header */
+main {
+    padding-top: 0;
+}
+
+/* Каталог на главной странице */
+.catalog {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.catalog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.catalog-item {
+    flex: 1 0 16.666%; /* 6 items per row */
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 0;
+    box-shadow: none;
+    transition: all 0.5s ease;
+}
+
+.catalog-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+}
+
+.catalog-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.catalog-item:nth-child(1) .catalog-bg { background-image: url('../img/bg-child.jpg'); }
+.catalog-item:nth-child(2) .catalog-bg { background-image: url('../img/bg-enrollee.jpg'); }
+.catalog-item:nth-child(3) .catalog-bg { background-image: url('../img/bg-teaching.jpg'); }
+.catalog-item:nth-child(4) .catalog-bg { background-image: url('../img/bg-graduate.jpg'); }
+.catalog-item:nth-child(5) .catalog-bg { background-image: url('../img/bg-employer.jpg'); }
+.catalog-item:nth-child(6) .catalog-bg { background-image: url('../img/bg-senior-teaching.jpg'); }
+
+.catalog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(135, 167, 186, 0.5), rgba(30, 87, 123, 0.8));
+    z-index: 2;
+}
+
+.catalog-grid:hover .catalog-item:not(:hover) .catalog-bg {
+    filter: blur(2px);
+}
+
+.catalog-grid:hover .catalog-item:not(:hover) .catalog-title {
+    opacity: 0.7;
+}
+
+.catalog-grid:hover .catalog-item:not(:hover) .catalog-text {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.catalog-title {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    z-index: 10;
+    transition: all 0.5s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.catalog-content {
+    position: absolute;
+    top: 130px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    z-index: 10;
+    transition: all 0.5s ease;
+}
+
+.catalog-separator {
+    height: 3px;
+    width: 40px;
+    background-color: var(--accent-color);
+    margin: 10px auto;
+    display: block;
+}
+
+.catalog-text {
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0;
+    transition: all 0.5s ease;
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+    color: white;
+}
+
+.catalog-item:hover .catalog-bg {
+    transform: scale(1.05);
+}
+
+.catalog-item:hover .catalog-text {
+    opacity: 1;
+}
+
+/* Школы */
+.schools {
+    padding: 80px 0;
+    background-color: var(--section-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.schools:before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to bottom right, transparent 49%, var(--section-bg) 50%);
+}
+
+.schools h2 {
+    margin-bottom: 50px;
+    color: #004a80;
+}
+
+.schools-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.top-row, .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px; /* Add padding to center the 5 items */
+}
+
+.school {
+    position: relative;
+    flex: 1;
+    width: 180px;
+    max-width: 180px;
+    min-width: 180px;
+    transition: var(--transition);
+}
+
+.school-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+.school-icon i {
+    font-size: 36px;
+    color: white;
+    transition: var(--transition);
+}
+
+.school-name {
+    text-align: center;
+    font-weight: 500;
+    transition: var(--transition);
+    background-color: white;
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-top: -30px;
+    padding-top: 40px;
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    line-height: 1.5;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover effects */
+.school:hover {
+    transform: translateY(-10px);
+}
+
+.school:hover .school-icon {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.school:hover .school-icon i {
+    transform: scale(1.1);
+}
+
+.school:hover .school-name {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    color: var(--primary-color);
+}
+
+/* Новости */
+.news {
+    padding: 40px 0;
+    background: var(--section-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.news:before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to bottom right, transparent 49%, var(--section-bg) 50%);
+}
+
+.news-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-item {
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    --open-progress: 0;
+    transition: all 0.4s ease;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-title {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.news-content {
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+    height: 0;
+    transition: height 0.4s ease, opacity 0.4s ease;
+    height: calc(250px * var(--open-progress));
+    opacity: var(--open-progress);
+    padding: 0;
+}
+
+.news-text {
+    flex: 1;
+    padding: 15px 15px 15px 20px;
+    color: var(--text-color);
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-image {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    position: relative;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.news-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: auto;
+    align-self: flex-start;
+    transition: var(--transition);
+    opacity: var(--open-progress);
+}
+
+.news-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.news-all-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.news-all-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #1a4b84;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.news-all-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Анонсы */
+.announcements {
+    padding: 80px 0;
+    background-color: var(--section-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.announcements:before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to bottom right, transparent 49%, var(--section-bg) 50%);
+}
+
+.announcements h2 {
+    margin-bottom: 50px;
+    color: var(--secondary-color);
+}
+
+.announcements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    min-height: 500px;
+}
+
+/* Календарь */
+.calendar-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+    overflow: visible;
+}
+
+.calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.calendar-navigation button {
+    background-color: #002C52;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.calendar-navigation button:hover {
+    background-color: #004080;
+}
+
+.calendar-navigation h3 {
+    font-size: 18px;
+    color: #002C52;
+}
+
+#calendar {
+    height: auto;
+    min-height: 300px;
+    flex-grow: 1;
+    overflow: visible;
+    position: relative;
+}
+
+/* Стили для календаря FullCalendar */
+.fc-theme-standard .fc-header-toolbar {
+    display: none; /* Скрываем встроенную навигацию */
+}
+
+.fc-theme-standard th, .fc-theme-standard td {
+    border: 1px solid #ddd;
+}
+
+/* Перемещаем цифры дат левее и центрируем их по вертикали */
+.fc-daygrid-day-number {
+    padding: 5px 10px 5px 5px !important;
+    text-align: left !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.fc-day-today {
+    background-color: rgba(0, 44, 82, 0.1) !important;
+}
+
+.fc-day-sat, .fc-day-sun {
+    background-color: rgba(255, 0, 0, 0.1) !important;
+}
+
+/* Делаем цветные полосы событий тоньше */
+.fc-h-event {
+    border-width: 0;
+    border-radius: 3px;
+    padding: 1px 2px !important;
+    height: auto !important;
+    max-height: 18px !important;
+    overflow: hidden;
+}
+
+.fc-v-event {
+    border-width: 0;
+    border-radius: 3px;
+    padding: 1px 0 !important;
+    max-width: 10px !important;
+}
+
+/* Стиль для тонких полос событий */
+.thin-event {
+    height: 12px !important;
+    max-height: 12px !important;
+    font-size: 10px !important;
+}
+
+.thin-event .fc-event-title {
+    font-size: 10px !important;
+    line-height: 1 !important;
+}
+
+/* Уменьшаем текст внутри полос событий */
+.fc-h-event .fc-event-title, 
+.fc-v-event .fc-event-title {
+    font-weight: bold;
+    padding: 0 4px;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+}
+
+.fc-daygrid-block-event .fc-event-time {
+    font-weight: bold;
+    padding: 0 4px;
+    font-size: 11px !important;
+}
+
+/* Стили для праздничных дней с кружками */
+.holiday-circle {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s ease;
+    margin-left: -5px; /* Сдвигаем левее для центрирования цифры */
+    padding-left: 8px !important; /* Дополнительный отступ слева */
+    width: 36px !important; /* Фиксированная ширина для центрирования */
+    justify-content: center !important; /* Центрируем цифру в кружке */
+}
+
+.holiday-circle:hover {
+    transform: scale(1.1);
+}
+
+.holiday-circle::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.green-circle::before {
+    background-color: #34A853;
+}
+
+.blue-circle::before {
+    background-color: #4285F4;
+}
+
+.red-circle::before {
+    background-color: #EA4335;
+}
+
+.green-circle, .blue-circle, .red-circle {
+    color: white;
+    font-weight: bold;
+}
+
+/* Стили для звездочек событий */
+.event-asterisk {
+    position: absolute;
+    bottom: -5px;
+    right: 5px;
+    color: #FF5722;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+    z-index: 100;
+    cursor: pointer;
+    text-shadow: 0 0 2px white;
+    pointer-events: auto;
+}
+
+.has-asterisk {
+    position: relative;
+    overflow: visible !important;
+}
+
+/* Стили для всплывающих подсказок дней календаря */
+.day-tooltip {
+    display: none;
+    position: absolute;
+    z-index: 2000;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    width: 250px;
+    max-width: 90vw;
+    font-size: 13px;
+    color: #333;
+    pointer-events: none;
+    border: 1px solid #eaeaea;
+}
+
+/* Вертикальное позиционирование */
+.day-tooltip.position-bottom {
+    top: 100%;
+    margin-top: 10px;
+}
+
+.day-tooltip.position-top {
+    bottom: 100%;
+    margin-bottom: 10px;
+}
+
+/* Горизонтальное позиционирование */
+.day-tooltip.align-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.day-tooltip.align-left {
+    left: 0;
+}
+
+.day-tooltip.align-right {
+    right: 0;
+}
+
+/* Стрелки для подсказок */
+.day-tooltip::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: white;
+    transform: rotate(45deg);
+    border: 1px solid #eaeaea;
+    z-index: 2001;
+}
+
+.day-tooltip.position-bottom::before {
+    top: -7px;
+    border-bottom: none;
+    border-right: none;
+}
+
+.day-tooltip.position-top::before {
+    bottom: -7px;
+    border-top: none;
+    border-left: none;
+}
+
+.day-tooltip.position-bottom.align-center::before,
+.day-tooltip.position-top.align-center::before {
+    left: 50%;
+    margin-left: -6px;
+}
+
+.day-tooltip.position-bottom.align-left::before,
+.day-tooltip.position-top.align-left::before {
+    left: 15px;
+}
+
+.day-tooltip.position-bottom.align-right::before,
+.day-tooltip.position-top.align-right::before {
+    right: 15px;
+}
+
+.has-tooltip {
+    position: relative;
+    overflow: visible !important;
+}
+
+/* Обеспечение видимости тултипа, даже если ячейка календаря маленькая */
+.fc-daygrid-day.has-tooltip {
+    overflow: visible !important;
+}
+
+/* Убедимся, что родительские контейнеры не обрезают тултип */
+.fc-daygrid-day-frame,
+.fc-scrollgrid-sync-inner,
+.fc-daygrid-day-events,
+.fc-daygrid-body,
+.fc-scroller-harness,
+.fc-scroller,
+.fc-view-harness,
+.fc-view-harness-active,
+#calendar,
+.calendar-container,
+.announcements-grid {
+    overflow: visible !important;
+}
+
+.day-tooltip h4 {
+    margin: 0 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 14px;
+    color: #002C52;
+    font-weight: bold;
+}
+
+.day-tooltip ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.day-tooltip li {
+    margin-bottom: 5px;
+    padding: 3px 0;
+    line-height: 1.4;
+}
+
+.day-tooltip .holiday-event {
+    color: #EA4335;
+    font-weight: bold;
+}
+
+.day-tooltip .session-event {
+    color: #4285F4;
+    font-weight: bold;
+}
+
+.day-tooltip .regular-event {
+    color: #002C52;
+}
+
+/* Список анонсов */
+.announcements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.announcement-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.announcement-date {
+    background-color: #004080;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.announcement-title {
+    padding: 15px 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #002C52;
+    display: block;
+    text-decoration: none;
+    transition: color 0.3s;
+    line-height: 1.4;
+}
+
+.announcement-title:hover {
+    color: #004080;
+    text-decoration: underline;
+}
+
+.show-more-container {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.show-more-btn {
+    display: inline-block;
+    background-color: #002C52;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.show-more-btn:hover {
+    background-color: #004080;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 992px) {
+    .announcements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .calendar-container {
+        margin-bottom: 20px;
+        height: auto;
+        min-height: 450px;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 576px) {
+    .announcements h2 {
+        font-size: 24px;
+    }
+    
+    .announcement-title {
+        font-size: 16px;
+    }
+    
+    .calendar-container {
+        height: auto;
+        min-height: 400px;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-container {
+        padding: 10px;
+        height: auto;
+        min-height: 380px;
+        overflow: visible;
+    }
+    
+    /* Исправляем высоту строк для корректного отображения на мобильных */
+    .fc-daygrid-day {
+        min-height: 35px !important;
+        height: auto !important;
+    }
+    
+    .fc-daygrid-day-frame {
+        height: 100% !important;
+        min-height: 35px !important;
+    }
+}
+
+/* Контакты */
+.contact {
+    padding: 40px 0;
+    background: #fff;
+}
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-form {
+    width: 60%;
+    padding: 20px;
+}
+
+.form-row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.form-row input {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.form-row input:last-child {
+    margin-right: 0;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background: #e51c23;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.contact-image {
+    width: 40%;
+    padding: 20px;
+}
+
+.contact-image .photo-placeholder {
+    height: 300px;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    /* Скрываем оригинальное меню на мобильных */
+    .main-nav {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: top 0.3s ease;
+        z-index: 1001;
+        padding: 15px 0;
+    }
+    
+    /* Стиль для открытого мобильного меню */
+    .main-nav.mobile-open {
+        top: 60px; /* Высота верхней шапки */
+    }
+    
+    /* Адаптивные стили для списка ссылок */
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .main-nav li {
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+    
+    .main-nav a {
+        padding: 15px 24px 15px 30px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 16px;
+        margin: 0;
+        position: relative;
+    }
+    
+    .main-nav a:after {
+        display: none;
+    }
+    
+    /* Добавляем стрелки перед ссылками в мобильном меню */
+    .main-nav li:before {
+        content: '>';
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent-color);
+        font-size: 12px;
+        font-weight: bold;
+        z-index: 2;
+    }
+    
+    /* Показываем кнопку мобильного меню */
+    .mobile-audience-btn {
+        display: flex;
+    }
+    
+    /* Подстройка контейнера шапки */
+    .top-header-content {
+        padding: 10px 0;
+    }
+    
+    /* Уменьшаем логотип на мобильных */
+    .logo img {
+        max-height: 40px;
+    }
+    
+    /* Подстройка слайдера для мобильных */
+    .slider {
+        height: 400px;
+    }
+    
+    .slide h1 {
+        font-size: 2rem;
+    }
+    
+    .slide p {
+        font-size: 1rem;
+    }
+    
+    .slide-cta {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    /* Исправление отступов контейнера */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Адаптация нижней шапки */
+    .bottom-header-content {
+        height: 50px;
+    }
+    
+    /* Уменьшаем размер кнопки и иконок в нижней шапке */
+    .menu-toggle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .header-tools {
+        gap: 10px;
+    }
+    
+    /* Адаптация блоков статистики */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .stat-item {
+        margin-bottom: 0;
+        width: 100%;
+        text-align: center;
+        min-width: unset; /* Отменяем min-width из основных стилей */
+    }
+    
+    /* Адаптация для блоков школ */
+    .top-row, .bottom-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .school {
+        width: 100%;
+        max-width: 270px;
+        margin-bottom: 30px;
+    }
+    
+    /* Адаптация для секции каталога */
+    .catalog-item {
+        flex: 1 0 50%; /* 2 блока в строке на мобильных вместо 1 */
+        height: 300px; /* Уменьшаем высоту для мобильных */
+    }
+    
+    /* Сразу показываем текст описания */
+    .catalog-text {
+        opacity: 1; /* Всегда показываем текст */
+        font-size: 11px; /* Увеличиваем размер шрифта с 10px до 11px */
+        line-height: 1.3;
+        visibility: visible;
+        max-width: 90%;
+    }
+    
+    /* Переопределяем стили для hover состояний, чтобы они не мешали */
+    .catalog-grid:hover .catalog-item:not(:hover) .catalog-text {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Корректируем позицию заголовка */
+    .catalog-title {
+        font-size: 18px; /* Уменьшаем размер */
+        top: 50px; /* Поднимаем выше */
+    }
+    
+    /* Корректируем контент */
+    .catalog-content {
+        top: 100px; /* Поднимаем выше */
+    }
+    
+    /* Адаптация для секции контактов */
+    .contact-grid {
+        flex-direction: column;
+    }
+    
+    .contact-form, .contact-image {
+        width: 100%;
+    }
+    
+    /* Скрываем текст "Карта сайта", показываем только иконку */
+    .sitemap-btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+    }
+    
+    .sitemap-btn span {
+        display: none;
+    }
+    
+    /* Исправляем отображение формы поиска */
+    .search-form {
+        right: -100px; /* Сдвигаем форму влево, чтобы она не выходила за пределы экрана */
+        width: 250px;
+    }
+}
+
+/* Улучшения для самых маленьких экранов */
+@media (max-width: 480px) {
+    .slider {
+        height: 350px;
+    }
+    
+    .slide h1 {
+        font-size: 1.6rem;
+    }
+    
+    .slide-content {
+        padding: 0 15px;
+    }
+    
+    .mobile-audience-btn span {
+        display: none;
+    }
+    
+    .mobile-audience-btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        justify-content: center;
+    }
+    
+    .logo img {
+        max-height: 35px;
+    }
+    
+    /* Уменьшаем размер заголовков */
+    h2 {
+        font-size: 26px;
+    }
+    
+    /* Адаптация для инструментов шапки */
+    .header-tools {
+        gap: 5px;
+    }
+    
+    .search-btn, .visually-impaired-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Точки слайдера */
+    .slider-dots {
+        bottom: 15px;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    /* Кнопки навигации слайдера */
+    .slider-nav button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    /* Адаптация для футера */
+    .footer-columns, .footer-right, .footer-second-row {
+        gap: 20px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    /* Уменьшаем размер иконок соцсетей */
+    .footer-social a {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* 
+ * Создаем фоновую затемненную подложку для мобильного меню
+ * Она будет появляться при открытии мобильного меню
+ */
+.mobile-menu-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-backdrop.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Улучшенные стили для мобильных устройств */
+@media (max-width: 768px) {
+    /* Улучшение стилей для мобильного меню */
+    .main-nav {
+        z-index: 1002; /* Выше подложки */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        max-height: 80vh; /* Ограничение высоты для больших меню */
+        overflow-y: auto; /* Добавляем скролл для больших меню */
+    }
+    
+    /* Фиксированная позиция для верхней шапки на мобильных */
+    .top-header {
+        position: sticky;
+        top: 0;
+        z-index: 1001;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* Увеличиваем активную область для мобильных элементов управления */
+    .main-nav a, 
+    .mobile-audience-btn, 
+    .slider-nav button, 
+    .dot {
+        touch-action: manipulation; /* Улучшение для сенсорных устройств */
+    }
+    
+    /* Добавляем отступы для нижней части сайта при открытом меню */
+    body.mobile-menu-open {
+        overflow: hidden;
+    }
+    
+    /* Добавляем отступы для навигации */
+    .main-nav li:last-child a {
+        border-bottom: none;
+    }
+}
+
+/* Дополнительные улучшения для мобильной версии */
+@media (max-width: 768px) {
+    /* Улучшение отзывчивости верхней шапки */
+    .top-header-content {
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    /* Уменьшаем размер шрифта в нижней шапке */
+    .bottom-header {
+        font-size: 14px;
+    }
+    
+    /* Исправляем нижнюю часть шапки */
+    .bottom-header-content {
+        justify-content: space-between;
+    }
+    
+    /* Улучшаем видимость кнопки мобильного меню */
+    .mobile-audience-btn {
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(0, 66, 122, 0.2);
+    }
+    
+    /* Улучшаем анимацию кнопки */
+    .mobile-audience-btn:active {
+        transform: scale(0.95);
+    }
+    
+    /* Специальные стили для открытого меню */
+    .main-nav.mobile-open {
+        border-bottom: 3px solid var(--primary-color);
+    }
+    
+    /* Позиционирование элементов меню */
+    .main-nav a {
+        position: relative;
+    }
+    
+    /* Подсветка активного пункта */
+    .main-nav a:active {
+        background-color: var(--section-bg);
+    }
+}
+
+/* Исправления для очень маленьких экранов */
+@media (max-width: 360px) {
+    /* Уменьшаем размер логотипа еще больше */
+    .logo img {
+        max-height: 30px;
+    }
+    
+    /* Уменьшаем размер контейнера */
+    .container {
+        padding: 0 10px;
+    }
+    
+    /* Уменьшаем шрифты */
+    body {
+        font-size: 14px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    /* Дополнительные корректировки для поисковой формы */
+    .search-form {
+        right: -150px;
+        width: 230px;
+    }
+    
+    .search-form form {
+        height: 38px;
+    }
+    
+    .search-form input {
+        font-size: 12px;
+        height: 38px;
+        padding: 10px;
+    }
+    
+    .search-form button {
+        height: 38px;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Дополнительные улучшения для мобильной версии */
+    .main-nav a::after {
+        display: none !important;
+    }
+    
+    /* Подсветка активного пункта */
+    .main-nav a:active {
+        background-color: var(--section-bg);
+    }
+} 
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    
+    /* Стили для мобильного меню и подкатегорий */
+    .mega-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        max-height: calc(100vh - var(--header-height));
+        overflow-y: auto;
+        z-index: 1500;
+    }
+    
+    /* Изменяем отображение подкатегорий на мобильном */
+    .subcategories {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border-left: none;
+        border-top: none;
+        display: none;
+        animation: slideDown 0.3s ease forwards;
+        background-color: #f7f9fc;
+    }
+    
+    /* Показываем подкатегории при клике, а не при наведении */
+    .category-item.active > .subcategories {
+        display: block;
+    }
+    
+    /* Изменяем отображение под-подкатегорий */
+    .subsubcategories {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border-left: none;
+        display: none;
+        animation: slideDown 0.3s ease forwards;
+        background-color: #eef2f7;
+    }
+    
+    /* Показываем под-подкатегории при клике */
+    .subcategory.active > .subsubcategories {
+        display: block;
+    }
+    
+    /* Изменяем внешний вид ссылок в подкатегориях */
+    .subcategory-link {
+        padding-left: 40px !important;
+    }
+    
+    .subcategory-link:hover {
+        padding-left: 45px !important;
+    }
+    
+    .subsubcategory a {
+        padding-left: 60px !important;
+    }
+    
+    .subsubcategory a:hover {
+        padding-left: 65px !important;
+    }
+    
+    /* Меняем стрелку с вправо на вниз для мобильного */
+    .category-item.has-children > .category-link::after,
+    .subcategory.has-children > .subcategory-link::after {
+        content: '\f078'; /* Стрелка вниз */
+        transform: translateY(-50%) rotate(0);
+        transition: transform 0.3s ease;
+    }
+    
+    /* Поворот стрелки при открытии подменю */
+    .category-item.has-children.active > .category-link::after,
+    .subcategory.has-children.active > .subcategory-link::after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    /* Стили для активного пункта меню */
+    .category-item.active > .category-link,
+    .subcategory.active > .subcategory-link {
+        color: var(--primary-color);
+        background-color: rgba(249, 183, 7, 0.05);
+        border-left: 3px solid var(--primary-color);
+        padding-left: 17px; /* 20px - 3px */
+    }
+    
+    .subcategory.active > .subcategory-link {
+        padding-left: 37px !important; /* 40px - 3px */
+    }
+    
+    /* Стили для нажатия (эффект при клике) */
+    .category-link:active,
+    .subcategory-link:active,
+    .subsubcategory a:active {
+        background-color: rgba(249, 183, 7, 0.15);
+    }
+    
+    /* Улучшаем визуальное отделение уровней меню */
+    .subcategories {
+        border-top: 1px solid rgba(0,0,0,0.05);
+        margin-top: -1px; /* Компенсируем накладывающиеся границы */
+    }
+    
+    .subsubcategories {
+        border-top: 1px solid rgba(0,0,0,0.05);
+        margin-top: -1px;
+    }
+    
+    /* Анимация выпадающего меню */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Исправляем внешний вид категорий в мобильном меню */
+    .category-item, .subcategory {
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    /* Добавляем отступы и фон для улучшения читаемости */
+    .subcategory-link {
+        background-color: #f7f9fc;
+    }
+    
+    .subsubcategory a {
+        background-color: #eef2f7;
+    }
+}
+
+
+/* Стили для мобильного меню */
+@media (max-width: 768px) {
+    
+    /* Центрирование элементов в мобильном меню */
+    .mega-menu .category-item,
+    .mega-menu .subcategory,
+    .mega-menu .subsubcategory {
+        text-align: center;
+    }
+    
+    /* Улучшение стилей мобильных ссылок */
+    .mega-menu .category-link,
+    .mega-menu .subcategory-link,
+    .mega-menu .subsubcategory-link {
+        padding: 12px 15px;
+        display: block;
+        width: 100%;
+    }
+    
+    /* Отступы для вложенных меню */
+    .mega-menu .subcategories {
+        padding-left: 15px;
+    }
+    
+    .mega-menu .subsubcategories {
+        padding-left: 15px;
+    }
+    
+    /* Улучшение видимости активного состояния */
+    .mega-menu .category-item.active > .category-link,
+    .mega-menu .subcategory.active > .subcategory-link,
+    .mega-menu .subsubcategory.active > .subsubcategory-link {
+        background-color: rgba(0, 0, 0, 0.05);
+        font-weight: bold;
+    }
+    
+    /* Увеличиваем кликабельную область */
+    .mega-menu li {
+        position: relative;
+    }
+    
+    /* Стрелка для элементов с подменю - горизонтальная стрелка */
+    .mega-menu .has-children > a:after {
+        content: '›';  /* Заменяем CSS-треугольник на символ › */
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: #888;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+    
+    /* Убираем поворот стрелки при активном состоянии, меняем только цвет */
+    .mega-menu .has-children.active > a:after {
+        transform: translateY(-50%);
+        color: var(--primary-color);
+    }
+    
+    /* Анимация для меню */
+    .mega-menu .subcategories,
+    .mega-menu .subsubcategories {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    
+    .mega-menu .category-item.active > .subcategories,
+    .mega-menu .subcategory.active > .subsubcategories {
+        max-height: 1000px; /* Достаточно большое значение для отображения всего контента */
+        transition: max-height 0.5s ease-in;
+    }
+    
+    /* Улучшение тактильной обратной связи */
+    .mega-menu a {
+        position: relative;
+        transition: background-color 0.2s ease;
+    }
+    
+    .mega-menu a:active {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Четкое визуальное отделение уровней меню */
+    .mega-menu .subcategories {
+        background-color: rgba(0, 0, 0, 0.02);
+        border-left: 3px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .mega-menu .subsubcategories {
+        background-color: rgba(0, 0, 0, 0.04);
+        border-left: 3px solid rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Улучшение отображения мобильного меню на маленьких экранах */
+    @media (max-width: 480px) {
+        .mega-menu a {
+            padding: 14px 15px; /* Увеличиваем высоту для удобного тапа на маленьких экранах */
+            font-size: 16px; /* Увеличиваем размер шрифта для лучшей читаемости */
+        }
+        
+        .mega-menu .has-children > a:after {
+            font-size: 24px; /* Увеличиваем размер стрелки */
+        }
+    }
+}
+
+
+/* Адаптация блоков статистики */
+@media (max-width: 768px) {
+    .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .stat-item {
+        margin-bottom: 0;
+        width: 100%;
+        text-align: center;
+        min-width: unset; /* Отменяем min-width из основных стилей */
+    }
+    
+    /* Уменьшаем размеры для мобильной версии */
+    .icon-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-name {
+        font-size: 1rem;
+    }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+    .stats-grid {
+        gap: 15px;
+    }
+    
+    .icon-circle {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .icon {
+        font-size: 2.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+        margin-bottom: 2px;
+    }
+    
+    .stat-name {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    
+    /* Дополнительные улучшения для каталога на очень маленьких экранах */
+    .catalog-item {
+        height: 250px; /* Делаем еще меньше */
+    }
+    
+    .catalog-title {
+        font-size: 16px;
+        top: 40px;
+    }
+    
+    .catalog-content {
+        top: 80px;
+        padding: 15px 10px;
+    }
+    
+    .catalog-text {
+        font-size: 11px;
+        line-height: 1.2;
+        max-width: 95%;
+    }
+    
+    .catalog-separator {
+        margin: 8px auto;
+        height: 2px;
+        width: 30px;
+    }
+    
+}
+
+@media (max-width: 576px) {
+    
+    /* Улучшение отображения анонсов на мобильных устройствах */
+    .announcements-list {
+        margin-top: 30px;
+    }
+    
+    .announcement-item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .announcement-date {
+        font-weight: bold;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px 8px 0 0;
+        width: 100%;
+    }
+    
+    .announcement-title {
+        padding: 12px;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    /* Улучшение кнопки "Показать еще" */
+    .show-more-container {
+        margin-top: 15px;
+        text-align: center;
+    }
+    
+    .show-more-btn {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 14px;
+        background-color: var(--accent-color);
+        transition: background-color 0.3s;
+    }
+    
+    /* Дополнительные стили для календаря */
+    .calendar-container {
+        padding: 15px;
+        max-height: 450px;
+        margin-bottom: 0;
+    }
+    
+    #calendar {
+        font-size: 12px;
+    }
+    
+    .calendar-navigation h3 {
+        font-size: 16px;
+    }
+    
+    /* Стили для событий календаря */
+    .fc-daygrid-day-events {
+        margin-bottom: 0 !important;
+    }
+    
+    /* Уменьшаем отступы между строками календаря */
+    .fc-daygrid-day-top {
+        padding: 2px !important;
+    }
+    
+    .fc-daygrid-day-number {
+        padding: 2px 5px !important;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    
+    /* Улучшения календаря для очень маленьких экранов */
+    .calendar-container {
+        padding: 10px;
+        max-height: 380px;
+    }
+    
+    .calendar-navigation button {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .calendar-navigation h3 {
+        font-size: 15px;
+    }
+    
+    /* Делаем ячейки календаря компактнее */
+    .fc-daygrid-day {
+        min-height: 30px !important;
+    }
+    
+    .fc-daygrid-day-frame {
+        padding: 1px !important;
+    }
+    
+    /* Убираем отступы у заголовков дней недели */
+    .fc-col-header-cell {
+        padding: 2px !important;
+    }
+    
+    /* Усиливаем стили для анонсов */
+    .announcement-date {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+    
+    .announcement-title {
+        padding: 10px;
+        font-size: 13px;
+    }
+    
+    /* Более компактный заголовок раздела */
+    .announcements h2 {
+        margin-bottom: 20px;
+    }
+}
+
+/* Стили для школ на мобильных устройствах */
+@media (max-width: 480px) {
+    
+    /* Сетка школ 2x3 для мобильных устройств */
+    .schools-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
+    }
+    
+    .top-row, .bottom-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 0;
+    }
+    
+    .school {
+        width: 135px;
+        min-width: unset;
+        max-width: unset;
+        margin: 0;
+        flex: 0 0 auto;
+    }
+    
+    .school-name {
+        font-size: 13px;
+        padding: 15px 10px;
+        height: 100px;
+    }
+    
+    /* Объединяем все школы в один плоский список и переопределяем их отображение */
+    .schools-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 135px);
+        gap: 20px;
+        width: 100%;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .top-row, .bottom-row {
+        display: contents;
+    }
+    
+    /* Если в сетке нечетное количество школ, последний элемент будет по центру */
+    .school:last-child:nth-child(odd) {
+        grid-column: 1 / span 2;
+        justify-self: center;
+        max-width: 160px;
+    }
+    
+    /* Убираем отступы у секции школ */
+    .schools .container {
+        padding: 0;
+    }
+}
+
+/* Дополнительные стили для самых маленьких устройств */
+@media (max-width: 320px) {
+    /* Уменьшаем шрифт для очень маленьких экранов */
+    .schools-grid {
+        grid-template-columns: repeat(2, 130px);
+        gap: 15px;
+    }
+    
+    .school {
+        width: 130px;
+    }
+    
+    .school-name {
+        font-size: 11px;
+        padding: 10px 8px;
+        height: 90px;
+    }
+    
+    .school-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .school-icon i {
+        font-size: 28px;
+    }
+}
+
+
+/* Адаптация для экранов ноутбуков (1024px) */
+@media (max-width: 1024px) {
+    /* Уменьшаем размер школьных блоков */
+    .school {
+        width: 150px;
+        max-width: 150px;
+        min-width: 150px;
+    }
+    
+    /* Уменьшаем размер шрифта и высоту названий школ */
+    .school-name {
+        font-size: 12px;
+        height: 110px;
+        padding: 15px;
+    }
+    
+    /* Уменьшаем отступы для более компактного отображения */
+    .top-row, .bottom-row {
+        gap: 10px;
+    }
+    
+    /* Уменьшаем размер иконок */
+    .school-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    /* Уменьшаем размер шрифта иконок */
+    .school-icon i {
+        font-size: 30px;
+    }
+    
+    /* Корректируем отступы в нижнем ряду */
+    .bottom-row {
+        padding: 0 20px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    
+    /* Обновляем высоту для мобильной версии */
+    .school-name {
+        height: calc(100px * 0.95);
+        font-size: 11px;
+    }
+}
+
+
+/* Адаптация для планшетов (768px) */
+@media (max-width: 768px) {
+    
+    /* Адаптация для блоков школ - отображение по 2 в ряд */
+    .top-row, .bottom-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .school {
+        width: 180px;
+        max-width: 180px;
+        margin: 0 10px 30px;
+        flex: 0 0 auto;
+    }
+    
+}
+
+/* Дополнительные стили для самых маленьких устройств */
+@media (max-width: 375px) {
+    /* Уменьшаем шрифт текста каталога */
+    .catalog-text {
+        font-size: 9px;
+        line-height: 1.2;
+    }
+    
+    /* Уменьшаем размер заголовка */
+    .catalog-title {
+        font-size: 14px;
+    }
+}
+
+/* Специфические стили для самых маленьких экранов */
+@media (max-width: 320px) {
+    /* Уменьшаем шрифт для очень маленьких экранов */
+    .schools-grid {
+        grid-template-columns: repeat(2, 130px);
+        gap: 15px;
+    }
+    
+    .school {
+        width: 130px;
+    }
+    
+    .school-name {
+        font-size: 11px;
+        padding: 10px 8px;
+        height: 90px;
+    }
+    
+    .school-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .school-icon i {
+        font-size: 28px;
+    }
+    
+    /* Ещё меньше шрифт для текста каталога */
+    .catalog-text {
+        font-size: 8px;
+        line-height: 1.1;
+    }
+}
+
+/* Адаптация для мобильных устройств (425px) */
+@media (max-width: 425px) {
+    /* Убираем лишние отступы слева */
+    .container, .schools .container {
+        padding: 0 5px;
+    }
+    
+    /* Выравнивание сетки школ */
+    .schools-grid {
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Устраняем смещение блоков */
+    .top-row, .bottom-row {
+        margin: 0 auto;
+        padding: 0;
+        justify-content: center;
+    }
+    
+    /* Текст каталога */
+    .catalog-text {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+}
+
+/* Дополнительные стили для Medium мобильных устройств */
+@media (max-width: 375px) {
+    /* Уменьшаем шрифт текста каталога */
+    .catalog-text {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+    
+    /* Уменьшаем размер заголовка */
+    .catalog-title {
+        font-size: 14px;
+    }
+    
+    /* Дополнительно устраняем отступы */
+    .schools-grid {
+        padding: 0;
+        margin: 0 auto;
+    }
+}
+
+/* Специфические стили для самых маленьких экранов */
+@media (max-width: 320px) {
+    /* Уменьшаем шрифт для очень маленьких экранов */
+    .schools-grid {
+        grid-template-columns: repeat(2, 130px);
+        gap: 10px;
+        padding: 0;
+        margin: 0 auto;
+    }
+    
+    .school {
+        width: 130px;
+        margin: 0;
+    }
+    
+    .school-name {
+        font-size: 11px;
+        padding: 10px 8px;
+        height: 90px;
+    }
+    
+    .school-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .school-icon i {
+        font-size: 28px;
+    }
+    
+    /* Размер шрифта для текста каталога */
+    .catalog-text {
+        font-size: 10px;
+        line-height: 1.1;
+        max-width: 100%;
+    }
+}
+
+/* Общее исправление для всех мобильных устройств */
+@media (max-width: 768px) {
+    /* Исправление общего контейнера */
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Принудительное устранение отступов для секции школ */
+    .schools .container {
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Центрирование сетки школ */
+    .schools-grid {
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+    
+    /* Устраняем отступы в рядах */
+    .top-row, .bottom-row {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+}
+
+/* Более специфичное исправление для маленьких экранов */
+@media (max-width: 480px) {
+    /* Полностью сбрасываем отступы для контейнера */
+    body {
+        overflow-x: hidden;
+    }
+    
+    .container, section .container, .schools .container {
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Исправляем отображение сетки школ */
+    .schools-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Устраняем отступы у блоков */
+    .school {
+        margin: 0 auto;
+    }
+    
+    /* Объединяем все школы в один плоский список */
+    .top-row, .bottom-row {
+        display: contents;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* Специфические стили для самых маленьких экранов для устранения отступа слева */
+@media (max-width: 425px) {
+    .container, .schools .container {
+        padding: 0;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .schools-grid {
+        width: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(130px, 1fr));
+        gap: 10px;
+        padding: 0 5px;
+    }
+    
+    .school {
+        box-sizing: border-box;
+        width: 100%;
+        min-width: unset;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .school-name {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Медиа-запросы для адаптивности календаря */
+@media (max-width: 992px) {
+    .announcements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .calendar-container {
+        margin-bottom: 20px;
+        height: auto;
+        min-height: 450px;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-container {
+        height: auto;
+        min-height: auto;
+        overflow: visible;
+    }
+    
+    #calendar {
+        height: auto !important;
+        min-height: auto !important;
+    }
+    
+    /* Принудительно задаем правильную высоту ячеек для месяцев с 6 неделями */
+    .fc-dayGridMonth-view .fc-daygrid-body {
+        height: auto !important;
+    }
+    
+    /* Обеспечиваем правильный размер строк */
+    .fc-daygrid-body table {
+        height: auto !important;
+    }
+    
+    /* Исправление высоты строк для 6 недель */
+    .fc-scrollgrid-sync-table {
+        height: auto !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .calendar-container {
+        height: auto;
+        min-height: auto;
+        overflow: visible;
+        padding: 15px;
+    }
+    
+    /* Уменьшаем внутренние отступы в ячейках для компактности */
+    .fc-daygrid-day-frame {
+        padding: 2px !important;
+    }
+    
+    /* Сокращаем дни недели до одной буквы */
+    .fc .fc-col-header-cell-cushion {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-container {
+        padding: 8px;
+        height: auto;
+        min-height: auto;
+        overflow: visible;
+    }
+    
+    /* Исправляем высоту строк для корректного отображения на мобильных */
+    .fc-daygrid-day {
+        min-height: 25px !important;
+        height: auto !important;
+    }
+    
+    .fc-daygrid-day-frame {
+        height: 100% !important;
+        min-height: 25px !important;
+        padding: 0 !important;
+    }
+    
+    /* Уменьшаем размер цифр дат */
+    .fc-daygrid-day-number {
+        font-size: 11px;
+        padding: 1px 3px 1px 1px !important;
+    }
+    
+    /* Делаем ячейки календаря компактнее */
+    .fc-col-header-cell {
+        padding: 1px !important;
+    }
+    
+    /* Уменьшаем размер дней недели */
+    .fc-col-header-cell-cushion {
+        font-size: 10px !important;
+        padding: 2px 1px !important;
+    }
+    
+    /* Уменьшаем высоту события "Сессия" */
+    .thin-event {
+        height: 8px !important;
+        max-height: 8px !important;
+        font-size: 8px !important;
+    }
+    
+    .thin-event .fc-event-title {
+        font-size: 8px !important;
+        line-height: 1 !important;
+    }
+    
+    /* Уменьшаем высоту строк таблицы */
+    .fc-scrollgrid-sync-table {
+        height: auto !important;
+    }
+    
+    .fc-scrollgrid-sync-inner {
+        min-height: 25px !important;
+    }
+    
+    /* Уменьшаем отступы в заголовке календаря */
+    .calendar-navigation {
+        margin-bottom: 10px;
+    }
+    
+    .calendar-navigation button {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .calendar-navigation h3 {
+        font-size: 16px;
+    }
+}
+
+/* Еще более компактные стили для самых маленьких экранов */
+@media (max-width: 360px) {
+    .calendar-container {
+        padding: 5px;
+    }
+    
+    .fc-daygrid-day {
+        min-height: 20px !important;
+    }
+    
+    .fc-daygrid-day-frame {
+        min-height: 20px !important;
+    }
+    
+    .fc-daygrid-day-number {
+        font-size: 10px;
+    }
+    
+    /* Убираем лишнее пространство между ячейками */
+    .fc th, .fc td {
+        border-width: 0.5px !important;
+    }
+    
+    /* Уменьшаем высоту заголовка навигации календаря */
+    .calendar-navigation {
+        margin-bottom: 5px;
+    }
+    
+    .calendar-navigation h3 {
+        font-size: 14px;
+    }
+}
+
+/* Медиа-запросы для отключения гиперссылок в календаре на планшетах и мобильных устройствах */
+@media (max-width: 1024px) {
+    /* Отключаем кликабельность для всех элементов календаря */
+    .fc a {
+        pointer-events: none !important;
+    }
+    
+    /* Отключаем курсор-указатель */
+    .holiday-circle,
+    .event-asterisk,
+    .thin-event,
+    .fc-h-event,
+    .fc-daygrid-day-number[data-holiday] {
+        cursor: default !important;
+        pointer-events: none !important;
+    }
+    
+    /* Убираем эффект наведения для кружков */
+    .holiday-circle:hover {
+        transform: none !important;
+    }
+    
+    /* Отключаем анимацию подсветки звездочки */
+    .event-asterisk:hover {
+        color: #FF5722 !important;
+        transform: none !important;
+    }
+}
+
+/* Дополнительные стили для мобильных устройств */
+@media (max-width: 480px) {
+    /* Убираем подчеркивание и другие эффекты для всех ссылок в календаре */
+    .fc a,
+    .fc-h-event.fc-event,
+    .fc-daygrid-event,
+    .fc-daygrid-dot-event {
+        text-decoration: none !important;
+        pointer-events: none !important;
+    }
+    
+    /* Явно отключаем интерактивность для звездочек */
+    .has-asterisk .event-asterisk {
+        pointer-events: none !important;
+    }
+}
+
+/* Contact Button */
+.contact-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.contact-button i {
+    font-size: 24px;
+}
+
+.contact-button:hover {
+    transform: translateY(-5px) rotate(10deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Scroll to Top Button */
+.scroll-top-button {
+    position: fixed;
+    bottom: 30px;
+    right: 100px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    color: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.scroll-top-button i {
+    font-size: 20px;
+}
+
+.scroll-top-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-5px);
+}
+
+.scroll-top-button.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 576px) {
+    .contact-button, .scroll-top-button {
+        width: 40px;
+        height: 40px;
+    }
+    .contact-button {
+        bottom: 70px;
+        right: 15px;
+    }
+    .scroll-top-button {
+        bottom: 15px;
+        right: 15px;
+    }
+}
