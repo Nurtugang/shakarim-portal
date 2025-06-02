@@ -276,12 +276,12 @@
 </section>
 
 @push('scripts')
+
 <script>
     
 
 //     console.log(calendarEvents);
 
-// calendarEvents = @json($events);
 
 //     calendarEvents.forEach(event => {
 //             events.push({
@@ -373,130 +373,17 @@ function initCalendar() {
     // Получаем элемент календаря
     const calendarEl = document.getElementById('calendar');
     
-    // Если календарь не найден, прекращаем выполнение
-    if (!calendarEl) return;
-    
-    // Создаем экземпляр календаря с настройками
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth', // Вид по умолчанию - месяц
-        initialDate: '2025-05-01',   // Начальная дата
-        headerToolbar: false,        // Отключаем встроенную навигацию, используем свою
+     var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: '/events', // Laravel route
+      headerToolbar: false,        // Отключаем встроенную навигацию, используем свою
         locale: 'ru',                // Локализация
         height: 'auto',              // Автоматическая высота календаря
         expandRows: true,            // Расширяем строки для заполнения всей высоты
         fixedWeekCount: false,       // Позволяем показывать только нужное количество недель
-        
-        // Обработчик монтирования ячейки дня
-        dayCellDidMount: function(info) {
-            // Добавляем цветные кружки для праздничных дней
-            const date = info.date;
-            const day = date.getDate();
-            const month = date.getMonth() + 1; // +1 т.к. месяцы начинаются с 0
-            const year = date.getFullYear();
-            
-            // Проверяем праздничные дни
-            if (year === 2025 && month === 5) {
-                if (day === 1) {
-                    // День единства народа Казахстана - зеленый кружок
-                    const dayNumberEl = info.el.querySelector('.fc-daygrid-day-number');
-                    dayNumberEl.classList.add('holiday-circle');
-                    dayNumberEl.classList.add('green-circle');
-                    dayNumberEl.setAttribute('data-holiday', 'День единства народа Казахстана');
-                    dayNumberEl.style.cursor = 'pointer';
-                    dayNumberEl.addEventListener('click', function() {
-                        window.location.href = 'https://shakarim.edu.kz/ru/announcement/index';
-                    });
-                } else if (day === 7) {
-                    // День защитника Отечества - синий кружок
-                    const dayNumberEl = info.el.querySelector('.fc-daygrid-day-number');
-                    dayNumberEl.classList.add('holiday-circle');
-                    dayNumberEl.classList.add('blue-circle');
-                    dayNumberEl.setAttribute('data-holiday', 'День защитника Отечества');
-                    dayNumberEl.style.cursor = 'pointer';
-                    dayNumberEl.addEventListener('click', function() {
-                        window.location.href = 'https://shakarim.edu.kz/ru/announcement/index';
-                    });
-                } else if (day === 9) {
-                    // День Победы - красный кружок
-                    const dayNumberEl = info.el.querySelector('.fc-daygrid-day-number');
-                    dayNumberEl.classList.add('holiday-circle');
-                    dayNumberEl.classList.add('red-circle');
-                    dayNumberEl.setAttribute('data-holiday', 'День Победы');
-                    dayNumberEl.style.cursor = 'pointer';
-                    dayNumberEl.addEventListener('click', function() {
-                        window.location.href = 'https://shakarim.edu.kz/ru/announcement/index';
-                    });
-                }
-            }
-        },
-        
-        // Список событий календаря
-
-        events: [
-            // Сессии (длительные события)
-            {
-                title: 'Сессия',
-                start: '2025-05-12',
-                end: '2025-05-17', // Дата окончания не включается в FullCalendar
-                url: 'https://shakarim.edu.kz/ru/announcement/index',
-                color: '#4285F4',
-                classNames: ['thin-event']
-            },
-            {
-                title: 'Сессия',
-                start: '2025-05-19',
-                end: '2025-05-24',
-                url: 'https://shakarim.edu.kz/ru/announcement/index',
-                color: '#4285F4',
-                classNames: ['thin-event']
-            },
-            {
-                title: 'Сессия',
-                start: '2025-05-26',
-                end: '2025-05-31',
-                url: 'https://shakarim.edu.kz/ru/announcement/index',
-                color: '#4285F4',
-                classNames: ['thin-event']
-            },
-            
-            // Отдельные события (с астериском)
-            {
-                title: 'Конференция по искусственному интеллекту',
-                start: '2025-05-07T10:00:00',
-                url: 'https://shakarim.edu.kz/ru/announcement/index',
-                display: 'background',
-                classNames: ['event-with-asterisk']
-            },
-            {
-                title: 'Мастер-класс по программированию',
-                start: '2025-05-07T14:30:00',
-                url: 'https://shakarim.edu.kz/ru/announcement/index',
-                display: 'background',
-                classNames: ['event-with-asterisk']
-            },
-            {
-                title: 'Открытая лекция по биотехнологиям',
-                start: '2025-05-14T11:00:00',
-                url: 'https://shakarim.edu.kz/ru/announcement/index',
-                display: 'background',
-                classNames: ['event-with-asterisk']
-            },
-            {
-                title: 'Семинар по психологии',
-                start: '2025-05-15T15:00:00',
-                url: 'https://shakarim.edu.kz/ru/announcement/index',
-                display: 'background',
-                classNames: ['event-with-asterisk']
-            },
-            {
-                title: 'Встреча с работодателями',
-                start: '2025-05-20T13:00:00',
-                url: 'https://shakarim.edu.kz/ru/announcement/index',
-                display: 'background',
-                classNames: ['event-with-asterisk']
-            }
-        ]
     });
+
+    calendar.render();
     
     // Рендерим календарь
     calendar.render();

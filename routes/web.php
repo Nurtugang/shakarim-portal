@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SiteController;
@@ -49,5 +50,7 @@ Route::get('/pdf-viewer/{filename}', function ($filename) {
 
     return view('pdf.viewer', compact('pdfUrl'));
 });
+
+Route::get('/events', EventController::class);
 
 

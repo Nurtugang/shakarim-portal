@@ -14,7 +14,8 @@ class Event extends Model
         'content_ru',
         'content_en',
         'active',
-        'date',
+        'start_date',
+        'end_date',
     ];
 
     protected $casts = [

@@ -66,8 +66,9 @@ class EventResource extends Resource
 
                 Forms\Components\Toggle::make('active')
                     ->required(),
-                Forms\Components\DateTimePicker::make('date')
+                Forms\Components\DateTimePicker::make('start_date')
                     ->required(),  
+                Forms\Components\DateTimePicker::make('end_date'),     
                     ]),
                 
             ]);
