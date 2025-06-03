@@ -9,7 +9,7 @@
             <div class="col-md-4 left-co">
                 <div class="left-side">
                     <div class="profile-info">
-                        <img src="/upload/structure/8acdbe3852ff0928a8f65bbfab64132b.jpeg" alt="">
+                        <img src="{{ $structure->data->getPhoto() }}" alt="">
                         <h3>{{ $structure->data->leader_name }}</h3>
                         <span>{{ $structure->data->leader_position }}</span>
                     </div>

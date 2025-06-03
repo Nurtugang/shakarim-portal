@@ -23,4 +23,9 @@ class StructureData extends Model
          'additionally', 
          'structure_id'
     ];
+
+    public function getPhoto()
+    {
+        return asset('storage/' . $this->image);
+    }
 }

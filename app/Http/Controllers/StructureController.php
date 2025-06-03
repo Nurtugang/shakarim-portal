@@ -6,6 +6,7 @@ use App\Models\Page;
 use App\Models\PageFile;
 use App\Models\PageList;
 use App\Models\Structure;
+use App\Models\StructureData;
 use App\Services\Page\PageService;
 
 class StructureController extends Controller
@@ -27,6 +28,10 @@ class StructureController extends Controller
     public function show(string $locale,Structure $structure)
     {
         $structure->load('data');
+
+        if(!$structure->data){
+            abort(404);
+        }
 
       //  dd($structure);
 

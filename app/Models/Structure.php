@@ -21,6 +21,11 @@ class Structure extends Model
         return $this->hasMany(Structure::class, 'parent_id');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(Structure::class, 'parent_id');
+    }
+
     public function data()
     {
         return $this->hasOne(StructureData::class)->where('lang', app()->getLocale());
