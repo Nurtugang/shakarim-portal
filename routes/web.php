@@ -4,6 +4,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Localization;
 use Illuminate\Http\Request;
@@ -36,7 +37,8 @@ Route::group([
    Route::get('/list/{pageList:slug}',[PageController::class,'listItem'])->name('list.item');
    Route::get('/news',[NewsController::class,'index'])->name('news');
    Route::get('/news/{news:slug}',[NewsController::class,'show'])->name('news.show');
-   
+   Route::get('/structure', [StructureController::class,'index'])->name('structure.index');
+   Route::get('/structure/{structure:slug}', [StructureController::class,'show'])->name('structure.show');
 });
 
 Route::get('/pdf-viewer/{filename}', function ($filename) {

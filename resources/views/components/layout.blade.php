@@ -16,6 +16,47 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     @livewireStyles
      @vite(['resources/css/app.css', 'resources/js/app.js'])
+      <style>
+        .connector-v {
+            width: 2px;
+            background-color: #6b7280; /* Tailwind gray-500 */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .connector-h {
+            height: 2px;
+            background-color: #6b7280; /* Tailwind gray-500 */
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .node {
+            padding: 0.5rem 0.75rem; /* p-2 px-3 */
+            border: 1px solid #4b5563; /* border-gray-600 */
+            text-align: center;
+            font-size: 0.8rem; 
+            line-height: 1.25;
+            min-height: 50px; /* Минимальная высота для читаемости */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        .node-blue {
+            background-color: #1e40af; /* Tailwind blue-700 */
+            color: white;
+            border-color: #1e3a8a; /* Tailwind blue-800 for border */
+        }
+        .node-orange {
+            background-color: #f59e0b; /* Tailwind amber-500 */
+            color: #1f2937; /* Tailwind gray-800 */
+            border-color: #d97706; /* Tailwind amber-600 for border */
+        }
+        /* Для очень длинного текста в ячейках проректоров */
+        .prorector-node {
+            min-height: 70px; /* Больше высота для многострочного текста */
+        }
+    </style>
+    @stack('styles')
 </head>
 <body>
     <header class="site-header">
