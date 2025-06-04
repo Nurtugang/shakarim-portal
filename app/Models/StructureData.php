@@ -16,11 +16,7 @@ class StructureData extends Model
          'phone', 
          'phone_2', 
          'email', 
-         'about_us', 
-         'task', 
-         'main_activities', 
-         'target', 
-         'additionally', 
+         'main_activities',
          'structure_id'
     ];
 

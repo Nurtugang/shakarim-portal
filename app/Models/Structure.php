@@ -28,8 +28,13 @@ class Structure extends Model
 
     public function data()
     {
-        return $this->hasOne(StructureData::class)->where('lang', app()->getLocale());
+        return $this->hasMany(StructureData::class);
     }
+
+    public function filteredData()
+{
+    return $this->hasOne(StructureData::class)->where('lang', app()->getLocale());
+}
 
     public function employees()
     {

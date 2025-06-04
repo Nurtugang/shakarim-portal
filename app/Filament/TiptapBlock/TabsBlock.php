@@ -28,7 +28,6 @@ class TabsBlock extends TiptapBlock
                     ->required(),
                 TiptapEditor::make('text')
                     ->label('Текст')
-                    ->profile('simple')
                     ->columnSpanFull(),
                 ])->columns(2)
                 ->columnSpanFull()

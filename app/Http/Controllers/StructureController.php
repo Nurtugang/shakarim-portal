@@ -27,8 +27,9 @@ class StructureController extends Controller
 
     public function show(string $locale,Structure $structure)
     {
-        $structure->load('data');
+        $structure->load('filteredData','employees');
 
+        //dd($structure);
         if(!$structure->data){
             abort(404);
         }

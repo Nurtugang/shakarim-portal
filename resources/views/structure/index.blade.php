@@ -3,6 +3,13 @@
 <link rel="stylesheet" href="{{ asset("css/structure-style.css") }}">
 @endpush
 <div>
+    <div class="breadcrumb-container">
+    <div class="breadcrumb">
+        <a href="/" title="Домашняя страница"><span class="home-icon"></span></a>
+        <span class="breadcrumb-separator">〉</span>
+        <span class="current">Организационная структура</span>
+    </div>
+</div>
     <div class="container structure-bg">
        <!--<h1 class="page-title">Структура университета</h1>-->
 <div class="structure">

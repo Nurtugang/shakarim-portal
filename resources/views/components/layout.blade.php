@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset("css/footer.css") }}">
     <link rel="stylesheet" href="{{ asset("css/header.css") }}">
      <link rel="stylesheet" href="{{ asset("css/styles.css") }}">
+     <link rel="stylesheet" href="{{ asset("css/breadcrumb.css") }}">
+      <!-- <link rel="stylesheet" href="{{ asset("css/admissions-applicants.css") }}"> -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     @livewireStyles
      @vite(['resources/css/app.css', 'resources/js/app.js'])

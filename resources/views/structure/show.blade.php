@@ -3,15 +3,23 @@
 <link rel="stylesheet" href="{{ asset("css/structure-style.css") }}">
 @endpush
 
-
-<div class="container profile-box">
+<div class="breadcrumb-container">
+    <div class="breadcrumb">
+        <a href="/" title="Домашняя страница"><span class="home-icon"></span></a>
+        <span class="breadcrumb-separator">〉</span>
+        <a href="{{ route('structure.index',['locale'=>app()->getLocale()]) }}">Структура</a>
+        <span class="breadcrumb-separator">〉</span>
+        <span class="current">{{ $structure->{'title_'.app()->getLocale()} }}</span>
+    </div>
+</div>
+<div class="container profile-box mt-10">
         <div class="row">
             <div class="col-md-4 left-co">
                 <div class="left-side">
                     <div class="profile-info">
-                        <img src="{{ $structure->data->getPhoto() }}" alt="">
-                        <h3>{{ $structure->data->leader_name }}</h3>
-                        <span>{{ $structure->data->leader_position }}</span>
+                        <img src="{{ $structure->filteredData->getPhoto() }}" alt="">
+                        <h3>{{ $structure->filteredData->leader_name }}</h3>
+                        <span>{{ $structure->filteredData->leader_position }}</span>
                     </div>
                     <h4 class="ltitle">Байланыс</h4>
                                       <div class="contact-box">
@@ -19,8 +27,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="detail">
-                            {{ $structure->data->address }}<br>
-                       <span style="font-size:12px;color: beige;">{{ $structure->data->cabinet }}</span>
+                            {{ $structure->filteredData->address }}<br>
+                       <span style="font-size:12px;color: beige;">{{ $structure->filteredData->cabinet }}</span>
                         </div>
                     </div>
                     <div class="contact-box">
@@ -28,7 +36,7 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="detail" style="overflow-wrap: anywhere;">
-                            {{ $structure->data->email }} </div>
+                            {{ $structure->filteredData->email }} </div>
                     </div>
                 </div>
             </div>
@@ -40,30 +48,23 @@
                     <hr>
                     <h5>Негізгі қызмет түрлері:</h5>
                     <div class="list text-content">
-                       {!! $structure->data->main_activities !!}
+                       {!! $structure->filteredData->main_activities !!}
                     </div>
                 </div>
                 <hr>
                                     <h5 class="rit-titl flex pt-4"><i class="employees-icon"></i> Қызметкерлер</h5>
                 <div class="grid-2">
-                                            <div class="about">
+                    @foreach ($structure->employees as $item)
+                    <div class="about">
                             <div class="employee">
-                                <img src="/upload/structure/employees/ba8347a2d27c59cf5efecfbbaa703323.jpeg" alt="">
+                                <img src="{{ $item->getPhoto() }}" alt="">
                                 <ul class="employee-info">
-                                    <li><h5 class="title">Газизова Назигул Слямболовна</h5><span class="subtext">Үйлестіруші</span></li>
+                                    <li><h5 class="title">{{ $item->{'fullname_'.app()->getLocale()} }}</h5><span class="subtext">{{ $item->{'position_'.app()->getLocale()} }}</span></li>
                                 </ul>
                             </div>
                             <hr>
                         </div>
-                                            <div class="about">
-                            <div class="employee">
-                                <img src="/upload/structure/employees/e308447986404d35b6b4c1a294a33847.png" alt="">
-                                <ul class="employee-info">
-                                    <li><h5 class="title">Киреенко Елена Александровна </h5><span class="subtext">Деректерді өндеу технигі </span></li>
-                                </ul>
-                            </div>
-                            <hr>
-                        </div>
+                    @endforeach         
                                     </div>
                             </div>
         </div>
