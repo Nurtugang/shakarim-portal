@@ -50,7 +50,7 @@ class Menu extends Model
         if($this->banner){
            return '/storage/'. $this->banner;
         }
-        return '/img/page-banner.jpeg';
+        return '/img/building.webp';
     }
 
     protected static function boot()

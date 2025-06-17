@@ -16,9 +16,14 @@ class StructureController extends Controller
     public function index(string $locale)
     {
         $structures = Structure::query()
-           ->with('children')
+           ->with(['children'=> function($c){
+                $c->with(['children' => function($l){
+                   $l->where('active',true)->orderBy('position');
+                 }])->where('active',true)->orderBy('position');
+            }])
            ->where('parent_id',null)
            ->where('active',true)
+           ->orderBy('position')
            ->get();
         
 
@@ -31,6 +36,9 @@ class StructureController extends Controller
 
         //dd($structure);
         if(!$structure->data){
+            abort(404);
+        }
+         if(!$structure->filteredData){
             abort(404);
         }
 

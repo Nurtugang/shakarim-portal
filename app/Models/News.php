@@ -64,7 +64,7 @@ class News extends Model
        
     }
 
-    public function shortBody($words = 30): string
+    public function shortBody($words = 10): string
     {
         if($this->{'content_'.app()->getLocale()})
         {

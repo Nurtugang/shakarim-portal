@@ -13,7 +13,11 @@
 }
 @font-face {
     font-family: "SF-Pro-Display-Regular";
-    src: url("/fonts/SF-Pro-Display-Regular.otf");
+    src: url("/fonts/SF-Pro-Display-Regular.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url("/fonts/Montserrat-Bold.ttf") format('truetype');
 }
 }
 
@@ -76,7 +80,7 @@ table th > * {
 
 [data-type="details-content"] p {
   padding: 10px;
-  border-top: 1px solid theme("colors.gray.400");
+  /* border-top: 1px solid theme("colors.gray.400"); */
 }
 
 summary::marker {

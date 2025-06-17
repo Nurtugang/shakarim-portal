@@ -1,22 +1,26 @@
 <x-layout :metaTitle="$page->{'title_'.app()->getLocale()}">
-    <div class="container mx-auto px-4 mb-20">
-        <div class="mb-8">
-            <x-page-banner banner="{{ $page->menu->getBanner() }}" :text="$page->menu->{'title_'.app()->getLocale()}" sub-text=""></x-page-banner>
-        </div>  
+@push('styles')
+ <link rel="stylesheet" href="{{ asset("css/content.css") }}">
+@endpush
 
-        <div class="grid grid-cols-1 lg:grid-cols-4 mb-4 gap-8">
-            <div class="lg:col-span-1 animate-fade-in-up">
-                <x-accordion-menu :menu="$accordion_menu" :pageParentMenu="$page->menu->parent_id" :pageMenu="$page->menu->id" :rootMenu="$page->menu->parent->parent_id"></x-accordion-menu>
-            </div>
-            <div class="lg:col-span-3 animate-fade-in-down">
-                <h1 class="font-inter text-3xl mb-10">{{ $page->{'title_'.app()->getLocale()} }}</h1>
+    <div class="content-container">
+        <!-- Баннер страницы -->
+        
+
+        <x-page-banner banner="{{ $page->menu->getBanner() }}" :text="$page->menu->{'title_'.app()->getLocale()}" sub-text=""></x-page-banner>
+
+        <!-- Основная сетка контента -->
+        <div class="content-grid">
+            <!-- Боковая навигация -->
+             <x-accordion-menu :menu="$accordion_menu" :pageParentMenu="$page->menu->parent_id" :pageMenu="$page->menu->id" :rootMenu="$page->menu->parent->parent_id"></x-accordion-menu>
+            
+            <!-- Основной контент -->
+            <div class="main-content animate-fade-in-down">
+                <h1>{{ $page->{'title_'.app()->getLocale()} }}</h1>
                 
-                @if ($topMenu->count()>0)
-                <div class="mb-10">
-                    <x-page-top-menu :menu="$topMenu" :current_menu="$page->menu->id"></x-page-top-menu>
-                </div>
-                @endif
-                <div>
+                <!-- Контент из админки остается без изменений -->
+                <div class="tiptap-content">
+         
                     <div class="content tiptap-content text-xl font-sf">
                         {!! tiptap_converter()->asHTML($page->{'content_'.app()->getLocale()}) !!}
                     </div>
@@ -30,9 +34,15 @@
                     @if (count($lists)>0)
                         <x-page-lists :lists="$lists" :page="$page" />
                     @endif
-        </div>
+ 
+                </div>
             </div>
         </div>
     </div>
+
+
+@push('scripts')
+<script src="/js/content.js"></script>
+@endpush
 </x-layout>
 

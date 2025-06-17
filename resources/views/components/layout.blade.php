@@ -12,10 +12,11 @@
     <meta property="og:image" content="/img/not_photo.png">
     <link rel="stylesheet" href="{{ asset("css/footer.css") }}">
     <link rel="stylesheet" href="{{ asset("css/header.css") }}">
-     <link rel="stylesheet" href="{{ asset("css/styles.css") }}">
-     <link rel="stylesheet" href="{{ asset("css/breadcrumb.css") }}">
-      <!-- <link rel="stylesheet" href="{{ asset("css/admissions-applicants.css") }}"> -->
+     <link rel="stylesheet" href="{{ asset("css/style.css") }}">
+     <link rel="stylesheet" href="{{ asset("css/base.css") }}">
+
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     @livewireStyles
      @vite(['resources/css/app.css', 'resources/js/app.js'])
       <style>
@@ -61,7 +62,7 @@
     @stack('styles')
 </head>
 <body>
-    <header class="site-header">
+  <header class="site-header">
     <div class="header-container">
         <!-- Menu toggle button (left) -->
         <div class="menu-toggle-container">
@@ -73,109 +74,122 @@
         <!-- Logo (center) -->
         <div class="logo-container">
             <a href="/" class="logo">
-                <img src="/icons/logo.png" alt="Shakarim University Logo">
-                    </a>
+                <div class="logo-content">
+                     <img src="/logo.webp" class="w-60">
                 </div>
+            </a>
+        </div>
         
         <!-- Search bar (right) + Language selector -->
-        <livewire:language-selector />
+        <div class="search-container">
+            <form id="searchForm" action="" method="get">
+                <input type="text" name="s" placeholder="Поиск..." aria-label="Поиск">
+                <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <div style="width:18px;"></div>
+             <livewire:language-selector />
+        </div>
     </div>
 
     <!-- Main dropdown menu -->
     <div id="mainMenu" class="main-menu">
-                <div class="menu-container">
-            
-                @foreach ($menu as $item )
+        <div class="menu-container">
+         @foreach ($menu as $item )
+         
                 <div class="menu-category">
-                    <h3>{{ $item->{'title_'.app()->getLocale()} }}</h3>
-                    @if (isset($item->children) && count($item->children) > 0)
+                    <h3><i class="fas fa-university"></i>{{ $item->{'title_'.app()->getLocale()} }}</h3>
+                     @if (isset($item->children) && count($item->children) > 0)
                     <ul>
-                        @foreach ($item->children as $child)
+                    @foreach ($item->children as $child)
                         <li><a href="{{ $child->getUrl() }}">{{ $child->{'title_'.app()->getLocale()} }}</a></li>
                         @endforeach
                     </ul>
-                    @endif
+                      @endif
                 </div>
-                @endforeach
-           
+                   @endforeach
+          
         </div>
     </div>
 </header>
-    <main>
-        {{ $slot }}
-    </main>
+   <main class="page-wrapper">
+{{ $slot }}
+   </main>
 
-    <footer class="site-footer">
+<!-- Футер с оригинальной структурой -->
+<footer class="footer">
     <div class="footer-container">
-        <div class="footer-col">
-            <div class="footer-address">
-                20А ул. Глинки<br>
-                Семей, Область Абай<br>
-                Республика Казахстан
+        <div class="footer-grid">
+            <!-- Первая колонка -->
+            <div class="footer-brand">
+                <h3>Нормативные документы</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Корпоративное управление</a></li>
+                    <li><a href="#">Корпоративные документы</a></li>
+                    <li><a href="#">Академическая политика</a></li>
+                    <li><a href="#">Внутренняя система качества</a></li>
+                    <li><a href="#">Утверждённые формы дипломов</a></li>
+                    <li><a href="#">Организация ветеранов</a></li>
+                    <li><a href="#">Ассоциация выпускников</a></li>
+                    <li><a href="#">Устойчивое развитие</a></li>
+                    <li><a href="#">Профсоюз</a></li>
+                    <li><a href="#">Университет без коррупции</a></li>
+                </ul>
+            </div>
+            
+            <!-- Вторая колонка -->
+            <div class="footer-section">
+                <h4>Полезные ссылки</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Minor</a></li>
+                    <li><a target="_blank" href="https://mooc.semgu.kz/">MOOC</a></li>
+                    <li><a href="#">Summer Semester</a></li>
+                    <li><a target="_blank" href="https://platonus.shakarim.kz/">Platonus</a></li>
+                    <li><a target="_blank" href="https://hub.shakarim.kz/">Shakarim Hub</a></li>
+                </ul>
+            </div>
+            
+            <!-- Третья колонка -->
+            <div class="footer-section">
+                <h4>Университет</h4>
+                <ul class="footer-links">
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">История</a></li>
+                    <li><a href="#">Руководство</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <!-- Четвертая колонка -->
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <ul class="footer-links">
+                    <li>г. Семей, ул. Глинки, 20А</li>
+                    <li>+7 (7222) 31-60-29</li>
+                    <li>info@shakarim.edu.kz</li>
+                    <li>Приемная: +7 (771) 365-46-25</li>
+                </ul>
             </div>
         </div>
-        <div class="footer-col">
-            <ul>
-                <li><a href="#">Нормативные документы</a></li>
-                <li><a href="#">Корпоративное управление</a></li>
-                <li><a href="corporate-documents">Корпоративные документы</a></li>
-                <li><a href="#">Академическая политика</a></li>
-                <li><a href="#">Внутренняя система качества</a></li>
-                <li><a href="#">Утверждённые формы дипломов</a></li>
-                <li><a href="#">Организация ветеранов</a></li>
-                <li><a href="#">Ассоциация выпускников</a></li>
-                <li><a href="#">Устойчивое развитие</a></li>
-                <li><a href="#">Профсоюз</a></li>
-                <li><a href="#">Университет без коррупции</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h3>Полезные ссылки</h3>
-            <ul>
-                <li><a href="#">Minor</a></li>
-                <li><a href="#">MOOC</a></li>
-                <li><a href="#">Summer Semester</a></li>
-                <li><a href="#">Platonus</a></li>
-                <li><a href="#">Shakarim hub</a></li>
-                <li><a href="template">template</a></li>
-                <li><a href="template-structure">template-structure</a></li>
-                <li><a href="template-empty">template-empty</a></li>
-                <li><a href="template-choice">template-choice</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <div class="footer-social">
-                <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="Telegram" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-                <a href="#" aria-label="TikTok" target="_blank"><i class="fab fa-tiktok"></i></a>
-            </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Shakarim University. Все права защищены.</p>
         </div>
     </div>
 </footer>
 
-<!-- Contact Button -->
-<a href="tel:+77222313175" class="contact-button">
-    <i class="fas fa-phone"></i>
-</a>
-
-<!-- Scroll to Top Button -->
-<button id="scrollTopBtn" class="scroll-top-button">
-    <i class="fas fa-arrow-up"></i>
-</button>
-    <div class="mobile-menu-backdrop"></div>
+<!-- Мобильное меню backdrop -->
+<div class="mobile-menu-backdrop"></div>
 
     <!-- Base scripts -->
-    <script src="/js/script.js"></script>
+    <script src="/js/base.js"></script>
+     <script src="/js/index.js"></script>
     <script src="/js/header.js"></script>
-    <script src="/js/footer.js"></script>
+   
     <!-- <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.js'></script> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/ru.js"></script>
-    
+
+    @livewireScripts
     <!-- Scripts для каждой страницы наследующий этот шаблон -->
     @stack('scripts')   
 </body>

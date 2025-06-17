@@ -15,6 +15,6 @@ class StructureEmployees extends Model
         if (!$this->image) {
             return '/img/no-user-photo.png';
         }
-        return 'storage/' . $this->image;
+        return '/storage/' . $this->image;
     }
 }

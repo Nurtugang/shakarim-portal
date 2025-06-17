@@ -4,7 +4,7 @@
     'rootMenu',
     'pageParentMenu'
 ])
-<div class="mb-4 text-xl font-sf">
+<div class="sidebar-nav animate-fade-in-up">
 <ul>
         @foreach($menu as $menu_item)
             @if(count($menu_item->children)>0)
@@ -97,10 +97,9 @@
                 </div>
             </li>
             @else
-                <li class="mb-2">
+                <li>
                 <a href="{{ $menu_item->getUrl() }}"
                 @class([
-                    'px-5 py-1 block w-fit hover:bg-secondary hover:text-white hover:rounded-3xl',
                     'bg-secondary text-white rounded-3xl' => isset($pageMenu) && $pageMenu==$menu_item->id,
                 ])
                 {{$menu_item->is_external_link ? 'target="_blank"' : ''}}>

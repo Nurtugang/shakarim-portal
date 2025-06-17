@@ -1,20 +1,19 @@
 <x-layout>
 @push('styles')
 <link rel="stylesheet" href="{{ asset("css/structure-style.css") }}">
+ <link rel="stylesheet" href="{{ asset("css/content.css") }}">
+ <link rel="stylesheet" href="{{ asset("css/staff.css") }}">
 @endpush
-<div>
-    <div class="breadcrumb-container">
+        <!-- ХЛЕБНЫЕ КРОШКИ -->
+<div class="breadcrumb-container">
     <div class="breadcrumb">
-        <a href="/" title="Домашняя страница"><span class="home-icon"></span></a>
+        <a href="/" title="Домашняя страница"><i class="fas fa-home"></i></a>
         <span class="breadcrumb-separator">〉</span>
         <span class="current">Организационная структура</span>
     </div>
 </div>
-    <div class="container structure-bg">
-       <!--<h1 class="page-title">Структура университета</h1>-->
-<div class="structure">
+<div  class="content structure-bg">
 
-</div>
 <ol class="organizational-chart overflow-hidden">
     <li>
         <div class="structure-header justify-content-center align-items-center">
@@ -86,15 +85,26 @@
 
                                     <li>
                 <div>
-                    <a href="{{ $item->getUrl() }}"><h2>{{ $item->title_kk }}</h2></a>
+                    <a href="{{ $item->getUrl() }}"><h2>{{ $item->{'title_'.app()->getLocale()} }}</h2></a>
                 </div>
                 @if ($item->children->count() > 0)
                 <ol>
                     @foreach ($item->children as $child)
                     <li>
                         <div>
-                            <a href="{{ $child->getUrl() }}">{{ $child->title_kk }}</a>
+                            <a href="{{ $child->getUrl() }}">{{ $child->{'title_'.app()->getLocale()} }}</a>
+                        </div> 
+                         @if ($child->children->count() > 0)
+                <ol>
+                    @foreach ($child->children as $child_child)
+                    <li>
+                        <div>
+                            <a href="{{ $child_child->getUrl() }}">{{ $child_child->{'title_'.app()->getLocale()} }}</a>
                         </div>                            
+                    </li>
+                    @endforeach
+                    </ol>
+                @endif                           
                     </li>
                     @endforeach
                     </ol>
@@ -104,13 +114,6 @@
         </ol>
     </li>
 </ol>
-        
-        
-
-        
-
-
-  </div>
 </div>
 
 @push('scripts')

@@ -1,19 +1,26 @@
 <x-layout>
-    
-    <div class="container mx-auto my-8 px-4">
-<x-page-banner banner="/img/news_banner.jpg" text="Баспасөз-қызметі" sub-text=""></x-page-banner>
-        <div class="grid grid-cols-1 lg:grid-cols-5 mb-4 gap-8">
-            <div class="lg:col-span-1">
-                <div>
-                  <p class="font-semibold text-lg">Баспасөз-қызметі</p>
-                  <div class="bg-gray-700 h-[3px] w-[30px] my-4"></div>
-                </div>
-                <a class="block text-primary border-primary border-b" href="{{ route('news',['locale'=>app()->getLocale()]) }}">Жаңалықтар</a>
+    @push('styles')
+<link rel="stylesheet" href="{{ asset("css/content.css") }}">
+@endpush
+   <main class="page-wrapper">
+    <div class="content-container">
+        <!-- Баннер страницы -->
+        
+
+        <x-page-banner banner="/img/building.webp" text="Жаңалықтар" sub-text=""></x-page-banner>
+
+        <!-- Основная сетка контента -->
+        <div class="content-grid">
+            <!-- Боковая навигация -->
+             <div class="sidebar-nav animate-fade-in-up">
+                {{-- <ul>
+                    <li><a href="{{ route('news',['locale'=>app()->getLocale()]) }}">Жаңалықтар</a></li>
+                </ul> --}}
             </div>
-            <div class="lg:col-span-4">
-                <h1 class="text-3xl font-semibold uppercase">Соңғы жаңалықтар</h1>
-                <div class="bg-primary h-[3px] w-[74px] my-4"></div>
-               
+            
+            <!-- Основной контент -->
+            <div class="main-content animate-fade-in-down">
+                <h1>Соңғы жаңалықтар</h1>
                 <div class="my-10">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         @foreach ($news as $item)
@@ -24,7 +31,7 @@
                         <div class="grow bg-gray-200 p-4">
                             <p class="mb-2 text-gray-500">{{ $item->getFormattedDate() }}</p>
                             <a href="{{ route('news.show',['locale'=>app()->getLocale(),'news'=>$item]) }}">
-                                <h1 class="font-semibold mb-2">{{ $item->{'title_'.app()->getLocale()} }}</h1>
+                                <h2 class="font-semibold text-lg mb-2">{{ $item->{'title_'.app()->getLocale()} }}</h2>
                             </a>
                            
                         </div>
@@ -35,9 +42,9 @@
                         {{ $news->links() }}
                     </div>
                 </div>
-                 <div class="my-4">
-        </div>
             </div>
         </div>
     </div>
+</main>
+  
 </x-layout>
