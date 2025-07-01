@@ -17,7 +17,12 @@ class StructureData extends Model
          'phone_2', 
          'email', 
          'main_activities',
-         'structure_id'
+         'structure_id',
+         'data'
+    ];
+
+    protected $casts = [
+        'data' => 'array',
     ];
 
     public function getPhoto()

@@ -51,11 +51,26 @@ class StructureResource extends Resource
                                ->required()
                                ->maxLength(255),
                 
-                    Forms\Components\TextInput::make('position')
-                    ->label('Позиция')
+                    Forms\Components\TextInput::make('sort_order')
+                    ->label('Сортировка')
                     ->required()
                     ->numeric()
                     ->default(0),
+                    Forms\Components\Select::make('position')
+                               ->label('Позиция')
+                               ->options([
+                                   'left' => 'Слева',
+                                   'right' => 'Справа',
+                                   'center' => 'Центр',
+                               ]),
+                    Forms\Components\Select::make('layout_type')
+                               ->label('тип')
+                               ->required()
+                               ->options([
+                                   'center_with_sides' => 'Центр с боковыми',
+                                   'vertical_stack' => 'Вертикальный',
+                                   'horizontal_row' => 'Горизонтальный',
+                               ]),
                 Forms\Components\Select::make('parent_id')
                     ->label('Родительское меню')
                     ->options(Structure::all()->pluck('title_ru', 'id'))

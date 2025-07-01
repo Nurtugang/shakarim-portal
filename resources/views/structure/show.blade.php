@@ -59,17 +59,21 @@
         
         <!-- Правая колонка - Информация -->
         <div class="department-content">
-            <!-- Основные виды деятельности -->
+           @foreach ($structure->filteredData->data as $item)
             <div class="activity-section">
+               
                 <div class="section-header">
                     <div class="section-icon">
-                        <i class="fas fa-tasks"></i>
+                        <i class="fas {{ $item['icon'] }}"></i>
                     </div>
-                    <h3>Основные виды деятельности</h3>
+                    <h3>{{ $item['title'] }}</h3>
                 </div>
-                {!! $structure->filteredData->main_activities !!}
+                  <div>
+                    {!! $item['text'] !!}
+                  </div>
+               
             </div>
-            
+             @endforeach
             <!-- Сотрудники -->
             <div class="staff-section">
                 <div class="section-header">

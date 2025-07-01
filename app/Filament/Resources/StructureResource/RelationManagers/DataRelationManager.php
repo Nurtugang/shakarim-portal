@@ -6,6 +6,7 @@ use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -83,11 +84,25 @@ class DataRelationManager extends RelationManager
         ->label('Электронная почта')
                     ->required()
                     ->maxLength(255),
-        TiptapEditor::make('main_activities') 
-        ->label('Основные деятельности')
+        Repeater::make('data')
+        ->label('Данные')
+        ->schema([
+            Forms\Components\TextInput::make('icon')
+            ->label('Иконка(font-awesome)')
+                        ->required()
+                        ->placeholder('fa-tasks')
+                        ->maxLength(10),
+            Forms\Components\TextInput::make('title')
+            ->label('Заголовок')
+                        ->required()
+                        ->placeholder('Основные виды деятельности')
+                        ->maxLength(255),
+            TiptapEditor::make('text') 
+        ->label('Текст')
         ->required()
         ->profile('simple')
-        ->columnSpanFull(),         
+        ->columnSpanFull(),
+        ])->columnSpanFull()         
     ]),
     
 

@@ -15,17 +15,10 @@ class StructureController extends Controller
 
     public function index(string $locale)
     {
-        $structures = Structure::query()
-           ->with(['children'=> function($c){
-                $c->with(['children' => function($l){
-                   $l->where('active',true)->orderBy('position');
-                 }])->where('active',true)->orderBy('position');
-            }])
-           ->where('parent_id',null)
-           ->where('active',true)
-           ->orderBy('position')
-           ->get();
-        
+         $structures = Structure::whereNull('parent_id')
+                                ->with('childrenRecursive')
+                                ->where('active',true)
+                                ->first(); 
 
         return view('structure.index',compact('structures'));
     }
@@ -34,7 +27,6 @@ class StructureController extends Controller
     {
         $structure->load('filteredData','employees');
 
-        //dd($structure);
         if(!$structure->data){
             abort(404);
         }
@@ -42,9 +34,21 @@ class StructureController extends Controller
             abort(404);
         }
 
-      //  dd($structure);
-
         return view('structure.show',compact('structure'));
+    }
+
+    public function viceRector(string $locale,Structure $structure)
+    {
+        $structure->load('filteredData');
+
+        if(!$structure->data){
+            abort(404);
+        }
+         if(!$structure->filteredData){
+            abort(404);
+        }
+
+        return view('structure.vice-rector',compact('structure'));
     }
        
 }

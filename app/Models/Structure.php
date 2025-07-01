@@ -9,16 +9,23 @@ class Structure extends Model
     protected $fillable = [
         'title_kk',
         'title_ru',
-        'title_kk',
+        'title_en',
         'slug',
         'parent_id',
+        'sort_order',
         'position',
+        'layout_type',
         'active',
+        'is_vice_rector'
     ];
 
     public function children()
     {
         return $this->hasMany(Structure::class, 'parent_id');
+    }
+    public function childrenRecursive()
+    {
+        return $this->children()->with('childrenRecursive');
     }
 
     public function parent()
@@ -43,6 +50,9 @@ class Structure extends Model
 
     public function getUrl()
     {
+        if(!$this->slug){
+            return '#';
+        }
         return route('structure.show', ['locale' => app()->getLocale(),'structure' => $this->slug]);
     }
 }
