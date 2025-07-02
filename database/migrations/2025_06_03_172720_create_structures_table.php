@@ -20,7 +20,6 @@ return new class extends Migration
             $table->tinyInteger('position')->default(0);
             $table->boolean('active')->default(true);
 
-
             $table->timestamps();
         });
     }

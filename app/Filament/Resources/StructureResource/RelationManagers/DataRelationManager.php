@@ -45,7 +45,6 @@ class DataRelationManager extends RelationManager
                     ->maxLength(255),
         Forms\Components\TextInput::make('leader_position')
         ->label('Должность руководителя')
-                    ->required()
                     ->maxLength(255),
                 FileUpload::make('image')
                     ->label('Изображение')

@@ -19,8 +19,6 @@
                         {!! $pageList->{'content_'.app()->getLocale()} !!}
                     </div>
                 </div>
-
-                <x-social-share-buttons url="{{Request::url()}}" text="{{ $pageList->{'title_'.app()->getLocale()} }}"/>
             
             </div>
         </div>
