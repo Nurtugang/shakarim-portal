@@ -160,33 +160,33 @@ small {
     font-size: 0.75rem;
 }
 
-.content ul,
-.content ol {
+.tiptap-content ul,
+.tiptap-content ol {
     @apply space-y-2;
     padding-inline-start: 1rem;
     margin-inline-start: 1rem;
 }
 
-.content ul {
+.tiptap-content ul {
     list-style: disc;
 }
 
-.content ol {
+.tiptap-content ol {
     list-style: decimal;
 }
 
-.content ul.checked-list {
+.tiptap-content ul.checked-list {
     list-style-type: none;
     margin-inline-start: 0;
 }
 
-.content ul.checked-list li {
+.tiptap-content ul.checked-list li {
     display: flex;
     align-items: baseline;
     gap: 0.375em;
 }
 
-.content ul.checked-list li::before {
+.tiptap-content ul.checked-list li::before {
     content: '✓';
     width: 1.25rem;
     height: 1.25rem;

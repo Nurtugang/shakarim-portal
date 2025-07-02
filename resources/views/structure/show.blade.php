@@ -68,7 +68,7 @@
                     </div>
                     <h3>{{ $item['title'] }}</h3>
                 </div>
-                  <div class="content tiptap-content text-xl font-sf">
+                  <div class="tiptap-content text-xl font-sf">
                     {!! $item['text'] !!}
                   </div>
                
