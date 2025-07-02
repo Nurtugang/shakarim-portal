@@ -99,7 +99,6 @@ class DataRelationManager extends RelationManager
             TiptapEditor::make('text') 
         ->label('Текст')
         ->required()
-        ->profile('simple')
         ->columnSpanFull(),
         ])->columnSpanFull()         
     ]),

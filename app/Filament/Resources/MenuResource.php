@@ -38,21 +38,40 @@ class MenuResource extends Resource
             ->schema([
                 Section::make('')
                 ->schema([
-                Forms\Components\TextInput::make('title_kk')
-                    ->label('Заголовок(kz)')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('title_ru')
-                    ->label('Заголовок(ru)')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('title_en')
-                    ->label('Заголовок(en)')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('link')
-                    ->label('Ссылка')
-                    ->maxLength(255),
+                    Tabs::make('')
+                ->tabs([
+                    Tabs\Tab::make('kz')
+                    ->schema([
+                        Forms\Components\TextInput::make('title_kk')
+                           ->label('Заголовок(kz)')
+                           ->required()
+                           ->maxLength(255),
+                        Forms\Components\TextInput::make('link_kk')
+                           ->label('Ссылка(kz)')
+                           ->maxLength(255),   
+                    ]),
+                    Tabs\Tab::make('ru')
+                    ->schema([
+                        Forms\Components\TextInput::make('title_ru')
+                           ->label('Заголовок(ru)')
+                           ->required()
+                           ->maxLength(255),
+                        Forms\Components\TextInput::make('link_ru')
+                           ->label('Ссылка(ru)')
+                           ->maxLength(255),   
+                    ]),
+                    Tabs\Tab::make('en')
+                    ->schema([
+                        Forms\Components\TextInput::make('title_en')
+                           ->label('Заголовок(en)')
+                           ->required()
+                           ->maxLength(255),
+                        Forms\Components\TextInput::make('link_en')
+                           ->label('Ссылка(en)')
+                           ->maxLength(255),   
+                    ]),
+                ]),
+                
                 Forms\Components\Toggle::make('is_external_link')
                     ->label('Внешняя ссылка')
                     ->default(0),  

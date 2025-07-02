@@ -13,7 +13,9 @@ class Menu extends Model
         'title_ru',
         'title_en',
         'slug',
-        'link',
+        'link_kk',
+        'link_ru',
+        'link_en',
         'is_external_link',
         'sort',
         'parent_id',
@@ -39,8 +41,8 @@ class Menu extends Model
     {
         if ($this->is_external_link) {
             return $this->{'link_' . app()->getLocale()};
-        } elseif ($this->link) {
-            return route($this->link, ['locale' => app()->getLocale()]);
+        } elseif ($this->{'link_' . app()->getLocale()}) {
+            return route($this->{'link_' . app()->getLocale()}, ['locale' => app()->getLocale()]);
         } else {
             return route('page', ['locale' => app()->getLocale(), 'page' => $this->page]);
         }
