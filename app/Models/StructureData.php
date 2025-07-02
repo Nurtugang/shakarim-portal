@@ -27,6 +27,9 @@ class StructureData extends Model
 
     public function getPhoto()
     {
+        if (!$this->image) {
+            return '/img/no-user-photo.webp';
+        }
         return asset('storage/' . $this->image);
     }
 }

@@ -68,7 +68,7 @@
                     </div>
                     <h3>{{ $item['title'] }}</h3>
                 </div>
-                  <div>
+                  <div class="content tiptap-content text-xl font-sf">
                     {!! $item['text'] !!}
                   </div>
                
@@ -112,7 +112,7 @@
             </div>
             
             <!-- Информационная секция -->
-            <div class="info-section">
+            <!-- <div class="info-section">
                 <div class="info-cards">
                     <div class="info-card">
                         <div class="info-icon">
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

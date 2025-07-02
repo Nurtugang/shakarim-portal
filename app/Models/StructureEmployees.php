@@ -13,7 +13,7 @@ class StructureEmployees extends Model
     public function getPhoto()
     {
         if (!$this->image) {
-            return '/img/no-user-photo.png';
+            return '/img/no-user-photo.webp';
         }
         return '/storage/' . $this->image;
     }
