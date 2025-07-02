@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\StructureResource\Pages;
 use App\Filament\Resources\StructureResource\RelationManagers;
 use App\Filament\Resources\StructureResource\RelationManagers\DataRelationManager;
+use App\Filament\Resources\StructureResource\RelationManagers\EmployeesRelationManager;
 use App\Models\Structure;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -127,7 +128,8 @@ class StructureResource extends Resource
     public static function getRelations(): array
     {
         return [
-            DataRelationManager::class
+            DataRelationManager::class,
+            EmployeesRelationManager::class
         ];
     }
 

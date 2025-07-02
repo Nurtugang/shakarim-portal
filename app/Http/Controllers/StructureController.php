@@ -25,7 +25,9 @@ class StructureController extends Controller
 
     public function show(string $locale,Structure $structure)
     {
-        $structure->load('filteredData','employees');
+        $structure->load(['filteredData','employees' => function ($query) {
+            $query->where('is_active', true);
+        }]);
 
         if(!$structure->data){
             abort(404);
@@ -35,20 +37,6 @@ class StructureController extends Controller
         }
 
         return view('structure.show',compact('structure'));
-    }
-
-    public function viceRector(string $locale,Structure $structure)
-    {
-        $structure->load('filteredData');
-
-        if(!$structure->data){
-            abort(404);
-        }
-         if(!$structure->filteredData){
-            abort(404);
-        }
-
-        return view('structure.vice-rector',compact('structure'));
     }
        
 }

@@ -80,7 +80,8 @@ class NewsResource extends Resource
                     ->schema([
                         Forms\Components\FileUpload::make('thumbnail')
                           ->required()
-                          ->acceptedFileTypes(['image/png','image/svg','image/jpg','image/jpeg','image/webp'])
+                          ->image()
+                          ->optimize('webp')
                           ->maxSize(6024)
                           ->directory('news')
                           ->label('Картинка'),
