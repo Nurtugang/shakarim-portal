@@ -7,6 +7,7 @@ use App\Filament\Resources\MenuResource\RelationManagers;
 use App\Models\Menu;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
@@ -38,6 +39,12 @@ class MenuResource extends Resource
             ->schema([
                 Section::make('')
                 ->schema([
+                    Radio::make('type')
+                    ->label('Тип')
+    ->options([
+        1 => 'Top',
+        2 => 'Footer',
+    ]),
                     Tabs::make('')
                 ->tabs([
                     Tabs\Tab::make('kz')
@@ -108,7 +115,7 @@ class MenuResource extends Resource
                 Tables\Columns\TextColumn::make('title_ru')
                     ->label('Заголовок')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('link')
+                Tables\Columns\TextColumn::make('link_kk')
                     ->label('Ссылка')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('sort')

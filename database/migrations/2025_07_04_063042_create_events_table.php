@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('text_widgets', function (Blueprint $table) {
-            $table->id();
-            $table->string('key')->unique();
+        Schema::create('events', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('title_kk');
             $table->string('title_ru');
-            $table->string('title_en');
-            $table->json('content_kk');
-            $table->json('content_ru');
-            $table->json('content_en');
-            $table->boolean('active')->default(true);
+            $table->string('title_en')->nullable();
+            $table->text('content_kk');
+            $table->text('content_ru');
+            $table->text('content_en')->nullable();
+            $table->boolean('active');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('text_widgets');
+        Schema::dropIfExists('events');
     }
 };

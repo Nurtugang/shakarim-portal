@@ -10,15 +10,16 @@
     <meta property="og:title" content="{{ $metaTitle?: 'balavak.kz'}}">
     <meta property="og:description" content="{{ $metaDescription?:__("site.app_description") }}">
     <meta property="og:image" content="/img/not_photo.png">
+      @livewireStyles
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
+     
     <link rel="stylesheet" href="{{ asset("css/footer.css") }}">
     <link rel="stylesheet" href="{{ asset("css/header.css") }}">
      <link rel="stylesheet" href="{{ asset("css/style.css") }}">
      <link rel="stylesheet" href="{{ asset("css/base.css") }}">
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    @livewireStyles
-     @vite(['resources/css/app.css', 'resources/js/app.js'])
+  
       <style>
         .connector-v {
             width: 2px;
@@ -120,56 +121,19 @@
     <div class="footer-container">
         <div class="footer-grid">
             <!-- Первая колонка -->
-            <div class="footer-brand">
-                <h3>Нормативные документы</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Корпоративное управление</a></li>
-                    <li><a href="#">Корпоративные документы</a></li>
-                    <li><a href="#">Академическая политика</a></li>
-                    <li><a href="#">Внутренняя система качества</a></li>
-                    <li><a href="#">Утверждённые формы дипломов</a></li>
-                    <li><a href="#">Организация ветеранов</a></li>
-                    <li><a href="#">Ассоциация выпускников</a></li>
-                    <li><a href="#">Устойчивое развитие</a></li>
-                    <li><a href="#">Профсоюз</a></li>
-                    <li><a href="#">Университет без коррупции</a></li>
-                </ul>
+             @foreach ($footer_menu as $item)
+             <div class="footer-section">
+                <h4>{{ $item->{'title_'.app()->getLocale()} }}</h4>
+                @if (isset($item->children) && count($item->children) > 0)
+                    <ul class="footer-links">
+                    @foreach ($item->children as $child)
+                        <li><a href="{{ $child->getUrl() }}">{{ $child->{'title_'.app()->getLocale()} }}</a></li>
+                        @endforeach
+                    </ul>
+                      @endif
             </div>
+             @endforeach
             
-            <!-- Вторая колонка -->
-            <div class="footer-section">
-                <h4>Полезные ссылки</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Minor</a></li>
-                    <li><a target="_blank" href="https://mooc.semgu.kz/">MOOC</a></li>
-                    <li><a href="#">Summer Semester</a></li>
-                    <li><a target="_blank" href="https://platonus.shakarim.kz/">Platonus</a></li>
-                    <li><a target="_blank" href="https://hub.shakarim.kz/">Shakarim Hub</a></li>
-                </ul>
-            </div>
-            
-            <!-- Третья колонка -->
-            <div class="footer-section">
-                <h4>Университет</h4>
-                <ul class="footer-links">
-                    <li><a href="#">О нас</a></li>
-                    <li><a href="#">История</a></li>
-                    <li><a href="#">Руководство</a></li>
-                    <li><a href="#">Вакансии</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </ul>
-            </div>
-            
-            <!-- Четвертая колонка -->
-            <div class="footer-section">
-                <h4>Контакты</h4>
-                <ul class="footer-links">
-                    <li>г. Семей, ул. Глинки, 20А</li>
-                    <li>+7 (7222) 31-60-29</li>
-                    <li>info@shakarim.edu.kz</li>
-                    <li>Приемная: +7 (771) 365-46-25</li>
-                </ul>
-            </div>
         </div>
         
         <div class="footer-bottom">

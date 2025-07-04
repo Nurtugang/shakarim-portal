@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
     plugins: [
@@ -10,10 +9,10 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/tiptap/extensions.js',
                 'resources/js/tiptap/iframe.js',
+                `resources/css/filament/admin/theme.css` 
             ],
             
             refresh: true,
         }),
-        tailwindcss(),
     ],
 });

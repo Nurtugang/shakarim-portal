@@ -11,6 +11,8 @@ use Illuminate\View\Component;
 class Layout extends Component
 {
      public $menu;
+
+     public $footer_menu;
     /**
      * Create a new component instance.
      */
@@ -21,7 +23,14 @@ class Layout extends Component
                 $q->with(['page','children' => function($c){
                     $c->with(['page'])->where('active',true)->orderBy('sort');
                 }])->where('active',true)->orderBy('sort');
-            }, 'parent'])->where(["active"=>true,'parent_id'=>NULL])->orderBy('sort')->get();
+            }, 'parent'])->where(["active"=>true,'parent_id'=>NULL,'type' => Menu::TYPE_TOP])->orderBy('sort')->get();
+        }); 
+        $this->footer_menu = Cache::remember('footer_menu', now()->addDays(1), function() {
+            return Menu::with(['page','children' => function($q){
+                $q->with(['page','children' => function($c){
+                    $c->with(['page'])->where('active',true)->orderBy('sort');
+                }])->where('active',true)->orderBy('sort');
+            }, 'parent'])->where(["active"=>true,'parent_id'=>NULL,'type' => Menu::TYPE_FOOTER])->orderBy('sort')->get();
         }); 
         
     }

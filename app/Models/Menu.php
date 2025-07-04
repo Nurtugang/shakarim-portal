@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\Cache;
 class Menu extends Model
 {
     public $timestamps = false;
+
+    const TYPE_TOP = 1;
+    const TYPE_FOOTER = 2;
     protected $fillable = [
+        'type',
         'title_kk',
         'title_ru',
         'title_en',
@@ -61,14 +65,17 @@ class Menu extends Model
 
         static::created(function () {
             Cache::forget('menu');
+            Cache::forget('footer_menu');
         });
 
         static::updated(function () {
             Cache::forget('menu');
+            Cache::forget('footer_menu');
         });
 
         static::deleted(function () {
             Cache::forget('menu');
+            Cache::forget('footer_menu');
         });
     }
 }

@@ -12,19 +12,26 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('page_lists', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('page_id')->constrained('pages')->cascadeOnDelete();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('page_id')->index('page_lists_page_id_foreign');
             $table->string('title_kk');
             $table->string('title_ru');
             $table->string('title_en')->nullable();
             $table->text('content_kk');
             $table->text('content_ru');
             $table->text('content_en')->nullable();
-            $table->string('slug',255);
+            $table->text('content_text_kk')->nullable();
+            $table->text('content_text_ru')->nullable();
+            $table->text('content_text_en')->nullable();
+            $table->string('slug');
             $table->string('image')->nullable();
-            $table->datetime('date')->nullable();
+            $table->dateTime('date')->nullable();
             $table->boolean('active');
-            $table->json('gallery')->nullable();   
+            $table->json('gallery')->nullable();
+
+            $table->fullText(['title_en', 'content_text_en'], 'search_en');
+            $table->fullText(['title_kk', 'content_text_kk'], 'search_kk');
+            $table->fullText(['title_ru', 'content_text_ru'], 'search_ru');
         });
     }
 

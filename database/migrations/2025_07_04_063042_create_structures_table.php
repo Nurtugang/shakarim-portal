@@ -12,15 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('structures', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id', true);
             $table->string('title_kk');
             $table->string('title_ru');
             $table->string('title_en');
-            $table->foreignId('parent_id')->nullable()->constrained('structures')->onDelete('set null');
-            $table->tinyInteger('position')->default(0);
-            $table->boolean('active')->default(true);
-
-            $table->timestamps();
+            $table->string('slug')->nullable();
+            $table->integer('parent_id')->nullable();
+            $table->integer('sort_order')->default(0);
+            $table->string('position', 10)->nullable()->default('0');
+            $table->string('layout_type', 50)->default('0');
+            $table->tinyInteger('active')->default(1)->index('idx_status');
+            $table->tinyInteger('is_vice_rector')->default(0);
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
         });
     }
 

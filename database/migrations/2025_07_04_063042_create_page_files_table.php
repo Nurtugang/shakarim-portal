@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('page_files', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('page_id')->constrained('pages')->cascadeOnDelete();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('page_id')->index('page_files_page_id_foreign');
             $table->string('title_kk')->nullable();
             $table->string('title_ru')->nullable();
             $table->string('title_en')->nullable();

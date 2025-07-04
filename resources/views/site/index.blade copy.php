@@ -2,7 +2,7 @@
     <section class="slider">
     <div class="slide active">
         <div class="slide-content">
-            <h1>ДОБРО ПОЖАЛОВАТЬ SHAKARIM UNIVERSITY</h1>
+            <h1 class="font-montserratBold">ДОБРО ПОЖАЛОВАТЬ SHAKARIM UNIVERSITY</h1>
         </div>
     </div>
     <div class="slider-nav">

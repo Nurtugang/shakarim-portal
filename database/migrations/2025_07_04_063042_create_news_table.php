@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('title_kk');
             $table->string('title_ru');
             $table->string('title_en');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
-            $table->datetime('published_at')->nullable();
+            $table->dateTime('published_at')->nullable();
             $table->boolean('active');
             $table->json('gallery')->nullable();
             $table->timestamps();
