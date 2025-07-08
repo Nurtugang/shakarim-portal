@@ -41,6 +41,7 @@ class MenuResource extends Resource
                 ->schema([
                     Radio::make('type')
                     ->label('Тип')
+                    ->required()
     ->options([
         1 => 'Top',
         2 => 'Footer',
