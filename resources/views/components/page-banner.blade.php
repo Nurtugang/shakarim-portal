@@ -15,11 +15,13 @@
 </div> --}}
 
 <div class="page-banner">
-            <img class="w-4/5 h-full object-cover object-center ml-auto" src="{{ $banner }}" alt="banner">
-            <div class="short-gradient">
-                <div class="absolute">
-                    <h1 class="font-inter text-3xl md:text-4xl my-4">{!! $text !!}</h1>
-                    <p class="text-gray-200 text-base">{{ $subText }}</p>
-                </div>
-            </div>
+    <img src="{{ $banner }}" alt="{{ $text }}">
+    <div class="banner-overlay">
+        <div class="banner-content">
+            <h1>{{ $text }}</h1>
+            @if($subText)
+                <p>{{ $subText }}</p>
+            @endif
         </div>
+    </div>
+</div>

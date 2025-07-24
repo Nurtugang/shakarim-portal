@@ -11,10 +11,14 @@ class NewsController extends Controller
 {
     public function index(string $locale)
     {
+        $news = News::query()
+            ->where('active', true)
+            ->orderBy('published_at', 'desc')
+            ->paginate(10);
+        
+            $news->withPath(route('news', ['locale' => $locale]));
 
-        $news = News::query()->where('active',true)->orderBy('published_at','desc')->paginate(12);
-
-        return view('news.index',compact('news'));
+        return view('news.index', compact('news'));
     }
 
     public function show(string $locale, News $news)

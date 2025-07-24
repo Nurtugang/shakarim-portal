@@ -2,10 +2,17 @@
 <!-- Героическая секция -->
 <section class="hero">
     <div class="hero-content">
-        
-        {!! tiptap_converter()->asHTML($welcome->{'content_'.app()->getLocale()}) !!}
+        @if($welcome)
+            {!! tiptap_converter()->asHTML($welcome->{'content_'.app()->getLocale()}) !!}
+        @else
+            <p>Контент пока не добавлен</p>
+        @endif
         <div class="hero-visual">
-            {!! tiptap_converter()->asHTML($card->{'content_'.app()->getLocale()}) !!}
+            @if($card)
+                {!! tiptap_converter()->asHTML($card->{'content_'.app()->getLocale()}) !!}
+            @else
+                <p>Контент пока не добавлен</p>
+            @endif
         </div>
     </div>
 </section>
@@ -296,7 +303,7 @@
     </div>
     
     <div class="news-all-btn-container">
-        <a href="#" class="news-all-btn">Все новости</a>
+        <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="news-all-btn">Все новости</a>
     </div>
 </div>
 </section>

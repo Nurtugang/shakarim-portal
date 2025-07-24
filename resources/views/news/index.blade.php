@@ -1,50 +1,175 @@
 <x-layout>
     @push('styles')
-<link rel="stylesheet" href="{{ asset("css/content.css") }}">
-@endpush
-   <main class="page-wrapper">
-    <div class="content-container">
-        <!-- Баннер страницы -->
-        
-
-        <x-page-banner banner="/img/building.webp" text="Жаңалықтар" sub-text=""></x-page-banner>
-
-        <!-- Основная сетка контента -->
-        <div class="content-grid">
-            <!-- Боковая навигация -->
-             <div class="sidebar-nav animate-fade-in-up">
-                {{-- <ul>
-                    <li><a href="{{ route('news',['locale'=>app()->getLocale()]) }}">Жаңалықтар</a></li>
-                </ul> --}}
+        <link rel="stylesheet" href="{{ asset("css/news.css") }}">
+    @endpush
+    
+    <main class="page-wrapper">
+        <div class="content-container">
+            <!-- Новости вместо баннера -->
+            <div class="news-section">
+                @if($news->count() > 0)
+                    <!-- Большая новость -->
+                    <div class="news-item news-item-large">
+                        <div class="news-image">
+                            <img src="{{ $news->first()->getPhoto() }}" alt="{{ $news->first()->{'title_'.app()->getLocale()} }}">
+                            <div class="news-overlay">
+                                <h2>{{ $news->first()->{'title_'.app()->getLocale()} }}</h2>
+                                <div class="news-date">{{ $news->first()->getFormattedDate() }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    @if($news->count() > 2)
+                        <!-- Две меньшие новости -->
+                        <div class="news-row">
+                            <div class="news-item news-item-small">
+                                <div class="news-image">
+                                    <img src="{{ $news->skip(1)->first()->getPhoto() }}" alt="{{ $news->skip(1)->first()->{'title_'.app()->getLocale()} }}">
+                                    <div class="news-overlay">
+                                        <h3>{{ $news->skip(1)->first()->{'title_'.app()->getLocale()} }}</h3>
+                                        <div class="news-date">{{ $news->skip(1)->first()->getFormattedDate() }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="news-item news-item-small">
+                                <div class="news-image">
+                                    <img src="{{ $news->skip(2)->first()->getPhoto() }}" alt="{{ $news->skip(2)->first()->{'title_'.app()->getLocale()} }}">
+                                    <div class="news-overlay">
+                                        <h3>{{ $news->skip(2)->first()->{'title_'.app()->getLocale()} }}</h3>
+                                        <div class="news-date">{{ $news->skip(2)->first()->getFormattedDate() }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endif
             </div>
-            
-            <!-- Основной контент -->
-            <div class="main-content animate-fade-in-down">
-                <h1>Соңғы жаңалықтар</h1>
-                <div class="my-10">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+            <!-- Основная сетка контента -->
+            <div class="content-grid">
+                <!-- Основной контент (теперь слева) -->
+                <div class="main-content">
+                    <h1>{{ __('Новости университета') }}</h1>
+                    
+                    <!-- Список новостей -->
+                    <div class="news-list">
                         @foreach ($news as $item)
-                        <div class="flex flex-col border rounded">
-                        <div class="h-52">
-                            <img class="w-full h-full object-cover" src="{{ $item->getPhoto() }}" alt="photo">
-                        </div>
-                        <div class="grow bg-gray-200 p-4">
-                            <p class="mb-2 text-gray-500">{{ $item->getFormattedDate() }}</p>
-                            <a href="{{ route('news.show',['locale'=>app()->getLocale(),'news'=>$item]) }}">
-                                <h2 class="font-semibold text-lg mb-2">{{ $item->{'title_'.app()->getLocale()} }}</h2>
-                            </a>
-                           
-                        </div>
-                        </div>
+                            <div class="news-list-item">
+                                <div class="news-list-image">
+                                    <img src="{{ $item->getPhoto() }}" alt="{{ $item->{'title_'.app()->getLocale()} }}">
+                                </div>
+                                <div class="news-list-content">
+                                    <h3>
+                                        <a href="{{ route('news.show',['locale'=>app()->getLocale(),'news'=>$item]) }}">
+                                            {{ $item->{'title_'.app()->getLocale()} }}
+                                        </a>
+                                    </h3>
+                                    <div class="news-list-date">{{ $item->getFormattedDate() }}</div>
+                                    <div class="news-list-excerpt">
+                                        {{ $item->shortBody(20) }}
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </div>
-                    <div class="my-4">
-                        {{ $news->links() }}
+                    
+                    <!-- Пагинация -->
+                    <div class="pagination">
+                        @if ($news->hasPages())
+                            <div class="pagination">
+                                {{-- Previous Page Link --}}
+                                @if ($news->onFirstPage())
+                                    <span class="prev-next disabled"><i class="fas fa-chevron-left"></i></span>
+                                @else
+                                    <a href="{{ $news->appends(request()->query())->previousPageUrl() }}" class="prev-next">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                @endif
+
+                                {{-- Pagination Elements --}}
+                                @if($news->currentPage() > 3)
+                                    <a href="{{ $news->appends(request()->query())->url(1) }}">1</a>
+                                    @if($news->currentPage() > 4)
+                                        <span class="disabled">...</span>
+                                    @endif
+                                @endif
+
+                                @for ($i = max(1, $news->currentPage() - 2); $i <= min($news->lastPage(), $news->currentPage() + 2); $i++)
+                                    @if ($i == $news->currentPage())
+                                        <a href="{{ $news->appends(request()->query())->url($i) }}" class="active">{{ $i }}</a>
+                                    @else
+                                        <a href="{{ $news->appends(request()->query())->url($i) }}">{{ $i }}</a>
+                                    @endif
+                                @endfor
+
+                                @if($news->currentPage() < $news->lastPage() - 2)
+                                    @if($news->currentPage() < $news->lastPage() - 3)
+                                        <span class="disabled">...</span>
+                                    @endif
+                                    <a href="{{ $news->appends(request()->query())->url($news->lastPage()) }}">{{ $news->lastPage() }}</a>
+                                @endif
+
+                                {{-- Next Page Link --}}
+                                @if ($news->hasMorePages())
+                                    <a href="{{ $news->appends(request()->query())->nextPageUrl() }}" class="prev-next">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                @else
+                                    <span class="prev-next disabled"><i class="fas fa-chevron-right"></i></span>
+                                @endif
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                
+                <!-- Боковая навигация (теперь справа) -->
+                <aside class="sidebar-nav">
+                    <ul>
+                        <li><a href="{{ route('news',['locale'=>app()->getLocale()]) }}" class="active">{{ __('Все новости') }}</a></li>
+                        <li><a href="#">{{ __('Наука и исследования') }}</a></li>
+                        <li><a href="#">{{ __('Образование') }}</a></li>
+                        <li><a href="#">{{ __('Международные связи') }}</a></li>
+                        <li><a href="#">{{ __('Студенческая жизнь') }}</a></li>
+                        <li><a href="#">{{ __('Спорт') }}</a></li>
+                        <li><a href="#">{{ __('Культурные события') }}</a></li>
+                        <li><a href="#">{{ __('Объявления') }}</a></li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+        
+        <!-- Секция видео -->
+        <div class="content-container">
+            <div class="video-section-block">
+                <div class="video-header">
+                    <h2>{{ __('Видео') }}</h2>
+                    <div class="video-nav">
+                        <button class="video-nav-btn prev">❮</button>
+                        <button class="video-nav-btn next">❯</button>
+                    </div>
+                </div>
+                
+                <div class="video-grid-wrapper">
+                    <div class="video-grid">
+                        <!-- Заглушки для видео - позже можно будет добавить модель Video -->
+                        @for($i = 1; $i <= 8; $i++)
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="{{ asset('img/building.webp') }}" alt="Видео {{ $i }}">
+                                    <div class="play-button"><i class="fas fa-play"></i></div>
+                                </div>
+                                <h3>{{ __('Видео университета') }} {{ $i }}</h3>
+                                <div class="video-date">{{ now()->subDays($i)->format('d M Y') }}</div>
+                            </div>
+                        @endfor
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
-  
+    </main>
+
+    @push('scripts')
+        <script src="{{ asset('js/news.js') }}"></script>
+    @endpush
 </x-layout>

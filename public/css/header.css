@@ -278,6 +278,14 @@
     backdrop-filter: blur(20px);
     border-top: 3px solid var(--accent-color);
     animation: slideDown 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    max-height: calc(100vh - var(--header-height, 80px));
+    overflow-y: auto;
+    /* Скрыть скроллбар */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+.main-menu::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 @keyframes slideDown {

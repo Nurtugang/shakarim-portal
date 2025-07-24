@@ -64,17 +64,16 @@ table th > * {
     width: 100%;
 }
 .tiptap-content summary{
-  padding: 10px;
+  padding: 5px;
 }
 
 [data-type="details-content"] p {
-  padding: 10px;
-  /* border-top: 1px solid theme("colors.gray.400"); */
+  padding: 5px;
 }
 
 summary::marker {
   color: #003163; /* красная стрелка */
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 tr:nth-child(even) {
@@ -83,8 +82,7 @@ tr:nth-child(even) {
 
 .tiptap-content {
  p{
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 5px 0px;
 }
  ul {
       list-style: disc;

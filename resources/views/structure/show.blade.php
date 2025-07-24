@@ -3,12 +3,20 @@
 <link rel="stylesheet" href="{{ asset("css/structure-style.css") }}">
 <link rel="stylesheet" href="{{ asset("css/staff.css") }}">
 @endpush
+
 <!-- ЗАГОЛОВОК КАТЕГОРИИ -->
-<div class="category-header">
-    <div class="category-bg"></div>
-    <div class="category-content">
-        <h1 class="category-title">{{ $structure->{'title_'.app()->getLocale()} }}</h1>
-        <p class="category-subtitle">Изучение и популяризация наследия великого поэта</p>
+<div class="page-header-section">
+    <div class="page-title-container">
+        <h1 class="page-title">{{ $structure->{'title_'.app()->getLocale()} }}</h1>
+        <p class="page-subtitle">
+            @if(app()->getLocale() == 'kk')
+                Университеттің ұйымдық құрылымы мен басқару жүйесі
+            @elseif(app()->getLocale() == 'ru')
+                Организационная структура и система управления университета
+            @else
+                Organizational structure and management system of the university
+            @endif
+        </p>
     </div>
 </div>
 
@@ -25,7 +33,6 @@
 
 <!-- ЦЕНТРАЛЬНЫЙ БЛОК -->
 <div class="content">
-    
     <div class="department-layout">
         <!-- Левая колонка - Руководитель -->
         <div class="department-head">
@@ -42,7 +49,11 @@
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>{{ $structure->filteredData->phone }}</span>
+                            <a href="tel:{{ $structure->filteredData->phone }}">{{ $structure->filteredData->phone }}</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:{{ $structure->filteredData->email ?? 'info@shakarim.edu.kz' }}">{{ $structure->filteredData->email ?? 'info@shakarim.edu.kz' }}</a>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -59,22 +70,26 @@
         
         <!-- Правая колонка - Информация -->
         <div class="department-content">
-           @foreach ($structure->filteredData->data as $item)
+            <!-- Основные виды деятельности -->
             <div class="activity-section">
-               
                 <div class="section-header">
                     <div class="section-icon">
-                        <i class="fas {{ $item['icon'] }}"></i>
+                        <i class="fas fa-tasks"></i>
                     </div>
-                    <h3>{{ $item['title'] }}</h3>
+                    <h3>Основные виды деятельности</h3>
                 </div>
-                  <div class="tiptap-content text-xl font-sf">
-                    {!! $item['text'] !!}
-                  </div>
-               
+                
+                <div class="activity-grid">
+                    @foreach ($structure->filteredData->data as $item)
+                            <div class="activity-text">
+                                {!! $item['text'] !!}
+                        </div>
+                    @endforeach
+                </div>
             </div>
-             @endforeach
+            
             <!-- Сотрудники -->
+            @if($structure->employees->count() > 0)
             <div class="staff-section">
                 <div class="section-header">
                     <div class="section-icon">
@@ -83,68 +98,44 @@
                     <h3>Сотрудники</h3>
                 </div>
                 
-                <div class="staff-grid" data-count="3">
+                <div class="staff-grid" data-count="{{ $structure->employees->count() }}">
                     @foreach ($structure->employees as $item)
-                    <div class="staff-card">
-                        <div class="staff-card-inner">
-                            <div class="staff-photo">
-                                <img src="{{ $item->getPhoto() }}" alt="{{ $item->{'fullname_'.app()->getLocale()} }}">
-                                <div class="staff-overlay">
-                                    <i class="fas fa-user"></i>
+                        <div class="staff-card">
+                            <div class="staff-card-inner">
+                                <div class="staff-photo">
+                                    <img src="{{ $item->getPhoto() }}" alt="{{ $item->{'fullname_'.app()->getLocale()} }}">
+                                    <div class="staff-overlay">
+                                        <i class="fas fa-user"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="staff-info">
-                                <h4>{{ $item->{'fullname_'.app()->getLocale()} }}</h4>
-                                <p>{{ $item->{'position_'.app()->getLocale()} }}</p>
-                                <div class="staff-contact">
-                                    <div class="contact-badge">
-                                        <i class="fas fa-envelope"></i>
-                                        <span>Связаться</span>
+                                <div class="staff-info">
+                                    <h4>{{ $item->{'fullname_'.app()->getLocale()} }}</h4>
+                                    <p>{{ $item->{'position_'.app()->getLocale()} }}</p>
+                                    <div class="staff-contact">
+                                        @if($item->email)
+                                            <a href="mailto:{{ $item->email }}" class="contact-badge">
+                                                <i class="fas fa-envelope"></i>
+                                                <span>Связаться</span>
+                                            </a>
+                                        @elseif($item->phone)
+                                            <a href="tel:{{ $item->phone }}" class="contact-badge">
+                                                <i class="fas fa-phone"></i>
+                                                <span>Связаться</span>
+                                            </a>
+                                        @else
+                                            <div class="contact-badge">
+                                                <i class="fas fa-user"></i>
+                                                <span>Сотрудник</span>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
-                    
                 </div>
-                
             </div>
-            
-            <!-- Информационная секция -->
-            <!-- <div class="info-section">
-                <div class="info-cards">
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="info-content">
-                            <h4>Время работы</h4>
-                            <p>Понедельник - Пятница<br>09:00 - 18:00</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-ticket-alt"></i>
-                        </div>
-                        <div class="info-content">
-                            <h4>Посещение</h4>
-                            <p>Бесплатно для студентов<br>и сотрудников университета</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <div class="info-content">
-                            <h4>Экскурсии</h4>
-                            <p>По предварительной<br>записи</p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            @endif
         </div>
     </div>
 </div>

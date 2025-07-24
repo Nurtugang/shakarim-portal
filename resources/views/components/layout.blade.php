@@ -137,7 +137,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 Shakarim University. Все права защищены.</p>
+            <p>&copy; <?php echo date("Y"); ?> Shakarim University. Все права защищены.</p>
         </div>
     </div>
 </footer>
