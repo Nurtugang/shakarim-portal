@@ -107,6 +107,12 @@ return [
         //     'button' => 'tools.iframe',
         //     'parser' => iFrame::class
         // ],
+        [
+            'id' => 'pdfViewer', // Должно совпадать с 'name' в JS (PdfViewerNode.name) и PHP (PdfViewerPhpNode::$name)
+            'name' => 'PDF Viewer', // Отображаемое имя (не используется напрямую, но полезно)
+            'button' => 'tools.pdf-uploader', // Путь к Blade-файлу кнопки
+            'parser' => PdfViewerPhpNode::class, // PHP парсер
+        ]
         ],
 
     /*
