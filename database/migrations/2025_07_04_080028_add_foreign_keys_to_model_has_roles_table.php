@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('page_lists', function (Blueprint $table) {
-            $table->foreign(['page_id'])->references(['id'])->on('pages')->onUpdate('no action')->onDelete('cascade');
+        Schema::table('model_has_roles', function (Blueprint $table) {
+            $table->foreign(['role_id'])->references(['id'])->on('roles')->onUpdate('restrict')->onDelete('cascade');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('page_lists', function (Blueprint $table) {
-            $table->dropForeign('page_lists_page_id_foreign');
+        Schema::table('model_has_roles', function (Blueprint $table) {
+            $table->dropForeign('model_has_roles_role_id_foreign');
         });
     }
 };

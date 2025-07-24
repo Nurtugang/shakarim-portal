@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('page_files', function (Blueprint $table) {
-            $table->foreign(['page_id'])->references(['id'])->on('pages')->onUpdate('no action')->onDelete('cascade');
+        Schema::table('pages', function (Blueprint $table) {
+            $table->foreign(['menu_id'])->references(['id'])->on('menus')->onUpdate('restrict')->onDelete('cascade');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('page_files', function (Blueprint $table) {
-            $table->dropForeign('page_files_page_id_foreign');
+        Schema::table('pages', function (Blueprint $table) {
+            $table->dropForeign('pages_menu_id_foreign');
         });
     }
 };

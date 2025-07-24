@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('fullname_kk');
             $table->string('fullname_ru');
             $table->string('fullname_en')->nullable();
-            $table->string('position_kz')->nullable();
+            $table->string('position_kk')->nullable();
             $table->string('position_ru')->nullable();
             $table->string('position_en')->nullable();
             $table->string('email', 50)->nullable();

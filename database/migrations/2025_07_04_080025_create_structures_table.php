@@ -19,10 +19,9 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->integer('parent_id')->nullable();
             $table->integer('sort_order')->default(0);
-            $table->string('position', 10)->nullable()->default('0');
-            $table->string('layout_type', 50)->default('0');
+            $table->string('position', 10)->nullable();
+            $table->string('layout_type', 50)->nullable();
             $table->tinyInteger('active')->default(1)->index('idx_status');
-            $table->tinyInteger('is_vice_rector')->default(0);
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
         });

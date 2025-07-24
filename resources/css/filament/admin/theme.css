@@ -26,3 +26,6 @@
 .fi-ta-text-item{
     white-space: normal;
 }
+.max-h-\[40rem\] {
+  max-height: 40rem;
+}

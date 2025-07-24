@@ -23,7 +23,7 @@ return [
         'default' => [
             'heading', 'bullet-list', 'ordered-list', 'checked-list', 'blockquote', 'hr', '|',
             'bold', 'italic', 'strike', 'underline', 'superscript', 'subscript', 'lead', 'small', 'color', 'highlight', 'align-left', 'align-center', 'align-right', '|',
-            'link', 'media', 'oembed', 'table', 'grid-builder', 'details', '|', 'code', 'code-block', 'source', 'pdfViewer','blocks',
+            'link', 'media', 'oembed', 'table', 'grid-builder', 'details', '|', 'code', 'code-block', 'source', 'blocks',
         ],
         'simple' => ['heading', 'hr', 'bullet-list', 'ordered-list', 'checked-list', '|', 'bold', 'italic', 'lead', 'small', '|', 'link', 'media'],
         'minimal' => ['bold', 'italic', 'link', 'bullet-list', 'ordered-list'],
@@ -71,7 +71,7 @@ return [
     'directory' => 'images',
     'visibility' => 'public',
     'preserve_file_names' => false,
-    'max_file_size' => 2042,
+    'max_file_size' => 80042,
     'min_file_size' => 0,
     'image_resize_mode' => null,
     'image_crop_aspect_ratio' => null,
@@ -107,12 +107,6 @@ return [
         //     'button' => 'tools.iframe',
         //     'parser' => iFrame::class
         // ],
-        [
-            'id' => 'pdfViewer', // Должно совпадать с 'name' в JS (PdfViewerNode.name) и PHP (PdfViewerPhpNode::$name)
-            'name' => 'PDF Viewer', // Отображаемое имя (не используется напрямую, но полезно)
-            'button' => 'tools.pdf-uploader', // Путь к Blade-файлу кнопки
-            'parser' => PdfViewerPhpNode::class, // PHP парсер
-        ]
         ],
 
     /*

@@ -22,13 +22,15 @@ return new class extends Migration
             $table->string('phone', 20)->nullable();
             $table->string('phone_2', 20)->nullable();
             $table->string('email', 50)->nullable();
+            $table->text('about_us')->nullable();
+            $table->text('task')->nullable();
             $table->text('main_activities')->nullable();
             $table->text('target')->nullable();
             $table->text('additionally')->nullable();
             $table->integer('structure_id')->nullable();
+            $table->json('data')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
-            $table->json('data')->nullable();
         });
     }
 

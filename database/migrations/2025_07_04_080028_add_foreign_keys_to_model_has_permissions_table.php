@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('model_has_permissions', function (Blueprint $table) {
-            $table->foreign(['permission_id'])->references(['id'])->on('permissions')->onUpdate('no action')->onDelete('cascade');
+            $table->foreign(['permission_id'])->references(['id'])->on('permissions')->onUpdate('restrict')->onDelete('cascade');
         });
     }
 

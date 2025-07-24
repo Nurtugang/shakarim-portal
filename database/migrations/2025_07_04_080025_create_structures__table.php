@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('title_en');
             $table->string('slug')->nullable();
             $table->integer('parent_id')->nullable();
-            $table->integer('sort_order')->default(0);
+            $table->integer('position')->default(0);
             $table->tinyInteger('active')->default(1)->index('idx_status');
-            $table->string('position', 10)->nullable();
-            $table->string('layout_type', 50)->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
         });

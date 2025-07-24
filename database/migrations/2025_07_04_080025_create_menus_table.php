@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('parent_id')->nullable()->index('menus_parent_id_foreign');
-            $table->unsignedTinyInteger('type')->nullable()->default(1);
             $table->string('title_kk');
             $table->string('title_ru');
             $table->string('title_en');
