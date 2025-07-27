@@ -9,13 +9,7 @@
     <div class="page-title-container">
         <h1 class="page-title">{{ $structure->{'title_'.app()->getLocale()} }}</h1>
         <p class="page-subtitle">
-            @if(app()->getLocale() == 'kk')
-                Университеттің ұйымдық құрылымы мен басқару жүйесі
-            @elseif(app()->getLocale() == 'ru')
-                Организационная структура и система управления университета
-            @else
-                Organizational structure and management system of the university
-            @endif
+            {{ __("Organizational structure and management system of the university") }}
         </p>
     </div>
 </div>
@@ -23,9 +17,9 @@
 <!-- ХЛЕБНЫЕ КРОШКИ -->
 <div class="breadcrumb-container">
     <div class="breadcrumb">
-        <a href="/" title="Домашняя страница"><i class="fas fa-home"></i></a>
+        <a href="/" title="{{ __("Home page") }}"><i class="fas fa-home"></i></a>
         <span class="breadcrumb-separator">〉</span>
-        <a href="{{route('structure.index',['locale'=>app()->getLocale()])}}">Организационная структура</a>
+        <a href="{{route('structure.index',['locale'=>app()->getLocale()])}}">{{ __("Organizational structures") }}</a>
         <span class="breadcrumb-separator">〉</span>
         <span class="current">{{ $structure->{'title_'.app()->getLocale()} }}</span>
     </div>
@@ -71,22 +65,24 @@
         <!-- Правая колонка - Информация -->
         <div class="department-content">
             <!-- Основные виды деятельности -->
-            <div class="activity-section">
+            @foreach ($structure->filteredData->data as $item)
+               <div class="activity-section">
                 <div class="section-header">
                     <div class="section-icon">
-                        <i class="fas fa-tasks"></i>
+                        <i class="fas {{ $item['icon'] }}"></i>
                     </div>
-                    <h3>Основные виды деятельности</h3>
+                    <h3>{{ $item['title'] }}</h3>
                 </div>
                 
                 <div class="activity-grid">
-                    @foreach ($structure->filteredData->data as $item)
-                            <div class="activity-text">
-                                {!! $item['text'] !!}
-                        </div>
-                    @endforeach
+                    <div class="activity-text">
+                        {!! $item['text'] !!}
+                    </div>
+                   
                 </div>
-            </div>
+            </div>             
+            @endforeach
+            
             
             <!-- Сотрудники -->
             @if($structure->employees->count() > 0)

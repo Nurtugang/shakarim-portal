@@ -7,9 +7,9 @@
         <!-- ХЛЕБНЫЕ КРОШКИ -->
 <div class="breadcrumb-container">
     <div class="breadcrumb">
-        <a href="/" title="Домашняя страница"><i class="fas fa-home"></i></a>
+        <a href="/" title="{{ __("Home page") }}"><i class="fas fa-home"></i></a>
         <span class="breadcrumb-separator">〉</span>
-        <span class="current">Организационная структура</span>
+        <span class="current">{{ __("Organizational structures") }}</span>
     </div>
 </div>
 <div  class="content structure-bg">

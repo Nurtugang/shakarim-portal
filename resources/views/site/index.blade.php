@@ -232,8 +232,8 @@
 <section class="news">
 <div class="news-container">
     <div class="section-title animate-on-scroll">
-        <h2>Последние новости</h2>
-        <p>Будьте в курсе событий университетской жизни</p>
+        <h2>{{ __("Latest news") }}</h2>
+        <p>{{ __("Stay up to date with university events") }}</p>
     </div>
     
     <div class="news-grid">

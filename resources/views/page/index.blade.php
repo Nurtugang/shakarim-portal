@@ -9,7 +9,7 @@
         <!-- ХЛЕБНЫЕ КРОШКИ -->
 <div class="breadcrumb-container">
     <div class="breadcrumb">
-        <a href="/" title="Домашняя страница"><i class="fas fa-home"></i></a>
+        <a href="/" title="{{ __("Home page") }}"><i class="fas fa-home"></i></a>
         <span class="breadcrumb-separator">〉</span>
         <a href="{{ $page->parent->getUrl() }}">{{ $page->parent->{'title_'.app()->getLocale()} }}</a>
         <span class="breadcrumb-separator">〉</span>
