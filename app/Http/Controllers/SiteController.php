@@ -20,9 +20,11 @@ class SiteController extends Controller
         $welcome = TextWidget::query()->where('key','welcome')->first();
          $card = TextWidget::query()->where('key','card')->first();
 
+         $schools = TextWidget::query()->where('key','schools')->first();
+
     //   dd($welcome);
     //dd($welcome->{'content_kk'});
 
-        return view('site.index', compact('news','events','welcome','card'));
+        return view('site.index', compact('news','events','welcome','card','schools'));
     }
 }
