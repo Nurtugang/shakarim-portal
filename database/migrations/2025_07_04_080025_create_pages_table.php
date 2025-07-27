@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('menu_id')->index('pages_menu_id_foreign');
+            $table->foreignId('menu_id')->constrained('menus')->onDelete('cascade');
             $table->string('title_kk');
             $table->string('title_ru');
             $table->string('title_en')->nullable();

@@ -24,11 +24,18 @@ class PageController extends Controller
 
         $lists = $page->lists()->where("title_{$locale}", '!=', "")->orderBy('date', 'desc')->paginate(10);
 
-
-        $accordion_menu = $this->service->accordionMenu($page);
-        $topMenu = $this->service->topMenu($page->menu->parent_id);
-
-        return view('page.index', compact('accordion_menu', 'page', 'topMenu', 'files','lists'));
+        if($page->menu){
+            $accordion_menu = $this->service->accordionMenu($page);
+            $topMenu = $this->service->topMenu($page->menu?->parent_id);
+        }
+        
+       return view('page.index', [
+        'accordion_menu' => $accordion_menu ?? null,
+        'page' => $page,
+        'topMenu' => $topMenu ?? null,
+        'files' => $files,
+        'lists' => $lists
+       ]);
     }
 
     public function listItem(string $locale, PageList $pageList)

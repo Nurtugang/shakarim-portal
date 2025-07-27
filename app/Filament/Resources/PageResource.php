@@ -59,34 +59,6 @@ class PageResource extends Resource
                                ->required()
                                ->directory('/pages')
                                ->columnSpanFull()
-                               ->registerActions([
-        Action::make('uploadPdfForTiptap')
-            ->label('Загрузить PDF')
-            ->modalHeading('Загрузить и вставить PDF')
-            ->modalWidth('md')
-            ->form([
-                FileUpload::make('pdf_file')
-                    ->label('PDF Файл')
-                    ->acceptedFileTypes(['application/pdf'])
-                    ->disk('public') // Убедитесь, что диск 'public' настроен
-                    ->directory('tiptap_pdfs') // Директория для сохранения PDF
-                    ->required(),
-            ])
-            ->action(function (array $data, \Livewire\Component $livewire, \Filament\Forms\Components\Component $component) {
-                // $data['pdf_file'] будет путем к файлу относительно корня диска,
-                // например, 'tiptap_pdfs/yourfile.pdf'
-                $filePath = '/storage/'.$data['pdf_file']; // Получаем публичный URL
-               //  $filePath = Storage::disk('public')->url($data['pdf_file']); // Получаем публичный URL
-
-                // ID редактора для корректной отправки события
-                $editorId = 'filament-tiptap-editor-' . $component->getStatePath();
-
-            //    dd('PDF URL:', $filePath, 'Editor ID:', $editorId);
-
-                // Отправляем браузерное событие, которое JavaScript Tiptap сможет поймать
-                $livewire->dispatch('tiptap-insert-pdf-viewer', editorId: $editorId, pdfUrl: $filePath);
-            })
-                        ])
                         
     ]),
                         Tabs\Tab::make('ru')
@@ -100,35 +72,7 @@ class PageResource extends Resource
                         ->label('Контнет(ru)')
                                    ->required()
                                    ->directory('/pages')
-                                   ->columnSpanFull()
-                                   ->registerActions([
-        Action::make('uploadPdfForTiptap')
-            ->label('Загрузить PDF')
-            ->modalHeading('Загрузить и вставить PDF')
-            ->modalWidth('md')
-            ->form([
-                FileUpload::make('pdf_file')
-                    ->label('PDF Файл')
-                    ->acceptedFileTypes(['application/pdf'])
-                    ->disk('public') // Убедитесь, что диск 'public' настроен
-                    ->directory('tiptap_pdfs') // Директория для сохранения PDF
-                    ->required(),
-            ])
-            ->action(function (array $data, \Livewire\Component $livewire, \Filament\Forms\Components\Component $component) {
-                // $data['pdf_file'] будет путем к файлу относительно корня диска,
-                // например, 'tiptap_pdfs/yourfile.pdf'
-                $filePath = '/storage/'.$data['pdf_file']; // Получаем публичный URL
-               //  $filePath = Storage::disk('public')->url($data['pdf_file']); // Получаем публичный URL
-
-                // ID редактора для корректной отправки события
-                $editorId = 'filament-tiptap-editor-' . $component->getStatePath();
-
-            //    dd('PDF URL:', $filePath, 'Editor ID:', $editorId);
-
-                // Отправляем браузерное событие, которое JavaScript Tiptap сможет поймать
-                $livewire->dispatch('tiptap-insert-pdf-viewer', editorId: $editorId, pdfUrl: $filePath);
-            })
-                        ]),
+                                   ->columnSpanFull(),
                                    Forms\Components\Actions::make([
                                     Forms\Components\Actions\Action::make('copy_content_from_kk')
                                         ->label('Скопировать с казахского')
@@ -156,10 +100,13 @@ class PageResource extends Resource
                     ]),      
 
                 Select::make('menu_id')
-                    ->required()
                     ->label('Меню')
                     ->options(Menu::all()->pluck('title_ru', 'id'))
                     ->searchable(),   
+                Forms\Components\Select::make('parent_id')
+                    ->label('Родительская страница')
+                    ->options(Page::all()->pluck('title_ru', 'id'))
+                    ->searchable(),    
                 Select::make('lists_view_type')
                     ->label('Шаблон отображения списков')
                     ->options(collect(ListViewType::cases())->mapWithKeys(fn($case) => [

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('page_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('page_id')->index('page_lists_page_id_foreign');
+            $table->foreignId('page_id')->constrained('pages')->onDelete('cascade');
             $table->string('title_kk');
             $table->string('title_ru');
             $table->string('title_en')->nullable();

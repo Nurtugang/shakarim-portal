@@ -19,6 +19,7 @@ class Page extends Model
         'content_en',
         'slug',
         'menu_id',
+        'parent_id',
         'active',
         'lists_view_type',
         'is_news_page',
@@ -37,6 +38,11 @@ class Page extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('title_kk')
             ->saveSlugsTo('slug');
+    }
+
+    public function parent()
+    {
+        return $this->hasOne(Page::class,'id','parent_id');
     }
 
     public function menu(){
