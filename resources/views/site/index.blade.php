@@ -24,7 +24,7 @@
             <h2>Университет в цифрах</h2>
             <p>Наши достижения говорят сами за себя</p>
         </div>
-        
+
         <div class="stats-grid">
             <div class="stat-card animate-on-scroll">
                 <div class="stat-icon">
@@ -33,7 +33,7 @@
                 <div class="stat-number">6692</div>
                 <div class="stat-label">Студентов</div>
             </div>
-            
+
             <div class="stat-card animate-on-scroll">
                 <div class="stat-icon">
                     <i class="fas fa-chalkboard-teacher"></i>
@@ -41,7 +41,7 @@
                 <div class="stat-number">354</div>
                 <div class="stat-label">ППС</div>
             </div>
-            
+
             <div class="stat-card animate-on-scroll">
                 <div class="stat-icon">
                     <i class="fas fa-building"></i>
@@ -49,7 +49,7 @@
                 <div class="stat-number">9</div>
                 <div class="stat-label">Корпусов</div>
             </div>
-            
+
             <div class="stat-card animate-on-scroll">
                 <div class="stat-icon">
                     <i class="fas fa-home"></i>
@@ -59,10 +59,12 @@
             </div>
         </div>
     </div>
+    <h2 class="catalog-heading">Что мы можем предложить?</h2>
 </section>
 
 <!-- Каталог -->
 <section class="catalog">
+
     <div class="catalog-grid">
         <div class="catalog-item">
             <a href="#" class="catalog-link">
@@ -75,7 +77,7 @@
                 </div>
             </a>
         </div>
-        
+
         <div class="catalog-item">
             <a href="#" class="catalog-link">
                 <div class="catalog-bg"></div>
@@ -87,7 +89,7 @@
                 </div>
             </a>
         </div>
-        
+
         <div class="catalog-item">
             <a href="#" class="catalog-link">
                 <div class="catalog-bg"></div>
@@ -99,7 +101,7 @@
                 </div>
             </a>
         </div>
-        
+
         <div class="catalog-item">
             <a href="#" class="catalog-link">
                 <div class="catalog-bg"></div>
@@ -111,7 +113,7 @@
                 </div>
             </a>
         </div>
-        
+
         <div class="catalog-item">
             <a href="#" class="catalog-link">
                 <div class="catalog-bg"></div>
@@ -120,18 +122,6 @@
                 <div class="catalog-content">
                     <div class="catalog-separator"></div>
                     <div class="catalog-text">Мы предлагаем Вам различные формы сотрудничества такие как подбор соискателей на вакантные места, организация встреч с обучающимися.</div>
-                </div>
-            </a>
-        </div>
-        
-        <div class="catalog-item">
-            <a href="#" class="catalog-link">
-                <div class="catalog-bg"></div>
-                <div class="catalog-overlay"></div>
-                <div class="catalog-title">Серебряный университет</div>
-                <div class="catalog-content">
-                    <div class="catalog-separator"></div>
-                    <div class="catalog-text">На базе Университета Шакарима создана новая форма деятельности направленная на повышение качества жизни граждан взрослого поколения.</div>
                 </div>
             </a>
         </div>
@@ -149,84 +139,259 @@
         <div class="section-title animate-on-scroll">
             <h2>Школы</h2>
             <p>Ведущие образовательные подразделения университета</p>
+            <p class="flip-hint">Нажмите на карточку или стрелки, чтобы узнать специальности</p>
         </div>
-        
+
         <div class="schools-grid">
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-flask"></i></div>
-                    <div class="school-name">Исследовательская школа пищевой инженерии</div>
-                </a>
+            <!-- Новая карточка школы -->
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <div class="school-icon"><i class="fas fa-flask"></i></div>
+                            <div class="school-name">Исследовательская школа пищевой инженерии</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Технология пищевых продуктов</li>
+                            <li>Инженерия производства</li>
+                            <li>Экологический контроль</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-leaf"></i></div>
-                    <div class="school-name">Исследовательская школа ветеринарии и сельского хозяйства</div>
-                </a>
+
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="school-name">Исследовательская школа ветеринарии и сельского хозяйства</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Ветеринария</li>
+                            <li>Агрономия</li>
+                            <li>Зоотехния</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-microchip"></i></div>
-                    <div class="school-name">Высшая школа искусственного интеллекта и строительства</div>
-                </a>
+
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-microchip"></i></div>
+                            <div class="school-name">Высшая школа искусственного интеллекта и строительства</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Искусственный интеллект</li>
+                            <li>Строительство</li>
+                            <li>Информационные технологии</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-university"></i></div>
-                    <div class="school-name">Высший колледж Шакарима</div>
-                </a>
+
+            <!-- Высший колледж Шакарима -->
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-university"></i></div>
+                            <div class="school-name">Высший колледж Шакарима</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Программирование</li>
+                            <li>Бухгалтерский учет</li>
+                            <li>Туризм</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-book"></i></div>
-                    <div class="school-name">Высшая школа филологии</div>
-                </a>
+
+            <!-- Высшая школа филологии -->
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-book"></i></div>
+                            <div class="school-name">Высшая школа филологии</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Казахская филология</li>
+                            <li>Русская филология</li>
+                            <li>Иностранные языки</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-calculator"></i></div>
-                    <div class="school-name">Высшая школа физико-математических наук</div>
-                </a>
+
+            <!-- Высшая школа физико-математических наук -->
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-calculator"></i></div>
+                            <div class="school-name">Высшая школа физико-математических наук</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Физика</li>
+                            <li>Математика</li>
+                            <li>Информатика</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-atom"></i></div>
-                    <div class="school-name">Высшая школа естественных наук</div>
-                </a>
+
+            <!-- Высшая школа естественных наук -->
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-atom"></i></div>
+                            <div class="school-name">Высшая школа естественных наук</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Биология</li>
+                            <li>Экология</li>
+                            <li>География</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="school-name">Высшая школа образования</div>
-                </a>
+
+            <!-- Высшая школа образования -->
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="school-name">Высшая школа образования</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Педагогика</li>
+                            <li>Психология</li>
+                            <li>Дошкольное образование</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-school"></i></div>
-                    <div class="school-name">Shakarim High School</div>
-                </a>
+
+            <!-- Shakarim High School -->
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-school"></i></div>
+                            <div class="school-name">Shakarim High School</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Физика и математика</li>
+                            <li>Химия и биология</li>
+                            <li>Общая подготовка</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-vial"></i></div>
-                    <div class="school-name">Исследовательская школа физических и химических наук</div>
-                </a>
+
+            <!-- Исследовательская школа физических и химических наук -->
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-vial"></i></div>
+                            <div class="school-name">Исследовательская школа физических и химических наук</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Физика</li>
+                            <li>Химия</li>
+                            <li>Нанотехнологии</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="school-name">Высшая школа бизнеса</div>
-                </a>
+
+            <div class="school-card">
+                <div class="school-card-inner">
+                    <div class="school-card-front">
+                        <a href="#">
+                            <div class="school-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="school-name">Высшая школа бизнеса</div>
+                        </a>
+                        <div class="card-hint-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="school-card-back">
+                        <div class="school-back-title">Специальности:</div>
+                        <ul class="school-back-list">
+                            <li>Менеджмент</li>
+                            <li>Маркетинг</li>
+                            <li>Финансы</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div> -->
@@ -240,7 +405,7 @@
         <h2>{{ __("Latest news") }}</h2>
         <p>{{ __("Stay up to date with university events") }}</p>
     </div>
-    
+
     <div class="news-grid">
          @foreach ($news as $new)
 
@@ -261,8 +426,8 @@
             </div>
         </article>
             @endforeach
-        
-        
+
+
         {{-- <article class="news-card animate-on-scroll">
             <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1581092795442-6d9c7e4b6c8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
             <div class="news-content">
@@ -273,7 +438,7 @@
                 </a>
             </div>
         </article>
-        
+
         <article class="news-card animate-on-scroll">
             <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
             <div class="news-content">
@@ -284,7 +449,7 @@
                 </a>
             </div>
         </article>
-        
+
         <article class="news-card animate-on-scroll">
             <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
             <div class="news-content">
@@ -306,11 +471,78 @@
             </div>
         </article> --}}
     </div>
-    
+
     <div class="news-all-btn-container">
-        <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="news-all-btn">Все новости</a>
+        <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="news-all-btn pulsing">Все новости</a>
     </div>
 </div>
 </section>
+
+    <script>
+        function handleScrollAnimation() {
+            const element = document.querySelector('.catalog-heading');
+            const rect = element.getBoundingClientRect();
+            const triggerPoint = window.innerHeight * 0.9;
+
+            if (rect.top < triggerPoint) {
+                element.classList.add('animate-visible');
+                window.removeEventListener('scroll', handleScrollAnimation);
+            }
+        }
+
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.addEventListener('load', handleScrollAnimation); // на случай если уже видно
+    </script>
+
+    <script>
+        function handleCatalogTextAnimation() {
+            const texts = document.querySelectorAll('.catalog-text');
+            const triggerBottom = window.innerHeight * 0.9;
+
+            texts.forEach(text => {
+                const rect = text.getBoundingClientRect();
+                if (rect.top < triggerBottom && !text.classList.contains('visible')) {
+                    text.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleCatalogTextAnimation);
+        window.addEventListener('load', handleCatalogTextAnimation);
+    </script>
+
+    <script>
+        document.querySelectorAll('.school-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const firstCard = document.querySelector('.school-card');
+
+            if (!firstCard) return;
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        firstCard.classList.add('flipped');
+                        setTimeout(() => {
+                            firstCard.classList.remove('flipped');
+                        }, 2000);
+                        observer.unobserve(firstCard); // чтобы сработало только один раз
+                    }
+                });
+            }, {
+                threshold: 0.5 // половина карточки должна быть видна
+            });
+
+            observer.observe(firstCard);
+        });
+    </script>
+
+
 
 </x-layout>

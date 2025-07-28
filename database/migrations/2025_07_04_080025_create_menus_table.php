@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('banner')->nullable();
             $table->tinyInteger('sort')->default(0);
             $table->boolean('active')->default(true);
+            $table->string('type')->nullable();
+
         });
     }
 
