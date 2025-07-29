@@ -3,10 +3,14 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Science\SciencePurchaseController;
+use App\Http\Controllers\Science\SciencePurchasesOfferController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Localization;
+use App\Models\Science\SciencePurchase;
+use App\Models\Science\SciencePurchasesIrn;
 use Illuminate\Http\Request;
 
 Route::post('language', function (Request $request) {
@@ -39,7 +43,10 @@ Route::group([
    Route::get('/news/{news:slug}',[NewsController::class,'show'])->name('news.show');
    Route::get('/structure', [StructureController::class,'index'])->name('structure.index');
    Route::get('/structure/{structure:slug}', [StructureController::class,'show'])->name('structure.show');
+   Route::get('/science/purchases',[SciencePurchaseController::class,'index'])->name('science.purchases');
+   
 });
+Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');
 
 Route::get('/pdf-viewer/{filename}', function ($filename) {
     $pdfPath = storage_path("app/public/pdfs/{$filename}");
@@ -55,4 +62,21 @@ Route::get('/pdf-viewer/{filename}', function ($filename) {
 
 Route::get('/events', EventController::class);
 
+// Route::get('/test', function () {
+
+//     $irn = SciencePurchasesIrn::all();
+
+// $purchases = SciencePurchase::all();
+
+// foreach($purchases as $purchase){
+//     foreach($irn as $item){
+//         if($purchase->irn == $item->name){
+//             $purchase->irn_id = $item->id;
+//             $purchase->save();
+//         }
+//     }
+// }
+// echo 'ok';
+ 
+// });
 

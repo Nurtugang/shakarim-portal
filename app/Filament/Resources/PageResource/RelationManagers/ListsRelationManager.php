@@ -87,7 +87,6 @@ class ListsRelationManager extends RelationManager
             ->image()
             ->optimize('webp')
               ->maxSize(10024)
-              ->required()
               ->label('Картинка'),
             Forms\Components\FileUpload::make('gallery')
               ->image()
