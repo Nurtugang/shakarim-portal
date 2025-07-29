@@ -18,6 +18,22 @@ class SciencePurchasesIrnResource extends Resource
     protected static ?string $model = SciencePurchasesIrn::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort = 1;
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Список ИРН';
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return static::getNavigationLabel();
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Наука';
+    }
 
     public static function form(Form $form): Form
     {

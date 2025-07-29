@@ -24,6 +24,24 @@ class SciencePurchaseResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?int $navigationSort = 2;
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Закупки';
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return static::getNavigationLabel();
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Наука';
+    }
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -123,9 +141,7 @@ class SciencePurchaseResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('contacts')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('status'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
