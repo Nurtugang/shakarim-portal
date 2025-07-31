@@ -65,7 +65,7 @@
 <section class="catalog">
     <div class="catalog-grid">
         <div class="catalog-item">
-            <a href="#" class="catalog-link">
+            <a href="/{{ app()->getLocale() }}/structure/shakarim-high-school" class="catalog-link">
                 <div class="catalog-bg"></div>
                 <div class="catalog-overlay"></div>
                 <div class="catalog-title">Школьникам</div>
@@ -77,7 +77,7 @@
         </div>
         
         <div class="catalog-item">
-            <a href="#" class="catalog-link">
+            <a href="/{{ app()->getLocale() }}/page/abiturientterge" class="catalog-link">
                 <div class="catalog-bg"></div>
                 <div class="catalog-overlay"></div>
                 <div class="catalog-title">Поступающим</div>
@@ -89,7 +89,7 @@
         </div>
         
         <div class="catalog-item">
-            <a href="#" class="catalog-link">
+            <a href="/{{ app()->getLocale() }}/page/schools" class="catalog-link">
                 <div class="catalog-bg"></div>
                 <div class="catalog-overlay"></div>
                 <div class="catalog-title">Обучающимся</div>
@@ -101,7 +101,7 @@
         </div>
         
         <div class="catalog-item">
-            <a href="#" class="catalog-link">
+            <a href="/{{ app()->getLocale() }}/page/schools" class="catalog-link">
                 <div class="catalog-bg"></div>
                 <div class="catalog-overlay"></div>
                 <div class="catalog-title">Выпускникам</div>
@@ -138,6 +138,7 @@
     </div>
 </section>
 
+
 <!-- Школы -->
 <section class="schools">
     @if($schools)
@@ -145,172 +146,43 @@
     @else
         <p>Контент пока не добавлен</p>
     @endif
-    <!-- <div class="schools-container">
-        <div class="section-title animate-on-scroll">
-            <h2>Школы</h2>
-            <p>Ведущие образовательные подразделения университета</p>
-        </div>
-        
-        <div class="schools-grid">
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-flask"></i></div>
-                    <div class="school-name">Исследовательская школа пищевой инженерии</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-leaf"></i></div>
-                    <div class="school-name">Исследовательская школа ветеринарии и сельского хозяйства</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-microchip"></i></div>
-                    <div class="school-name">Высшая школа искусственного интеллекта и строительства</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-university"></i></div>
-                    <div class="school-name">Высший колледж Шакарима</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-book"></i></div>
-                    <div class="school-name">Высшая школа филологии</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-calculator"></i></div>
-                    <div class="school-name">Высшая школа физико-математических наук</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-atom"></i></div>
-                    <div class="school-name">Высшая школа естественных наук</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="school-name">Высшая школа образования</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-school"></i></div>
-                    <div class="school-name">Shakarim High School</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-vial"></i></div>
-                    <div class="school-name">Исследовательская школа физических и химических наук</div>
-                </a>
-            </div>
-            
-            <div class="school animate-on-scroll">
-                <a href="#" style="text-decoration: none; color: inherit;">
-                    <div class="school-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="school-name">Высшая школа бизнеса</div>
-                </a>
-            </div>
-        </div>
-    </div> -->
 </section>
 
-<!-- Новости -->
+
 <!-- Новости -->
 <section class="news">
-<div class="news-container">
-    <div class="section-title animate-on-scroll">
-        <h2>{{ __("Latest news") }}</h2>
-        <p>{{ __("Stay up to date with university events") }}</p>
-    </div>
-    
-    <div class="news-grid">
-         @foreach ($news as $new)
+    <div class="news-container">
+        <div class="section-title animate-on-scroll">
+            <h2>{{ __("Latest news") }}</h2>
+            <p>{{ __("Stay up to date with university events") }}</p>
+        </div>
 
-         <article
-         @class([
-            'news-card animate-on-scroll',
-                    'news-featured' => $loop->first,
-                ])>
-            <div class="news-image">
-                <img src="{{ $new->getPhoto() }}" class="mx-auto h-full object-cover object-top">
-            </div>
-            <div class="news-content">
-                <div class="news-date">{{ $new->getFormattedDate() }}</div>
-                <h3 class="news-title">{{ $new->{'title_'.app()->getLocale()} }}</h3>
-                <a href="{{ route('news.show', ['locale'=>app()->getLocale(),'news'=>$new->slug]) }}" class="news-link">
-                    Читать полностью <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </article>
-            @endforeach
-        
-        
-        {{-- <article class="news-card animate-on-scroll">
-            <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1581092795442-6d9c7e4b6c8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
-            <div class="news-content">
-                <div class="news-date">12 декабря 2024</div>
-                <h3 class="news-title">АРА АУРУЛАРЫНЫҢ АЛДЫН АЛУ – ӨЗЕКТІ МӘСЕЛЕ</h3>
-                <a href="#" class="news-link">
-                    Подробнее <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </article>
-        
-        <article class="news-card animate-on-scroll">
-            <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
-            <div class="news-content">
-                <div class="news-date">10 декабря 2024</div>
-                <h3 class="news-title">ХОРВАТИЯНЫҢ ҚАЗАҚСТАНДАҒЫ ЕЛШІСІ - SHAKARIM UNIVERSITY-ДЕ</h3>
-                <a href="#" class="news-link">
-                    Подробнее <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </article>
-        
-        <article class="news-card animate-on-scroll">
-            <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
-            <div class="news-content">
-                <div class="news-date">8 декабря 2024</div>
-                <h3 class="news-title">Студенческие достижения</h3>
-                <a href="#" class="news-link">
-                    Подробнее <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </article>
-        <article class="news-card animate-on-scroll">
-            <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
-            <div class="news-content">
-                <div class="news-date">8 декабря 2024</div>
-                <h3 class="news-title">Студенческие достижения</h3>
-                <a href="#" class="news-link">
-                    Подробнее <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </article> --}}
+        <div class="news-grid">
+            @foreach ($news as $new)
+
+            <article
+            @class([
+                'news-card animate-on-scroll',
+                        'news-featured' => $loop->first,
+                    ])>
+                <div class="news-image">
+                    <img src="{{ $new->getPhoto() }}" class="mx-auto h-full object-cover object-top">
+                </div>
+                <div class="news-content">
+                    <div class="news-date">{{ $new->getFormattedDate() }}</div>
+                    <h3 class="news-title">{{ $new->{'title_'.app()->getLocale()} }}</h3>
+                    <a href="{{ route('news.show', ['locale'=>app()->getLocale(),'news'=>$new->slug]) }}" class="news-link">
+                        Читать полностью <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+                @endforeach
+        </div>
+
+        <div class="news-all-btn-container">
+            <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="news-all-btn">Все новости</a>
+        </div>
     </div>
-    
-    <div class="news-all-btn-container">
-        <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="news-all-btn">Все новости</a>
-    </div>
-</div>
 </section>
 
 </x-layout>

@@ -65,11 +65,30 @@
 <body>
   <header class="site-header">
     <div class="header-container">
-        <!-- Menu toggle button (left) -->
+        <!-- Menu toggle button + Social links (left) -->
         <div class="menu-toggle-container">
             <button id="menuToggle" class="menu-toggle">
                 <span class="menu-icon"></span>
             </button>
+            
+            <!-- Соц.сети -->
+            <div class="social-links">
+                <a href="https://www.facebook.com/universitet.shakarim.1" class="social-link" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/shakarim_university" class="social-link" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@shakarim_university?_t=8eUlT4aAOhC&_r=1" class="social-link" target="_blank" title="LinkedIn">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCXJxFbPBx_Vot4V96_oekDg" class="social-link" target="_blank" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://t.me/shakarimmedia" class="social-link" target="_blank" title="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
         </div>
         
         <!-- Logo (center) -->
@@ -137,10 +156,15 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; <?php echo date("Y"); ?> Shakarim University. Все права защищены.</p>
+            <p>&copy; 1934 - <?php echo date("Y"); ?> Shakarim University. Все права защищены.</p>
         </div>
     </div>
 </footer>
+
+<!-- Scroll to Top -->
+<button id="scrollToTop" class="scroll-to-top" aria-label="Наверх">
+    <i class="fas fa-chevron-up"></i>
+</button>
 
 <!-- Мобильное меню backdrop -->
 <div class="mobile-menu-backdrop"></div>
@@ -151,7 +175,7 @@
     <script src="/js/header.js"></script>
    
     <!-- <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.js'></script> -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.js'></script> -->
 
     @livewireScripts
     <!-- Scripts для каждой страницы наследующий этот шаблон -->

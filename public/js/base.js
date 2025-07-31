@@ -1,12 +1,3 @@
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.site-header');
-    if (window.scrollY > 50) {
-        header.style.background = 'linear-gradient(135deg, rgba(0, 109, 182, 0.95) 0%, rgba(0, 66, 122, 0.95) 100%)';
-    } else {
-        header.style.background = 'linear-gradient(135deg, #006DB6 0%, #00427A 100%)';
-    }
-});
-
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -47,4 +38,56 @@ document.querySelectorAll('.stat-card, .school, .news-card').forEach(card => {
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) scale(1)';
     });
+});
+
+// Кнопка "Прокрутить наверх"
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    let isScrolling = false;
+    
+    // Показать/скрыть кнопку при прокрутке
+    function toggleScrollButton() {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    }
+    
+    // Обработчик прокрутки с throttling для производительности
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        
+        scrollTimeout = window.requestAnimationFrame(function() {
+            toggleScrollButton();
+        });
+    });
+    
+    // Плавная прокрутка наверх
+    scrollToTopBtn.addEventListener('click', function() {
+        if (isScrolling) return;
+        
+        isScrolling = true;
+        
+        // Добавляем эффект вращения при клике
+        this.style.transform = 'rotate(360deg)';
+        
+        // Плавная прокрутка
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+        // Сбрасываем состояние после завершения прокрутки
+        setTimeout(() => {
+            isScrolling = false;
+            this.style.transform = '';
+        }, 1000);
+    });
+    
+    // Проверяем позицию при загрузке страницы
+    toggleScrollButton();
 });

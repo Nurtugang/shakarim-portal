@@ -15,7 +15,6 @@
 </div> --}}
 
 <div class="page-banner">
-    <img src="{{ $banner }}" alt="{{ $text }}">
     <div class="banner-overlay">
         <div class="banner-content">
             <h1>{{ $text }}</h1>

@@ -1,7 +1,6 @@
 <x-layout>
 @push('styles')
-<link rel="stylesheet" href="{{ asset("css/structure-style.css") }}">
-<link rel="stylesheet" href="{{ asset("css/staff.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/staff.css") }}">
 @endpush
 
 <!-- ЗАГОЛОВОК КАТЕГОРИИ -->
@@ -55,7 +54,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-door-open"></i>
-                            <span>2-этаж, музей</span>
+                            <span>{{ $structure->filteredData->cabinet }} кабинет</span>
                         </div>
                     </div>
                 </div>
@@ -107,24 +106,6 @@
                                 <div class="staff-info">
                                     <h4>{{ $item->{'fullname_'.app()->getLocale()} }}</h4>
                                     <p>{{ $item->{'position_'.app()->getLocale()} }}</p>
-                                    <div class="staff-contact">
-                                        @if($item->email)
-                                            <a href="mailto:{{ $item->email }}" class="contact-badge">
-                                                <i class="fas fa-envelope"></i>
-                                                <span>Связаться</span>
-                                            </a>
-                                        @elseif($item->phone)
-                                            <a href="tel:{{ $item->phone }}" class="contact-badge">
-                                                <i class="fas fa-phone"></i>
-                                                <span>Связаться</span>
-                                            </a>
-                                        @else
-                                            <div class="contact-badge">
-                                                <i class="fas fa-user"></i>
-                                                <span>Сотрудник</span>
-                                            </div>
-                                        @endif
-                                    </div>
                                 </div>
                             </div>
                         </div>

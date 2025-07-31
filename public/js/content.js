@@ -114,20 +114,7 @@ function initScrollEffects() {
 
 
 // Улучшенные hover эффекты
-function initAdvancedHoverEffects() {
-    // Эффект для карточек
-    document.querySelectorAll('.sidebar-nav, .main-content').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px)';
-            this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
-        });
-    });
-}
+
 
 // Прогрессивное улучшение
 function initProgressiveEnhancement() {
@@ -149,7 +136,6 @@ function initProgressiveEnhancement() {
 }
 
 // Инициализация всех улучшений
-initAdvancedHoverEffects();
 initProgressiveEnhancement();
 
 // Обработка изменения размера окна

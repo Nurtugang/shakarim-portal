@@ -1,7 +1,6 @@
 <x-layout :metaTitle="$page->{'title_'.app()->getLocale()}">
 @push('styles')
  <link rel="stylesheet" href="{{ asset("css/content.css") }}">
- <link rel="stylesheet" href="{{ asset("css/staff.css") }}">
 @endpush
 
 <div class="content-container">
