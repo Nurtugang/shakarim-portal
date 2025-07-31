@@ -1,6 +1,26 @@
 /* page-content.css - ФИНАЛЬНАЯ ВЕРСИЯ СТИЛЕЙ С ИСПРАВЛЕНИЯМИ И УЛУЧШЕНИЯМИ */
 
 /* НОВЫЙ РАЗДЕЛ - НОВОСТИ */
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url("../fonts/Montserrat-Bold.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'IBMPlexSans-Regular';
+    src: url("../fonts/IBMPlexSans-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter_Bold';
+    src: url("../fonts/Inter_Bold.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter_Regular';
+    src: url("../fonts/Inter_Regular.ttf") format('truetype');
+}
 .news-section {
     margin: 2rem auto 0;
 }
@@ -85,7 +105,7 @@
     .news-item-large {
         height: 400px;
     }
-    
+
     .news-item-small {
         height: 250px;
     }
@@ -95,23 +115,23 @@
     .news-row {
         grid-template-columns: 1fr;
     }
-    
+
     .news-item-large {
         height: 350px;
     }
-    
+
     .news-item-small {
         height: 200px;
     }
-    
+
     .news-item-large .news-overlay h2 {
         font-size: 1.5rem;
     }
-    
+
     .news-item-small .news-overlay h3 {
         font-size: 1.2rem;
     }
-    
+
     .news-overlay {
         padding: 1.5rem;
     }
@@ -246,32 +266,38 @@
     top: 100px;
     margin-top: 2rem; /* Обычный отступ сверху */
     grid-column: 2; /* Размещаем справа */
+    font-family: 'IBMPlexSans-Regular', sans-serif;
 }
 
-.sidebar-nav ul { 
-    list-style: none; 
+.sidebar-nav ul {
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.sidebar-nav li:not(:last-child) { 
-    margin-bottom: 0.25rem; 
+.sidebar-nav li:not(:last-child) {
+    margin-bottom: 0.25rem;
 }
 
 .sidebar-nav a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.85rem 1.25rem;
     color: var(--text-color);
     text-decoration: none;
     border-radius: 10px;
-    font-weight: 500;
+    font-weight: bold;
     position: relative;
     border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+    font-size: 17px;
 }
 
 .sidebar-nav a:not(.active):hover {
     background-color: var(--light-bg);
     color: var(--primary-color);
+    transform: translateX(2px);
 }
 
 .sidebar-nav a.active {
@@ -279,6 +305,14 @@
     color: var(--primary-color);
     font-weight: 600;
     border-left: 4px solid var(--primary-color);
+    transform: translateX(2px);
+}
+
+.sidebar-nav a.active::before {
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1rem;
 }
 
 /* 6. ОСНОВНОЙ КОНТЕНТ - теперь слева */
@@ -291,6 +325,7 @@
     min-height: 500px;
     margin-top: 2rem; /* Новый отступ сверху для выравнивания с сайдбаром */
     grid-column: 1; /* Размещаем слева */
+    font-family: 'IBMPlexSans-Regular', sans-serif;
 }
 
 .main-content h1 {
@@ -301,6 +336,54 @@
     padding-bottom: 1rem;
     border-bottom: 2px solid var(--border-color);
 }
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 1rem;
+    text-align: center;
+    color: #6b7280;
+}
+
+.empty-icon {
+    animation: bounce 1.5s infinite;
+    margin-bottom: 1.5rem;
+}
+
+.empty-icon .icon {
+    width: 96px;
+    height: 96px;
+    stroke: #d1d5db;
+}
+
+.empty-title {
+    font-size: 2.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadein 1.2s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.empty-desc {
+    font-size: 1.2rem;
+    color: #9ca3af;
+    opacity: 0;
+    animation: fadein 1.5s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 
 /* 7. СТИЛИ ДЛЯ НАПОЛНЕНИЯ (без изменений) */
 .tiptap-content .lead-paragraph, .tiptap-content h2, .tiptap-content p, .stats-grid, .image-gallery, .accordion-container {
@@ -537,14 +620,14 @@
     .content-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .sidebar-nav {
         position: static;
         margin-bottom: 2rem;
         grid-column: 1;
         order: 2;
     }
-    
+
     .main-content {
         margin-top: 0;
         grid-column: 1;
@@ -566,7 +649,7 @@
     .news-list-item {
         grid-template-columns: 1fr;
     }
-    
+
     .news-list-image {
         height: 200px;
     }
@@ -656,6 +739,15 @@
     overflow: hidden;
     height: 180px;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .video-thumbnail img {
@@ -669,20 +761,40 @@
     transform: scale(1.05);
 }
 
+/* Кнопка Play — плавно появляется */
 .play-button {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.9);
     width: 60px;
     height: 60px;
-    background-color: rgba(0, 109, 182, 0.8);
+    background-color: rgba(0, 109, 182, 0.85);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 1.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.video-thumbnail:hover .play-button {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Продолжительность видео */
+.video-duration {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
 }
 
 .video-item h3 {
@@ -702,6 +814,10 @@
     font-size: 0.9rem;
 }
 
+.video-thumbnail:hover .video-overlay {
+    opacity: 1;
+}
+
 @media (max-width: 1200px) {
     .video-item {
         flex: 0 0 calc(33.33% - 1.5rem);
@@ -718,7 +834,7 @@
     .video-item {
         flex: 0 0 calc(100% - 1.5rem);
     }
-    
+
     .video-thumbnail {
         height: 220px;
     }

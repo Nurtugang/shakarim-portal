@@ -2,7 +2,7 @@
     @push('styles')
         <link rel="stylesheet" href="{{ asset("css/news.css") }}">
     @endpush
-    
+
     <main class="page-wrapper">
         <div class="content-container">
             <!-- Новости вместо баннера -->
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     @if($news->count() > 2)
                         <!-- Две меньшие новости -->
                         <div class="news-row">
@@ -31,7 +31,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="news-item news-item-small">
                                 <div class="news-image">
                                     <img src="{{ $news->skip(2)->first()->getPhoto() }}" alt="{{ $news->skip(2)->first()->{'title_'.app()->getLocale()} }}">
@@ -51,29 +51,41 @@
                 <!-- Основной контент (теперь слева) -->
                 <div class="main-content">
                     <h1>{{ __('Новости университета') }}</h1>
-                    
                     <!-- Список новостей -->
                     <div class="news-list">
+                        @if ($news->isEmpty())
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <!-- SVG иконка -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <h2 class="empty-title">Ой... Контент пока не добавлен :)</h2>
+                            <p class="empty-desc">Скоро здесь появятся свежие новости!</p>
+                        </div>
+                        @else
                         @foreach ($news as $item)
-                            <div class="news-list-item">
-                                <div class="news-list-image">
-                                    <img src="{{ $item->getPhoto() }}" alt="{{ $item->{'title_'.app()->getLocale()} }}">
-                                </div>
-                                <div class="news-list-content">
-                                    <h3>
-                                        <a href="{{ route('news.show',['locale'=>app()->getLocale(),'news'=>$item]) }}">
-                                            {{ $item->{'title_'.app()->getLocale()} }}
-                                        </a>
-                                    </h3>
-                                    <div class="news-list-date">{{ $item->getFormattedDate() }}</div>
-                                    <div class="news-list-excerpt">
-                                        {{ $item->shortBody(20) }}
-                                    </div>
+                        <div class="news-list-item">
+                            <div class="news-list-image">
+                                <img src="{{ $item->getPhoto() }}" alt="{{ $item->{'title_'.app()->getLocale()} }}">
+                            </div>
+                            <div class="news-list-content">
+                                <h3>
+                                    <a href="{{ route('news.show',['locale'=>app()->getLocale(),'news'=>$item]) }}">
+                                        {{ $item->{'title_'.app()->getLocale()} }}
+                                    </a>
+                                </h3>
+                                <div class="news-list-date">{{ $item->getFormattedDate() }}</div>
+                                <div class="news-list-excerpt">
+                                    {{ $item->shortBody(20) }}
                                 </div>
                             </div>
+                        </div>
                         @endforeach
+                        @endif
                     </div>
-                    
+
                     <!-- Пагинация -->
                     <div class="pagination">
                         @if ($news->hasPages())
@@ -122,7 +134,7 @@
                         @endif
                     </div>
                 </div>
-                
+
                 <!-- Боковая навигация (теперь справа) -->
                 <aside class="sidebar-nav">
                     <ul>
@@ -138,7 +150,7 @@
                 </aside>
             </div>
         </div>
-        
+
         <!-- Секция видео -->
         <div class="content-container">
             <div class="video-section-block">
@@ -149,19 +161,21 @@
                         <button class="video-nav-btn next">❯</button>
                     </div>
                 </div>
-                
+
                 <div class="video-grid-wrapper">
                     <div class="video-grid">
                         <!-- Заглушки для видео - позже можно будет добавить модель Video -->
                         @for($i = 1; $i <= 8; $i++)
-                            <div class="video-item">
-                                <div class="video-thumbnail">
-                                    <img src="{{ asset('img/building.webp') }}" alt="Видео {{ $i }}">
-                                    <div class="play-button"><i class="fas fa-play"></i></div>
-                                </div>
-                                <h3>{{ __('Видео университета') }} {{ $i }}</h3>
-                                <div class="video-date">{{ now()->subDays($i)->format('d M Y') }}</div>
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <img src="{{ asset('img/building.webp') }}" alt="Видео {{ $i }}">
+                                <div class="video-overlay"></div>
+                                <div class="video-duration">03:45</div>
+                                <div class="play-button"><i class="fas fa-play"></i></div>
                             </div>
+                            <h3>{{ __('Видео университета') }} {{ $i }}</h3>
+                            <div class="video-date">{{ now()->subDays($i)->format('d M Y') }}</div>
+                        </div>
                         @endfor
                     </div>
                 </div>
