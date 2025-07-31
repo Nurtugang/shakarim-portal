@@ -130,12 +130,7 @@
 
 <!-- Школы -->
 <section class="schools">
-    @if($schools)
-        {!! tiptap_converter()->asHTML($schools->{'content_'.app()->getLocale()}) !!}
-    @else
-        <p>Контент пока не добавлен</p>
-    @endif
-    <!-- <div class="schools-container">
+     <div class="schools-container">
         <div class="section-title animate-on-scroll">
             <h2>Школы</h2>
             <p>Ведущие образовательные подразделения университета</p>
@@ -394,7 +389,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 </section>
 
 <!-- Новости -->
