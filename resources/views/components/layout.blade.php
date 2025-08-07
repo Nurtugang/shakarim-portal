@@ -36,7 +36,7 @@
                     <span class="text-gray-600"><i class="fas fa-phone mr-1"></i> +7 (7182) 67-36-69</span>
                     <span class="text-gray-600"><i class="fas fa-envelope mr-1"></i> info@shakarim.edu.kz</span>
                 </div>
-                
+
                 <div class="flex items-center space-x-2">
                     <livewire:language-selector />
 
@@ -96,21 +96,45 @@
 
                 <!-- Mobile menu button -->
                 <button class="lg:hidden p-2" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars text-xl text-gray-700"></i>
+                    <i class="fas fa-bars text-xl text-white"></i>
                 </button>
             </div>
 
             <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="lg:hidden hidden border-t py-4">
-                <div class="flex flex-col space-y-4">
-                    <a href="#" class="text-gray-700 hover:text-shakarim-blue font-medium">Университет туралы</a>
-                    <a href="#" class="text-gray-700 hover:text-shakarim-blue font-medium">Білім беру</a>
-                    <a href="#" class="text-gray-700 hover:text-shakarim-blue font-medium">Ғылым</a>
-                    <a href="#" class="text-gray-700 hover:text-shakarim-blue font-medium">Студенттерге</a>
-                    <a href="#" class="text-gray-700 hover:text-shakarim-blue font-medium">Жаңалықтар</a>
-                    <a href="#" class="text-gray-700 hover:text-shakarim-blue font-medium">Байланыс</a>
+            <div id="mobile-menu" class="lg:hidden hidden border-t py-4 px-4">
+                <div class="space-y-2">
+                    @foreach($menu as $item)
+                    <div x-data="{ open: false }" class="border-b border-gray-200">
+                        <button
+                        @click="open = !open"
+                        class="w-full flex justify-between items-center py-2 text-white hover:bg-shakarim-white rounded">
+                        <span>{{ $item->{'title_'.app()->getLocale()} }}</span>
+                        @if($item->children->isNotEmpty())
+                            <i :class="open ? 'fas fa-chevron-up' : 'fas fa-chevron-down'" class="ml-2 text-sm"></i>
+                        @endif
+                        </button>
+
+                        @if($item->children->isNotEmpty())
+                        <ul
+                            x-show="open"
+                            x-collapse
+                            class="mt-1 space-y-1 pl-4 text-white">
+                            @foreach($item->children as $child)
+                            <li>
+                                <a
+                                href="{{ $child->page?->getUrl() ?? '#' }}"
+                                class="block py-1 text-white transition-colors duration-150">
+                                {{ $child->{'title_'.app()->getLocale()} }}
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </div>
+                    @endforeach
                 </div>
             </div>
+
         </div>
     </header>
     
