@@ -9,14 +9,14 @@ export default {
         extend: {
             colors: {
                  'primary': '#003163',
+                 'primary-dark': '#002147', // Added darker shade of primary
                  'secondary': '#b08968',
             },
-            fontFamily : {
-              inter: ['Inter Bold'],
-              sf: ['SF-Pro-Display-Regular'],
-            },
+            fontFamily: {
+              'body': ['Inter', 'sans-serif'],
+              'heading': ['Montserrat', 'sans-serif'],
+            }
         },
     },
   plugins: [],
 }
-

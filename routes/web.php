@@ -7,6 +7,7 @@ use App\Http\Controllers\Science\SciencePurchaseController;
 use App\Http\Controllers\Science\SciencePurchasesOfferController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StructureController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Localization;
 use App\Models\Science\SciencePurchase;
@@ -44,6 +45,7 @@ Route::group([
    Route::get('/structure', [StructureController::class,'index'])->name('structure.index');
    Route::get('/structure/{structure:slug}', [StructureController::class,'show'])->name('structure.show');
    Route::get('/science/purchases',[SciencePurchaseController::class,'index'])->name('science.purchases');
+   Route::get('/sitemap', [SitemapController::class, 'index'])->name('sitemap');
    
 });
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');
