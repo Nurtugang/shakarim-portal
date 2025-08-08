@@ -1,51 +1,27 @@
-<x-layout :meta-title="$news->meta_title" :meta-description="$news->description">
-    @push('styles')
-        <link rel="stylesheet" href="{{ asset("css/newspage.css") }}">
-    @endpush
-    
-    <main class="page-wrapper">
-        <div class="content-container">
-            <!-- Фото новости вместо баннера -->
-            <div class="news-featured-image">
-                <img src="{{ $news->getPhoto() }}" alt="{{ $news->{'title_'.app()->getLocale()} }}">
-            </div>
+<x-layout>
+    <!-- Breadcrumbs -->
+    <section class="bg-gray-100 py-3 border-b">
+        <div class="max-w-7xl mx-auto px-4">
+            <nav class="text-sm text-gray-500 flex items-center space-x-2" aria-label="Breadcrumb">
+                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">Главная страница</a>
+                <span class="mx-1">&#8250;</span>
+                <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">Жаңалықтар</a>
+                <span class="mx-1">&#8250;</span>
+                <span class="text-shakarim-blue font-semibold">{{ $news->{'title_' . app()->getLocale()} }}</span>
+            </nav>
+        </div>
+    </section>
 
-            <!-- Основной контент новости -->
-            <div class="article-wrapper">
-                <div class="article-meta">
-                    <div class="article-author">
-                        <i class="fas fa-user"></i>
-                        <span>{{ __('Пресс-служба') }}</span>
-                    </div>
-                    <div class="article-date">
-                        <i class="far fa-calendar-alt"></i>
-                        <span>{{ $news->getFormattedDate() }}</span>
-                    </div>
-                    <div class="article-category">
-                        <i class="fas fa-tag"></i>
-                        <span>{{ __('Новости') }}</span>
-                    </div>
-                </div>
-                
-                <h1 class="article-title">{{ $news->{'title_'.app()->getLocale()} }}</h1>
-                
-                <div class="article-divider"></div>
-                
-                <div class="article-content">
-                    {!! $news->{'content_'.app()->getLocale()} !!}
-                </div>
+    <!-- News Content -->
+    <section class="bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-8 mt-2">
+                {{ $news->{'title_' . app()->getLocale()} }}
+            </h1>
 
-                <!-- Кнопка "Назад к новостям" -->
-                <div class="article-back-navigation">
-                    <a href="{{ route('news',['locale'=>app()->getLocale()]) }}" class="back-button">
-                        <i class="fas fa-arrow-left"></i> {{ __('Назад к новостям') }}
-                    </a>
-                </div>
+            <div class="bg-gray-50 rounded-xl shadow p-4 md:p-6 text-gray-700 text-sm leading-relaxed">
+                {!! $news->{'content_' . app()->getLocale()} !!}
             </div>
         </div>
-    </main>
-
-    @push('scripts')
-        <script src="{{ asset('js/newspage.js') }}"></script>
-    @endpush
+    </section>
 </x-layout>

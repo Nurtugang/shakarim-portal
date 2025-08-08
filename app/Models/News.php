@@ -2,96 +2,65 @@
 
 namespace App\Models;
 
-use App\Enums\NewsTypeEnum;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Str;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class News extends Model
 {
-    use HasSlug;
     protected $fillable = [
-        'title_kk',
-        'title_ru',
-        'title_en',
-        'content_kk',
+        'source_id',
+        'name',
+        'alias',
+        'image',
+        'excerpt',
+        'content_kz',
         'content_ru',
         'content_en',
-        'slug',
-        'thumbnail',
-        'meta_title',
-        'meta_description',
-        'published_at',
-        'active',
-        'gallery'
+        'title_kz',
+        'title_ru',
+        'title_en',
+        'description',
+        'link',
+        'category_id',
+        'date',
+        'status',
+        'language',
+        'created_by',
+        'updated_by'
     ];
 
-
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('title_kk')
-            ->saveSlugsTo('slug');
-    }
+    public $timestamps = false;
 
     protected $casts = [
-        'gallery' => 'array',
-        'published_at' => 'datetime',
-        'type' => NewsTypeEnum::class
+        'date' => 'integer',
+        'status' => 'boolean',
+        'created_at' => 'integer',
+        'updated_at' => 'integer'
     ];
 
-    public function getFormattedDate()
+    /**
+     * Категория новости
+     */
+    public function category(): BelongsTo
     {
-        return $this->published_at?$this->published_at->translatedFormat('d F Y'):'';
+        return $this->belongsTo(NewsCategory::class, 'category_id');
     }
 
-    public function getPhoto(){
-        if($this->thumbnail){
-           return '/storage/'. (string)$this->thumbnail;
-        }
-        return '/img/no_image.webp';
+    /**
+     * Теги новости
+     */
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(NewsTag::class, 'news_tag_assn', 'news_id', 'tag_id')
+            ->withPivot('ord');
     }
 
-    public function shortTitle($limit = 100): string
+    /**
+     * Активные новости
+     */
+    public function scopeActive($query)
     {
-        if($this->{'title_'.app()->getLocale()})
-        {
-             return Str::limit($this->{'title_'.app()->getLocale()},$limit);
-        }
-        return '';
-       
-    }
-
-    public function shortBody($words = 10): string
-    {
-        if($this->{'content_'.app()->getLocale()})
-        {
-            return Str::words(strip_tags($this->{'content_'.app()->getLocale()}), $words);
-        }
-        return '';
-    }
-
-    public function setPublishedAtAttribute($value)
-    {
-        $this->attributes['published_at'] = $value ?: now();
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
- 
-        static::created(function () {
-            Cache::forget('news_homepage_kk');
-            Cache::forget('news_homepage_ru');
-            Cache::forget('news_homepage_en');
-        });
- 
-        static::updated(function () {
-            Cache::forget('news_homepage_kk');
-            Cache::forget('news_homepage_ru');
-            Cache::forget('news_homepage_en');
-        });
+        return $query->where('status', 1);
     }
 }

@@ -41,7 +41,7 @@ Route::group([
    Route::get('/page/{page:slug?}',[PageController::class,'index'])->name('page');
    Route::get('/list/{pageList:slug}',[PageController::class,'listItem'])->name('list.item');
    Route::get('/news',[NewsController::class,'index'])->name('news');
-   Route::get('/news/{news:slug}',[NewsController::class,'show'])->name('news.show');
+   Route::get('/news/{news:alias}',[NewsController::class,'show'])->name('news.show');
    Route::get('/structure', [StructureController::class,'index'])->name('structure.index');
    Route::get('/structure/{structure:slug}', [StructureController::class,'show'])->name('structure.show');
    Route::get('/science/purchases',[SciencePurchaseController::class,'index'])->name('science.purchases');

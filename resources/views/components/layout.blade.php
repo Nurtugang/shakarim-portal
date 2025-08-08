@@ -31,13 +31,13 @@
     <!-- Top Bar -->
     <div class="bg-gray-100 border-b">
         <div class="max-w-7xl mx-auto px-4 py-2">
-            <div class="flex justify-between items-center text-sm">
-                <div class="flex items-center space-x-4">
+            <div class="flex justify-end md:justify-between items-center text-sm">
+                <div class="flex items-center space-x-4 hidden md:block">
                     <span class="text-gray-600"><i class="fas fa-phone mr-1"></i> +7 (7182) 67-36-69</span>
                     <span class="text-gray-600"><i class="fas fa-envelope mr-1"></i> info@shakarim.edu.kz</span>
                 </div>
 
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2 ml-auto">
                     <livewire:language-selector />
 
                     <!-- Иконка «Карта сайта» -->
@@ -118,7 +118,7 @@
                         <ul
                             x-show="open"
                             x-collapse
-                            class="mt-1 space-y-1 pl-4 text-white">
+                            class="mt-1 space-y-1 pl-4 pb-4 text-white">
                             @foreach($item->children as $child)
                             <li>
                                 <a
@@ -149,7 +149,9 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-10 w-auto">
+                        <a href="{{ route('site.index', ['locale' => app()->getLocale()]) }}">
+                            <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-10 w-auto">
+                        </a>
                     </div>
                     <p class="text-blue-200 text-sm">1934 жылдан бері сапалы білім беру және ғылыми зерттеулер саласындағы көшбасшы университет.</p>
                 </div>
@@ -193,7 +195,7 @@
                 </div>
             </div>
             <div class="border-t border-blue-600 mt-8 pt-6 text-center text-sm text-blue-200">
-                <p>&copy; 2025 Шәкәрім атындағы Семей университеті. Барлық құқықтар қорғалған.</p>
+                <p>&copy; 2025 НАО "Шәкәрім университеті". Барлық құқықтар қорғалған.</p>
             </div>
         </div>
     </footer>
@@ -255,6 +257,35 @@
 
         // Initialize slider
         showSlide(0);
+
+        // Swipe functionality for slider
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const sliderContainer = document.querySelector('.page-wrapper'); // Assuming .page-wrapper contains the slider
+
+        if (sliderContainer) {
+            sliderContainer.addEventListener('touchstart', e => {
+                touchStartX = e.touches[0].clientX;
+            });
+
+            sliderContainer.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].clientX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50; // Minimum distance for a swipe
+
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swiped left
+                    nextSlide();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swiped right
+                    previousSlide();
+                }
+            }
+        }
     </script>
     @livewireScripts
     <!-- Scripts для каждой страницы наследующий этот шаблон -->

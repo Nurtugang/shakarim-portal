@@ -2,11 +2,11 @@
     <!-- Breadcrumbs and Section -->
     <section class="bg-gray-100 py-3 border-b">
         <div class="max-w-7xl mx-auto px-4">
-            <nav class="text-sm text-gray-500 flex items-center space-x-2" aria-label="Breadcrumb">
+            <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
                 <a href="#" class="hover:text-shakarim-blue">Главная страница</a>
-                <span class="mx-1">&#8250;</span>
+                <span>&#8250;</span>
                 <span class="text-shakarim-grey">{{ $page->menu->parent->{'title_'.app()->getLocale()} }}</span>
-                <span class="mx-1">&#8250;</span>
+                <span>&#8250;</span>
                 <span class="text-shakarim-blue font-semibold">{{ $page->menu->{'title_'.app()->getLocale()} }}</span>
             </nav>
         </div>

@@ -66,10 +66,10 @@
             </div>
 
             <!-- Navigation Arrows -->
-            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10" onclick="previousSlide()">
+            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10 hidden md:block" onclick="previousSlide()">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10" onclick="nextSlide()">
+            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10 hidden md:block" onclick="nextSlide()">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
@@ -160,7 +160,7 @@
                 <div class="bg-white rounded-xl p-8 shadow-lg">
                     <div class="flex items-center mb-6">
                         <i class="fas fa-chart-line text-3xl text-shakarim-blue mr-4"></i>
-                        <h3 class="font-heading font-bold text-2xl text-shakarim-blue">Shakarim көрсеткіштері</h3>
+                        <h3 class="font-heading font-bold text-2xl text-shakarim-blue">Shakarim University көрсеткіштері</h3>
                     </div>
                     <div class="grid grid-cols-2 gap-6">
                         <div>
@@ -186,7 +186,7 @@
                 <div class="bg-white rounded-xl p-8 shadow-lg">
                     <div class="flex items-center mb-6">
                         <i class="fas fa-trophy text-3xl text-shakarim-blue mr-4"></i>
-                        <h3 class="font-heading font-bold text-2xl text-shakarim-blue">Shakarim рейтингтерде</h3>
+                        <h3 class="font-heading font-bold text-2xl text-shakarim-blue">Shakarim University рейтингтерде</h3>
                     </div>
                     <div class="space-y-6">
                         <div class="flex items-start justify-between">
@@ -194,7 +194,7 @@
                                 <div class="text-2xl font-heading font-bold text-shakarim-blue">QS World University Rankings</div>
                                 <div class="text-sm font-body text-gray-600 mb-1"> 2026 жаңадан енген</div>
                             </div>
-                            <div class="text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-4">1401+</div>
+                            <div class="text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-">1401+</div>
                         </div>
 
                         <div class="flex items-start justify-between">
@@ -203,15 +203,15 @@
                                 <div class="text-sm font-body text-gray-600 mb-2">2025 рейтингінде</div>
                                 <div class="text-sm font-body text-gray-600"></div>
                             </div>
-                            <div class="text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-8">301-350</div>
+                            <div class="text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-4">301-350</div>
                         </div>
 
                         <div class="flex items-start justify-between">
                             <div class="border-t border-gray-200 pt-4">
-                                <div class="text-sm font-body text-gray-600 mb-2">AD Scientific Index рейтингінде</div>
+                                <div class="text-2xl font-heading font-bold text-shakarim-blue mb-1">AD Scientific Index рейтингінде</div>
                                 <div class="text-sm font-body text-gray-600">Қазақстанда</div>
                             </div>
-                            <div class="text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-8">#15</div>
+                            <div class="text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-4">#15</div>
                         </div>
 
                     </div>
@@ -261,57 +261,41 @@
     </section>
 
     <!-- News & Events -->
-    <section class="py-16">
+    <section class="py-16 pb-4 md:pb-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-3 gap-8">
                 <!-- News -->
                 <div class="lg:col-span-2">
                     <h2 class="text-3xl font-bold text-shakarim-blue mb-8">Жаңалықтар</h2>
                     <div class="space-y-6">
-                        <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-                            <div class="md:flex">
-                                <div class="md:w-1/3">
-                                    <img src="https://via.placeholder.com/300x200/314266/ffffff?text=News+1" alt="News" class="w-full h-48 md:h-full object-cover">
+                        @foreach($news as $item)
+                            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                                <div class="md:flex">
+                                    <div class="md:w-1/3">
+                                        <img src="{{  asset('storage/news/' . $item->image) }} ?? 'https://via.placeholder.com/300x200/314266/ffffff?text=News' }}" alt="News" class="w-full h-48 md:h-full object-cover">
+                                    </div>
+                                    <div class="p-6 md:w-2/3">
+                                        <div class="text-sm text-gray-500 mb-2">
+                                            {{ \Carbon\Carbon::createFromTimestamp($item->date)->translatedFormat('j MMMM, Y') }}
+                                        </div>
+                                        <h3 class="text-xl font-semibold mb-3 hover:text-shakarim-blue cursor-pointer">
+                                            {{ $item->{'title_' . app()->getLocale()} }}
+                                        </h3>
+                                        <p class="text-gray-600 mb-4">
+                                            {{ \Illuminate\Support\Str::limit(strip_tags($item->{'content_' . app()->getLocale()}), 140) }}
+                                        </p>
+                                        <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}"
+                                        class="text-shakarim-blue font-semibold hover:underline">
+                                            Толығырақ оқу →
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="p-6 md:w-2/3">
-                                    <div class="text-sm text-gray-500 mb-2">6 тамыз, 2025</div>
-                                    <h3 class="text-xl font-semibold mb-3 hover:text-shakarim-blue cursor-pointer">Шәкәрім университетінің жаңа оқу жылы ашылды</h3>
-                                    <p class="text-gray-600 mb-4">Университетте 2025-2026 оқу жылы салтанатты түрде ашылды. Іс-шарада 3000-ға жуық жаңа студент қатысты...</p>
-                                    <a href="#" class="text-shakarim-blue font-semibold hover:underline">Толығырақ оқу →</a>
-                                </div>
-                            </div>
-                        </article>
+                            </article>
+                        @endforeach
 
-                        <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-                            <div class="md:flex">
-                                <div class="md:w-1/3">
-                                    <img src="https://via.placeholder.com/300x200/314266/ffffff?text=News+2" alt="News" class="w-full h-48 md:h-full object-cover">
-                                </div>
-                                <div class="p-6 md:w-2/3">
-                                    <div class="text-sm text-gray-500 mb-2">5 тамыз, 2025</div>
-                                    <h3 class="text-xl font-semibold mb-3 hover:text-shakarim-blue cursor-pointer">Халықаралық ғылыми конференция өтті</h3>
-                                    <p class="text-gray-600 mb-4">«Заманауи технологиялар және инновация» тақырыбындағы халықаралық ғылыми конференцияда 25 елден ғалымдар қатысты...</p>
-                                    <a href="#" class="text-shakarim-blue font-semibold hover:underline">Толығырақ оқу →</a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-                            <div class="md:flex">
-                                <div class="md:w-1/3">
-                                    <img src="https://via.placeholder.com/300x200/314266/ffffff?text=News+3" alt="News" class="w-full h-48 md:h-full object-cover">
-                                </div>
-                                <div class="p-6 md:w-2/3">
-                                    <div class="text-sm text-gray-500 mb-2">4 тамыз, 2025</div>
-                                    <h3 class="text-xl font-semibold mb-3 hover:text-shakarim-blue cursor-pointer">Студенттік спорт фестивалі</h3>
-                                    <p class="text-gray-600 mb-4">Университеттің дәстүрлі спорт фестивалі өтті. 15 спорт түрі бойынша 500-ден астам студент қатысты...</p>
-                                    <a href="#" class="text-shakarim-blue font-semibold hover:underline">Толығырақ оқу →</a>
-                                </div>
-                            </div>
-                        </article>
                     </div>
                     <div class="text-center mt-8">
-                        <a href="#" class="bg-shakarim-blue text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">Барлық жаңалықтар</a>
+                        <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="bg-shakarim-blue text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">Барлық жаңалықтар</a>
                     </div>
                 </div>
 
