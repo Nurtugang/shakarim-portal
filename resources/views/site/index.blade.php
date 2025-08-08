@@ -18,115 +18,10 @@
 </section>
 
 <!-- Статистика -->
-<section class="stats">
-    <div class="stats-container">
-        <div class="section-title animate-on-scroll">
-            <h2>Университет в цифрах</h2>
-            <p>Наши достижения говорят сами за себя</p>
-        </div>
 
-        <div class="stats-grid">
-            <div class="stat-card animate-on-scroll">
-                <div class="stat-icon">
-                    <i class="fas fa-user-graduate"></i>
-                </div>
-                <div class="stat-number">6692</div>
-                <div class="stat-label">Студентов</div>
-            </div>
-
-            <div class="stat-card animate-on-scroll">
-                <div class="stat-icon">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-                <div class="stat-number">354</div>
-                <div class="stat-label">ППС</div>
-            </div>
-
-            <div class="stat-card animate-on-scroll">
-                <div class="stat-icon">
-                    <i class="fas fa-building"></i>
-                </div>
-                <div class="stat-number">9</div>
-                <div class="stat-label">Корпусов</div>
-            </div>
-
-            <div class="stat-card animate-on-scroll">
-                <div class="stat-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="stat-number">5</div>
-                <div class="stat-label">Общежитий</div>
-            </div>
-        </div>
-    </div>
-    <h2 class="catalog-heading">Что мы можем предложить?</h2>
-</section>
 
 <!-- Каталог -->
-<section class="catalog">
 
-    <div class="catalog-grid">
-        <div class="catalog-item">
-            <a href="#" class="catalog-link">
-                <div class="catalog-bg"></div>
-                <div class="catalog-overlay"></div>
-                <div class="catalog-title">Школьникам</div>
-                <div class="catalog-content">
-                    <div class="catalog-separator"></div>
-                    <div class="catalog-text">Наша цель — заинтересовать детей наукой и показать, что она тоже может быть занимательной и абсолютно доступной.</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="catalog-item">
-            <a href="#" class="catalog-link">
-                <div class="catalog-bg"></div>
-                <div class="catalog-overlay"></div>
-                <div class="catalog-title">Поступающим</div>
-                <div class="catalog-content">
-                    <div class="catalog-separator"></div>
-                    <div class="catalog-text">Если вы хотите приобрести востребованную, гарантирующую стабильный доход специальность, наши двери открыты для вас!</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="catalog-item">
-            <a href="#" class="catalog-link">
-                <div class="catalog-bg"></div>
-                <div class="catalog-overlay"></div>
-                <div class="catalog-title">Обучающимся</div>
-                <div class="catalog-content">
-                    <div class="catalog-separator"></div>
-                    <div class="catalog-text">Вы имеете возможность ознакомиться с информацией, касающейся Вашей академической деятельности, найдете ответы на вопросы о студенческой жизни.</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="catalog-item">
-            <a href="#" class="catalog-link">
-                <div class="catalog-bg"></div>
-                <div class="catalog-overlay"></div>
-                <div class="catalog-title">Выпускникам</div>
-                <div class="catalog-content">
-                    <div class="catalog-separator"></div>
-                    <div class="catalog-text">Одной из задач Университета Шакарима является обеспечение конкурентоспособности выпускников. Мы заинтересованы в сотрудничестве с вами.</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="catalog-item">
-            <a href="#" class="catalog-link">
-                <div class="catalog-bg"></div>
-                <div class="catalog-overlay"></div>
-                <div class="catalog-title">Работодателям</div>
-                <div class="catalog-content">
-                    <div class="catalog-separator"></div>
-                    <div class="catalog-text">Мы предлагаем Вам различные формы сотрудничества такие как подбор соискателей на вакантные места, организация встреч с обучающимися.</div>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
 
 <!-- Школы -->
 <section class="schools">
@@ -392,8 +287,115 @@
     </div>
 </section>
 
-<!-- Новости -->
-<!-- Новости -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="section-title animate-on-scroll">
+                <h2>Университет в цифрах</h2>
+                <p>Наши достижения говорят сами за себя</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-number">6692</div>
+                    <div class="stat-label">Студентов</div>
+                </div>
+
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="stat-number">354</div>
+                    <div class="stat-label">ППС</div>
+                </div>
+
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Корпусов</div>
+                </div>
+
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Общежитий</div>
+                </div>
+            </div>
+        </div>
+        <h2 class="catalog-heading">Что мы можем предложить?</h2>
+    </section>
+
+    <section class="catalog">
+
+        <div class="catalog-grid">
+            <div class="catalog-item">
+                <a href="#" class="catalog-link">
+                    <div class="catalog-bg"></div>
+                    <div class="catalog-overlay"></div>
+                    <div class="catalog-title">Школьникам</div>
+                    <div class="catalog-content">
+                        <div class="catalog-separator"></div>
+                        <div class="catalog-text">Наша цель — заинтересовать детей наукой и показать, что она тоже может быть занимательной и абсолютно доступной.</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="catalog-item">
+                <a href="#" class="catalog-link">
+                    <div class="catalog-bg"></div>
+                    <div class="catalog-overlay"></div>
+                    <div class="catalog-title">Поступающим</div>
+                    <div class="catalog-content">
+                        <div class="catalog-separator"></div>
+                        <div class="catalog-text">Если вы хотите приобрести востребованную, гарантирующую стабильный доход специальность, наши двери открыты для вас!</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="catalog-item">
+                <a href="#" class="catalog-link">
+                    <div class="catalog-bg"></div>
+                    <div class="catalog-overlay"></div>
+                    <div class="catalog-title">Обучающимся</div>
+                    <div class="catalog-content">
+                        <div class="catalog-separator"></div>
+                        <div class="catalog-text">Вы имеете возможность ознакомиться с информацией, касающейся Вашей академической деятельности, найдете ответы на вопросы о студенческой жизни.</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="catalog-item">
+                <a href="#" class="catalog-link">
+                    <div class="catalog-bg"></div>
+                    <div class="catalog-overlay"></div>
+                    <div class="catalog-title">Выпускникам</div>
+                    <div class="catalog-content">
+                        <div class="catalog-separator"></div>
+                        <div class="catalog-text">Одной из задач Университета Шакарима является обеспечение конкурентоспособности выпускников. Мы заинтересованы в сотрудничестве с вами.</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="catalog-item">
+                <a href="#" class="catalog-link">
+                    <div class="catalog-bg"></div>
+                    <div class="catalog-overlay"></div>
+                    <div class="catalog-title" >Работодателям</div>
+                    <div class="catalog-content">
+                        <div class="catalog-separator"></div>
+                        <div class="catalog-text">Мы предлагаем Вам различные формы сотрудничества такие как подбор соискателей на вакантные места, организация встреч с обучающимися.</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
 <section class="news">
 <div class="news-container">
     <div class="section-title animate-on-scroll">
