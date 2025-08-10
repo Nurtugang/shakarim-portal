@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -68,6 +70,16 @@ class Page extends Model
     
         return $menu;
     }
+
+    public function formSchema(): HasOne
+    {
+        return $this->hasOne(PageFormSchema::class);
+    }
+
+    public function requests(): HasMany
+    {
+        return $this->hasMany(PageRequest::class);
+    }
     // public function getUrlAttribute()
     // {
     //     return route('page', ['locale' => app()->getLocale(), 'page' => $this]);
@@ -77,6 +89,8 @@ class Page extends Model
     {
         return route('page', ['locale' => app()->getLocale(), 'page' => $this->slug]);
     }
+
+
 
     protected static function booted()
     {
