@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('page_requests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('page_id')->constrained()->onDelete('cascade');
+            $table->foreignId('page_id')->constrained('pages')->onDelete('cascade');
             $table->json('data');
             $table->timestamps();
         });

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('page_form_schemas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('page_id')->constrained('page')->cascadeOnDelete();
+            $table->foreignId('page_id')->constrained('pages')->cascadeOnDelete();
             $table->json('form_schema')->nullable();
             $table->string('title_kk');
             $table->string('title_ru');
