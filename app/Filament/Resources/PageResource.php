@@ -103,20 +103,19 @@ class PageResource extends Resource
                         Tabs\Tab::make('Форма')
                                     ->schema([
                                         Group::make()
-                                        ->relationship('formSchema')
+                                        ->relationship('formSchema',condition: fn (?array $state): bool => filled($state['title_kk']))
                                         ->schema([
                                             Grid::make()
                                                     ->schema([
                                                         Forms\Components\TextInput::make('title_kk')
-                                                            ->required()
                                                             ->label('Название формы(kz)')
                                                             ->maxLength(255),
                                                         Forms\Components\TextInput::make('title_ru')
-                                                            ->required()
+                                                            ->requiredWith('title_kk')
                                                             ->label('Название формы(ru)')
                                                             ->maxLength(255),
                                                         Forms\Components\TextInput::make('title_en')
-                                                            ->required()
+                                                            ->requiredWith('title_kk')
                                                             ->label('Название формы(en)')
                                                             ->maxLength(255),
                                                     ])->columns(3),
@@ -142,7 +141,7 @@ class PageResource extends Resource
                                                             ->requiredWith('title_kk')
                                                             ->label('Тип поля'),
                                                         Forms\Components\TextInput::make('key')
-                                                            ->required()
+                                                            ->requiredWith('title_kk')
                                                             ->label('Ключ поля')
                                                             ->helperText('Уникальный ID без пробелов, например: email_user')
                                                             ->regex('/^[a-z0-9_]+$/'),
