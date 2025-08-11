@@ -7,6 +7,7 @@ use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
 use App\Filament\Resources\PageResource\RelationManagers\FilesRelationManager;
 use App\Filament\Resources\PageResource\RelationManagers\ListsRelationManager;
+use App\Filament\Resources\PageResource\RelationManagers\RequestsRelationManager;
 use App\Models\Menu;
 use App\Models\Page;
 use Filament\Forms;
@@ -21,6 +22,8 @@ use FilamentTiptapEditor\Enums\TiptapOutput;
 use FilamentTiptapEditor\TiptapEditor;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Group;
 use Illuminate\Support\Facades\Storage;
 
 class PageResource extends Resource
@@ -97,6 +100,60 @@ class PageResource extends Resource
                                     ->action(fn ($get, $set) => $set('content_en', $get('content_ru')))
                             ]), 
                         ]),
+                        Tabs\Tab::make('Форма')
+                                    ->schema([
+                                        Group::make()
+                                        ->relationship('formSchema',condition: fn (?array $state): bool => filled($state['title_kk']))
+                                        ->schema([
+                                            Grid::make()
+                                                    ->schema([
+                                                        Forms\Components\TextInput::make('title_kk')
+                                                            ->label('Название формы(kz)')
+                                                            ->maxLength(255),
+                                                        Forms\Components\TextInput::make('title_ru')
+                                                            ->requiredWith('title_kk')
+                                                            ->label('Название формы(ru)')
+                                                            ->maxLength(255),
+                                                        Forms\Components\TextInput::make('title_en')
+                                                            ->requiredWith('title_kk')
+                                                            ->label('Название формы(en)')
+                                                            ->maxLength(255),
+                                                    ])->columns(3),
+                                                    Forms\Components\Repeater::make('form_schema')
+                                                    ->schema([
+                                                        Forms\Components\TextInput::make('name_kk')
+                                                            ->requiredWith('title_kk')
+                                                            ->label('Название поля(kz)'),
+                                                        Forms\Components\TextInput::make('name_ru')
+                                                            ->requiredWith('title_kk')
+                                                            ->label('Название поля(ru)'),
+                                                        Forms\Components\TextInput::make('name_en')
+                                                            ->requiredWith('title_kk')
+                                                            ->label('Название поля(en)'),
+                                                        Forms\Components\Select::make('type')
+                                                            ->options([
+                                                                'text' => 'Текст',
+                                                                'textarea' => 'Строка',
+                                                                'email' => 'Email',
+                                                                'tel' => 'Телефон',
+                                                                'file' => 'Файл',
+                                                            ])
+                                                            ->requiredWith('title_kk')
+                                                            ->label('Тип поля'),
+                                                        Forms\Components\TextInput::make('key')
+                                                            ->requiredWith('title_kk')
+                                                            ->label('Ключ поля')
+                                                            ->helperText('Уникальный ID без пробелов, например: email_user')
+                                                            ->regex('/^[a-z0-9_]+$/'),
+                                                        Forms\Components\Toggle::make('required')
+                                                            ->label('Обязательное поле')
+                                                            ->default(false)    
+                                                    ])
+                                                    ->addActionLabel('Добавить поле')
+                                                    ->label('Настроить форму')
+                                                    ->collapsed(),
+                                        ])
+                                    ]),
                     ]),      
 
                 Select::make('menu_id')
@@ -166,6 +223,7 @@ class PageResource extends Resource
         return [
             FilesRelationManager::class,
             ListsRelationManager::class,
+            RequestsRelationManager::class,
         ];
     }
 

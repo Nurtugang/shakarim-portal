@@ -15,20 +15,26 @@
         <div class="max-w-7xl mx-auto px-4">
             <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-8 mt-2">{{ $page->menu->{'title_'.app()->getLocale()} }}</h1>
             <div class="main-content">
-            <!-- Контент из админки -->
+                <!-- Контент из админки -->
                 <div class="tiptap-content">
                     <div class="content tiptap-content font-sf">
                         {!! tiptap_converter()->asHTML($page->{'content_'.app()->getLocale()}) !!}
                     </div>
                 </div>
+
+
+                @if ($page->formSchema)
+                    @livewire('dynamic-form', ['formSchemaId' => $page->formSchema->id])
+                @endif
+
                 <div class="my-4">
                     @if(count($files))
-                        <div class="my-4">
+                    <div class="my-4">
                         <x-page-files :files="$files" />
-                        </div>
+                    </div>
                     @endif
                     @if (count($lists)>0)
-                        <x-page-lists :lists="$lists" :page="$page" />
+                    <x-page-lists :lists="$lists" :page="$page" />
                     @endif
                 </div>
             </div>
