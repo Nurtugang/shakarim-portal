@@ -9,23 +9,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class News extends Model
 {
     protected $fillable = [
-        'source_id',
-        'name',
         'alias',
         'image',
-        'excerpt',
         'content_kz',
-        'content_ru',
+        'content_ru', 
         'content_en',
         'title_kz',
         'title_ru',
         'title_en',
-        'description',
-        'link',
         'category_id',
         'date',
         'status',
-        'language',
         'created_by',
         'updated_by'
     ];

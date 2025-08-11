@@ -14,7 +14,7 @@ class SiteController extends Controller
     {
         $news = \App\Models\News::orderBy('created_at', 'desc')
             ->where('status', 1)
-            ->limit(5)
+            ->limit(3)
             ->get();
 
         $events = \App\Models\Event::orderBy('start_date')

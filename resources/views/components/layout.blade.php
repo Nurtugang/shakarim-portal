@@ -59,7 +59,7 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <a href="{{ route('site.index', ['locale' => app()->getLocale()]) }}">
-                        <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-10 w-auto">
+                        <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-8 md:h-10 w-auto">
                     </a>
                 </div>
 
@@ -150,7 +150,7 @@
                 <div>
                     <div class="flex items-center mb-4">
                         <a href="{{ route('site.index', ['locale' => app()->getLocale()]) }}">
-                            <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-10 w-auto">
+                            <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-8 w-auto">
                         </a>
                     </div>
                     <p class="text-blue-200 text-sm">1934 жылдан бері сапалы білім беру және ғылыми зерттеулер саласындағы көшбасшы университет.</p>
@@ -182,14 +182,20 @@
                         <p>info@shakarim.edu.kz</p>
                     </div>
                     <div class="flex space-x-3 mt-4">
-                        <a href="#" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
-                            <i class="fab fa-facebook-f text-sm"></i>
-                        </a>
-                        <a href="#" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
+                        <a href="https://www.instagram.com/shakarim_university" target="_blank" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
                             <i class="fab fa-instagram text-sm"></i>
                         </a>
-                        <a href="#" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
+                        <a href="https://www.facebook.com/universitet.shakarim.1" target="_blank" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="https://t.me/shakarimmedia" target="_blank" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
+                            <i class="fab fa-telegram text-sm"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCXJxFbPBx_Vot4V96_oekDg" target="_blank" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
                             <i class="fab fa-youtube text-sm"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@shakarim_university?_t=8eUlT4aAOhC&_r=1" target="_blank" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
+                            <i class="fab fa-tiktok text-sm"></i>
                         </a>
                     </div>
                 </div>
@@ -199,94 +205,7 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Slider functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.slide-dot');
-        const totalSlides = slides.length;
-
-        function showSlide(n) {
-            // Hide all slides
-            slides.forEach(slide => {
-                slide.style.opacity = '0';
-            });
-            
-            // Remove active class from all dots
-            dots.forEach(dot => {
-                dot.classList.remove('active');
-                dot.classList.add('bg-opacity-50');
-            });
-
-            // Show current slide
-            slides[n].style.opacity = '1';
-            
-            // Highlight current dot
-            dots[n].classList.add('active');
-            dots[n].classList.remove('bg-opacity-50');
-
-            currentSlide = n;
-        }
-
-        function nextSlide() {
-            const next = (currentSlide + 1) % totalSlides;
-            showSlide(next);
-        }
-
-        function previousSlide() {
-            const prev = (currentSlide - 1 + totalSlides) % totalSlides;
-            showSlide(prev);
-        }
-
-        // Dot navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-            });
-        });
-
-        // Auto-slide every 5 seconds
-        setInterval(nextSlide, 5000);
-
-        // Initialize slider
-        showSlide(0);
-
-        // Swipe functionality for slider
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        const sliderContainer = document.querySelector('.page-wrapper'); // Assuming .page-wrapper contains the slider
-
-        if (sliderContainer) {
-            sliderContainer.addEventListener('touchstart', e => {
-                touchStartX = e.touches[0].clientX;
-            });
-
-            sliderContainer.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].clientX;
-                handleSwipe();
-            });
-
-            function handleSwipe() {
-                const swipeThreshold = 50; // Minimum distance for a swipe
-
-                if (touchEndX < touchStartX - swipeThreshold) {
-                    // Swiped left
-                    nextSlide();
-                } else if (touchEndX > touchStartX + swipeThreshold) {
-                    // Swiped right
-                    previousSlide();
-                }
-            }
-        }
-    </script>
+    <script src="{{ asset('js/custom/mobile.js') }}"></script>
     @livewireScripts
     <!-- Scripts для каждой страницы наследующий этот шаблон -->
     @stack('scripts') 

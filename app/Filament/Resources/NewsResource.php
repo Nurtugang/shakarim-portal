@@ -29,15 +29,8 @@ class NewsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Название')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('alias')
                     ->label('Алиас')
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('excerpt')
-                    ->label('Краткое описание')
                     ->maxLength(255),
                 Forms\Components\Select::make('category_id')
                     ->label('Категория')
@@ -68,18 +61,13 @@ class NewsResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->label('Изображение')
                     ->image()
-                    ->directory('news'),
+                    ->disk('public')
+                    ->directory('news')
+                    ->visibility('public')
+                    ->storeFileNamesIn('image'),
                 Forms\Components\Toggle::make('status')
                     ->label('Активна')
                     ->default(true),
-                Forms\Components\Select::make('language')
-                    ->label('Язык')
-                    ->options([
-                        'kz' => 'Казахский',
-                        'ru' => 'Русский',
-                        'en' => 'Английский',
-                    ])
-                    ->default('ru'),
             ]);
     }
 
@@ -87,13 +75,15 @@ class NewsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image')
+                Tables\Columns\TextColumn::make('image')
                     ->label('Фото')
-                    ->square(),
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Название')
-                    ->searchable()
-                    ->limit(30),
+                    ->formatStateUsing(function ($state) {
+                        if ($state) {
+                            return '<img src="/storage/news/' . $state . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">';
+                        }
+                        return 'Нет фото';
+                    })
+                    ->html(),
                 Tables\Columns\TextColumn::make('title_ru')
                     ->label('Заголовок')
                     ->searchable()
@@ -103,9 +93,6 @@ class NewsResource extends Resource
                 Tables\Columns\IconColumn::make('status')
                     ->label('Статус')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('language')
-                    ->label('Язык')
-                    ->badge(),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('category_id')

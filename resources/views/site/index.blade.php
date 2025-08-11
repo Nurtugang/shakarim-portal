@@ -84,68 +84,63 @@
                 </h2>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 <!-- Талапкерлерге блок -->
-                <div class="bg-white rounded-xl p-6 shadow-lg">
+                <div class="group bg-white rounded-xl p-6 shadow-lg transition-colors duration-300 hover:bg-shakarim-blue">
                     <div class="flex items-center mb-4">
-                        <i class="fas fa-user-plus text-2xl text-shakarim-blue mr-3"></i>
-                        <h3 class="font-heading font-bold text-lg text-shakarim-blue">Талапкерлерге</h3>
+                        <i class="fas fa-user-plus text-2xl text-gray-800 mr-3 transition-colors duration-300 group-hover:text-white"></i>
+                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">Талапкерлерге</h3>
                     </div>
-                    <p class="text-gray-600 text-sm font-body mb-4">Оқуға түсушілер үшін</p>
+                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">Оқуға түсушілер үшін</p>
                     <div class="space-y-2 text-sm font-body">
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 1</a>
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 2</a>
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 3</a>
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 4</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 1</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 2</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 3</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 4</a>
                     </div>
                 </div>
 
                 <!-- Білім алушыларға блок -->
-                <div class="bg-white rounded-xl p-6 shadow-lg">
+                <div class="group bg-white rounded-xl p-6 shadow-lg transition-colors duration-300 hover:bg-shakarim-blue">
                     <div class="flex items-center mb-4">
-                        <i class="fas fa-graduation-cap text-2xl text-shakarim-blue mr-3"></i>
-                        <h3 class="font-heading font-bold text-lg text-shakarim-blue">Білім алушыларға</h3>
+                        <i class="fas fa-graduation-cap text-2xl text-gray-800 mr-3 transition-colors duration-300 group-hover:text-white"></i>
+                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">Білім алушыларға</h3>
                     </div>
-                    <p class="text-gray-600 text-sm font-body mb-4">Shakarim студенттері үшін</p>
+                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">Shakarim студенттері үшін</p>
                     <div class="space-y-2 text-sm font-body">
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 1</a>
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 2</a>
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 3</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 1</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 2</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 3</a>
                     </div>
                 </div>
 
                 <!-- Қызметкерлерге блок -->
-                <div class="bg-shakarim-blue text-white rounded-xl p-6 shadow-lg">
+                <div class="group bg-white rounded-xl p-6 shadow-lg transition-colors duration-300 hover:bg-shakarim-blue">
                     <div class="flex items-center mb-4">
-                        <i class="fas fa-users text-2xl text-white mr-3"></i>
-                        <h3 class="font-heading font-bold text-lg">Қызметкерлерге</h3>
+                        <i class="fas fa-users text-2xl text-gray-800 mr-3 transition-colors duration-300 group-hover:text-white"></i>
+                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">Қызметкерлерге</h3>
                     </div>
-                    <p class="text-slate-200 text-sm font-body mb-4">Біздің қызметкерлеріміз үшін</p>
+                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">Біздің қызметкерлеріміз үшін</p>
                     <div class="space-y-2 text-sm font-body">
-                        <a href="#" class="block text-slate-200 hover:text-white transition">• Сілтеме 1</a>
-                        <a href="#" class="block text-slate-200 hover:text-white transition">• Сілтеме 2</a>
-                        <a href="#" class="block text-slate-200 hover:text-white transition">• Сілтеме 3</a>
-                        <a href="#" class="block text-slate-200 hover:text-white transition">• Сілтеме 4</a>
-                    </div>
-                    <div class="mt-6 p-4 bg-white bg-opacity-20 rounded-lg">
-                        <div class="w-16 h-16 bg-white bg-opacity-30 rounded-lg mx-auto flex items-center justify-center">
-                            <i class="fas fa-qrcode text-2xl text-white"></i>
-                        </div>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 1</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 2</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 3</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 4</a>
                     </div>
                 </div>
 
                 <!-- Серіктестерге блок -->
-                <div class="bg-white rounded-xl p-6 shadow-lg">
+                <div class="group bg-white rounded-xl p-6 shadow-lg transition-colors duration-300 hover:bg-shakarim-blue">
                     <div class="flex items-center mb-4">
-                        <i class="fas fa-handshake text-2xl text-shakarim-blue mr-3"></i>
-                        <h3 class="font-heading font-bold text-lg text-shakarim-blue">Серіктестерге</h3>
+                        <i class="fas fa-handshake text-2xl text-gray-800 mr-3 transition-colors duration-300 group-hover:text-white"></i>
+                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">Серіктестерге</h3>
                     </div>
-                    <p class="text-gray-600 text-sm font-body mb-4">Біздің серіктестерімізге</p>
+                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">Біздің серіктестерімізге</p>
                     <div class="space-y-2 text-sm font-body">
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 1</a>
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 2</a>
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 3</a>
-                        <a href="#" class="block text-shakarim-light hover:text-shakarim-blue transition">• Сілтеме 4</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 1</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 2</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 3</a>
+                        <a href="#" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 4</a>
                     </div>
                 </div>
             </div>
@@ -162,7 +157,7 @@
                         <i class="fas fa-chart-line text-3xl text-shakarim-blue mr-4"></i>
                         <h3 class="font-heading font-bold text-2xl text-shakarim-blue">Shakarim University көрсеткіштері</h3>
                     </div>
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
                         <div>
                             <div class="text-4xl font-heading font-bold text-shakarim-blue mb-2">45</div>
                             <div class="text-sm font-body text-gray-600">Бакалавриат бағдарламалары</div>
@@ -189,29 +184,29 @@
                         <h3 class="font-heading font-bold text-2xl text-shakarim-blue">Shakarim University рейтингтерде</h3>
                     </div>
                     <div class="space-y-6">
-                        <div class="flex items-start justify-between">
+                        <div class="flex flex-col items-start justify-between md:flex-row">
                             <div>
                                 <div class="text-2xl font-heading font-bold text-shakarim-blue">QS World University Rankings</div>
                                 <div class="text-sm font-body text-gray-600 mb-1"> 2026 жаңадан енген</div>
                             </div>
-                            <div class="text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-">1401+</div>
+                            <div class="text-3xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-2 md:mt-0">1401+</div>
                         </div>
 
-                        <div class="flex items-start justify-between">
+                        <div class="flex flex-col items-start justify-between md:flex-row">
                             <div class="border-t border-gray-200 pt-4">
                                 <div class="text-2xl font-heading font-bold text-shakarim-blue mb-1">QS Central Asia Rankings</div>
                                 <div class="text-sm font-body text-gray-600 mb-2">2025 рейтингінде</div>
                                 <div class="text-sm font-body text-gray-600"></div>
                             </div>
-                            <div class="text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-4">301-350</div>
+                            <div class="text-3xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-2 md:mt-4">301-350</div>
                         </div>
 
-                        <div class="flex items-start justify-between">
+                        <div class="flex flex-col items-start justify-between md:flex-row">
                             <div class="border-t border-gray-200 pt-4">
                                 <div class="text-2xl font-heading font-bold text-shakarim-blue mb-1">AD Scientific Index рейтингінде</div>
                                 <div class="text-sm font-body text-gray-600">Қазақстанда</div>
                             </div>
-                            <div class="text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-4">#15</div>
+                            <div class="text-3xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-2 md:mt-4">#15</div>
                         </div>
 
                     </div>
@@ -223,38 +218,40 @@
     <!-- Quick Links -->
     <section class="py-12 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                    <i class="fas fa-user-graduate text-3xl text-shakarim-blue mb-4"></i>
-                    <h3 class="font-semibold font-heading mb-2">Студенттерге</h3>
-                    <p class="text-sm text-gray-600 font-body">Оқу процесі, стипендия, тұрғын үй</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
+                    <i class="fas fa-user-graduate text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Студенттерге</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Оқу процесі, стипендия, тұрғын үй</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                    <i class="fas fa-flask text-3xl text-shakarim-blue mb-4"></i>
-                    <h3 class="font-semibold font-heading mb-2">Ғылым</h3>
-                    <p class="text-sm text-gray-600 font-body">Зерттеулер, жобалар, жарияланымдар</p>
+                
+                <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
+                    <i class="fas fa-flask text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Ғылым</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Зерттеулер, жобалар, жарияланымдар</p>
                 </div>
-                <a href="https://kitaphana.shakarim.kz" target="_blank" >
-                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                        <i class="fas fa-book text-3xl text-shakarim-blue mb-4"></i>
-                        <h3 class="font-semibold font-heading mb-2">Кітапхана</h3>
-                        <p class="text-sm text-gray-600 font-body">Электронды және басылым ресурстар/кітаптар</p>
+                
+                <a href="https://kitaphana.shakarim.kz" target="_blank" class="group">
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
+                        <i class="fas fa-book text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
+                        <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Кітапхана</h3>
+                        <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Электронды және басылым ресурстар/кітаптар</p>
                     </div>
                 </a>
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                    <i class="fas fa-calendar text-3xl text-shakarim-blue mb-4"></i>
-                    <h3 class="font-semibold font-heading mb-2">Күнтізбе</h3>
-                    <p class="text-sm text-gray-600 font-body">Оқу күнтізбесі және маңызды күндер</p>
+                <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
+                    <i class="fas fa-flask text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Күнтізбе</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Оқу күнтізбесі және маңызды күндер</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                    <i class="fas fa-briefcase text-3xl text-shakarim-blue mb-4"></i>
-                    <h3 class="font-semibold font-heading mb-2">Мансап</h3>
-                    <p class="text-sm text-gray-600 font-body">Жұмыс орындары және стажировка</p>
+                <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
+                    <i class="fas fa-flask text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Мансап</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Жұмыс орындары және стажировка</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                    <i class="fas fa-globe text-3xl text-shakarim-blue mb-4"></i>
-                    <h3 class="font-semibold font-heading mb-2">Халықаралық</h3>
-                    <p class="text-sm text-gray-600 font-body">Серіктестік және алмасу бағдарламалары</p>
+                <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
+                    <i class="fas fa-flask text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Халықаралық</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Серіктестік және алмасу бағдарламалары</p>
                 </div>
             </div>
         </div>
@@ -272,17 +269,17 @@
                             <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
                                 <div class="md:flex">
                                     <div class="md:w-1/3">
-                                        <img src="{{  asset('storage/news/' . $item->image) }} ?? 'https://via.placeholder.com/300x200/314266/ffffff?text=News' }}" alt="News" class="w-full h-48 md:h-full object-cover">
+                                        <img src="{{ Storage::url('news/' . $item->image) }}" alt="News" class="w-full h-48 md:h-full object-cover">
                                     </div>
                                     <div class="p-6 md:w-2/3">
                                         <div class="text-sm text-gray-500 mb-2">
-                                            {{ \Carbon\Carbon::createFromTimestamp($item->date)->translatedFormat('j MMMM, Y') }}
+                                            {{ \Carbon\Carbon::createFromTimestamp($item->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
                                         </div>
                                         <h3 class="text-xl font-semibold mb-3 hover:text-shakarim-blue cursor-pointer">
                                             {{ $item->{'title_' . app()->getLocale()} }}
                                         </h3>
                                         <p class="text-gray-600 mb-4">
-                                            {{ \Illuminate\Support\Str::limit(strip_tags($item->{'content_' . app()->getLocale()}), 140) }}
+                                            {{ \Illuminate\Support\Str::limit(html_entity_decode(strip_tags($item->{'content_' . app()->getLocale()})), 140) }}
                                         </p>
                                         <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}"
                                         class="text-shakarim-blue font-semibold hover:underline">
@@ -359,4 +356,5 @@
         </div>
     </section>
 
+    <script src="{{ asset('js/custom/slider.js') }}"></script>
 </x-layout>
