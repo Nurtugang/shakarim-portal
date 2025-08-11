@@ -47,33 +47,31 @@
 
                 <!-- Navigation -->
                 <nav class="hidden lg:flex items-center space-x-8">
-                @foreach($menu as $item)
-                    <div class="relative group">
-                    <a href="{{ $item->page?->getUrl() ?? '#' }}"
-                        class="flex items-center text-white hover:text-shakarim-blue font-medium font-body transition-colors duration-150">
-                        {{ $item->{'title_'.app()->getLocale()} }}
-                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                    </a>
+                    @foreach($menu as $item)
+                        <div class="relative group">
+                        <a href="{{ $item->page?->getUrl() ?? '#' }}"
+                            class="flex items-center text-white font-medium font-body transition-colors duration-150">
+                            {{ $item->{'title_'.app()->getLocale()} }}
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
 
-                    @if($item->children->isNotEmpty())
-                        <ul class="absolute top-full left-0 hidden group-hover:block
-                                bg-white shadow-lg rounded mt-0 z-10">
-                        @foreach($item->children as $child)
-                            @if($child->page)
-                            <li>
-                                <a href="{{ $child->page->getUrl() }}"
-                                class="block px-4 py-2 text-gray-700 whitespace-nowrap
-                                        hover:text-shakarim-blue hover:underline
-                                        transition-colors duration-150 ease-in-out">
-                                {{ $child->{'title_'.app()->getLocale()} }}
-                                </a>
-                            </li>
-                            @endif
-                        @endforeach
-                        </ul>
-                    @endif
-                    </div>
-                @endforeach
+                        @if(isset($item->children) && count($item->children) > 0)
+                            <ul class="absolute top-full left-0 hidden group-hover:block
+                                    bg-white shadow-lg rounded mt-0 z-10">
+                            @foreach($item->children as $child)
+                                <li>
+                                    <a href="{{ $child->getUrl() }}"
+                                    class="block px-4 py-2 text-gray-700 whitespace-nowrap
+                                            hover:text-shakarim-blue hover:underline
+                                            transition-colors duration-150 ease-in-out">
+                                    {{ $child->{'title_'.app()->getLocale()} }}
+                                    </a>
+                                </li>
+                            @endforeach
+                            </ul>
+                        @endif
+                        </div>
+                    @endforeach
                 </nav>
 
                 <!-- Mobile menu button -->
@@ -91,20 +89,19 @@
                         @click="open = !open"
                         class="w-full flex justify-between items-center py-2 text-white hover:bg-shakarim-white rounded">
                         <span>{{ $item->{'title_'.app()->getLocale()} }}</span>
-                        @if($item->children->isNotEmpty())
+                        @if(isset($item->children) && count($item->children) > 0)
                             <i :class="open ? 'fas fa-chevron-up' : 'fas fa-chevron-down'" class="ml-2 text-sm"></i>
                         @endif
                         </button>
 
-                        @if($item->children->isNotEmpty())
+                        @if(isset($item->children) && count($item->children) > 0)
                         <ul
                             x-show="open"
                             x-collapse
                             class="mt-1 space-y-1 pl-4 pb-4 text-white">
                             @foreach($item->children as $child)
                             <li>
-                                <a
-                                href="{{ $child->page?->getUrl() ?? '#' }}"
+                                <a href="{{ $child->getUrl() }}"
                                 class="block py-1 text-white transition-colors duration-150">
                                 {{ $child->{'title_'.app()->getLocale()} }}
                                 </a>
@@ -136,27 +133,27 @@
                         </a>
                     </div>
                     <p class="text-blue-200 text-sm">1934 жылдан бері сапалы білім беру және ғылыми зерттеулер саласындағы көшбасшы университет.</p>
-                </div>
-                @foreach($footer_menu as $section)
-        <div>
-            <h4 class="font-semibold mb-4">
-            {{ $section->{'title_'.app()->getLocale()} }}
-            </h4>
-            <ul class="space-y-2 text-sm">
-            @foreach($section->children as $link)
-                @if($link->page)
-                <li>
-                    <a href="{{ $link->page->getUrl() }}"
-                        class="text-blue-200 hover:text-white transition">
-                    {{ $link->{'title_'.app()->getLocale()} }}
-                    </a>
-                </li>
-                @endif
-            @endforeach
-            </ul>
-        </div>
-        @endforeach
-                <div>
+                    </div>
+                        @foreach($footer_menu as $section)
+                            <div>
+                                <h4 class="font-semibold mb-4">
+                                {{ $section->{'title_'.app()->getLocale()} }}
+                                </h4>
+                                @if(isset($section->children) && count($section->children) > 0)
+                                    <ul class="space-y-2 text-sm">
+                                    @foreach($section->children as $link)
+                                        <li>
+                                            <a href="{{ $link->getUrl() }}"
+                                                class="text-blue-200 hover:text-white transition">
+                                            {{ $link->{'title_'.app()->getLocale()} }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                        @endforeach
+                    <div>
                     <h4 class="font-semibold mb-4">Байланыс</h4>
                     <div class="space-y-2 text-sm text-blue-200">
                         <p>071412, Семей қ., Глинки көшесі, 20А</p>
@@ -182,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="border-t border-blue-600 mt-8 pt-6 text-center text-sm text-blue-200">
+            <div class="mt-8 text-center text-sm text-blue-200">
                 <p>&copy; 2025 НАО "Шәкәрім университеті". Барлық құқықтар қорғалған.</p>
             </div>
         </div>

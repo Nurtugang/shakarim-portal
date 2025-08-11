@@ -43,12 +43,5 @@ class PageFile extends Model
         return $files;
     }
 
-    public function getThumbnail(){
-        if($this->thumbnail){
-           return '/storage/'. $this->thumbnail;
-        }
-        return '/img/logo-vertical.jpeg';
-    }
-
 
 }

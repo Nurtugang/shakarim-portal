@@ -41,22 +41,27 @@ class Menu extends Model
         return $this->hasOne(Page::class);
     }
 
-    public function getUrl()
+   public function getUrl()
     {
         if ($this->is_external_link) {
             return $this->{'link_' . app()->getLocale()};
         } elseif ($this->{'link_' . app()->getLocale()}) {
-            return route($this->{'link_' . app()->getLocale()}, ['locale' => app()->getLocale()]);
-        } else {
+            $link = $this->{'link_' . app()->getLocale()};
+            
+            if (str_starts_with($link, '/') || str_starts_with($link, 'http')) {
+                return $link;
+            }
+            
+            try {
+                return route($link, ['locale' => app()->getLocale()]);
+            } catch (\Exception $e) {
+                return $link;
+            }
+        } elseif ($this->page) {
             return route('page', ['locale' => app()->getLocale(), 'page' => $this->page]);
         }
-    }
-
-    public function getBanner(){
-        if($this->banner){
-           return '/storage/'. $this->banner;
-        }
-        return '/img/building.webp';
+        
+        return '#';
     }
 
     protected static function boot()
