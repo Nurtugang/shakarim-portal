@@ -10,7 +10,7 @@ class NewsCategory extends Model
     protected $table = 'news_category';
 
     protected $fillable = [
-        'label_kz',
+        'label_kk',
         'label_ru',
         'label_en',
         'title',

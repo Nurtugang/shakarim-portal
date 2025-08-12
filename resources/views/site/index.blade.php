@@ -1,6 +1,6 @@
 <x-layout>
 
-<!-- Hero Section with Slider -->
+    <!-- Hero Section with Slider -->
     <section class="relative bg-white overflow-hidden">
         <div class="slider-container relative h-96 md:h-[500px]">
             <!-- Slide 1: QS Rankings -->
@@ -258,122 +258,114 @@
     </section>
 
     <!-- News & Events -->
-   <!-- News & Events - Исправленная версия -->
-<section class="py-16 pb-4 md:pb-16">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="grid lg:grid-cols-3 gap-8">
-            <!-- News -->
-            <div class="lg:col-span-2">
-                <h2 class="text-3xl font-bold text-shakarim-blue mb-8">Жаңалықтар</h2>
-                <div class="space-y-6">
-                    @foreach($news as $item)
-                        <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-                            <!-- Исправленная структура: flex-col на мобилке, md:flex-row на больших экранах -->
-                            <div class="flex flex-col md:flex-row">
-                                <!-- Изображение: полная ширина на мобилке, 1/3 на десктопе -->
-                                <div class="w-full md:w-1/3 relative">
-                                    <!-- Убираем aspect-square, добавляем фиксированную высоту для мобилки -->
-                                    <div class="h-48 md:h-full overflow-hidden">
+    <section class="py-8 pb-4 md:pb-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
+                <!-- News -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-2xl md:text-3xl font-bold text-shakarim-blue mb-6 md:mb-8">Жаңалықтар</h2>
+                    <div class="space-y-6">
+                        @foreach($news as $item)
+                            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                                <div class="flex flex-col md:flex-row">
+                                    <div class="w-full md:w-1/3 relative">
+                                        <div class="h-48 md:h-full overflow-hidden bg-gray-100">
+                                            <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
+                                                <img src="{{ Storage::url('news/' . $item->image) }}" alt="News" class="w-full h-full object-cover object-center">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 md:p-6 w-full md:w-2/3">
+                                        <div class="text-sm text-gray-500 mb-2">
+                                            {{ \Carbon\Carbon::createFromTimestamp($item->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
+                                        </div>
                                         <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
-                                            <img src="{{ Storage::url('news/' . $item->image) }}" 
-                                                 alt="News" 
-                                                 class="w-full h-full object-cover object-center">
+                                            <h3 class="text-lg md:text-xl font-semibold mb-3 hover:text-shakarim-blue cursor-pointer line-clamp-2">
+                                                {{ $item->{'title_' . app()->getLocale()} }}
+                                            </h3>
+                                        </a>
+                                        <p class="text-gray-600 mb-4 line-clamp-2 md:line-clamp-3 text-sm md:text-base">
+                                            {{ \Illuminate\Support\Str::limit(html_entity_decode(strip_tags($item->{'content_' . app()->getLocale()})), 140) }}
+                                        </p>
+                                        <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}"
+                                        class="text-shakarim-blue font-semibold hover:underline text-sm md:text-base">
+                                            Толығырақ оқу →
                                         </a>
                                     </div>
                                 </div>
-                                <!-- Контент: полная ширина на мобилке, 2/3 на десктопе -->
-                                <div class="p-6 w-full md:w-2/3">
-                                    <div class="text-sm text-gray-500 mb-2">
-                                        {{ \Carbon\Carbon::createFromTimestamp($item->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
-                                    </div>
-                                    <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
-                                        <!-- Убираем truncate для мобилки -->
-                                        <h3 class="text-xl font-semibold mb-3 hover:text-shakarim-blue cursor-pointer">
-                                            {{ $item->{'title_' . app()->getLocale()} }}
-                                        </h3>
-                                    </a>
-                                    <p class="text-gray-600 mb-4 line-clamp-3">
-                                        {{ \Illuminate\Support\Str::limit(html_entity_decode(strip_tags($item->{'content_' . app()->getLocale()})), 140) }}
-                                    </p>
-                                    <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}"
-                                       class="text-shakarim-blue font-semibold hover:underline">
-                                        Толығырақ оқу →
-                                    </a>
-                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                    <div class="text-center mt-8">
+                        <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" 
+                        class="bg-shakarim-blue text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+                            Барлық жаңалықтар
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-8">
+                    <!-- Events -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold text-shakarim-blue mb-6">Іс-шаралар</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-shakarim-blue pl-4">
+                                <div class="text-sm text-gray-500">10 тамыз</div>
+                                <h4 class="font-semibold">Жаңа студенттерді қабылдау</h4>
                             </div>
-                        </article>
-                    @endforeach
-                </div>
-                <div class="text-center mt-8">
-                    <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" 
-                       class="bg-shakarim-blue text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
-                        Барлық жаңалықтар
-                    </a>
-                </div>
-            </div>
-
-            <!-- Sidebar -->
-            <div class="space-y-8">
-                <!-- Events -->
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-xl font-bold text-shakarim-blue mb-6">Іс-шаралар</h3>
-                    <div class="space-y-4">
-                        <div class="border-l-4 border-shakarim-blue pl-4">
-                            <div class="text-sm text-gray-500">10 тамыз</div>
-                            <h4 class="font-semibold">Жаңа студенттерді қабылдау</h4>
-                        </div>
-                        <div class="border-l-4 border-shakarim-blue pl-4">
-                            <div class="text-sm text-gray-500">15 тамыз</div>
-                            <h4 class="font-semibold">Карьера күні</h4>
-                        </div>
-                        <div class="border-l-4 border-shakarim-blue pl-4">
-                            <div class="text-sm text-gray-500">20 тамыз</div>
-                            <h4 class="font-semibold">Ашық есік күні</h4>
+                            <div class="border-l-4 border-shakarim-blue pl-4">
+                                <div class="text-sm text-gray-500">15 тамыз</div>
+                                <h4 class="font-semibold">Карьера күні</h4>
+                            </div>
+                            <div class="border-l-4 border-shakarim-blue pl-4">
+                                <div class="text-sm text-gray-500">20 тамыз</div>
+                                <h4 class="font-semibold">Ашық есік күні</h4>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Quick Access -->
-                <div class="bg-shakarim-blue text-white rounded-xl p-6">
-                    <h3 class="text-xl font-bold mb-6">Жылдам кіру</h3>
-                    <div class="space-y-3">
-                        <a href="https://platonus.shakarim.kz" target="_blank" 
-                           class="block bg-white bg-opacity-20 p-3 rounded-lg hover:bg-opacity-30 transition">
-                            <i class="fas fa-user mr-2"></i> Platonus
-                        </a>
-                        <a href="https://hub.shakarim.kz" target="_blank" 
-                           class="block bg-white bg-opacity-20 p-3 rounded-lg hover:bg-opacity-30 transition">
-                            <i class="fas fa-envelope mr-2"></i> Shakarim Hub
-                        </a>
-                        <a href="https://mooc.semgu.kz" target="_blank" 
-                           class="block bg-white bg-opacity-20 p-3 rounded-lg hover:bg-opacity-30 transition">
-                            <i class="fas fa-book mr-2"></i> Moodle
-                        </a>
+                    <!-- Quick Access -->
+                    <div class="bg-shakarim-blue text-white rounded-xl p-6">
+                        <h3 class="text-xl font-bold mb-6">Жылдам кіру</h3>
+                        <div class="space-y-3">
+                            <a href="https://platonus.shakarim.kz" target="_blank" 
+                            class="block bg-white bg-opacity-20 p-3 rounded-lg hover:bg-opacity-30 transition">
+                                <i class="fas fa-user mr-2"></i> Platonus
+                            </a>
+                            <a href="https://hub.shakarim.kz" target="_blank" 
+                            class="block bg-white bg-opacity-20 p-3 rounded-lg hover:bg-opacity-30 transition">
+                                <i class="fas fa-envelope mr-2"></i> Shakarim Hub
+                            </a>
+                            <a href="https://mooc.semgu.kz" target="_blank" 
+                            class="block bg-white bg-opacity-20 p-3 rounded-lg hover:bg-opacity-30 transition">
+                                <i class="fas fa-book mr-2"></i> Moodle
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Contacts -->
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-xl font-bold text-shakarim-blue mb-6">Байланыс</h3>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-shakarim-blue mr-3 mt-1"></i>
-                            <span>071412, Семей қ., Глинки көшесі, 20А</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-phone text-shakarim-blue mr-3"></i>
-                            <span>+7 (7182) 67-36-69</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-envelope text-shakarim-blue mr-3"></i>
-                            <span>info@shakarim.edu.kz</span>
+                    <!-- Contacts -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold text-shakarim-blue mb-6">Байланыс</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-shakarim-blue mr-3 mt-1"></i>
+                                <span>071412, Семей қ., Глинки көшесі, 20А</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-shakarim-blue mr-3"></i>
+                                <span>+7 (7182) 67-36-69</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-shakarim-blue mr-3"></i>
+                                <span>info@shakarim.edu.kz</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <script src="{{ asset('js/custom/slider.js') }}"></script>
 </x-layout>

@@ -26,7 +26,7 @@ class NewsCategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('label_kz')
+                Forms\Components\TextInput::make('label_kk')
                     ->label('Название KZ')
                     ->required()
                     ->maxLength(50),
