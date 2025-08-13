@@ -6,8 +6,10 @@
     <title>Shakarim University - Главная</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/custom/base.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @filamentStyles
+    
 </head>
 <body class="font-body bg-white">
     <!-- Top Bar -->
@@ -19,15 +21,32 @@
                     <span class="text-gray-600"><i class="fas fa-envelope mr-1"></i> info@shakarim.edu.kz</span>
                 </div>
 
-                <div class="flex items-center space-x-2 ml-auto">
+                <div class="flex items-center space-x-2 ml-auto relative">
                     <livewire:language-selector />
-
-                    <!-- Иконка «Карта сайта» -->
+                    <button id="search-toggle" 
+                            class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
+                            title="{{ __('Search') }}">
+                        <i class="fas fa-search fa-lg"></i>
+                    </button>
+                    
                     <a href="{{ route('sitemap', ['locale' => app()->getLocale()]) }}"
                     class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
-                    title="Карта сайта">
+                    title="{{ __('Site Map') }}">
                         <i class="fas fa-sitemap fa-lg"></i>
                     </a>
+
+                    <div id="search-field" class="hidden absolute top-full right-0 mt-2 bg-white shadow-lg rounded-lg p-3 z-50 w-128">
+                        <form method="GET" action="/search" class="flex h-10">
+                            <input type="text" 
+                                name="q"
+                                placeholder="{{ __('Search...') }}" 
+                                class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none  focus:ring-shakarim-blue h-full">
+                            <button type="submit" 
+                                    class="w-10 h-full bg-shakarim-blue text-white rounded-r-lg hover:bg-blue-700 transition flex items-center justify-center">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
             </div>
@@ -38,8 +57,11 @@
     <header class="bg-shakarim-blue shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between py-4">
+                <!-- Пустой div для баланса на мобильных -->
+                <div class="lg:hidden w-10"></div>
+                
                 <!-- Logo -->
-                <div class="flex items-center">
+                <div class="flex items-center lg:flex-none flex-1 lg:flex-initial justify-center lg:justify-start">
                     <a href="{{ route('site.index', ['locale' => app()->getLocale()]) }}">
                         <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-8 md:h-10 w-auto">
                     </a>
@@ -132,7 +154,7 @@
                             <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-8 w-auto">
                         </a>
                     </div>
-                    <p class="text-blue-200 text-sm">1934 жылдан бері сапалы білім беру және ғылыми зерттеулер саласындағы көшбасшы университет.</p>
+                    <p class="text-blue-200 text-sm">{{ __('University leading in quality education and research since 1934') }}</p>
                     </div>
                         @foreach($footer_menu as $section)
                             <div>
@@ -154,9 +176,9 @@
                             </div>
                         @endforeach
                     <div>
-                    <h4 class="font-semibold mb-4">Байланыс</h4>
+                    <h4 class="font-semibold mb-4">{{ __('Contact') }}</h4>
                     <div class="space-y-2 text-sm text-blue-200">
-                        <p>071412, Семей қ., Глинки көшесі, 20А</p>
+                        <p>{{ __('071412, Semey, Glinka street, 20A') }}</p>
                         <p>+7 (7182) 67-36-69</p>
                         <p>info@shakarim.edu.kz</p>
                     </div>
@@ -180,14 +202,38 @@
                 </div>
             </div>
             <div class="mt-8 text-center text-sm text-blue-200">
-                <p>&copy; 2025 НАО "Шәкәрім университеті". Барлық құқықтар қорғалған.</p>
+                <p>&copy; 2025 {{ __('NP JSC "Shakarim University". All rights reserved.') }}</p>
             </div>
         </div>
     </footer>
-    <script src="{{ asset('js/custom/mobile.js') }}"></script>
+
     @livewireScripts
     @filamentScripts
     <!-- Scripts для каждой страницы наследующий этот шаблон -->
     @stack('scripts') 
+
+    <script src="{{ asset('js/custom/mobile.js') }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchToggle = document.getElementById('search-toggle');
+            const searchField = document.getElementById('search-field');
+            
+            searchToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                searchField.classList.toggle('hidden');
+                if (!searchField.classList.contains('hidden')) {
+                    searchField.querySelector('input').focus();
+                }
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!searchToggle.contains(event.target) && !searchField.contains(event.target)) {
+                    searchField.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>

@@ -7,9 +7,9 @@
             <div class="slide active absolute inset-0 flex">
                 <div class="w-full md:w-1/2 bg-slate-600 text-white flex items-center justify-center p-8">
                     <div class="text-center">
-                        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">QS World University Rankings</h2>
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">{{ __('QS World University Rankings') }}</h2>
                         <div class="text-5xl md:text-6xl font-heading font-bold text-yellow-400 mb-2">#1401+</div>
-                        <p class="text-lg font-body text-slate-200">Shakarim University алғаш рет жаһандық рейтингке енді</p>
+                        <p class="text-lg font-body text-slate-200">{{ __('Shakarim University first entered the global ranking') }}</p>
                     </div>
                 </div>
                 <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
@@ -19,11 +19,11 @@
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700">
                 <div class="w-full md:w-1/2 bg-shakarim-blue text-white flex items-center justify-center p-8">
                     <div class="text-center">
-                        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">Заманауи кампус</h2>
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">{{ __('Modern Campus') }}</h2>
                         <div class="text-5xl md:text-6xl font-heading font-bold text-blue-200 mb-2">12</div>
-                        <p class="text-lg font-body text-blue-100">Оқу ғимараты, 700+ мың кітап, 1300+ компьютер</p>
+                        <p class="text-lg font-body text-blue-100">{{ __('Academic buildings, 700+ thousand books, 1300+ computers') }}</p>
                         <button class="mt-6 bg-white text-shakarim-blue px-6 py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition">
-                            Толығырақ
+                            {{ __('More') }}
                         </button>
                     </div>
                 </div>
@@ -34,23 +34,23 @@
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700">
                 <div class="w-full md:w-1/2 bg-slate-700 text-white flex items-center justify-center p-8">
                     <div class="text-center">
-                        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">Білім беру бағдарламалары</h2>
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">{{ __('Educational Programs') }}</h2>
                         <div class="grid grid-cols-3 gap-4 mb-6">
                             <div>
                                 <div class="text-4xl font-heading font-bold text-yellow-400">45</div>
-                                <div class="text-sm font-body text-slate-200">Бакалавриат</div>
+                                <div class="text-sm font-body text-slate-200">{{ __('Bachelor') }}</div>
                             </div>
                             <div>
                                 <div class="text-4xl font-heading font-bold text-yellow-400">35</div>
-                                <div class="text-sm font-body text-slate-200">Магистратура</div>
+                                <div class="text-sm font-body text-slate-200">{{ __('Master') }}</div>
                             </div>
                             <div>
                                 <div class="text-4xl font-heading font-bold text-yellow-400">10</div>
-                                <div class="text-sm font-body text-slate-200">Докторантура</div>
+                                <div class="text-sm font-body text-slate-200">{{ __('Doctorate') }}</div>
                             </div>
                         </div>
                         <button class="bg-white text-slate-700 px-6 py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition">
-                            Бағдарламаларды көру
+                            {{ __('View Programs') }}
                         </button>
                     </div>
                 </div>
@@ -77,10 +77,10 @@
 
     <!-- Useful Links Section -->
     <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-7xl mx-auto px-4 overflow-hidden">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-heading font-bold text-shakarim-blue mb-4">
-                    <i class="fas fa-link mr-3"></i>Пайдалы сілтемелер
+                <h2 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-4 break-words">
+                    <i class="fas fa-link mr-3"></i>{{ __('Useful Links') }}
                 </h2>
             </div>
             
@@ -89,14 +89,14 @@
                 <div class="group bg-white rounded-xl p-6 shadow-lg transition-colors duration-300 hover:bg-shakarim-blue">
                     <div class="flex items-center mb-4">
                         <i class="fas fa-user-plus text-2xl text-gray-800 mr-3 transition-colors duration-300 group-hover:text-white"></i>
-                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">Талапкерлерге</h3>
+                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">{{ __('For Applicants') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">Оқуға түсушілер үшін</p>
+                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">{{ __('For prospective students') }}</p>
                     <div class="space-y-2 text-sm font-body">
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 1</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 2</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 3</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 4</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 1') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 2') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 3') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 4') }}</a>
                     </div>
                 </div>
 
@@ -104,13 +104,13 @@
                 <div class="group bg-white rounded-xl p-6 shadow-lg transition-colors duration-300 hover:bg-shakarim-blue">
                     <div class="flex items-center mb-4">
                         <i class="fas fa-graduation-cap text-2xl text-gray-800 mr-3 transition-colors duration-300 group-hover:text-white"></i>
-                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">Білім алушыларға</h3>
+                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">{{ __('For Students') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">Shakarim студенттері үшін</p>
+                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">{{ __('For Shakarim students') }}</p>
                     <div class="space-y-2 text-sm font-body">
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 1</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 2</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 3</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 1') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 2') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 3') }}</a>
                     </div>
                 </div>
 
@@ -118,14 +118,14 @@
                 <div class="group bg-white rounded-xl p-6 shadow-lg transition-colors duration-300 hover:bg-shakarim-blue">
                     <div class="flex items-center mb-4">
                         <i class="fas fa-users text-2xl text-gray-800 mr-3 transition-colors duration-300 group-hover:text-white"></i>
-                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">Қызметкерлерге</h3>
+                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">{{ __('For Employees') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">Біздің қызметкерлеріміз үшін</p>
+                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">{{ __('For our employees') }}</p>
                     <div class="space-y-2 text-sm font-body">
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 1</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 2</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 3</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 4</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 1') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 2') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 3') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 4') }}</a>
                     </div>
                 </div>
 
@@ -133,14 +133,14 @@
                 <div class="group bg-white rounded-xl p-6 shadow-lg transition-colors duration-300 hover:bg-shakarim-blue">
                     <div class="flex items-center mb-4">
                         <i class="fas fa-handshake text-2xl text-gray-800 mr-3 transition-colors duration-300 group-hover:text-white"></i>
-                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">Серіктестерге</h3>
+                        <h3 class="font-heading font-bold text-lg text-gray-800 transition-colors duration-300 group-hover:text-white">{{ __('For Partners') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">Біздің серіктестерімізге</p>
+                    <p class="text-gray-800 text-sm font-body mb-4 transition-colors duration-300 group-hover:text-white">{{ __('For our partners') }}</p>
                     <div class="space-y-2 text-sm font-body">
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 1</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 2</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 3</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Сілтеме 4</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 1') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 2') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 3') }}</a>
+                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 4') }}</a>
                     </div>
                 </div>
             </div>
@@ -155,24 +155,24 @@
                 <div class="bg-white rounded-xl p-8 shadow-lg">
                     <div class="flex items-center mb-6">
                         <i class="fas fa-chart-line text-3xl text-shakarim-blue mr-4"></i>
-                        <h3 class="font-heading font-bold text-2xl text-shakarim-blue">Shakarim University көрсеткіштері</h3>
+                        <h3 class="font-heading font-bold text-2xl text-shakarim-blue">{{ __('Shakarim University Indicators') }}</h3>
                     </div>
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
                         <div>
                             <div class="text-4xl font-heading font-bold text-shakarim-blue mb-2">45</div>
-                            <div class="text-sm font-body text-gray-600">Бакалавриат бағдарламалары</div>
+                            <div class="text-sm font-body text-gray-600">{{ __('Bachelor programs') }}</div>
                         </div>
                         <div>
                             <div class="text-4xl font-heading font-bold text-shakarim-blue mb-2">35</div>
-                            <div class="text-sm font-body text-gray-600">Магистратура бағдарламалары</div>
+                            <div class="text-sm font-body text-gray-600">{{ __('Master programs') }}</div>
                         </div>
                         <div>
                             <div class="text-4xl font-heading font-bold text-slate-600 mb-2">90</div>
-                            <div class="text-sm font-body text-gray-600">Жыл тәжірибе</div>
+                            <div class="text-sm font-body text-gray-600">{{ __('Years of experience') }}</div>
                         </div>
                         <div>
                             <div class="text-4xl font-heading font-bold text-slate-600 mb-2">98%</div>
-                            <div class="text-sm font-body text-gray-600">Түлектердің жұмысқа орналасуы</div>
+                            <div class="text-sm font-body text-gray-600">{{ __('Graduate employment rate') }}</div>
                         </div>
                     </div>
                 </div>
@@ -181,21 +181,21 @@
                 <div class="bg-white rounded-xl p-8 shadow-lg">
                     <div class="flex items-center mb-6">
                         <i class="fas fa-trophy text-3xl text-shakarim-blue mr-4"></i>
-                        <h3 class="font-heading font-bold text-2xl text-shakarim-blue">Shakarim University рейтингтерде</h3>
+                        <h3 class="font-heading font-bold text-2xl text-shakarim-blue">{{ __('Shakarim University in Rankings') }}</h3>
                     </div>
                     <div class="space-y-6">
                         <div class="flex flex-col items-start justify-between md:flex-row">
                             <div>
-                                <div class="text-2xl font-heading font-bold text-shakarim-blue">QS World University Rankings</div>
-                                <div class="text-sm font-body text-gray-600 mb-1"> 2026 жаңадан енген</div>
+                                <div class="text-2xl font-heading font-bold text-shakarim-blue">{{ __('QS World University Rankings') }}</div>
+                                <div class="text-sm font-body text-gray-600 mb-1">{{ __('2026 newly entered') }}</div>
                             </div>
                             <div class="text-3xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-2 md:mt-0">1401+</div>
                         </div>
 
                         <div class="flex flex-col items-start justify-between md:flex-row">
                             <div class="border-t border-gray-200 pt-4">
-                                <div class="text-2xl font-heading font-bold text-shakarim-blue mb-1">QS Central Asia Rankings</div>
-                                <div class="text-sm font-body text-gray-600 mb-2">2025 рейтингінде</div>
+                                <div class="text-2xl font-heading font-bold text-shakarim-blue mb-1">{{ __('QS Central Asia Rankings') }}</div>
+                                <div class="text-sm font-body text-gray-600 mb-2">{{ __('In 2025 ranking') }}</div>
                                 <div class="text-sm font-body text-gray-600"></div>
                             </div>
                             <div class="text-3xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-2 md:mt-4">301-350</div>
@@ -203,8 +203,8 @@
 
                         <div class="flex flex-col items-start justify-between md:flex-row">
                             <div class="border-t border-gray-200 pt-4">
-                                <div class="text-2xl font-heading font-bold text-shakarim-blue mb-1">AD Scientific Index рейтингінде</div>
-                                <div class="text-sm font-body text-gray-600">Қазақстанда</div>
+                                <div class="text-2xl font-heading font-bold text-shakarim-blue mb-1">{{ __('AD Scientific Index ranking') }}</div>
+                                <div class="text-sm font-body text-gray-600">{{ __('In Kazakhstan') }}</div>
                             </div>
                             <div class="text-3xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-2 md:mt-4">#15</div>
                         </div>
@@ -221,37 +221,37 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
                     <i class="fas fa-user-graduate text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
-                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Студенттерге</h3>
-                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Оқу процесі, стипендия, тұрғын үй</p>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">{{ __('For Students') }}</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Study process, scholarship, accommodation') }}</p>
                 </div>
                 
                 <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
                     <i class="fas fa-flask text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
-                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Ғылым</h3>
-                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Зерттеулер, жобалар, жарияланымдар</p>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">{{ __('Science') }}</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Research, projects, publications') }}</p>
                 </div>
                 
                 <a href="https://kitaphana.shakarim.kz" target="_blank" class="group">
                     <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
                         <i class="fas fa-book text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
-                        <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Кітапхана</h3>
-                        <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Электронды және басылым ресурстар/кітаптар</p>
+                        <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">{{ __('Library') }}</h3>
+                        <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Electronic and print resources/books') }}</p>
                     </div>
                 </a>
                 <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
-                    <i class="fas fa-flask text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
-                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Күнтізбе</h3>
-                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Оқу күнтізбесі және маңызды күндер</p>
+                    <i class="fas fa-calendar text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">{{ __('Calendar') }}</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Academic calendar and important dates') }}</p>
                 </div>
                 <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
-                    <i class="fas fa-flask text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
-                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Мансап</h3>
-                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Жұмыс орындары және стажировка</p>
+                    <i class="fas fa-briefcase text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">{{ __('Career') }}</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Job opportunities and internships') }}</p>
                 </div>
                 <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
-                    <i class="fas fa-flask text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
-                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">Халықаралық</h3>
-                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">Серіктестік және алмасу бағдарламалары</p>
+                    <i class="fas fa-globe text-3xl text-shakarim-blue group-hover:text-white mb-4 transition-colors"></i>
+                    <h3 class="font-semibold font-heading mb-2 text-gray-800 group-hover:text-white transition-colors">{{ __('International') }}</h3>
+                    <p class="text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Partnerships and exchange programs') }}</p>
                 </div>
             </div>
         </div>
@@ -263,7 +263,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
                 <!-- News -->
                 <div class="lg:col-span-2">
-                    <h2 class="text-2xl md:text-3xl font-bold text-shakarim-blue mb-6 md:mb-8">Жаңалықтар</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-shakarim-blue mb-6 md:mb-8">{{ __('News') }}</h2>
                     <div class="space-y-6">
                         @foreach($news as $item)
                             <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
@@ -289,7 +289,7 @@
                                         </p>
                                         <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}"
                                         class="text-shakarim-blue font-semibold hover:underline text-sm md:text-base">
-                                            Толығырақ оқу →
+                                            {{ __('Read more') }} →
                                         </a>
                                     </div>
                                 </div>
@@ -299,7 +299,7 @@
                     <div class="text-center mt-8">
                         <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" 
                         class="bg-shakarim-blue text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
-                            Барлық жаңалықтар
+                            {{ __('All news') }}
                         </a>
                     </div>
                 </div>
@@ -308,49 +308,47 @@
                 <div class="space-y-8">
                     <!-- Events -->
                     <div class="bg-white rounded-xl shadow-md p-6">
-                        <h3 class="text-xl font-bold text-shakarim-blue mb-6">Іс-шаралар</h3>
+                        <h3 class="text-xl font-bold text-shakarim-blue mb-6">{{ __('Events') }}</h3>
                         <div class="space-y-4">
                             <div class="border-l-4 border-shakarim-blue pl-4">
-                                <div class="text-sm text-gray-500">10 тамыз</div>
-                                <h4 class="font-semibold">Жаңа студенттерді қабылдау</h4>
+                                <div class="text-sm text-gray-500">{{ __('August 10') }}</div>
+                                <h4 class="font-semibold">{{ __('New student enrollment') }}</h4>
                             </div>
                             <div class="border-l-4 border-shakarim-blue pl-4">
-                                <div class="text-sm text-gray-500">15 тамыз</div>
-                                <h4 class="font-semibold">Карьера күні</h4>
+                                <div class="text-sm text-gray-500">{{ __('August 15') }}</div>
+                                <h4 class="font-semibold">{{ __('Career Day') }}</h4>
                             </div>
                             <div class="border-l-4 border-shakarim-blue pl-4">
-                                <div class="text-sm text-gray-500">20 тамыз</div>
-                                <h4 class="font-semibold">Ашық есік күні</h4>
+                                <div class="text-sm text-gray-500">{{ __('August 20') }}</div>
+                                <h4 class="font-semibold">{{ __('Open House Day') }}</h4>
                             </div>
                         </div>
                     </div>
-
                     <!-- Quick Access -->
                     <div class="bg-shakarim-blue text-white rounded-xl p-6">
-                        <h3 class="text-xl font-bold mb-6">Жылдам кіру</h3>
+                        <h3 class="text-xl font-bold mb-6">{{ __('Quick Access') }}</h3>
                         <div class="space-y-3">
-                            <a href="https://platonus.shakarim.kz" target="_blank" 
+                            <a href="https://platonus.shakarim.kz" target="_blank"
                             class="block bg-white bg-opacity-20 p-3 rounded-lg hover:bg-opacity-30 transition">
                                 <i class="fas fa-user mr-2"></i> Platonus
                             </a>
-                            <a href="https://hub.shakarim.kz" target="_blank" 
+                            <a href="https://hub.shakarim.kz" target="_blank"
                             class="block bg-white bg-opacity-20 p-3 rounded-lg hover:bg-opacity-30 transition">
                                 <i class="fas fa-envelope mr-2"></i> Shakarim Hub
                             </a>
-                            <a href="https://mooc.semgu.kz" target="_blank" 
+                            <a href="https://mooc.semgu.kz" target="_blank"
                             class="block bg-white bg-opacity-20 p-3 rounded-lg hover:bg-opacity-30 transition">
                                 <i class="fas fa-book mr-2"></i> Moodle
                             </a>
                         </div>
                     </div>
-
                     <!-- Contacts -->
                     <div class="bg-white rounded-xl shadow-md p-6">
-                        <h3 class="text-xl font-bold text-shakarim-blue mb-6">Байланыс</h3>
+                        <h3 class="text-xl font-bold text-shakarim-blue mb-6">{{ __('Contact') }}</h3>
                         <div class="space-y-3 text-sm">
                             <div class="flex items-start">
                                 <i class="fas fa-map-marker-alt text-shakarim-blue mr-3 mt-1"></i>
-                                <span>071412, Семей қ., Глинки көшесі, 20А</span>
+                                <span>{{ __('071412, Semey, Glinka street, 20A') }}</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-phone text-shakarim-blue mr-3"></i>

@@ -53,7 +53,7 @@
 
       {{-- Футерные ссылки — тоже в колонках --}}
       <section>
-        <h2 class="text-2xl font-medium mb-4">Ссылки в футере</h2>
+        <h2 class="text-2xl font-medium mb-4">Нижнее меню</h2>
         <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           @foreach($footer_menu as $section)
             @php $locale = app()->getLocale(); @endphp
