@@ -36,7 +36,7 @@
                     </a>
 
                     <div id="search-field" class="hidden absolute top-full right-0 mt-2 bg-white shadow-lg rounded-lg p-3 z-50 w-128">
-                        <form method="GET" action="/search" class="flex h-10">
+                        <form method="GET" action="{{ route('search', ['locale' => app()->getLocale()]) }}" class="flex h-10">
                             <input type="text" 
                                 name="q"
                                 placeholder="{{ __('Search...') }}" 

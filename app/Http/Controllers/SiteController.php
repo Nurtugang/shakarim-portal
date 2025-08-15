@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke()
     {
         $news = \App\Models\News::orderBy('created_at', 'desc')
@@ -21,11 +18,18 @@ class SiteController extends Controller
             ->where('active', true)
             ->limit(3)
             ->get();
+        
+        // Фильтруем объявления по текущей локали
+        $announcements = \App\Models\Announcement::where('status', 1)
+            ->where('language', app()->getLocale())
+            ->orderBy('date', 'desc')
+            ->limit(3)
+            ->get();
 
         $welcome = TextWidget::query()->where('key','welcome')->first();
         $card = TextWidget::query()->where('key','card')->first();
         $schools = TextWidget::query()->where('key','schools')->first();
 
-        return view('site.index', compact('news','events','welcome','card','schools'));
+        return view('site.index', compact('news','events','welcome','card','schools', 'announcements'));
     }
 }

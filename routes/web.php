@@ -1,17 +1,30 @@
 <?php
 
+use App\Http\Middleware\Localization;
+
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\Science\SciencePurchaseController;
-use App\Http\Controllers\Science\SciencePurchasesOfferController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\SearchController;
+
+
+use App\Http\Controllers\Science\SciencePurchaseController;
+use App\Http\Controllers\Science\SciencePurchasesOfferController;
+use App\Http\Controllers\Science\ScienceCentresController;
+use App\Http\Controllers\Science\ScienceJournalsController;
+use App\Http\Controllers\Science\BestTeacherController;
+use App\Http\Controllers\Science\AspirantController;
+use App\Http\Controllers\Science\ScientificProjectsController;
+
+use App\Http\Controllers\Academy\AccreditationController;
+use App\Http\Controllers\Academy\AcademySchoolsController;
+
+use App\Http\Controllers\AnnouncementController;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\Localization;
-use App\Models\Science\SciencePurchase;
-use App\Models\Science\SciencePurchasesIrn;
 use Illuminate\Http\Request;
 
 Route::post('language', function (Request $request) {
@@ -40,12 +53,30 @@ Route::group([
     ->name('site.index');
    Route::get('/page/{page:slug?}',[PageController::class,'index'])->name('page');
    Route::get('/list/{pageList:slug}',[PageController::class,'listItem'])->name('list.item');
+   
    Route::get('/news',[NewsController::class,'index'])->name('news');
    Route::get('/news/{news:alias}',[NewsController::class,'show'])->name('news.show');
+   
    Route::get('/structure', [StructureController::class,'index'])->name('structure.index');
    Route::get('/structure/{structure:slug}', [StructureController::class,'show'])->name('structure.show');
-   Route::get('/science/purchases',[SciencePurchaseController::class,'index'])->name('science.purchases');
+   
    Route::get('/sitemap', [SitemapController::class, 'index'])->name('sitemap');
+   Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+   Route::get('/science/purchases', [SciencePurchaseController::class,'index'])->name('science.purchases');
+   Route::get('/science/centres', [ScienceCentresController::class, 'index'])->name('science.centres');
+   Route::get('/science/journals', [ScienceJournalsController::class, 'index'])->name('science.journals');
+   Route::get('/science/best-teachers', [BestTeacherController::class, 'index'])->name('science.best-teachers');
+   Route::get('/science/aspirants', [AspirantController::class, 'index'])->name('science.aspirants');
+   Route::get('/science/projects', [ScientificProjectsController::class, 'index'])->name('science.projects.index');
+   Route::get('/science/projects/{id}', [ScientificProjectsController::class, 'show'])->name('science.projects.show');
+   
+   Route::get('/accreditation', [AccreditationController::class, 'index'])->name('academy.accreditation.index');
+   Route::get('/academy/schools', [AcademySchoolsController::class, 'index'])->name('academy.schools');
+
+   Route::get('/announcements', [AnnouncementController::class, 'index'])->name('announcements.index');
+   Route::get('/announcements/{id}', [AnnouncementController::class, 'show'])->name('announcements.show');
+
    
 });
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');
@@ -63,22 +94,3 @@ Route::get('/pdf-viewer/{filename}', function ($filename) {
 });
 
 Route::get('/events', EventController::class);
-
-// Route::get('/test', function () {
-
-//     $irn = SciencePurchasesIrn::all();
-
-// $purchases = SciencePurchase::all();
-
-// foreach($purchases as $purchase){
-//     foreach($irn as $item){
-//         if($purchase->irn == $item->name){
-//             $purchase->irn_id = $item->id;
-//             $purchase->save();
-//         }
-//     }
-// }
-// echo 'ok';
- 
-// });
-

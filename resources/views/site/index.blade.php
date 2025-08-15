@@ -12,7 +12,7 @@
                         <p class="text-lg font-body text-slate-200">{{ __('Shakarim University first entered the global ranking') }}</p>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/banner/graduates.webp');"></div>
             </div>
 
             <!-- Slide 2: Modern Campus -->
@@ -27,7 +27,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/banner/university_building.webp');"></div>
             </div>
 
             <!-- Slide 3: Academic Programs -->
@@ -54,7 +54,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('https://shakarim.edu.kz/upload/photo-gallery/a33541f71ad5c2cd6c4a1c67f01677a2.jpeg');">
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/banner/general_photo.webp');">
                 </div>
             </div>
 
@@ -309,19 +309,15 @@
                     <!-- Events -->
                     <div class="bg-white rounded-xl shadow-md p-6">
                         <h3 class="text-xl font-bold text-shakarim-blue mb-6">{{ __('Events') }}</h3>
-                        <div class="space-y-4">
-                            <div class="border-l-4 border-shakarim-blue pl-4">
-                                <div class="text-sm text-gray-500">{{ __('August 10') }}</div>
-                                <h4 class="font-semibold">{{ __('New student enrollment') }}</h4>
-                            </div>
-                            <div class="border-l-4 border-shakarim-blue pl-4">
-                                <div class="text-sm text-gray-500">{{ __('August 15') }}</div>
-                                <h4 class="font-semibold">{{ __('Career Day') }}</h4>
-                            </div>
-                            <div class="border-l-4 border-shakarim-blue pl-4">
-                                <div class="text-sm text-gray-500">{{ __('August 20') }}</div>
-                                <h4 class="font-semibold">{{ __('Open House Day') }}</h4>
-                            </div>
+                        <div class="space-y-4 grid grid-cols-1 gap-4">
+                            @foreach($announcements as $item)
+                                <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}">
+                                    <div class="border-l-4 border-shakarim-blue pl-4">
+                                        <div class="text-sm text-gray-500">{{ \Carbon\Carbon::createFromTimestamp($item->date)->locale(app()->getLocale())->isoFormat('D MMMM') }}</div>
+                                        <h4 class="font-semibold">{{ $item->{'name'} }}</h4>
+                                    </div>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                     <!-- Quick Access -->

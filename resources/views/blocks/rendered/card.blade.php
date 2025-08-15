@@ -12,6 +12,7 @@
                 </a>
                 @endif
                 <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">
-                    <i class="fas fa-phone"></i> Приемная комиссия: +7 (771) 365-46-25
+                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
+                    <i class="fas fa-phone"></i> {{ __('Приемная комиссия: +7 (771) 365-46-25')}}
                 </p>
             </div>

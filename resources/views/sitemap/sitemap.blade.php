@@ -3,9 +3,9 @@
     <section class="bg-gray-100 py-3 border-b">
         <div class="max-w-7xl mx-auto px-4">
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
-                <a href="{{ route('site.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">Главная страница</a>
+                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{__('Главная страница')}}</a>
                 <span>&#8250;</span>
-                <span class="text-shakarim-blue font-semibold">Карта сайта</span>
+                <span class="text-shakarim-blue font-semibold">{{ __('Карта сайта') }}</span>
             </nav>
         </div>
     </section>

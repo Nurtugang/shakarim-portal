@@ -3,9 +3,9 @@
     <section class="bg-gray-100 py-3 border-b">
         <div class="max-w-7xl mx-auto px-4">
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
-                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">Главная страница</a>
+                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
                 <span>&#8250;</span>
-                <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">Жаңалықтар</a>
+                <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __('Жаңалықтар')}}</a>
                 @if($selectedCategory)
                     <span>&#8250;</span>
                     <span class="text-shakarim-blue font-semibold">{{ $selectedCategory->{'label_' . app()->getLocale()} }}</span>
@@ -38,7 +38,7 @@
                                             {{ $selectedTag->name }}
                                         @endif
                                     </h1>
-                                    <p class="text-gray-600 mt-2">Найдено новостей: {{ $news->total() }}</p>
+                                    <p class="text-gray-600 mt-2">{{ __('Найдено новостей:')}}' {{ $news->total() }}</p>
                                 </div>
                                 <div class="flex space-x-2">
                                     @if($selectedTag)
@@ -58,12 +58,12 @@
                                     <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" 
                                        class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition duration-200">
                                         <i class="fas fa-refresh mr-2"></i>
-                                        Все новости
+                                        {{ __('Все новости')}}
                                     </a>
                                 </div>
                             </div>
                         @else
-                            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">Жаңалықтар</h1>
+                            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">{{ __('Жаңалықтар')}}</h1>
                         @endif
                     </div>
 

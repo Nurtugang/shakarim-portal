@@ -1,158 +1,198 @@
 <x-layout metaTitle="Закупки">
-  @push('styles')
-  <link rel="stylesheet" href="{{ asset("css/content.css") }}">
-  <link rel="stylesheet" href="{{ asset("css/staff.css") }}">
-  @endpush
-<div class="breadcrumb-container">
-    <div class="breadcrumb">
-        <a href="/" title="{{ __("Home page") }}"><i class="fas fa-home"></i></a>
-        <span class="breadcrumb-separator">〉</span>
-        <span class="current">Ғылыми сатып алулар</span>
-    </div>
-</div>
-  <div class="content-container" x-data="{ isModalOpen: false, selectedPurchaseId: null }">
-    @if (session('success'))
-    <div class="p-4 my-4 text-sm text-green-700 bg-green-100 border border-green-400 rounded-lg" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
-    <div>
-      <div class="main-content">
-        <div class="tiptap-content">
-          <div class="w-full divide-y divide-outline overflow-hidden rounded border border-primary border-outline bg-surface-alt/40 text-on-surface dark:divide-outline-dark dark:border-outline-dark dark:bg-surface-dark-alt/50 dark:text-on-surface-dark mb-2">
-            @foreach ($data as $item)
-            <div x-data="{ isExpanded: false }">
-              <button id="controlsAccordionItemOne" type="button" class="flex w-full items-center cursor-pointer justify-between gap-4 bg-surface-alt p-4 text-left underline-offset-2 hover:bg-surface-alt/75 focus-visible:bg-surface-alt/75 focus-visible:underline focus-visible:outline-hidden dark:bg-surface-dark-alt dark:hover:bg-surface-dark-alt/75 dark:focus-visible:bg-surface-dark-alt/75" aria-controls="accordionItemOne" x-on:click="isExpanded = ! isExpanded" x-bind:class="isExpanded ? 'text-on-surface-strong dark:text-on-surface-dark-strong font-bold'  : 'text-on-surface dark:text-on-surface-dark font-medium'" x-bind:aria-expanded="isExpanded ? 'true' : 'false'">
-                {{ $item['name'] }}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" x-bind:class="isExpanded  ?  'rotate-180'  :  ''">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
-              </button>
-              <div x-cloak x-show="isExpanded" id="accordionItemOne" role="region" aria-labelledby="controlsAccordionItemOne" x-collapse>
-                <div class="p-4 text-sm sm:text-base text-pretty">
-                  <div
-                    class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md bg-clip-border">
-                    <table class="w-full text-left table-auto min-w-max">
-                      <thead>
-                        <tr>
-                          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                              ЖСН
-                            </p>
-                          </th>
-                          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                              Атауы
-                            </p>
-                          </th>
-                          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                              Сипаттамалары
-                            </p>
-                          </th>
-                          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                              Жабдықты сатып алудың негіздемесі
-                            </p>
-                          </th>
-                          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                              Жоспарланған құны
-                            </p>
-                          </th>
-                          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                              Сатып алу мерзімдер
-                            </p>
-                          </th>
-                          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                              Төлем шарттары
-                            </p>
-                          </th>
-                          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                              Мәртебесі
-                            </p>
-                          </th>
-                          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                              Коммерциялық ұсыныс енгізу
-                            </p>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($item->sciencePurchases as $purchase)
-                        <tr>
-                          <td class="p-4 border-b border-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                              {{ $item->name }}
-                            </p>
-                          </td>
-                          <td class="p-4 border-b border-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                              {{ $purchase->{'name_'.app()->getLocale()} }}
-                            </p>
-                          </td>
-                          <td class="p-4 border-b border-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                              {{ $purchase->{'description_'.app()->getLocale()} }}
-                            </p>
-                          </td>
-                          <td class="p-4 border-b border-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                              {{ $purchase->{'justification_'.app()->getLocale()} }}
-</p>
-                          </td>
-                          <td class="p-4 border-b border-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                              {{ $purchase->price }}
-</p>
-                          </td>
-                          <td class="p-4 border-b border-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                              {{ $purchase->{'deadlines_'.app()->getLocale()} }}
-</p>
-                          </td>
-                          <td class="p-4 border-b border-blue-gray-50">
-                            <p class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                              {{ $purchase->payment_terms }}
-                            </p>
-                          </td>
-                          <td class="p-4 border-b border-blue-gray-50">
-                           {{ $purchase->status->label() }}
-                          </td>
-                          <td class="p-4 border-b border-blue-gray-50">
-                            <button @click="isModalOpen = true; selectedPurchaseId = {{ $purchase->id }}" class="bg-gray-500 text-white rounded-md p-2">Жіберу</button>
-                          </td>
-                        </tr>
-                        @endforeach
 
-                      </tbody>
-                    </table>
-                  </div>
+  <!-- Breadcrumb Section -->
+  <section class="bg-gray-100 py-3 border-b">
+    <div class="max-w-7xl mx-auto px-4">
+      <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
+        <a href="{{ url('/') }}" class="hover:text-shakarim-blue transition-colors">{{ __('Главная страница') }}</a>
+        <span>&#8250;</span>
+        <a href="/{{ app()->getLocale() }}/science" class="hover:text-shakarim-blue transition-colors">{{ __('Science') }}</a>
+        <span>&#8250;</span>
+        <span class="text-shakarim-blue font-semibold">{{ __('Science Procurement') }}</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="bg-white py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Page Header -->
+      <div class="mb-8 mt-2">
+        <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-2">
+          {{ __('Science Procurement') }}
+        </h1>
+        <p class="text-gray-600 mt-2">{{ __('Ғылыми жабдықтар мен қызметтердің сатып алу жоспарлары') }}</p>
+      </div>
+      
+      <!-- Main Content -->
+      <div class="space-y-4 mb-12">
+        @if($data->count() > 0)
+          @foreach ($data as $item)
+            <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+              <!-- Category Header -->
+              <button 
+                class="w-full px-6 py-4 bg-gray-50 hover:bg-gray-100 text-left font-medium text-shakarim-blue flex items-center justify-between transition-colors duration-200"
+                type="button" 
+                onclick="toggleCollapse('category-{{ $item->id }}')">
+                <span class="text-lg font-semibold">{{ $item['name'] }}</span>
+                <i class="fas fa-chevron-down transform transition-transform duration-200" id="icon-category-{{ $item->id }}"></i>
+              </button>
+
+              <!-- Category Content -->
+              <div id="category-{{ $item->id }}" class="hidden">
+                <div class="p-6">
+                  @if($item->sciencePurchases->count() > 0)
+                    <!-- Mobile Warning -->
+                    <div class="md:hidden mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                      <p class="text-sm text-blue-800">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Для удобного просмотра таблицы поверните устройство или прокрутите горизонтально
+                      </p>
+                    </div>
+                    
+                    <!-- Table Container with Horizontal Scroll -->
+                    <div class="overflow-x-auto shadow-sm border border-gray-200 rounded-lg">
+                      <table class="w-full min-w-max bg-white border-collapse">
+                        <thead class="bg-shakarim-blue text-white">
+                          <tr>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              ЖСН
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              Атауы
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              Сипаттамалары
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              Жабдықты сатып алудың негіздемесі
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              Жоспарланған құны
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              Сатып алу мерзімдер
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              Төлем шарттары
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              Мәртебесі
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider break-words max-w-[200px]">
+                              Коммерциялық ұсыныс енгізу
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                          @foreach ($item->sciencePurchases as $index => $purchase)
+                            <tr class="{{ $index % 2 === 0 ? 'bg-white' : 'bg-gray-50' }} hover:bg-blue-50 transition-colors duration-200">
+                              <td class="px-4 py-4 text-sm text-gray-900 font-medium border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
+                                {{ $item->name }}
+                              </td>
+                              <td class="px-4 py-4 text-sm text-gray-900 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
+                                {{ $purchase->{'name_'.app()->getLocale()} }}
+                              </td>
+                              <td class="px-4 py-4 text-sm text-gray-700 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
+                                {{ $purchase->{'description_'.app()->getLocale()} }}
+                              </td>
+                              <td class="px-4 py-4 text-sm text-gray-700 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
+                                {{ $purchase->{'justification_'.app()->getLocale()} }}
+                              </td>
+                              <td class="px-4 py-4 text-sm font-semibold text-gray-900 border-r border-gray-200 last:border-r-0">
+                                <span class="inline-flex items-center px-2 py-1 rounded-md bg-green-100 text-green-800 whitespace-nowrap">
+                                  {{ $purchase->price }}
+                                </span>
+                              </td>
+                              <td class="px-4 py-4 text-sm text-gray-700 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
+                                {{ $purchase->{'deadlines_'.app()->getLocale()} }}
+                              </td>
+                              <td class="px-4 py-4 text-sm text-gray-700 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
+                                {{ $purchase->payment_terms }}
+                              </td>
+                              <td class="px-4 py-4 text-sm border-r border-gray-200 last:border-r-0">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 whitespace-nowrap">
+                                  {{ $purchase->status->label() }}
+                                </span>
+                              </td>
+                              <td class="px-4 py-4 text-sm">
+                                <button 
+                                  @click="isModalOpen = true; selectedPurchaseId = {{ $purchase->id }}" 
+                                  class="inline-flex items-center px-3 py-1 text-sm bg-shakarim-blue text-white rounded hover:bg-shakarim-dark transition-colors duration-200 whitespace-nowrap"
+                                >
+                                  <i class="fas fa-paper-plane mr-1"></i>
+                                  Жіберу
+                                </button>
+                              </td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    @if($item->sciencePurchases->count() > 0)
+                      <div class="mt-4 pt-4 border-t border-gray-200">
+                        <span class="text-sm text-gray-500">
+                          <i class="fas fa-info-circle mr-1"></i>
+                          Барлығы: {{ $item->sciencePurchases->count() }} жоспар
+                        </span>
+                      </div>
+                    @endif
+                  @else
+                    <!-- No Data Message -->
+                    <div class="text-center py-12">
+                      <div class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-inbox text-gray-400 text-3xl"></i>
+                      </div>
+                      <h3 class="text-lg font-medium text-gray-900 mb-2">Мәліметтер жоқ</h3>
+                      <p class="text-gray-500">Бұл санат үшін ешқандай сатып алу жоспарлары жоқ</p>
+                    </div>
+                  @endif
                 </div>
               </div>
             </div>
-            @endforeach
-
+          @endforeach
+        @else
+          <!-- No Categories Message -->
+          <div class="text-center py-12">
+            <div class="max-w-md mx-auto">
+              <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+              <h3 class="text-xl font-semibold text-gray-600 mb-2">
+                {{ __('Санаттар табылмады') }}
+              </h3>
+              <p class="text-gray-500 mb-6">
+                {{ __('Қазіргі уақытта ешқандай ғылыми сатып алу санаттары қол жетімді емес. Кейінірек қайта тексеріңіз.') }}
+              </p>
+            </div>
           </div>
-        </div>
+        @endif
       </div>
-          
     </div>
-<x-modal
-        x-show="isModalOpen"
-        x-on:keydown.escape.window="isModalOpen = false"
-        x-cloak
-        style="display: none;"
-    ></x-modal>
+  </section>
 
-
-  </div>
+  <!-- Modal Component -->
+  <x-modal
+    x-show="isModalOpen"
+    x-on:keydown.escape.window="isModalOpen = false"
+    x-cloak
+    style="display: none;"
+  ></x-modal>
 
   @push('scripts')
   <script src="/js/content.js"></script>
+  <script>
+    function toggleCollapse(elementId) {
+      const element = document.getElementById(elementId);
+      const icon = document.getElementById('icon-' + elementId);
+      
+      if (element.classList.contains('hidden')) {
+        element.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        element.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
   @endpush
 </x-layout>

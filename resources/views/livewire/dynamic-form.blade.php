@@ -4,7 +4,7 @@
     <form wire:submit="submit">
         {{ $this->form }}
 
-        <button type="submit" class="bg-primary text-white px-4 py-2 rounded my-4">Отправить</button>
+        <button type="submit" class="bg-primary text-white px-4 py-2 rounded my-4">{{ __('Отправить')}}</button>
     </form>
 
     @if (session('success'))
