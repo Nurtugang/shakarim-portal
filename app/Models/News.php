@@ -57,4 +57,12 @@ class News extends Model
     {
         return $query->where('status', 1);
     }
+
+    /**
+     * Комментарии к новости
+     */
+    public function comments()
+    {
+        return $this->hasMany(NewsComment::class)->where('is_approved', true)->latest();
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\News;
 use App\Models\NewsTag;
 use App\Models\NewsCategory;
 use App\Models\PageList;
+use App\Models\NewsComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -74,7 +75,37 @@ class NewsController extends Controller
         ->select('id', 'alias', 'title_kk', 'title_ru', 'title_en', 'date')
         ->get();
 
+        $comments = NewsComment::where('news_id', $news->id)
+            ->where('is_approved', true)
+            ->latest()
+            ->get();
 
-        return view('news.show', compact('news', 'popularTags', 'latestNews'));
+        return view('news.show', compact('news', 'popularTags', 'latestNews', 'comments'));
+    }
+
+    public function storeComment(Request $request, string $locale, News $news)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'comment' => 'required|string|max:1000',
+            'g-recaptcha-response' => 'required|captcha'
+        ], [
+            'name.required' => 'Имя обязательно для заполнения',
+            'email.required' => 'Email обязателен для заполнения',
+            'email.email' => 'Некорректный email',
+            'comment.required' => 'Комментарий обязателен для заполнения',
+            'comment.max' => 'Комментарий не должен превышать 1000 символов',
+            'g-recaptcha-response.required' => 'Пройдите проверку капчи'
+        ]);
+
+        NewsComment::create([
+            'news_id' => $news->id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'comment' => $request->comment
+        ]);
+
+        return back()->with('success', 'Ваш комментарий отправлен на модерацию!');
     }
 }

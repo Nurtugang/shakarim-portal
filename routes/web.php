@@ -9,7 +9,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SearchController;
-
+use App\Http\Controllers\MenuController;
 
 use App\Http\Controllers\Science\SciencePurchaseController;
 use App\Http\Controllers\Science\SciencePurchasesOfferController;
@@ -23,6 +23,10 @@ use App\Http\Controllers\Academy\AccreditationController;
 use App\Http\Controllers\Academy\AcademySchoolsController;
 
 use App\Http\Controllers\AnnouncementController;
+
+use App\Http\Controllers\RectorBlogController;
+use App\Http\Controllers\RectorQuestionController;
+
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -56,6 +60,7 @@ Route::group([
    
    Route::get('/news',[NewsController::class,'index'])->name('news');
    Route::get('/news/{news:alias}',[NewsController::class,'show'])->name('news.show');
+   Route::post('/news/{news:alias}/comment', [NewsController::class, 'storeComment'])->name('news.comment.store');
    
    Route::get('/structure', [StructureController::class,'index'])->name('structure.index');
    Route::get('/structure/{structure:slug}', [StructureController::class,'show'])->name('structure.show');
@@ -77,9 +82,14 @@ Route::group([
    Route::get('/announcements', [AnnouncementController::class, 'index'])->name('announcements.index');
    Route::get('/announcements/{id}', [AnnouncementController::class, 'show'])->name('announcements.show');
 
+   Route::get('/menu/{menu:id}', [MenuController::class, 'show'])->name('menu.show');
+
+   Route::get('/rector-blog', [RectorBlogController::class, 'index'])->name('rector.blog');
+   Route::get('/rector-blog/{post:slug}', [RectorBlogController::class, 'show'])->name('rector.post');
    
 });
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');
+Route::post('/rector-question', [RectorBlogController::class, 'storeQuestion'])->name('rector.question.store');
 
 Route::get('/pdf-viewer/{filename}', function ($filename) {
     $pdfPath = storage_path("app/public/pdfs/{$filename}");

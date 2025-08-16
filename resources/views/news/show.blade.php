@@ -5,9 +5,9 @@
     <section class="bg-gray-100 py-3 border-b">
         <div class="max-w-7xl mx-auto px-4">
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
-                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">Главная страница</a>
+                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница')}}</a>
                 <span>&#8250;</span>
-                <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">Жаңалықтар</a>
+                <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __('Жаңалықтар')}}</a>
                 <span>&#8250;</span>
                 <span class="text-shakarim-blue font-semibold">
                     {{ \Illuminate\Support\Str::limit(strip_tags($news->{'title_' . app()->getLocale()}), 40) }}
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="text-left md:text-right">
                                     <span class="text-gray-600 text-sm font-medium">От:</span>
-                                    <span class="text-shakarim-blue font-semibold ml-1">Медиа-центр</span>
+                                    <span class="text-shakarim-blue font-semibold ml-1">{{ __('Медиа-центр')}}</span>
                                 </div>
                             </div>
                             <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-shakarim-blue leading-tight">
@@ -72,7 +72,7 @@
                                 <div class="flex justify-center md:justify-end">
                                     <div class="relative">
                                         <button onclick="toggleShareMenu()" class="w-full md:w-auto px-3 md:px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-shakarim-dark transition duration-200 text-sm flex items-center justify-center">
-                                            <i class="fas fa-share mr-1"></i>Поделиться
+                                            <i class="fas fa-share mr-1"></i>{{ __('Поделиться')}}
                                             <i class="fas fa-chevron-down ml-1 text-xs"></i>
                                         </button>
                                         
@@ -106,6 +106,86 @@
                             </div>
                         </div>
                     </article>
+                    <!-- Comments Section -->
+                    <div class="mt-6">
+                        <div class="bg-white rounded-xl shadow-lg p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-bold text-shakarim-blue mb-4 flex items-center">
+                                <i class="fas fa-comments mr-2"></i>
+                                {{ __('Комментарии') }} ({{ $comments->count() }})
+                            </h3>
+
+                            <!-- Comments List -->
+                            @if($comments->count() > 0)
+                                <div class="space-y-4 mb-6">
+                                    @foreach($comments as $comment)
+                                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-shakarim-blue">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <div class="font-semibold text-gray-800">{{ $comment->name }}</div>
+                                                <div class="text-xs text-gray-500">{{ $comment->getFormattedDate() }}</div>
+                                            </div>
+                                            <p class="text-gray-700 text-sm md:text-base">{{ $comment->comment }}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            <!-- Comment Form -->
+                            <div class="border-t pt-6">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-4">{{ __('Оставить комментарий') }}</h4>
+                                
+                                @if(session('success'))
+                                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                <form action="{{ route('news.comment.store', ['locale' => app()->getLocale(), 'news' => $news]) }}" method="POST">
+                                    @csrf
+                                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Имя') }} *</label>
+                                            <input type="text" name="name" value="{{ old('name') }}" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-shakarim-blue text-sm">
+                                            @error('name')
+                                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Email') }} *</label>
+                                            <input type="email" name="email" value="{{ old('email') }}" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-shakarim-blue text-sm">
+                                            @error('email')
+                                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Комментарий') }} *</label>
+                                        <textarea name="comment" rows="4" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-shakarim-blue text-sm">{{ old('comment') }}</textarea>
+                                        @error('comment')
+                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-4 flex justify-center">
+                                        {!! NoCaptcha::renderJs() !!}
+                                        {!! NoCaptcha::display(['data-size' => 'compact']) !!}
+                                        @error('g-recaptcha-response')
+                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+
+                                    <button type="submit" 
+                                            class="bg-shakarim-blue text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
+                                        {{ __('Отправить комментарий') }}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Sidebar - Latest News -->
@@ -113,7 +193,7 @@
                     <div class="bg-white rounded-xl shadow-lg p-3 md:p-6 lg:sticky lg:top-24">
                         <h2 class="text-base md:text-lg lg:text-xl font-heading font-bold text-shakarim-blue mb-3 md:mb-6 flex items-center">
                             <i class="fas fa-rss mr-2 text-orange-500"></i>
-                            Лента новостей
+                            {{ __('Лента новостей')}}
                         </h2>
 
                         <!-- Latest News List -->
@@ -136,7 +216,7 @@
 
                             @if($latestNews->count() == 0)
                                 <div class="text-center text-gray-500 py-4">
-                                    <p class="text-sm">Нет других новостей</p>
+                                    <p class="text-sm">{{ __('Нет других новостей')}}</p>
                                 </div>
                             @endif
                             
@@ -145,7 +225,7 @@
                         <!-- All News Button -->
                         <div class="text-center">
                             <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" class="inline-flex items-center w-full md:w-auto px-3 md:px-6 py-2 md:py-3 bg-gradient-to-r from-shakarim-blue to-shakarim-light text-white font-medium rounded-lg hover:from-shakarim-dark hover:to-shakarim-blue transition duration-200 shadow-lg hover:shadow-xl text-sm md:text-base">
-                                <span>Другие новости</span>
+                                <span>{{ __('Другие новости')}}</span>
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                         </div>
@@ -158,7 +238,7 @@
                 <div class="bg-white rounded-xl shadow-lg p-3 md:p-6">
                     <h3 class="text-base md:text-lg font-heading font-semibold text-shakarim-blue mb-3 md:mb-4 flex items-center">
                         <i class="fas fa-tags mr-2 text-gray-500"></i>
-                        Популярные теги
+                        {{ __('Популярные теги')}}
                     </h3>
                     <div class="flex flex-wrap gap-1.5 md:gap-3">
                         @foreach($popularTags as $loop => $tag)

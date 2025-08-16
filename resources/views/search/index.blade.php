@@ -3,9 +3,9 @@
     <section class="bg-gray-100 py-3 border-b">
         <div class="max-w-7xl mx-auto px-4">
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
-                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">Главная страница</a>
+                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница')}}</a>
                 <span>&#8250;</span>
-                <span class="text-shakarim-blue font-semibold">Поиск</span>
+                <span class="text-shakarim-blue font-semibold">{{ __('Поиск')}}</span>
             </nav>
         </div>
     </section>
@@ -14,9 +14,9 @@
         <div class="max-w-7xl mx-auto px-4">
             <h1 class="text-3xl font-bold text-shakarim-blue mb-6">
                 @if($query)
-                    Результаты поиска: "{{ $query }}"
+                    {{ __('Результаты поиска:')}}' "{{ $query }}"
                 @else
-                    Поиск
+                    {{ __('Поиск')}}
                 @endif
             </h1>
 
@@ -34,7 +34,7 @@
                                     </a>
                                 </h3>
                                 <p class="text-gray-600 text-sm mt-2">
-                                    Страница сайта
+                                    {{ __('Страница сайта')}}
                                 </p>
                             </div>
                         @endforeach
@@ -44,7 +44,7 @@
                 <!-- Новости -->
                 @if($news->count() > 0)
                     <div class="mb-8">
-                        <h2 class="text-xl font-semibold mb-4">Новости ({{ $news->count() }})</h2>
+                        <h2 class="text-xl font-semibold mb-4">{{ __('Новости')}} ({{ $news->count() }})</h2>
                         @foreach($news as $item)
                             <div class="border-b pb-4 mb-4">
                                 <h3 class="font-semibold text-shakarim-blue">
@@ -63,7 +63,7 @@
                 <!-- Объявления -->
                 @if($announcements->count() > 0)
                     <div class="mb-8">
-                        <h2 class="text-xl font-semibold mb-4">Объявления ({{ $announcements->count() }})</h2>
+                        <h2 class="text-xl font-semibold mb-4">{{ __('Объявления')}} ({{ $announcements->count() }})</h2>
                         @foreach($announcements as $item)
                             <div class="border-b pb-4 mb-4">
                                 <h3 class="font-semibold text-shakarim-blue">
@@ -81,10 +81,10 @@
                 @endif
 
                 @if($news->count() == 0 && $announcements->count() == 0 && $pages->count() == 0)
-                    <p class="text-gray-600">По запросу "{{ $query }}" ничего не найдено.</p>
+                    <p class="text-gray-600">{{ __('По запросу')}}"{{ $query }}" {{ __('ничего не найдено')}}.</p>
                 @endif
             @else
-                <p class="text-gray-600">Введите поисковый запрос выше.</p>
+                <p class="text-gray-600">{{ __('Введите поисковый запрос выше.')}}</p>
             @endif
         </div>
     </section>

@@ -18,6 +18,7 @@ use Illuminate\Support\ServiceProvider;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Vite;
+use Illuminate\Support\Facades\Validator; // Добавляем этот импорт
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Регистрируем валидатор для капчи
+        Validator::extend('captcha', function ($attribute, $value, $parameters, $validator) {
+            $secret = config('captcha.secret');
+            $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$value."&remoteip=".$_SERVER['REMOTE_ADDR']);
+            $result = json_decode($response);
+            return $result->success;
+        });
         
         TiptapEditor::configureUsing(function (TiptapEditor $component) {
             $component

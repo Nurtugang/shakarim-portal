@@ -5,9 +5,9 @@
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
                 <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
                 <span>&#8250;</span>
-                <a href="/{{ app()->getLocale() }}/science" class="hover:text-shakarim-blue">{{ __('Наука') }}</a>
+                <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => 28]) }}" class="hover:text-shakarim-blue">{{ __('Наука') }}</a>
                 <span>&#8250;</span>
-                <a href="{{ route('science.projects.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __('Ғылыми жобалар') }}</a>
+                <a href="{{ route('science.projects.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __('Ғылыми жобалар')}}</a>
                 <span>&#8250;</span>
                 <span class="text-shakarim-blue font-semibold">{{ __('Жоба туралы') }}</span>
             </nav>

@@ -111,11 +111,7 @@
                                         
                                         <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}"
                                         class="border border-shakarim-blue text-shakarim-blue rounded px-4 py-2 text-sm hover:bg-shakarim-blue hover:text-white transition w-max mt-auto">
-                                            @switch(app()->getLocale())
-                                                @case('ru') Подробнее... @break
-                                                @case('en') Read more... @break
-                                                @default Толығырақ...
-                                            @endswitch
+                                                {{ __('Подробнее...')}}
                                         </a>
                                     </div>
                                 </div>
@@ -133,23 +129,23 @@
                                 <i class="fas fa-newspaper text-6xl text-gray-300 mb-4"></i>
                                 <h3 class="text-xl font-semibold text-gray-600 mb-2">
                                     @if($selectedTag || $selectedCategory)
-                                        Новостей по выбранным критериям не найдено
+                                        {{ __('Новостей по выбранным критериям не найдено')}}
                                     @else
-                                        Новостей пока нет
+                                        {{ __('Новостей пока нет')}}
                                     @endif
                                 </h3>
                                 <p class="text-gray-500 mb-6">
                                     @if($selectedTag || $selectedCategory)
-                                        Попробуйте изменить фильтры или просмотреть все новости
+                                        {{ __('Попробуйте изменить фильтры или просмотреть все новости')}}
                                     @else
-                                        Следите за обновлениями на нашем сайте
+                                        {{ __('Следите за обновлениями на нашем сайте')}}
                                     @endif
                                 </p>
                                 @if($selectedTag || $selectedCategory)
                                     <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" 
                                        class="inline-flex items-center px-6 py-3 bg-shakarim-blue text-white rounded-lg hover:bg-shakarim-dark transition duration-200">
                                         <i class="fas fa-arrow-left mr-2"></i>
-                                        Все новости
+                                        {{ __('Все новости')}}
                                     </a>
                                 @endif
                             </div>
@@ -165,7 +161,7 @@
                             <div class="bg-white rounded-xl shadow-md p-6">
                                 <h3 class="text-lg font-bold text-shakarim-blue mb-4 flex items-center">
                                     <i class="fas fa-folder mr-2"></i>
-                                    Категории
+                                    {{ __('Категории')}}
                                 </h3>
                                 <div class="space-y-2">
                                     @foreach($categories as $category)
@@ -186,7 +182,7 @@
                             <div class="bg-white rounded-xl shadow-md p-6">
                                 <h3 class="text-lg font-bold text-shakarim-blue mb-4 flex items-center">
                                     <i class="fas fa-tags mr-2"></i>
-                                    Популярные теги
+                                    {{ __('Популярные теги')}}
                                 </h3>
                                 <div class="flex flex-wrap gap-2">
                                     @foreach($popularTags as $loop => $tag)

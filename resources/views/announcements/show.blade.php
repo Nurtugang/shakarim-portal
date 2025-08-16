@@ -5,9 +5,9 @@
     <section class="bg-gray-100 py-3 border-b">
         <div class="max-w-7xl mx-auto px-4">
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
-                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">Главная страница</a>
+                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница')}}</a>
                 <span>&#8250;</span>
-                <a href="{{ route('announcements.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">Объявления</a>
+                <a href="{{ route('announcements.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __('Объявления')}}</a>
 
                 <span>&#8250;</span>
                 <span class="text-shakarim-blue font-semibold">
@@ -36,8 +36,8 @@
                                     </span>
                                 </div>
                                 <div class="text-left md:text-right">
-                                    <span class="text-gray-600 text-sm font-medium">От:</span>
-                                    <span class="text-shakarim-blue font-semibold ml-1">Медиа-центр</span>
+                                    <span class="text-gray-600 text-sm font-medium">{{ __('От:')}}</span>
+                                    <span class="text-shakarim-blue font-semibold ml-1">{{ __('Медиа-центр')}}</span>
                                 </div>
                             </div>
                             <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-shakarim-blue leading-tight">
@@ -69,12 +69,12 @@
                             <div class="flex flex-col space-y-3 md:flex-row md:items-center md:justify-between md:space-y-0">
                                 <div class="flex items-center text-sm text-gray-500">
                                     <i class="fas fa-info-circle mr-2"></i>
-                                    <span>Объявление от {{ \Carbon\Carbon::createFromTimestamp($announcement->created_at ?? $announcement->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}</span>
+                                    <span>{{ __('Объявление от')}} {{ \Carbon\Carbon::createFromTimestamp($announcement->created_at ?? $announcement->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}</span>
                                 </div>
                                 <div class="flex justify-center md:justify-end">
                                     <div class="relative">
                                         <button onclick="toggleShareMenu()" class="w-full md:w-auto px-3 md:px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-shakarim-dark transition duration-200 text-sm flex items-center justify-center">
-                                            <i class="fas fa-share mr-1"></i>Поделиться
+                                            <i class="fas fa-share mr-1"></i>{{ __('Поделиться')}}
                                             <i class="fas fa-chevron-down ml-1 text-xs"></i>
                                         </button>
                                         
@@ -115,7 +115,7 @@
                     <div class="bg-white rounded-xl shadow-lg p-3 md:p-6 lg:sticky lg:top-24">
                         <h2 class="text-base md:text-lg lg:text-xl font-heading font-bold text-shakarim-blue mb-3 md:mb-6 flex items-center">
                             <i class="fas fa-bullhorn mr-2 text-orange-500"></i>
-                            Другие объявления
+                            {{ __('Другие объявления')}}
                         </h2>
 
                         <!-- Latest Announcements List -->
@@ -147,7 +147,7 @@
                         <!-- All Announcements Button -->
                         <div class="text-center">
                             <a href="{{ route('announcements.index', ['locale' => app()->getLocale()]) }}" class="inline-flex items-center w-full md:w-auto px-3 md:px-6 py-2 md:py-3 bg-gradient-to-r from-shakarim-blue to-shakarim-light text-white font-medium rounded-lg hover:from-shakarim-dark hover:to-shakarim-blue transition duration-200 shadow-lg hover:shadow-xl text-sm md:text-base">
-                                <span>Все объявления</span>
+                                <span>{{ __('Все объявления')}}</span>
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                         </div>

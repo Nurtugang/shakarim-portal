@@ -18,7 +18,7 @@
                 <div class="lg:col-span-3">
                     <!-- Заголовок -->
                     <div class="mb-8 mt-2">
-                        <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">Объявления</h1>
+                        <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">{{ __('Объявления')}}</h1>
                     </div>
 
                     <!-- Проверка на наличие объявлений -->
@@ -72,7 +72,7 @@
                                         
                                         <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}"
                                         class="border border-shakarim-blue text-shakarim-blue rounded px-4 py-2 text-sm hover:bg-shakarim-blue hover:text-white transition w-max mt-auto">
-                                            Подробнее...
+                                             {{ __('Подробнее...')}}'
                                         </a>
                                     </div>
                                 </div>

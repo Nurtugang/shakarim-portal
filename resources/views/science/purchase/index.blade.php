@@ -6,7 +6,7 @@
       <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
         <a href="{{ url('/') }}" class="hover:text-shakarim-blue transition-colors">{{ __('Главная страница') }}</a>
         <span>&#8250;</span>
-        <a href="/{{ app()->getLocale() }}/science" class="hover:text-shakarim-blue transition-colors">{{ __('Science') }}</a>
+        <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => 28]) }}" class="hover:text-shakarim-blue transition-colors">{{ __('Science') }}</a>
         <span>&#8250;</span>
         <span class="text-shakarim-blue font-semibold">{{ __('Science Procurement') }}</span>
       </nav>
@@ -21,7 +21,7 @@
         <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-2">
           {{ __('Science Procurement') }}
         </h1>
-        <p class="text-gray-600 mt-2">{{ __('Ғылыми жабдықтар мен қызметтердің сатып алу жоспарлары') }}</p>
+        <p class="text-gray-600 mt-2">{{ __('Ғылыми жабдықтар мен қызметтердің сатып алу жоспарлары')}}</p>
       </div>
       
       <!-- Main Content -->
@@ -46,7 +46,7 @@
                     <div class="md:hidden mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                       <p class="text-sm text-blue-800">
                         <i class="fas fa-info-circle mr-2"></i>
-                        Для удобного просмотра таблицы поверните устройство или прокрутите горизонтально
+                        {{ __('Для удобного просмотра таблицы поверните устройство или прокрутите горизонтально')}}
                       </p>
                     </div>
                     
@@ -56,31 +56,31 @@
                         <thead class="bg-shakarim-blue text-white">
                           <tr>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
-                              ЖСН
+                              {{ __('ЖСН')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
-                              Атауы
+                              {{ __('Атауы')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
-                              Сипаттамалары
+                              {{ __('Сипаттамалары')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
-                              Жабдықты сатып алудың негіздемесі
+                              {{ __('Жабдықты сатып алудың негіздемесі')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
-                              Жоспарланған құны
+                              {{ __('Жоспарланған құны')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
-                              Сатып алу мерзімдер
+                              {{ __('Сатып алу мерзімдер')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
-                              Төлем шарттары
+                              {{ __('Төлем шарттары')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
-                              Мәртебесі
+                              {{ __('Мәртебесі')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider break-words max-w-[200px]">
-                              Коммерциялық ұсыныс енгізу
+                              {{ __('Коммерциялық ұсыныс енгізу')}}
                             </th>
                           </tr>
                         </thead>
@@ -121,7 +121,7 @@
                                   class="inline-flex items-center px-3 py-1 text-sm bg-shakarim-blue text-white rounded hover:bg-shakarim-dark transition-colors duration-200 whitespace-nowrap"
                                 >
                                   <i class="fas fa-paper-plane mr-1"></i>
-                                  Жіберу
+                                  {{ __('Жіберу')}}
                                 </button>
                               </td>
                             </tr>
@@ -134,7 +134,7 @@
                       <div class="mt-4 pt-4 border-t border-gray-200">
                         <span class="text-sm text-gray-500">
                           <i class="fas fa-info-circle mr-1"></i>
-                          Барлығы: {{ $item->sciencePurchases->count() }} жоспар
+                          Барлығы: {{ $item->sciencePurchases->count() }} {{ __('жоспар')}}
                         </span>
                       </div>
                     @endif
@@ -144,8 +144,8 @@
                       <div class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-inbox text-gray-400 text-3xl"></i>
                       </div>
-                      <h3 class="text-lg font-medium text-gray-900 mb-2">Мәліметтер жоқ</h3>
-                      <p class="text-gray-500">Бұл санат үшін ешқандай сатып алу жоспарлары жоқ</p>
+                      <h3 class="text-lg font-medium text-gray-900 mb-2">{{ __('Мәліметтер жоқ')}}</h3>
+                      <p class="text-gray-500">{{ __('Бұл санат үшін ешқандай сатып алу жоспарлары жоқ')}}</p>
                     </div>
                   @endif
                 </div>

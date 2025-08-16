@@ -56,7 +56,7 @@
     <!-- Header -->
     <header class="bg-shakarim-blue shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center justify-between py-4">
+            <div class="flex items-center justify-between py-2 lg:py-4">
                 <!-- Пустой div для баланса на мобильных -->
                 <div class="lg:hidden w-10"></div>
                 

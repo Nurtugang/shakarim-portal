@@ -3,7 +3,7 @@
    <section class="bg-gray-100 py-3 border-b">
        <div class="max-w-7xl mx-auto px-4">
            <nav class="text-sm text-gray-500 flex items-center space-x-2" aria-label="Breadcrumb">
-               <a href="#" class="hover:text-shakarim-blue">Главная страница</a>
+               <a href="#" class="hover:text-shakarim-blue">{{ __('Главная страница')}}</a>
                <span class="mx-1">&#8250;</span>
                <a href="#" class="hover:text-shakarim-blue">Академия</a>
                <span class="mx-1">&#8250;</span>
