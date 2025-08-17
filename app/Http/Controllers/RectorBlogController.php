@@ -39,12 +39,12 @@ class RectorBlogController extends Controller
             'question' => 'required|string|max:1000',
             'g-recaptcha-response' => 'required|captcha'
         ], [
-            'name.required' => 'Имя обязательно для заполнения',
-            'email.required' => 'Email обязателен для заполнения',
-            'email.email' => 'Некорректный email',
-            'question.required' => 'Вопрос обязателен для заполнения',
-            'question.max' => 'Вопрос не должен превышать 1000 символов',
-            'g-recaptcha-response.required' => 'Пройдите проверку капчи'
+            'name.required' => __('Имя обязательно для заполнения'),
+            'email.required' => __('Email обязателен для заполнения'),
+            'email.email' => __('Некорректный email'),
+            'question.required' => __('Вопрос обязателен для заполнения'),
+            'question.max' => __('Вопрос не должен превышать 1000 символов'),
+            'g-recaptcha-response.required' => __('Пройдите проверку капчи')
         ]);
 
         RectorQuestion::create([
@@ -54,6 +54,6 @@ class RectorBlogController extends Controller
             'question' => $request->question
         ]);
 
-        return back()->with('success', 'Ваш вопрос успешно отправлен! Мы ответим в ближайшее время.');
+        return back()->with('success', __('Ваш вопрос успешно отправлен! Мы ответим в ближайшее время.'));
     }
 }

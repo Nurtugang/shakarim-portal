@@ -72,7 +72,7 @@ class NewsController extends Controller
         ->orderBy('date', 'desc')
         ->orderBy('created_at', 'desc')
         ->take(5)
-        ->select('id', 'alias', 'title_kk', 'title_ru', 'title_en', 'date')
+        ->select('id', 'alias', 'title_kk', 'title_ru', 'title_en', 'created_at')
         ->get();
 
         $comments = NewsComment::where('news_id', $news->id)
@@ -91,12 +91,12 @@ class NewsController extends Controller
             'comment' => 'required|string|max:1000',
             'g-recaptcha-response' => 'required|captcha'
         ], [
-            'name.required' => 'Имя обязательно для заполнения',
-            'email.required' => 'Email обязателен для заполнения',
-            'email.email' => 'Некорректный email',
-            'comment.required' => 'Комментарий обязателен для заполнения',
-            'comment.max' => 'Комментарий не должен превышать 1000 символов',
-            'g-recaptcha-response.required' => 'Пройдите проверку капчи'
+            'name.required' => __('Имя обязательно для заполнения'),
+            'email.required' => __('Email обязателен для заполнения'),
+            'email.email' => __('Некорректный email'),
+            'comment.required' => __('Комментарий обязателен для заполнения'),
+            'comment.max' => __('Комментарий не должен превышать 1000 символов'),
+            'g-recaptcha-response.required' => __('Пройдите проверку капчи')
         ]);
 
         NewsComment::create([
@@ -106,6 +106,6 @@ class NewsController extends Controller
             'comment' => $request->comment
         ]);
 
-        return back()->with('success', 'Ваш комментарий отправлен на модерацию!');
+        return back()->with('success', __('Ваш комментарий отправлен на модерацию!'));
     }
 }

@@ -11,6 +11,11 @@
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('QS World University Rankings') }}</h2>
                         <div class="text-3xl md:text-6xl font-heading font-bold text-yellow-400 mb-1 md:mb-2">#1401+</div>
                         <p class="text-sm md:text-lg font-body text-slate-200">{{ __('Shakarim University first entered the global ranking') }}</p>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'akkreditteu-zane-reitingter']) }}">
+                            <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
+                                {{ __('More') }}
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/banner/graduates.webp');"></div>
@@ -24,9 +29,11 @@
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Modern Campus') }}</h2>
                         <div class="text-3xl md:text-6xl font-heading font-bold text-blue-200 mb-1 md:mb-2">12</div>
                         <p class="text-sm md:text-lg font-body text-blue-100">{{ __('Academic buildings, 700+ thousand books, 1300+ computers') }}</p>
-                        <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
-                            {{ __('More') }}
-                        </button>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}">
+                            <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
+                                {{ __('More') }}
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/banner/university_building.webp');"></div>
@@ -52,9 +59,11 @@
                                 <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Doctorate') }}</div>
                             </div>
                         </div>
-                        <button class="bg-white text-slate-700 px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
-                            {{ __('View Programs') }}
-                        </button>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bilim-beru-bagdarlamalary']) }}">
+                            <button class="bg-white text-slate-700 px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
+                                {{ __('View Programs') }}
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/banner/general_photo.webp');">
@@ -96,10 +105,11 @@
                     </div>
                     <p class="text-gray-800 text-xs md:text-sm font-body mb-3 md:mb-4 transition-colors duration-300 group-hover:text-white">{{ __('For prospective students') }}</p>
                     <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 1') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 2') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 3') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 4') }}</a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'universitet-turaly']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Об университете') }}</a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Виртуальный тур') }}</a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bizdin-tarix']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Наша история') }}</a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'studenttik-omir']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Студенческая жизнь') }}</a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bailanys-1']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Контакты') }}</a>
                     </div>
                 </div>
 
@@ -111,9 +121,10 @@
                     </div>
                     <p class="text-gray-800 text-xs md:text-sm font-body mb-3 md:mb-4 transition-colors duration-300 group-hover:text-white">{{ __('For Shakarim students') }}</p>
                     <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 1') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 2') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 3') }}</a>
+                        <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Platonus</a>
+                        <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Shakarim Hub</a>
+                        <a href="http://library.semgu.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Библиотека') }}</a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'shakarim-top-100']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Shakarim TOP-100</a>
                     </div>
                 </div>
 
@@ -125,10 +136,10 @@
                     </div>
                     <p class="text-gray-800 text-xs md:text-sm font-body mb-3 md:mb-4 transition-colors duration-300 group-hover:text-white">{{ __('For our employees') }}</p>
                     <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 1') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 2') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 3') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 4') }}</a>
+                        <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Platonus</a>
+                        <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Shakarim Hub</a>
+                        <a href="/ru/structure']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Организационная структура') }}</a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'mamandarga-arnalgan-kurstar']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Курсы для профессионалов') }}</a>
                     </div>
                 </div>
 
@@ -140,10 +151,10 @@
                     </div>
                     <p class="text-gray-800 text-xs md:text-sm font-body mb-3 md:mb-4 transition-colors duration-300 group-hover:text-white">{{ __('For our partners') }}</p>
                     <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 1') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 2') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 3') }}</a>
-                        <a href="#" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Link 4') }}</a>
+                        <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'international-cooperation-center']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Центр международного сотрудничества') }}</a>
+                        <a href="/ru/science/purchases" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Научные государственные закупки') }}</a>
+                        <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'public-procurement-department']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Отдел государственных закупок') }}</a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'innovaciialar-narygy']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Маркет инноваций') }}</a>
                     </div>
                 </div>
             </div>
@@ -201,7 +212,7 @@
                                 <div class="text-xs md:text-sm font-body text-gray-600 mb-2">{{ __('In 2025 ranking') }}</div>
                                 <div class="text-xs md:text-sm font-body text-gray-600"></div>
                             </div>
-                            <div class="text-2xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-1 md:mt-4">301-350</div>
+                            <div class="text-2xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-1 md:mt-0 md:text-right">301-350</div>
                         </div>
 
                         <div class="flex flex-col items-start justify-between md:flex-row">
@@ -244,17 +255,18 @@
                         <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Electronic and print resources/books') }}</p>
                     </div>
                 </a>
-                <div class="group bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
-                    <i class="fas fa-calendar text-2xl md:text-3xl text-shakarim-blue group-hover:text-white mb-2 md:mb-4 transition-colors"></i>
-                    <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-sm md:text-base">{{ __('Calendar') }}</h3>
-                    <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Academic calendar and important dates') }}</p>
-                </div>
-
+                <a href="{{ route('rector.blog', ['locale' => app()->getLocale()]) }}" class="group">
+                    <div class="group bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
+                        <i class="fas fa-user-edit text-2xl md:text-3xl text-shakarim-blue group-hover:text-white mb-2 md:mb-4 transition-colors"></i>
+                        <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-sm md:text-base">{{ __('Блог ректора') }}</h3>
+                        <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Стратегия развития и ответы на вопросы') }}</p>
+                    </div>
+                </a>
                 <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'tagylymdama-boiynsa-seriktes-uiymdar']) }}" class="group">
                     <div class="group bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center">
                         <i class="fas fa-briefcase text-2xl md:text-3xl text-shakarim-blue group-hover:text-white mb-2 md:mb-4 transition-colors"></i>
                         <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-sm md:text-base">{{ __('Career') }}</h3>
-                        <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Job opportunities and internships') }}</p>
+                        <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Job opportunities and internships for students') }}</p>
                     </div>
                 </a>
                 <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'international-cooperation-center']) }}" class="group">
@@ -289,7 +301,7 @@
                                     <div class="p-3 md:p-6 w-full md:w-2/3 flex flex-col justify-between">
                                         <div>
                                             <div class="text-xs md:text-sm text-gray-500 mb-1 md:mb-2">
-                                                {{ \Carbon\Carbon::createFromTimestamp($item->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
+                                                {{ \Carbon\Carbon::createFromTimestamp($item->created_at)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
                                             </div>
                                             <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
                                                 <h3 class="text-sm md:text-xl font-semibold mb-2 md:mb-3 hover:text-shakarim-blue cursor-pointer line-clamp-2">
@@ -326,7 +338,7 @@
                             @foreach($announcements as $item)
                                 <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}">
                                     <div class="border-l-4 border-shakarim-blue pl-3 md:pl-4">
-                                        <div class="text-xs md:text-sm text-gray-500">{{ \Carbon\Carbon::createFromTimestamp($item->date)->locale(app()->getLocale())->isoFormat('D MMMM') }}</div>
+                                        <div class="text-xs md:text-sm text-gray-500">{{ \Carbon\Carbon::createFromTimestamp($item->created_at)->locale(app()->getLocale())->isoFormat('D MMMM') }}</div>
                                         <h4 class="font-semibold text-sm md:text-base">{{ $item->{'name'} }}</h4>
                                     </div>
                                 </a>
@@ -351,115 +363,61 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Contacts -->
-                    <div class="bg-white rounded-xl shadow-md p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-shakarim-blue mb-4 md:mb-6">{{ __('Contact') }}</h3>
-                        <div class="space-y-2 md:space-y-3 text-xs md:text-sm">
-                            <div class="flex items-start">
-                                <i class="fas fa-map-marker-alt text-shakarim-blue mr-2 md:mr-3 mt-1"></i>
-                                <span>{{ __('071412, Semey, Glinka street, 20A') }}</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-phone text-shakarim-blue mr-2 md:mr-3"></i>
-                                <span>+7 (7182) 67-36-69</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-envelope text-shakarim-blue mr-2 md:mr-3"></i>
-                                <span>info@shakarim.edu.kz</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Partners Section -->
-<section class="py-8 md:py-16 bg-gray-50">
-   <div class="max-w-7xl mx-auto px-4">
-       <div class="text-center mb-8 md:mb-12">
-           <h2 class="text-xl md:text-3xl font-bold text-shakarim-blue mb-4 flex items-center justify-center">
-               <i class="fas fa-handshake mr-2 md:mr-3"></i>
-               {{ __('Наши партнеры') }}
-           </h2>
-       </div>
-       
-       <div class="relative">
-           <!-- Left Arrow -->
-           <button id="partnersPrev" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 md:p-3 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors">
-               <i class="fas fa-chevron-left"></i>
-           </button>
-           
-           <!-- Right Arrow -->
-           <button id="partnersNext" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 md:p-3 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors">
-               <i class="fas fa-chevron-right"></i>
-           </button>
-           
-           <!-- Partners container -->
-           <div class="overflow-x-auto scrollbar-hide mx-8 md:mx-12" id="partnersContainer">
-               <div class="flex gap-4 md:gap-6 pb-4" style="width: max-content;">
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner1.png" alt="Partner 1" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner2.png" alt="Partner 2" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner3.png" alt="Partner 3" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner4.png" alt="Partner 4" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner5.png" alt="Partner 5" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner6.png" alt="Partner 6" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner7.png" alt="Partner 7" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner8.png" alt="Partner 8" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner9.png" alt="Partner 9" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-                   <div class="partner-item flex-shrink-0 w-32 md:w-40 h-20 md:h-24 bg-white rounded-lg shadow-md flex items-center justify-center p-3 md:p-4 hover:shadow-lg transition-shadow">
-                       <img src="/img/partners/partner10.png" alt="Partner 10" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
-</section>
+    <section class="py-6 md:py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-lg md:text-2xl font-bold text-shakarim-blue mb-4 flex items-center justify-center">
+                    <i class="fas fa-handshake text-sm md:text-base mr-2"></i>
+                    {{ __('Наши партнеры') }}
+                </h2>
+            </div>
+            
+            <div class="relative flex items-center">
+                <!-- Left Arrow -->
+                <button id="partnersPrev" class="absolute left-0 z-10 bg-white shadow-lg rounded-full p-2 md:p-3 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors hidden">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
 
-<style>
-.scrollbar-hide {
-   scrollbar-width: none;
-   -ms-overflow-style: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-   display: none;
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-   const container = document.getElementById('partnersContainer');
-   const prevBtn = document.getElementById('partnersPrev');
-   const nextBtn = document.getElementById('partnersNext');
-   
-   const scrollAmount = 200;
-   
-   nextBtn.addEventListener('click', () => {
-       container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-   });
-   
-   prevBtn.addEventListener('click', () => {
-       container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-   });
-});
-</script>
+                <!-- Partners container -->
+                <div class="overflow-x-auto scrollbar-hide flex-1 mx-8 md:mx-12" id="partnersContainer">
+                    <div id="partnersWrapper" class="flex justify-center gap-6 md:gap-8 pb-4">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                            <a href="https://farabi.university/" target="_blank"><img src="{{ Storage::url('partners/farabi.webp') }}" alt="farabi" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
+                        </div>
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                            <a href="https://farabi.university/" target="_blank"><img src="{{ Storage::url('partners/ABU.webp') }}" alt="ABU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
+                        </div>
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                            <a href="https://global.kduniv.ac.kr/" target="_blank"><img src="{{ Storage::url('partners/KDU.webp') }}" alt="KDU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
+                        </div>
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                            <a href="http://eurostudies.pl/" target="_blank"><img src="{{ Storage::url('partners/WSG.webp') }}" alt="WSG" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
+                        </div>
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                            <a href="https://astanait.edu.kz/" target="_blank"><img src="{{ Storage::url('partners/AITU.webp') }}" alt="AITU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
+                        </div>
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                            <a href="https://www.docmen-project.pl/" target="_blank"><img src="{{ Storage::url('partners/docmen.webp') }}" alt="docmen" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
+                        </div>
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                            <a href="#" target="_blank"><img src="{{ Storage::url('partners/complete.webp') }}" alt="complete" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Arrow -->
+                <button id="partnersNext" class="absolute right-0 z-10 bg-white shadow-lg rounded-full p-2 md:p-3 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors hidden">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
 
     <script src="{{ asset('js/custom/slider.js') }}"></script>
+    <script src="{{ asset('js/custom/slider2.js') }}"></script>
 </x-layout>

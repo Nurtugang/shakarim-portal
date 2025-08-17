@@ -10,9 +10,9 @@ enum SciencePurchasesEnum: int
     public function label(): string
     {
         return match ($this) {
-            self::STATUS_DELIVERY => 'В период поставки',
-            self::STATUS_DELIVERED => 'Поставлено',
-            self::STATUS_IN_STOCK => 'В наличии',
+            self::STATUS_DELIVERY => __('В период поставки'),
+            self::STATUS_DELIVERED => __('Поставлено'),
+            self::STATUS_IN_STOCK => __('В наличии'),
         };
     }
 }

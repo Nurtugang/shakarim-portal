@@ -41,8 +41,8 @@ class NewsResource extends Resource
                     ->multiple()
                     ->relationship('tags', 'name')
                     ->searchable(),
-                Forms\Components\TextInput::make('title_kz')
-                    ->label('Заголовок KZ')
+                Forms\Components\TextInput::make('title_kk')
+                    ->label('Заголовок kk')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('title_ru')
                     ->label('Заголовок RU')
@@ -51,8 +51,8 @@ class NewsResource extends Resource
                 Forms\Components\TextInput::make('title_en')
                     ->label('Заголовок EN')
                     ->maxLength(255),
-                TiptapEditor::make('content_kz')
-                    ->label('Контент KZ'),
+                TiptapEditor::make('content_kk')
+                    ->label('Контент kk'),
                 TiptapEditor::make('content_ru')
                     ->label('Контент RU')
                     ->required(),
@@ -84,7 +84,7 @@ class NewsResource extends Resource
                         return 'Нет фото';
                     })
                     ->html(),
-                Tables\Columns\TextColumn::make('title_ru')
+                Tables\Columns\TextColumn::make('title_kk')
                     ->label('Заголовок')
                     ->searchable()
                     ->limit(30),

@@ -7,6 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom/base.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icons/logo_sgu.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @filamentStyles
     
@@ -206,6 +207,20 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Back To Tap -->
+    <button id="backToTop" 
+            class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 
+                w-10 h-10 md:w-12 md:h-12 
+                bg-shakarim-blue hover:bg-shakarim-dark 
+                text-white rounded-full shadow-lg hover:shadow-xl 
+                transition-all duration-300 ease-in-out 
+                transform hover:scale-110 
+                opacity-0 invisible translate-y-4
+                flex items-center justify-center
+                focus:outline-none focus:ring-2 focus:ring-shakarim-blue focus:ring-offset-2">
+        <i class="fas fa-arrow-up text-sm md:text-base"></i>
+    </button>
 
     @livewireScripts
     @filamentScripts
@@ -213,26 +228,11 @@
     @stack('scripts') 
 
     <script src="{{ asset('js/custom/mobile.js') }}"></script>
+    <script src="{{ asset('js/custom/back-to-top.js') }}"></script>
+    <script src="{{ asset('js/custom/search.js') }}"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchToggle = document.getElementById('search-toggle');
-            const searchField = document.getElementById('search-field');
-            
-            searchToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                searchField.classList.toggle('hidden');
-                if (!searchField.classList.contains('hidden')) {
-                    searchField.querySelector('input').focus();
-                }
-            });
-
-            document.addEventListener('click', function(event) {
-                if (!searchToggle.contains(event.target) && !searchField.contains(event.target)) {
-                    searchField.classList.add('hidden');
-                }
-            });
-        });
+        
     </script>
 
 </body>

@@ -31,11 +31,11 @@
                                         <i class="fas fa-newspaper mr-1"></i>{{ $news->category->{'label_' . app()->getLocale()} }}
                                     </span>
                                     <span class="text-gray-500 text-sm">
-                                        <i class="far fa-calendar mr-1"></i>{{ \Carbon\Carbon::createFromTimestamp($news->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
+                                        <i class="far fa-calendar mr-1"></i>{{ \Carbon\Carbon::parse($news->created_at)->format('d.m.Y') }}
                                     </span>
                                 </div>
                                 <div class="text-left md:text-right">
-                                    <span class="text-gray-600 text-sm font-medium">От:</span>
+                                    <span class="text-gray-600 text-sm font-medium">{{ __('От')}}:</span>
                                     <span class="text-shakarim-blue font-semibold ml-1">{{ __('Медиа-центр')}}</span>
                                 </div>
                             </div>
@@ -208,7 +208,7 @@
                                                     {{ $latestItem->{'title_' . app()->getLocale()} }}
                                                 </a>
                                             </h3>
-                                            <p class="text-xs text-gray-500 mt-1">{{ \Carbon\Carbon::createFromTimestamp($latestItem->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}</p>
+                                            <p class="text-xs text-gray-500 mt-1">{{ \Carbon\Carbon::createFromTimestamp($latestItem->created_at)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -11,10 +11,10 @@ class News extends Model
     protected $fillable = [
         'alias',
         'image',
-        'content_kz',
+        'content_kk',
         'content_ru', 
         'content_en',
-        'title_kz',
+        'title_kk',
         'title_ru',
         'title_en',
         'category_id',

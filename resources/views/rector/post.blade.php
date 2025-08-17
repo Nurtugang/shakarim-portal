@@ -52,17 +52,17 @@
             <div class="flex space-x-2">
                 <!-- Кнопки поделиться -->
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}" 
-                   target="_blank"
-                   class="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition">
+                target="_blank"
+                class="bg-blue-600 text-white w-10 h-10 rounded-lg hover:bg-blue-700 transition flex items-center justify-center">
                     <i class="fab fa-facebook-f"></i>
                 </a>
                 <a href="https://t.me/share/url?url={{ urlencode(request()->fullUrl()) }}&text={{ urlencode($post->{'title_'.app()->getLocale()}) }}" 
-                   target="_blank"
-                   class="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition">
+                target="_blank"
+                class="bg-blue-500 text-white w-10 h-10 rounded-lg hover:bg-blue-600 transition flex items-center justify-center">
                     <i class="fab fa-telegram"></i>
                 </a>
                 <button onclick="copyToClipboard('{{ request()->fullUrl() }}')"
-                        class="bg-gray-600 text-white p-2 rounded-lg hover:bg-gray-700 transition">
+                        class="bg-gray-600 text-white w-10 h-10 rounded-lg hover:bg-gray-700 transition flex items-center justify-center">
                     <i class="fas fa-link"></i>
                 </button>
             </div>
