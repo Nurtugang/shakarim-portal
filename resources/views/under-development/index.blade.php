@@ -1,4 +1,4 @@
-<x-layout metaTitle="Страница не найдена">
+<x-layout metaTitle="{{ __('Страница неходится в разработке')}}">
 
 <div class=" flex items-center justify-center px-4 py-8">
     <div class="max-w-6xl mx-auto w-full">
@@ -14,10 +14,7 @@
             <div class="text-center lg:text-left lg:flex-1 lg:order-1">
                 <div class="space-y-6">
                     <p class="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-md mx-auto lg:mx-0">
-                        {{ __('Страница не найдена')}}<br>
-                        <span class="text-lg md:text-xl text-gray-500">
-                            {{ __('Возможно, вы ошиблись адресом или страница была удалена.')}}
-                        </span>
+                        {{ __('Страница неходится в разработке')}}<br>
                     </p>
                     <a href="{{ url('/') }}" 
                        class="inline-block bg-primary hover:bg-blue-800 text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-lg">

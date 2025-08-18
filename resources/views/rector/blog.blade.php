@@ -14,7 +14,7 @@
             <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
                 <!-- Фото ректора -->
                 <div class="flex-shrink-0">
-                    <div class="w-64 h-64 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-shakarim-blue shadow-lg">
+                    <div class="w-64 h-64 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-shakarim-blue shadow-lg">
                         <img src="/img/rector.jpeg" alt="{{ __('Ректор университета') }}" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -49,9 +49,9 @@
                     <textarea name="question" rows="3" placeholder="{{ __('Ваш вопрос') }} *" required
                               class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-shakarim-blue">{{ old('question') }}</textarea>
                     
-                    <div class="flex justify-center">
+                    <div class="flex">
                         {!! NoCaptcha::renderJs() !!}
-                        {!! NoCaptcha::display(['data-size' => 'compact']) !!}
+                        {!! NoCaptcha::display(['data-size' => 'normal']) !!}
                     </div>
                     
                     <button type="submit" class="w-full bg-shakarim-blue text-white py-2 px-4 rounded-md hover:bg-blue-700 transition text-sm">
@@ -183,7 +183,7 @@
 
                             <div>
                                 {!! NoCaptcha::renderJs() !!}
-                                {!! NoCaptcha::display() !!}
+                                {!! NoCaptcha::display(['data-size' => 'normal']) !!}
                                 @error('g-recaptcha-response')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror

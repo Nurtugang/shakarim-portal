@@ -5,7 +5,7 @@
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
                 <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
                 <span>&#8250;</span>
-                <a href="{{ route('structure.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __("Organizational structures") }}</a>
+                <a href="{{ route('structure.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __("Organizational Structure") }}</a>
                 <span>&#8250;</span>
                 <span class="text-shakarim-blue font-semibold">
                     {{ \Illuminate\Support\Str::limit($structure->{'title_'.app()->getLocale()}, 40) }}
@@ -20,7 +20,7 @@
             
             <!-- Карточка руководителя и информации -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-0">
                     
                     <!-- Левая часть - Руководитель -->
                     <div class="bg-shakarim-blue text-white p-4 md:p-6 col-span-1">
@@ -54,7 +54,7 @@
                                 <div class="flex items-start space-x-2">
                                     <i class="fas fa-map-marker-alt text-blue-200 w-4 mt-0.5 text-xs"></i>
                                     <span class="text-blue-100 text-xs">
-                                        {{ $structure->filteredData->address ?? '071412 Республика Казахстан, область Абай, город Семей, ул. Глинки, 20 "А"' }}
+                                        {{ $structure->filteredData->address ?? '071412 Республика Казахстан, область Абай, город Семей, ул. Глинки, 20 "Д"' }}
                                     </span>
                                 </div>
                                 
@@ -97,7 +97,7 @@
                     </div>
 
                     <!-- Правая часть - Информация о структуре -->
-                    <div class="p-6 md:p-8 bg-gray-50 col-span-2">
+                    <div class="p-6 md:p-8 bg-gray-50 col-span-3">
                         <h1 class="text-xl md:text-2xl font-heading font-bold text-gray-800 mb-6">
                             {{ $structure->{'title_'.app()->getLocale()} }}
                         </h1>
@@ -109,7 +109,8 @@
                                         <h3 class="text-base font-semibold text-gray-800 mb-2">
                                             {{ $item['title'] ?? __('Information') }}
                                         </h3>
-                                        <div class="prose prose-sm max-w-none text-gray-700 text-sm">
+                                        <!-- ДОБАВЛЕН КЛАСС tiptap-content ДЛЯ СТИЛЕЙ -->
+                                        <div class="tiptap-content prose prose-sm max-w-none text-gray-700 text-sm">
                                             {!! $item['text'] ?? __('Information not provided') !!}
                                         </div>
                                     </div>
@@ -139,10 +140,10 @@
                         @foreach($structure->employees as $employee)
                             <div class="bg-gray-50 rounded-lg p-3 hover:shadow-md transition-all duration-300 hover:bg-gray-100 text-center">
                                 <!-- Фото прямоугольное -->
-                                <div class="w-full h-28 md:h-32 mx-auto mb-3 bg-gray-200 rounded-lg overflow-hidden">
+                                <div class="relative mx-auto w-32 h-40 md:w-40 md:h-48 mb-3 bg-gray-200 rounded-lg overflow-hidden">
                                     <img src="{{ $employee->getPhoto() }}" 
-                                         alt="{{ $employee->{'fullname_'.app()->getLocale()} }}"
-                                         class="w-full h-full object-cover object-top">
+                                        alt="{{ $employee->{'fullname_'.app()->getLocale()} }}"
+                                        class="w-full h-full object-cover">
                                 </div>
                                 
                                 <h4 class="font-semibold text-gray-800 text-xs md:text-sm mb-1 leading-tight">
@@ -156,15 +157,6 @@
                     </div>
                 </div>
             @endif
-
-            <!-- Кнопка возврата -->
-            <div class="mt-8 text-center">
-                <a href="{{ route('structure.index', ['locale' => app()->getLocale()]) }}" 
-                   class="inline-flex items-center px-4 md:px-6 py-2 md:py-3 bg-shakarim-blue hover:bg-shakarim-dark text-white font-medium rounded-lg transition-colors duration-300 text-sm md:text-base">
-                    <i class="fas fa-arrow-left mr-2"></i>
-                    {{ __("Back to Organization Structure") }}
-                </a>
-            </div>
         </div>
     </section>
 </x-layout>

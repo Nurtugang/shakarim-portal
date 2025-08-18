@@ -23,7 +23,7 @@
                 <div class="md:hidden grid grid-cols-1 gap-4">
                     @foreach($menu as $item)
                         @php $locale = app()->getLocale(); @endphp
-                        <div class="border-l-4 border-shakarim-blue pl-3 bg-gray-50 rounded-r p-3">
+                        <div class="border-l-2 border-shakarim-blue pl-3 bg-gray-50 rounded-r p-3">
                             <div class="mb-2">
                                 <a href="{{ $item->page?->getUrl() ?? route('menu.show', ['locale' => app()->getLocale(), 'menu' => $item->id]) }}"
                                     class="text-sm font-semibold text-shakarim-blue hover:underline block">
@@ -64,7 +64,7 @@
                 <div class="hidden md:grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     @foreach($menu as $item)
                         @php $locale = app()->getLocale(); @endphp
-                        <div class="border-l-4 border-shakarim-blue pl-4">
+                        <div class="border-l-2 border-shakarim-blue pl-4">
                             <div class="mb-3">
                                 <a href="{{ $item->page?->getUrl() ?? route('menu.show', ['locale' => app()->getLocale(), 'menu' => $item->id]) }}"
                                     class="text-lg font-semibold text-shakarim-blue hover:underline flex items-center">
@@ -102,39 +102,6 @@
                             @endif
                         </div>
                     @endforeach
-                    <div class="border-l-4 border-shakarim-blue pl-4">
-                            <div class="mb-3">
-                                <a href=""
-                                   class="text-lg font-semibold text-shakarim-blue hover:underline flex items-center">
-                                    <i class="fas fa-folder-open mr-2"></i>
-                                    {{ __('Дополнительные разделы') }}
-                                </a>
-                            </div>
-                            
-                            <ul class="space-y-2">
-                                <li class="ml-4">
-                                    <a href="{{ route('news', ['locale' => app()->getLocale()]) }}"
-                                        class="text-gray-700 hover:text-shakarim-blue transition-colors duration-150 flex items-center">
-                                        <i class="fas fa-file-alt text-gray-400 mr-2 text-sm"></i>
-                                        {{ __('Новости') }}
-                                    </a>
-                                </li>
-                                <li class="ml-4">
-                                    <a href="{{ route('announcements.index', ['locale' => app()->getLocale()]) }}"
-                                        class="text-gray-700 hover:text-shakarim-blue transition-colors duration-150 flex items-center">
-                                        <i class="fas fa-file-alt text-gray-400 mr-2 text-sm"></i>
-                                        {{ __('Объявления') }}
-                                    </a>
-                                </li>
-                                <li class="ml-4">
-                                    <a href="{{ route('rector.blog', ['locale' => app()->getLocale()]) }}"
-                                        class="text-gray-700 hover:text-shakarim-blue transition-colors duration-150 flex items-center">
-                                        <i class="fas fa-file-alt text-gray-400 mr-2 text-sm"></i>
-                                        {{ __('Блог ректора') }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                 </div>
             </div>
         </section>

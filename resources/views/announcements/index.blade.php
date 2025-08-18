@@ -52,9 +52,6 @@
                                                 <span class="text-gray-400 text-sm">
                                                     {{ \Carbon\Carbon::createFromTimestamp($item->date)->format('d.m.Y') }}
                                                 </span>
-                                                <span class="bg-shakarim-light text-white text-xs font-semibold px-3 py-1 rounded">
-                                                    {{ strtoupper($item->language) }}
-                                                </span>
                                             </div>
                                             
                                             <h3 class="font-semibold text-shakarim-blue mb-4 line-clamp-3 leading-relaxed">
@@ -72,7 +69,7 @@
                                         
                                         <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}"
                                         class="border border-shakarim-blue text-shakarim-blue rounded px-4 py-2 text-sm hover:bg-shakarim-blue hover:text-white transition w-max mt-auto">
-                                             {{ __('Подробнее...')}}'
+                                             {{ __('Подробнее')}}
                                         </a>
                                     </div>
                                 </div>

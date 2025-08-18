@@ -111,7 +111,7 @@
                                         
                                         <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}"
                                         class="border border-shakarim-blue text-shakarim-blue rounded px-4 py-2 text-sm hover:bg-shakarim-blue hover:text-white transition w-max mt-auto">
-                                                {{ __('Подробнее...')}}
+                                                {{ __('Подробнее')}}
                                         </a>
                                     </div>
                                 </div>

@@ -23,7 +23,10 @@
                     </a>    
                     <a href="mailto:kense@shakarim.kz">
                         <span class="text-gray-600"><i class="fas fa-envelope mr-1"></i> kense@shakarim.kz</span>
-                    </a>                    
+                    </a>    
+                    <a href="https://aisana.shakarim.kz" target="_blank" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
+                        <span class="text-gray-600"><i class="fas fa-share-square mr-1"></i> AI-Sana</span>
+                    </a>                   
                 </div>
 
                 <div class="flex items-center space-x-2 ml-auto relative">
@@ -35,9 +38,15 @@
                     </button>
                     
                     <a href="{{ route('sitemap', ['locale' => app()->getLocale()]) }}"
-                    class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
-                    title="{{ __('Site Map') }}">
+                        class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
+                        title="{{ __('Site Map') }}">
                         <i class="fas fa-sitemap fa-lg"></i>
+                    </a>
+
+                    <a href="{{ route('under-development', ['locale' => app()->getLocale()]) }}"
+                        class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
+                        title="{{ __('Accessibility') }}">
+                        <i class="fas fa-eye fa-lg"></i>
                     </a>
 
                     <div id="search-field" class="hidden absolute top-full right-0 mt-2 bg-white shadow-lg rounded-lg p-3 z-50 w-128">
@@ -191,8 +200,12 @@
                     <h4 class="font-semibold mb-4">{{ __('Contact') }}</h4>
                     <div class="space-y-2 text-sm text-blue-200">
                         <p>{{ __('071412, Semey, Glinka street, 20A') }}</p>
-                        <p>+7 (7182) 67-36-69</p>
-                        <p>info@shakarim.edu.kz</p>
+                        <a href="tel:+7 (7222) 31-31-75">
+                            <p> +7 (7222) 31-31-75</p>
+                        </a>    
+                        <a href="mailto:kense@shakarim.kz">
+                            <p> kense@shakarim.kz</p>
+                        </a>
                     </div>
                     <div class="flex space-x-3 mt-4">
                         <a href="https://www.instagram.com/shakarim_university" target="_blank" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
@@ -214,11 +227,26 @@
                 </div>
             </div>
             <div class="mt-8 text-center text-sm text-blue-200">
-                <p>&copy; 2025 {{ __('NP JSC "Shakarim University". All rights reserved.') }}</p>
+                <p>&copy; 1934-2025 {{ __('NP JSC "Shakarim University". All rights reserved.') }}</p>
             </div>
         </div>
     </footer>
     
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 shadow-lg z-50 hidden">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex-1">
+                <p class="text-sm">
+                    {{ __('Мы используем файлы cookie для улучшения работы сайта.') }}
+                    {{ __('Продолжая пользоваться сайтом, вы соглашаетесь с нашей политикой конфиденциальности.') }}
+                </p>
+            </div>
+            <button onclick="acceptCookies()" class="bg-shakarim-blue hover:bg-blue-700 px-6 py-2 rounded text-sm font-medium whitespace-nowrap transition">
+                Принять
+            </button>
+        </div>
+    </div>
+
     <!-- Back To Tap -->
     <button id="backToTop" 
             class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 
@@ -241,10 +269,7 @@
     <script src="{{ asset('js/custom/mobile.js') }}"></script>
     <script src="{{ asset('js/custom/back-to-top.js') }}"></script>
     <script src="{{ asset('js/custom/search.js') }}"></script>
-
-    <script>
-        
-    </script>
+    <script src="{{ asset('js/custom/cookie.js') }}"></script>
 
 </body>
 </html>

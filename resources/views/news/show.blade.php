@@ -69,12 +69,13 @@
                                         @endforeach
                                     </div>
                                 @endif
-                                <div class="flex justify-center md:justify-end">
+                                <div class="flex justify-end">
                                     <div class="relative">
-                                        <button onclick="toggleShareMenu()" class="w-full md:w-auto px-3 md:px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-shakarim-dark transition duration-200 text-sm flex items-center justify-center">
-                                            <i class="fas fa-share mr-1"></i>{{ __('Поделиться')}}
-                                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                                        </button>
+                                    <button onclick="toggleShareMenu()" class="w-full md:w-auto px-3 md:px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-shakarim-dark transition duration-200 text-sm flex items-center justify-center">
+                                        <i class="fas fa-share"></i>
+                                        <span class="ml-2 hidden md:block">{{ __('Поделиться')}}</span>
+                                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                    </button>
                                         
                                         <!-- Share Dropdown Menu -->
                                         <div id="share-menu" class="fixed w-auto bg-white rounded-lg shadow-xl border border-gray-200 hidden z-[9999]">                                   
@@ -170,9 +171,14 @@
                                         @enderror
                                     </div>
 
-                                    <div class="mb-4 flex justify-center">
+                                    <div class="mb-4 flex">
                                         {!! NoCaptcha::renderJs() !!}
-                                        {!! NoCaptcha::display(['data-size' => 'compact']) !!}
+                                        <div class="block sm:hidden">
+                                            {!! NoCaptcha::display(['data-size' => 'compact']) !!}
+                                        </div>
+                                        <div class="hidden sm:block">
+                                            {!! NoCaptcha::display(['data-size' => 'normal']) !!}
+                                        </div>
                                         @error('g-recaptcha-response')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                         @enderror

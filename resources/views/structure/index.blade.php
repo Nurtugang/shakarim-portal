@@ -6,7 +6,7 @@
       <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
         <a href="{{ url('/') }}" class="hover:text-shakarim-blue transition-colors">{{ __('Главная страница') }}</a>
         <span>&#8250;</span>
-        <span class="text-shakarim-blue font-semibold">{{ __('Organizational structures') }}</span>
+        <span class="text-shakarim-blue font-semibold">{{ __('Organizational Structure') }}</span>
       </nav>
     </div>
   </section>

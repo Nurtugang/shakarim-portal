@@ -14,7 +14,7 @@
         <div class="max-w-7xl mx-auto px-4">
             <h1 class="text-3xl font-bold text-shakarim-blue mb-6">
                 @if($query)
-                    {{ __('Результаты поиска:')}}' "{{ $query }}"
+                    {{ __('Результаты поиска:')}} "{{ $query }}"
                 @else
                     {{ __('Поиск')}}
                 @endif
