@@ -38,7 +38,10 @@
             </div>
         </div>
     </li>
-    @include('structure.partials.node', ['node' => $centerChild])
+    @if ($centerChild)
+        @include('structure.partials.node', ['node' => $centerChild])
+    @endif
+    
         @break
 
         @case('horizontal_row')

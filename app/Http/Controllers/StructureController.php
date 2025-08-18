@@ -18,6 +18,7 @@ class StructureController extends Controller
          $structures = Structure::whereNull('parent_id')
                                 ->with('childrenRecursive')
                                 ->where('active',true)
+                                ->orderBy('sort_order')
                                 ->first(); 
 
         return view('structure.index',compact('structures'));

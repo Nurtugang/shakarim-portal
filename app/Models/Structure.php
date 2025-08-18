@@ -21,7 +21,9 @@ class Structure extends Model
 
     public function children()
     {
-        return $this->hasMany(Structure::class, 'parent_id');
+        return $this->hasMany(Structure::class, 'parent_id')
+        ->where('active', true)
+        ->orderBy('sort_order');
     }
     public function childrenRecursive()
     {
