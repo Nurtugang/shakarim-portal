@@ -18,8 +18,12 @@
         <div class="max-w-7xl mx-auto px-4 py-2">
             <div class="flex justify-end md:justify-between items-center text-sm">
                 <div class="flex items-center space-x-4 hidden md:block">
-                    <span class="text-gray-600"><i class="fas fa-phone mr-1"></i> +7 (7182) 67-36-69</span>
-                    <span class="text-gray-600"><i class="fas fa-envelope mr-1"></i> info@shakarim.edu.kz</span>
+                    <a href="tel:+7 (7222) 31-31-75">
+                        <span class="text-gray-600"><i class="fas fa-phone mr-1"></i> +7 (7222) 31-31-75</span>
+                    </a>    
+                    <a href="mailto:kense@shakarim.kz">
+                        <span class="text-gray-600"><i class="fas fa-envelope mr-1"></i> kense@shakarim.kz</span>
+                    </a>                    
                 </div>
 
                 <div class="flex items-center space-x-2 ml-auto relative">
@@ -155,7 +159,14 @@
                             <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-8 w-auto">
                         </a>
                     </div>
-                    <p class="text-blue-200 text-sm">{{ __('University leading in quality education and research since 1934') }}</p>
+                    <div class="relative">
+                        <div class="text-blue-100 text-sm leading-relaxed mb-3">
+                            <span class="italic">{!! html_entity_decode($quote->text) !!}</span>
+                        </div>
+                        <div class="text-blue-300 text-xs font-semibold">
+                            — {{ $quote->author }}
+                        </div>
+                    </div>
                     </div>
                         @foreach($footer_menu as $section)
                             <div>

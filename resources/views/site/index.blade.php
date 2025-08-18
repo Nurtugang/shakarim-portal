@@ -47,15 +47,15 @@
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Educational Programs') }}</h2>
                         <div class="grid grid-cols-3 gap-2 md:gap-4 mb-3 md:mb-6">
                             <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">45</div>
+                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">57</div>
                                 <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Bachelor') }}</div>
                             </div>
                             <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">35</div>
+                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">58</div>
                                 <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Master') }}</div>
                             </div>
                             <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">10</div>
+                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">13</div>
                                 <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Doctorate') }}</div>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                     <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
                         <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Platonus</a>
                         <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Shakarim Hub</a>
-                        <a href="http://library.semgu.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Библиотека') }}</a>
+                        <a href="https://kitaphana.shakarim.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Библиотека') }}</a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'shakarim-top-100']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Shakarim TOP-100</a>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                     <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
                         <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Platonus</a>
                         <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• Shakarim Hub</a>
-                        <a href="/ru/structure']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Организационная структура') }}</a>
+                        <a href="{{ route('structure.index', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Организационная структура') }}</a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'mamandarga-arnalgan-kurstar']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Курсы для профессионалов') }}</a>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                     <p class="text-gray-800 text-xs md:text-sm font-body mb-3 md:mb-4 transition-colors duration-300 group-hover:text-white">{{ __('For our partners') }}</p>
                     <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
                         <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'international-cooperation-center']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Центр международного сотрудничества') }}</a>
-                        <a href="/ru/science/purchases" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Научные государственные закупки') }}</a>
+                        <a href="{{ route('science.purchases', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Научные государственные закупки') }}</a>
                         <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'public-procurement-department']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Отдел государственных закупок') }}</a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'innovaciialar-narygy']) }}" class="block text-gray-800 transition-colors duration-300 group-hover:text-white">• {{ __('Маркет инноваций') }}</a>
                     </div>
@@ -173,19 +173,23 @@
                     </div>
                     <div class="grid grid-cols-2 gap-3 md:gap-6">
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">45</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">57</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Bachelor programs') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">35</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">58</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Master programs') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">90</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">13</div>
+                            <div class="text-xs md:text-sm font-body text-gray-600">{{ __('PhD programs') }}</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">91</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Years of experience') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">98%</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">95%</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Graduate employment rate') }}</div>
                         </div>
                     </div>
@@ -298,24 +302,20 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="p-3 md:p-6 w-full md:w-2/3 flex flex-col justify-between">
+                                    <div class="p-3 md:p-4 w-full md:w-2/3 flex flex-col justify-between">
                                         <div>
                                             <div class="text-xs md:text-sm text-gray-500 mb-1 md:mb-2">
                                                 {{ \Carbon\Carbon::createFromTimestamp($item->created_at)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
                                             </div>
                                             <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
-                                                <h3 class="text-sm md:text-xl font-semibold mb-2 md:mb-3 hover:text-shakarim-blue cursor-pointer line-clamp-2">
+                                                <h3 class="text-sm md:text-lg font-semibold mb-2 md:mb-3 hover:text-shakarim-blue cursor-pointer line-clamp-2">
                                                     {{ $item->{'title_' . app()->getLocale()} }}
                                                 </h3>
                                             </a>
-                                            <p class="text-gray-600 mb-2 md:mb-4 line-clamp-2 md:line-clamp-3 text-xs md:text-base">
+                                            <p class="text-gray-600 mb-2 md:mb-4 line-clamp-2 md:line-clamp-3 text-sm md:text-xs">
                                                 {{ \Illuminate\Support\Str::limit(html_entity_decode(strip_tags($item->{'content_' . app()->getLocale()})), 140) }}
                                             </p>
                                         </div>
-                                        <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}"
-                                        class="text-shakarim-blue font-semibold hover:underline text-xs md:text-base mt-auto">
-                                            {{ __('Read more') }} →
-                                        </a>
                                     </div>
                                 </div>
                             </article>
