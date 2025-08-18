@@ -13,9 +13,9 @@ class SitemapController extends Controller
         // Верхнее меню
         $menu = Cache::remember('menu', now()->addDay(), function() {
             return Menu::with([
-                    'page',
-                    'children.page',
-                    'children.children.page',
+                    'page:id,menu_id,slug',
+                    'children.page:id,menu_id,slug',
+                    'children.children.page:id,menu_id,slug',
                 ])
                 ->where('active', true)
                 ->whereNull('parent_id')
@@ -27,7 +27,7 @@ class SitemapController extends Controller
         // Футер-меню
         $footer_menu = Cache::remember('footer_menu', now()->addDay(), function() {
             return Menu::with([
-                    'page',
+                    'page:id,menu_id,slug',
                     'children.page',
                 ])
                 ->where('active', true)
