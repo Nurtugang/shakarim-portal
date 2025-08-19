@@ -13,20 +13,17 @@
     <!-- Announcements Cards -->
     <section class="bg-white py-8">
         <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-8 mt-2">
+                <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">{{ __('Объявления')}} </h1>
+                <small>{{ __('Найдено объявлений:') }} {{ $announcements->total() }}</small>
+            </div>
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 <!-- Main Content -->
                 <div class="lg:col-span-3">
                     <!-- Заголовок -->
-                    <div class="mb-8 mt-2">
-                        <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">{{ __('Объявления')}}</h1>
-                    </div>
-
+                    
                     <!-- Проверка на наличие объявлений -->
                     @if($announcements->count() > 0)
-                        <div class="mb-8">
-                            <p class="text-gray-600">{{ __('Найдено объявлений:') }} {{ $announcements->total() }}</p>
-                        </div>
-                        
                         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
                             @foreach ($announcements as $item)
                                 <div class="border rounded-lg bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -34,7 +31,7 @@
                                     @if($item->image)
                                         <div class="h-48 w-full overflow-hidden bg-gray-100">
                                             <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}">
-                                                <img src="{{ Storage::url('announcement/' . $item->image) }}" 
+                                                <img src="{{ $item->getOptimizedImageUrl() }}"
                                                     alt="{{ $item->name }}" 
                                                     class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
                                             </a>
@@ -99,36 +96,6 @@
                 <!-- Sidebar -->
                 <div class="lg:col-span-1">
                     <div class="space-y-6">
-                        <!-- Языки объявлений -->
-                        <div class="bg-white rounded-xl shadow-md p-6">
-                            <h3 class="text-lg font-bold text-shakarim-blue mb-4 flex items-center">
-                                <i class="fas fa-globe mr-2"></i>
-                                Языки
-                            </h3>
-                            <div class="space-y-2">
-                                @php
-                                    $languages = [
-                                        'ru' => 'Русский',
-                                        'kk' => 'Қазақша', 
-                                        'en' => 'English'
-                                    ];
-                                @endphp
-                                @foreach($languages as $code => $name)
-                                    @php
-                                        $currentLanguage = request('language');
-                                        $isActive = $currentLanguage == $code;
-                                    @endphp
-                                    <a href="{{ route('announcements.index', ['language' => $code]) }}" 
-                                       class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 transition duration-200 {{ $isActive ? 'bg-shakarim-blue text-white hover:bg-shakarim-dark' : 'text-gray-700' }}">
-                                        <span class="text-sm font-medium">{{ $name }}</span>
-                                        <span class="text-xs {{ $isActive ? 'text-white' : 'text-gray-500' }} bg-gray-100 {{ $isActive ? 'bg-white bg-opacity-20' : '' }} px-2 py-1 rounded-full">
-                                            {{ App\Models\Announcement::where('status', 1)->where('language', $code)->count() }}
-                                        </span>
-                                    </a>
-                                @endforeach
-                            </div>
-                        </div>
-
                         <!-- Последние объявления -->
                         @if($announcements->count() > 3)
                             <div class="bg-white rounded-xl shadow-md p-6">

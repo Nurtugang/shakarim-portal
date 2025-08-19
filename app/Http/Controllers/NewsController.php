@@ -34,8 +34,7 @@ class NewsController extends Controller
             }
         }
 
-        $news = $query->orderBy('date', 'desc')
-            ->orderBy('created_at', 'desc')
+        $news = $query->orderBy('created_at', 'desc')
             ->paginate(9);
         
         $news->appends($request->query());
@@ -69,7 +68,6 @@ class NewsController extends Controller
 
         $latestNews = News::where('status', 1)
         ->where('id', '!=', $news->id)
-        ->orderBy('date', 'desc')
         ->orderBy('created_at', 'desc')
         ->take(5)
         ->select('id', 'alias', 'title_kk', 'title_ru', 'title_en', 'created_at')

@@ -11,7 +11,11 @@
     </section>
 
     <div class="max-w-7xl mx-auto px-4 py-8">
-        <h1 class="text-lg font-bold text-shakarim-blue mb-8">{{ $menu->{'title_'.app()->getLocale()} }}</h1>
+        <div class="pb-8">
+            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">
+                {{ $menu->{'title_'.app()->getLocale()} }}
+            </h1>
+        </div>
         
         <!-- Мобильный вид - простой список -->
         <div class="md:hidden">
@@ -29,13 +33,13 @@
         <!-- Десктопный вид - карточки -->
         <div class="hidden md:grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @foreach($children as $child)
-                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <h3 class="text-xl font-semibold">
-                        <a href="{{ $child->getUrl() }}" class="text-shakarim-blue hover:underline">
+                <a href="{{ $child->getUrl() }}" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:bg-shakarim-blue group h-full">
+                    <div class="p-6 h-full flex items-center justify-center">
+                        <h3 class="text-xl font-semibold text-shakarim-blue group-hover:text-white text-center transition-colors duration-300">
                             {{ $child->{'title_'.app()->getLocale()} }}
-                        </a>
-                    </h3>
-                </div>
+                        </h3>
+                    </div>
+                </a>
             @endforeach
         </div>
     </div>

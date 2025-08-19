@@ -28,9 +28,6 @@
                         <div class="p-3 md:p-6 border-b border-gray-100">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 space-y-3 md:space-y-0">
                                 <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
-                                    <span class="bg-shakarim-blue text-white px-2 md:px-3 py-1 rounded-full text-xs font-medium w-fit">
-                                        <i class="fas fa-bullhorn mr-1"></i>{{ strtoupper($announcement->language) }}
-                                    </span>
                                     <span class="text-gray-500 text-sm">
                                         <i class="far fa-calendar mr-1"></i>{{ \Carbon\Carbon::createFromTimestamp($announcement->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
                                     </span>
@@ -53,7 +50,7 @@
                         <!-- Announcement Image -->
                         @if($announcement->image)
                             <div class="p-3 md:p-6">
-                                <img src="{{ Storage::url('announcement/' . $announcement->image) }}" 
+                                <img src="{{ $announcement->getOptimizedImageUrl() }}"
                                     alt="{{ $announcement->name }}" 
                                     class="w-full h-auto max-w-full mx-auto rounded-lg shadow-lg">
                             </div>
@@ -126,7 +123,7 @@
                                         <div class="w-2 h-2 bg-shakarim-blue rounded-full mt-2 flex-shrink-0"></div>
                                         <div class="flex-1 min-w-0">
                                             <h3 class="text-xs md:text-sm font-medium text-gray-900 hover:text-shakarim-blue cursor-pointer line-clamp-2">
-                                                <a href="{{ route('announcements.show', ['id' => $latestItem->id]) }}">
+                                                <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $latestItem->id]) }}">
                                                     {{ $latestItem->name }}
                                                 </a>
                                             </h3>

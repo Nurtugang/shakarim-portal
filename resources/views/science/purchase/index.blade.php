@@ -179,7 +179,6 @@
   ></x-modal>
 
   @push('scripts')
-  <script src="/js/content.js"></script>
   <script>
     function toggleCollapse(elementId) {
       const element = document.getElementById(elementId);

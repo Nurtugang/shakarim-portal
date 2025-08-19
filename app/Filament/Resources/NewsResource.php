@@ -24,7 +24,7 @@ class NewsResource extends Resource
     protected static ?string $navigationGroup = 'Новости';
 
     protected static ?int $navigationSort = 3;
-
+    
     public static function form(Form $form): Form
     {
         return $form
@@ -63,11 +63,15 @@ class NewsResource extends Resource
                     ->image()
                     ->disk('public')
                     ->directory('news')
-                    ->visibility('public')
-                    ->storeFileNamesIn('image'),
+                    ->visibility('public'),
                 Forms\Components\Toggle::make('status')
                     ->label('Активна')
                     ->default(true),
+                Forms\Components\DateTimePicker::make('created_at')
+                    ->label('Дата публикации')
+                    ->default(now())
+                    ->required()
+                    ->dehydrateStateUsing(fn ($state) => $state ? \Carbon\Carbon::parse($state)->timestamp : null),
             ]);
     }
 
@@ -76,14 +80,15 @@ class NewsResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('image')
-                    ->label('Фото')
-                    ->formatStateUsing(function ($state) {
-                        if ($state) {
-                            return '<img src="/storage/news/' . $state . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">';
-                        }
-                        return 'Нет фото';
-                    })
-                    ->html(),
+                ->label('Фото')
+                ->formatStateUsing(function ($state, $record) {
+                    if ($state) {
+                        $imageUrl = $record->getOptimizedImageUrl();
+                        return '<img src="' . $imageUrl . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">';
+                    }
+                    return 'Нет фото';
+                })
+                ->html(),
                 Tables\Columns\TextColumn::make('title_kk')
                     ->label('Заголовок')
                     ->searchable()
@@ -93,11 +98,18 @@ class NewsResource extends Resource
                 Tables\Columns\IconColumn::make('status')
                     ->label('Статус')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Дата')
+                    ->formatStateUsing(fn ($state) => $state ? \Carbon\Carbon::createFromTimestamp($state)->format('d.m.Y H:i') : '')
+                    ->sortable()
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('category_id')
                     ->relationship('category', 'label_ru'),
                 Tables\Filters\TernaryFilter::make('status'),
+            ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -107,7 +119,8 @@ class NewsResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     public static function getPages(): array
