@@ -21,6 +21,10 @@ class TabsBlock extends TiptapBlock
     public function getFormSchema(): array
     {
         return [
+            TextInput::make('sidebar_title')
+                ->label('Заголовок боковой панели')
+                ->default('Разделы'),
+                
             Repeater::make('tabs')
                 ->schema([
                 TextInput::make('title')

@@ -57,7 +57,7 @@
                                         {{ $structure->filteredData->address ?? '071412 Республика Казахстан, область Абай, город Семей, ул. Глинки, 20 "Д"' }}
                                     </span>
                                 </div>
-                                
+
                                 @if($structure->filteredData->cabinet)
                                 <div class="flex items-center space-x-2">
                                     <i class="fas fa-door-open text-blue-200 w-4 text-xs"></i>
@@ -67,6 +67,7 @@
                                 </div>
                                 @endif
 
+                                @if($structure->filteredData->email)
                                 <div class="flex items-center space-x-2">
                                     <i class="fas fa-envelope text-blue-200 w-4 text-xs"></i>
                                     <a href="mailto:{{ $structure->filteredData->email }}" 
@@ -74,7 +75,9 @@
                                         {{ $structure->filteredData->email }}
                                     </a>
                                 </div>
+                                @endif
 
+                                @if($structure->filteredData->phone)
                                 <div class="flex items-center space-x-2">
                                     <i class="fas fa-phone text-blue-200 w-4 text-xs"></i>
                                     <a href="tel:{{ $structure->filteredData->phone }}" 
@@ -82,6 +85,7 @@
                                         {{ $structure->filteredData->phone }}
                                     </a>
                                 </div>
+                                @endif
 
                                 @if($structure->filteredData->phone_2)
                                 <div class="flex items-center space-x-2">
@@ -130,7 +134,7 @@
                 <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
                     <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-800 mb-6 flex items-center">
                         <i class="fas fa-users text-shakarim-blue mr-3"></i>
-                        {{ __("Department Staff") }}
+                        {{ __("Staff") }}
                         <span class="ml-3 bg-shakarim-blue text-white text-sm font-medium px-3 py-1 rounded-full">
                             {{ $structure->employees->count() }}
                         </span>

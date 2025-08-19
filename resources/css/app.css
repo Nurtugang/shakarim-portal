@@ -35,16 +35,20 @@
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
-  display: block;
-  white-space: nowrap;
+  display: table; /* вместо block */
+  white-space: normal; /* вместо nowrap, чтобы текст переносился */
+  table-layout: fixed !important;
 }
-.tiptap-content table td,
-table th {
+.tiptap-content table td, table th {
     border: 1px solid theme("colors.gray.400");
     min-width: 1em;
     padding: 10px;
     vertical-align: top;
-    background-clip: padding-box
+    background-clip: padding-box;
+    width: auto !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .tiptap-content table td > *,
@@ -185,7 +189,7 @@ table {
     border-collapse: collapse;
     margin: 0;
     overflow: hidden;
-    table-layout: auto !important;
+    table-layout: fixed !important;
     width: 100%;
     position: relative;
 }
@@ -508,6 +512,13 @@ blockquote {
 
 /* Мобильная оптимизация */
 @media (max-width: 640px) {
+    .tiptap-content table {
+        font-size: 0.875rem;
+    }
+
+    .tiptap-content table td, .tiptap-content table th {
+        padding: 8px 4px;
+    }
     .tiptap-content summary {
         padding: 10px 12px;
         font-size: 0.9em;

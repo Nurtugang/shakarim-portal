@@ -5,7 +5,7 @@
         <div class="slider-container relative h-64 md:h-[400px]">
             <!-- Slide 1: QS Rankings -->
             <div class="slide active absolute inset-0 flex"
-                 style="background-image: url('/img/banner/graduates.webp'); background-size: cover; background-position: center;">
+                 style="background-image: url('/img/hero/graduates.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('QS World University Rankings') }}</h2>
@@ -18,12 +18,12 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/banner/graduates.webp');"></div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/graduates.webp');"></div>
             </div>
 
             <!-- Slide 2: Modern Campus -->
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                 style="background-image: url('/img/banner/university_building.webp'); background-size: cover; background-position: center;">
+                 style="background-image: url('/img/hero/university_building.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-shakarim-blue bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Modern Campus') }}</h2>
@@ -36,12 +36,12 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/banner/university_building.webp');"></div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/university_building.webp');"></div>
             </div>
 
             <!-- Slide 3: Academic Programs -->
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                 style="background-image: url('/img/banner/general_photo.webp'); background-size: cover; background-position: center;">
+                 style="background-image: url('/img/hero/general_photo.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-slate-700 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Educational Programs') }}</h2>
@@ -66,7 +66,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/banner/general_photo.webp');">
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/general_photo.webp');">
                 </div>
             </div>
 
@@ -409,7 +409,7 @@
                             <a href="https://farabi.university/" target="_blank"><img src="{{ Storage::url('partners/farabi.webp') }}" alt="farabi" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
                         <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
-                            <a href="https://farabi.university/" target="_blank"><img src="{{ Storage::url('partners/ABU.webp') }}" alt="ABU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
+                            <a href="https://abu.edu.kz/" target="_blank"><img src="{{ Storage::url('partners/ABU.webp') }}" alt="ABU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
                         <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
                             <a href="https://global.kduniv.ac.kr/" target="_blank"><img src="{{ Storage::url('partners/KDU.webp') }}" alt="KDU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>

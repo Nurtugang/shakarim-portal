@@ -174,6 +174,13 @@ function toggleCollapse(elementId) {
     const element = document.getElementById(elementId);
     const icon = document.getElementById('icon-' + elementId);
     
+    document.querySelectorAll('[id^="faculty-"]').forEach(el => {
+        if (el.id !== elementId) {
+            el.classList.add('hidden');
+            document.getElementById('icon-' + el.id).classList.remove('rotate-180');
+        }
+    });
+    
     if (element.classList.contains('hidden')) {
         element.classList.remove('hidden');
         icon.classList.add('rotate-180');

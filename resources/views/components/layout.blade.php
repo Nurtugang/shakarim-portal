@@ -37,16 +37,16 @@
                         <i class="fas fa-search fa-lg"></i>
                     </button>
                     
-                    <a href="{{ route('sitemap', ['locale' => app()->getLocale()]) }}"
-                        class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
-                        title="{{ __('Site Map') }}">
-                        <i class="fas fa-sitemap fa-lg"></i>
-                    </a>
-
                     <a href="{{ route('under-development', ['locale' => app()->getLocale()]) }}"
                         class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
                         title="{{ __('Accessibility') }}">
                         <i class="fas fa-eye fa-lg"></i>
+                    </a>
+                    
+                    <a href="{{ route('sitemap', ['locale' => app()->getLocale()]) }}"
+                        class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
+                        title="{{ __('Site Map') }}">
+                        <i class="fas fa-sitemap fa-lg"></i>
                     </a>
 
                     <div id="search-field" class="hidden absolute top-full right-0 mt-2 bg-white shadow-lg rounded-lg p-3 z-50 w-128">
@@ -242,7 +242,7 @@
                 </p>
             </div>
             <button onclick="acceptCookies()" class="bg-shakarim-blue hover:bg-blue-700 px-6 py-2 rounded text-sm font-medium whitespace-nowrap transition">
-                Принять
+                {{ __('Принять') }}
             </button>
         </div>
     </div>
