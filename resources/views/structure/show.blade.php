@@ -151,7 +151,18 @@
                                 </div>
                                 
                                 <h4 class="font-semibold text-gray-800 text-xs md:text-sm mb-1 leading-tight">
-                                    {{ $employee->{'fullname_'.app()->getLocale()} }}
+                                    @php
+                                        $fullname = $employee->{'fullname_'.app()->getLocale()};
+                                        $words = explode(' ', trim($fullname));
+                                        
+                                        if (count($words) >= 3) {
+                                            $formatted = implode(' ', array_slice($words, 0, 2)) . '<br>' . implode(' ', array_slice($words, 2));
+                                        } else {
+                                            $formatted = $fullname . (count($words) === 2 ? '<br>' : '');
+                                        }
+                                    @endphp
+                                    
+                                    {!! $formatted !!}
                                 </h4>
                                 <p class="text-gray-600 text-xs leading-tight">
                                     {{ $employee->{'position_'.app()->getLocale()} }}

@@ -71,7 +71,7 @@
                     @if($news->count() > 0)
                         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
                             @foreach ($news as $item)
-                                <div class="border rounded-lg bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                                <div class="border rounded-lg bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
                                     <!-- Изображение новости -->
                                     @if($item->image)
                                         <div class="h-48 w-full overflow-hidden bg-gray-100">
@@ -88,7 +88,7 @@
                                     @endif
                                     
                                     <!-- Контент карточки -->
-                                    <div class="p-6 flex flex-col justify-between min-h-[180px]">
+                                    <div class="p-6 flex flex-col justify-between flex-1">
                                         <div>
                                             <div class="flex items-center justify-between mb-3">
                                                 <span class="text-gray-400 text-sm">

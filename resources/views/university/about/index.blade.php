@@ -97,8 +97,6 @@
                 <!-- Period 1: 1930-1950 -->
                 <div id="content-period1" class="tab-content hidden">
                     <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h2 class="text-xl md:text-2xl font-bold text-shakarim-blue mb-6">1930-1950 годы</h2>
-                        
                         <!-- Historical Events Table -->
                         <div class="overflow-x-auto mb-8">
                             <table class="min-w-full border border-gray-200 rounded-lg">
@@ -206,8 +204,6 @@
                 <!-- Period 2: 1950-1980 -->
                 <div id="content-period2" class="tab-content hidden">
                     <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h2 class="text-xl md:text-2xl font-bold text-shakarim-blue mb-6">1950-1980 годы</h2>
-                        
                         <div class="overflow-x-auto mb-8">
                             <table class="min-w-full border border-gray-200 rounded-lg">
                                 <thead class="bg-gray-50">
@@ -306,8 +302,6 @@
                 <!-- Period 3: 1981-2000 -->
                 <div id="content-period3" class="tab-content hidden">
                     <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h2 class="text-xl md:text-2xl font-bold text-shakarim-blue mb-6">1981-2000 годы</h2>
-                        
                         <div class="overflow-x-auto mb-8">
                             <table class="min-w-full border border-gray-200 rounded-lg">
                                 <thead class="bg-gray-50">
@@ -391,8 +385,6 @@
                 <!-- Period 4: 2001-Present -->
                 <div id="content-period4" class="tab-content hidden">
                     <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h2 class="text-xl md:text-2xl font-bold text-shakarim-blue mb-6">С 2001 года по настоящее время</h2>
-                        
                         <div class="overflow-x-auto mb-8">
                             <table class="min-w-full border border-gray-200 rounded-lg">
                                 <thead class="bg-gray-50">

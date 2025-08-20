@@ -3,7 +3,7 @@
 {{-- {{ dd($tabs) }} --}}
 
 @if(isset($tabs) && count($tabs) > 0)
-<div class="tabs-block bg-white py-8">
+<div class="tabs-block bg-white">
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Sidebar Navigation -->
@@ -25,8 +25,8 @@
                 <div class="hidden lg:block sticky top-24">
                     <div class="bg-white rounded-xl shadow-lg p-6">
                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
-    {{ $sidebar_title ?? 'Разделы' }}
-</h3>
+                            {{ $sidebar_title ?? 'Разделы' }}
+                        </h3>
                         <nav class="space-y-2">
                             @foreach($tabs as $index => $tab)
                             <button onclick="showTab('tab-{{ $index }}')" 

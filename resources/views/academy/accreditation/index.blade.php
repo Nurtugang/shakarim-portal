@@ -6,7 +6,7 @@
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
                 <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
                 <span>&#8250;</span>
-                <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => 1]) }}" class="hover:text-shakarim-blue">{{ __('Академия') }}</a>
+                <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => 1]) }}" class="hover:text-shakarim-blue">{{ __('Образование') }}</a>
                 <span>&#8250;</span>
                 <span class="text-shakarim-blue font-semibold">{{ __('Аккредитация') }}</span>
             </nav>
@@ -317,10 +317,10 @@
                             <div class="bg-gray-50 rounded-lg p-6">
                                 <div class="flex justify-center">
                                     <div class="max-w-md">
-                                        <img src="https://shakarim.edu.kz//upload/editor/pages/Ins-Akkrrus-i-kaz.jpg" 
+                                        <img src="{{ Storage::url('certificates-institution/ins-kk.jpg') }}" 
                                             alt="{{ __('Сертификат институциональной аккредитации') }}" 
                                             class="w-full h-auto rounded-lg shadow-lg border border-gray-200 cursor-pointer hover:shadow-xl transition-shadow duration-300"
-                                            onclick="openCertificateModal('https://shakarim.edu.kz//upload/editor/pages/Ins-Akkrrus-i-kaz.jpg', '{{ __('Сертификат институциональной аккредитации АРКА 2023') }}')">
+                                            onclick="openCertificateModal('{{ Storage::url('certificates-institution/ins-kk.jpg') }}', '{{ __('Сертификат институциональной аккредитации АРКА 2023') }}')">
                                         <p class="text-center text-sm text-gray-500 mt-2">
                                             {{ __('Нажмите на изображение для увеличения') }}
                                         </p>

@@ -101,13 +101,12 @@
                 <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
                     <div class="flex items-center mb-3 md:mb-4">
                         <i class="fas fa-user-plus text-xl md:text-2xl text-gray-800 mr-2 md:mr-3"></i>
-                        <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Applicants') }}</h3>
+                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Applicants') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-xs md:text-sm font-body mb-3 md:mb-4 transition-colors duration-300">{{ __('For prospective students') }}</p>
-                    <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'universitet-turaly']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Об университете') }}</a>
+                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('For prospective students') }}</p>
+                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
+                        <a href="{{ route('university.about.index', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Об университете') }}</a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Виртуальный тур') }}</a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bizdin-tarix']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Наша история') }}</a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'studenttik-omir']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Студенческая жизнь') }}</a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bailanys-1']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Контакты') }}</a>
                     </div>
@@ -117,10 +116,10 @@
                 <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
                     <div class="flex items-center mb-3 md:mb-4">
                         <i class="fas fa-graduation-cap text-xl md:text-2xl text-gray-800 mr-2 md:mr-3 transition-colors duration-300"></i>
-                        <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Students') }}</h3>
+                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Students') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-xs md:text-sm font-body mb-3 md:mb-4 transition-colors duration-300">{{ __('For Shakarim students') }}</p>
-                    <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
+                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('For Shakarim students') }}</p>
+                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
                         <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Platonus</a>
                         <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim Hub</a>
                         <a href="https://kitaphana.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Библиотека') }}</a>
@@ -132,10 +131,10 @@
                 <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
                     <div class="flex items-center mb-3 md:mb-4">
                         <i class="fas fa-users text-xl md:text-2xl text-gray-800 mr-2 md:mr-3 transition-colors duration-300"></i>
-                        <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Employees') }}</h3>
+                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Employees') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-xs md:text-sm font-body mb-3 md:mb-4 transition-colors duration-300">{{ __('For our employees') }}</p>
-                    <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
+                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('For our employees') }}</p>
+                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
                         <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Platonus</a>
                         <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim Hub</a>
                         <a href="{{ route('structure.index', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Организационная структура') }}</a>
@@ -147,10 +146,10 @@
                 <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
                     <div class="flex items-center mb-3 md:mb-4">
                         <i class="fas fa-handshake text-xl md:text-2xl text-gray-800 mr-2 md:mr-3 transition-colors duration-300"></i>
-                        <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Partners') }}</h3>
+                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Partners') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-xs md:text-sm font-body mb-3 md:mb-4 transition-colors duration-300">{{ __('For our partners') }}</p>
-                    <div class="space-y-1 md:space-y-2 text-xs md:text-sm font-body">
+                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('For our partners') }}</p>
+                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
                         <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'international-cooperation-center']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Центр международного сотрудничества') }}</a>
                         <a href="{{ route('science.purchases', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Научные государственные закупки') }}</a>
                         <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'public-procurement-department']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Отдел государственных закупок') }}</a>
@@ -364,7 +363,7 @@
                 <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'international-cooperation-center']) }}" class="group">
                     <div class="group bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center h-full flex flex-col justify-center">
                         <i class="fas fa-globe text-2xl md:text-3xl text-shakarim-blue group-hover:text-white mb-2 md:mb-4 transition-colors"></i>
-                        <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-xs md:text-base">{{ __('International') }}</h3>
+                        <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-xs md:text-base">{{ __('International cooperation') }}</h3>
                         <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Partnerships and exchange programs') }}</p>
                     </div>
                 </a>

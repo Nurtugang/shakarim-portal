@@ -1,6 +1,6 @@
 {
     "Главная страница": "Home",
-    "Академия": "Academy", 
+    "Образование": "Academics", 
     "Аккредитация": "Accreditation",
     "Специализированная аккредитация": "Specialized Accreditation",
     "Аккредитация отдельных образовательных программ вуза.": "Accreditation of individual university educational programs.",
@@ -237,5 +237,8 @@
     "Мы используем файлы cookie для улучшения работы сайта.": "We use cookies to improve the website's performance.",
     "Продолжая пользоваться сайтом, вы соглашаетесь с нашей политикой конфиденциальности.": "By continuing to use the site, you agree to our privacy policy.",
     "Принять": "Accept",
-    "Разделы": "Sections"
+    "Разделы": "Sections",
+    "Кафедр": "Departments",
+    "Образовательных программ": "Educational Programs",
+    "Стратегия развития и ответы на вопросы": "Development Strategy and Answers to Questions"
 }
