@@ -12,9 +12,9 @@
 
     <section class="bg-white py-8">
         <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-3xl font-bold text-shakarim-blue mb-6">
+            <h1 class="text-xl md:text-3xl font-bold text-shakarim-blue mb-6">
                 @if($query)
-                    {{ __('Результаты поиска:')}} "{{ $query }}"
+                    {{ __('Результаты поиска')}}: "{{ $query }}"
                 @else
                     {{ __('Поиск')}}
                 @endif
@@ -25,7 +25,7 @@
                 <!-- Страницы -->
                 @if($pages->count() > 0)
                     <div class="mb-8">
-                        <h2 class="text-xl font-semibold mb-4">Страницы ({{ $pages->count() }})</h2>
+                        <h2 class="text-lg font-semibold mb-4">Страницы ({{ $pages->count() }})</h2>
                         @foreach($pages as $item)
                             <div class="border-b pb-4 mb-4">
                                 <h3 class="font-semibold text-shakarim-blue">
@@ -44,7 +44,7 @@
                 <!-- Новости -->
                 @if($news->count() > 0)
                     <div class="mb-8">
-                        <h2 class="text-xl font-semibold mb-4">{{ __('Новости')}} ({{ $news->count() }})</h2>
+                        <h2 class="text-lg font-semibold mb-4">{{ __('Новости')}} ({{ $news->count() }})</h2>
                         @foreach($news as $item)
                             <div class="border-b pb-4 mb-4">
                                 <h3 class="font-semibold text-shakarim-blue">
@@ -63,7 +63,7 @@
                 <!-- Объявления -->
                 @if($announcements->count() > 0)
                     <div class="mb-8">
-                        <h2 class="text-xl font-semibold mb-4">{{ __('Объявления')}} ({{ $announcements->count() }})</h2>
+                        <h2 class="text-lg font-semibold mb-4">{{ __('Объявления')}} ({{ $announcements->count() }})</h2>
                         @foreach($announcements as $item)
                             <div class="border-b pb-4 mb-4">
                                 <h3 class="font-semibold text-shakarim-blue">
