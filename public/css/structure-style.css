@@ -36,7 +36,7 @@ a:hover {
     line-height: 23px;
     font-size: 13px;
     padding: 12px 25px;
-    background-color: rgb(59 130 246 / .5);
+    background-color: #EEB13C;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -213,7 +213,7 @@ ol.organizational-chart > li > ol > li > div h2 {
 
 /* TERTIARY */
 ol.organizational-chart > li > ol > li > ol > li > div {
-    background-color: rgb(59 130 246 / .5);
+    background-color: #EEB13C;
     color: #fff;
     max-width: 250px;
     font-family: 'Inter', serif;
@@ -244,7 +244,7 @@ ol.organizational-chart > li > ol > li > ol > li > ol > li > div > a:hover {
 
 /* QUINARY */
 ol.organizational-chart > li > ol > li > ol > li > ol > li > ol > li > div {
-    background-color: rgb(59 130 246 / .5);
+    background-color: #EEB13C;
 }
 
 ol.organizational-chart > li > div:before,

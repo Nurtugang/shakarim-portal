@@ -39,9 +39,6 @@
                             <p class="text-blue-100 text-sm md:text-base mb-3">
                                 {{ $structure->filteredData->leader_position }}
                             </p>
-                            <p class="text-blue-200 text-xs md:text-sm">
-                                {{ $structure->{'title_'.app()->getLocale()} }}
-                            </p>
                         </div>
 
                         <!-- Контактная информация -->
@@ -73,26 +70,6 @@
                                     <a href="mailto:{{ $structure->filteredData->email }}" 
                                        class="text-blue-100 hover:text-white transition-colors text-xs break-all">
                                         {{ $structure->filteredData->email }}
-                                    </a>
-                                </div>
-                                @endif
-
-                                @if($structure->filteredData->phone)
-                                <div class="flex items-center space-x-2">
-                                    <i class="fas fa-phone text-blue-200 w-4 text-xs"></i>
-                                    <a href="tel:{{ $structure->filteredData->phone }}" 
-                                       class="text-blue-100 hover:text-white transition-colors text-xs">
-                                        {{ $structure->filteredData->phone }}
-                                    </a>
-                                </div>
-                                @endif
-
-                                @if($structure->filteredData->phone_2)
-                                <div class="flex items-center space-x-2">
-                                    <i class="fas fa-phone-alt text-blue-200 w-4 text-xs"></i>
-                                    <a href="tel:{{ $structure->filteredData->phone_2 }}" 
-                                       class="text-blue-100 hover:text-white transition-colors text-xs">
-                                        {{ $structure->filteredData->phone_2 }}
                                     </a>
                                 </div>
                                 @endif
