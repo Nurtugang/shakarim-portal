@@ -207,14 +207,35 @@
                         @endforeach
                     <div>
                     <h4 class="font-semibold mb-4">{{ __('Contact') }}</h4>
-                    <div class="space-y-2 text-sm text-blue-200">
-                        <p>{{ __('071412, Semey, Glinka street, 20A') }}</p>
-                        <a href="tel:+7 (7222) 31-31-75">
-                            <p> +7 (7222) 31-31-75</p>
-                        </a>    
-                        <a href="mailto:kense@shakarim.kz">
-                            <p> kense@shakarim.kz</p>
-                        </a>
+                    <div class="space-y-3 text-sm text-blue-200">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-blue-300"></i>
+                            <p>{{ __('071412, Semey, Glinka street, 20A') }}</p>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-blue-300"></i>
+                            <a href="tel:+77222313175" class="hover:text-white transition-colors">
+                                +7 (7222) 31-31-75
+                            </a>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-envelope text-blue-300"></i>
+                            <a href="mailto:kense@shakarim.kz" class="hover:text-white transition-colors">
+                                kense@shakarim.kz
+                            </a>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-headset text-blue-300"></i>
+                            <div>
+                                <span class="text-blue-300 font-medium">Call centre:</span>
+                                <a href="tel:+77222313175" class="ml-1 hover:text-white transition-colors">
+                                    +7 (7222) 31-31-75
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="flex space-x-3 mt-4">
                         <a href="https://www.instagram.com/shakarim_university" target="_blank" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
