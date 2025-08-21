@@ -24,12 +24,15 @@
                     <a href="mailto:kense@shakarim.kz">
                         <span class="text-gray-600"><i class="fas fa-envelope mr-1"></i> kense@shakarim.kz</span>
                     </a>
-                    <a href="https://old.shakarim.edu.kz" target="_blank" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
-                        <span class="text-gray-600"><i class="fas fa-share-square mr-1"></i>Старый сайт</span>
-                    </a>         
                     <a href="https://aisana.shakarim.kz" target="_blank" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
                         <span class="text-gray-600"><i class="fas fa-share-square mr-1"></i> AI-Sana</span>
                     </a>               
+                </div>
+
+                <div class="block md:hidden">
+                    <a href="https://old.shakarim.edu.kz" target="_blank" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
+                        <span class="text-gray-600 text-sm"><i class="fas fa-share-square mr-1"></i>Старый сайт</span>
+                    </a>
                 </div>
 
                 <div class="flex items-center space-x-2 ml-auto relative">
