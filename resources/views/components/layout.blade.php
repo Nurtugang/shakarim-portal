@@ -12,7 +12,7 @@
     @filamentStyles
     
 </head>
-<body class="font-body bg-white">
+<body class="font-body bg-white min-h-screen flex flex-col">
     <!-- Top Bar -->
     <div class="bg-gray-100 border-b">
         <div class="max-w-7xl mx-auto px-4 py-2">
@@ -163,12 +163,12 @@
     </header>
     
     <!-- Main -->
-    <main class="page-wrapper">
+    <main class="page-wrapper flex-1">
         {{ $slot }}
     </main>
 
     <!-- Footer -->
-    <footer class="bg-shakarim-blue text-white py-12">
+    <footer class="bg-shakarim-blue text-white py-12 mt-auto">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
