@@ -257,7 +257,7 @@
                                     <div class="p-3 md:p-4 w-full md:w-2/3 flex flex-col justify-between">
                                         <div>
                                             <div class="text-xs md:text-sm text-gray-500 mb-1 md:mb-2">
-                                                {{ \Carbon\Carbon::createFromTimestamp($item->created_at)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
+                                                {{ $item->getFormattedDate() }}
                                             </div>
                                             <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
                                                 <h3 class="text-sm md:text-lg font-semibold mb-2 md:mb-3 hover:text-shakarim-blue cursor-pointer line-clamp-2">
