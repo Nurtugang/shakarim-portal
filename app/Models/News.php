@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class News extends Model
 {
+    use HasSlug;
     protected $fillable = [
         'alias',
         'image',
@@ -26,14 +29,19 @@ class News extends Model
         'updated_by'
     ];
 
-    public $timestamps = false;
-
     protected $casts = [
-        'date' => 'integer',
+        'date' => 'datetime',
         'status' => 'boolean',
-        'created_at' => 'integer',
-        'updated_at' => 'integer'
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
     ];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title_kk')
+            ->saveSlugsTo('alias');
+    }
 
     /**
      * Boot метод для автоматической обработки изображений
@@ -47,6 +55,11 @@ class News extends Model
                 $news->createWebpVersion();
             }
         });
+    }
+
+    public function getFormattedDate()
+    {
+        return $this->date?$this->date->locale(app()->getLocale(),'kk')->translatedFormat('d F Y'):'';
     }
 
     /**
@@ -151,7 +164,7 @@ class News extends Model
      */
     public function comments()
     {
-        return $this->hasMany(NewsComment::class)->where('is_approved', true)->latest();
+        return $this->hasMany(NewsComment::class)->latest();
     }
 
     /**

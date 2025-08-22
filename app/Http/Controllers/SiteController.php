@@ -9,7 +9,8 @@ class SiteController extends Controller
 {
     public function __invoke()
     {
-        $news = \App\Models\News::orderBy('created_at', 'desc')
+        $news = \App\Models\News::select('id', 'title_'.app()->getLocale(), 'content_'.app()->getLocale(),'image', 'alias', 'date' )
+            ->orderBy('id', 'desc')
             ->where('status', 1)
             ->limit(3)
             ->get();

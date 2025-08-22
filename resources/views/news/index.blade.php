@@ -92,7 +92,7 @@
                                         <div>
                                             <div class="flex items-center justify-between mb-3">
                                                 <span class="text-gray-400 text-sm">
-                                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d.m.Y') }}
+                                                    {{ $item->date->format('d.m.Y') }}
                                                 </span>
                                                 @if ($item->category)
                                                     <a href="{{ route('news', ['locale' => app()->getLocale(), 'category' => $item->category->id]) }}"

@@ -14,7 +14,7 @@ class NewsController extends Controller
 {
     public function index(string $locale, Request $request)
     {
-        $query = News::query()->where('status', 1);
+        $query = News::query()->with('comments',fn($q) => $q->where('is_approved', true))->where('status', 1);
         
         $selectedTag = null;
         if ($request->has('tag') && $request->tag) {

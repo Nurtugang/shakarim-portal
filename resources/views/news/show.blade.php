@@ -31,7 +31,7 @@
                                         <i class="fas fa-newspaper mr-1"></i>{{ $news->category->{'label_' . app()->getLocale()} }}
                                     </span>
                                     <span class="text-gray-500 text-sm">
-                                        <i class="far fa-calendar mr-1"></i>{{ \Carbon\Carbon::parse($news->created_at)->format('d.m.Y') }}
+                                        <i class="far fa-calendar mr-1"></i>{{ $news->date->format('d.m.Y') }}
                                     </span>
                                 </div>
                                 <div class="text-left md:text-right">
@@ -214,7 +214,7 @@
                                                     {{ $latestItem->{'title_' . app()->getLocale()} }}
                                                 </a>
                                             </h3>
-                                            <p class="text-xs text-gray-500 mt-1">{{ \Carbon\Carbon::createFromTimestamp($latestItem->created_at)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}</p>
+                                            <p class="text-xs text-gray-500 mt-1">{{ $latestItem->getFormattedDate() }}</p>
                                         </div>
                                     </div>
                                 </div>

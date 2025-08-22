@@ -6,7 +6,10 @@ use App\Models\News;
 use App\Models\NewsCategory;
 use App\Models\NewsTag;
 use App\Filament\Resources\NewsResource\Pages;
+use App\Filament\Resources\NewsResource\RelationManagers\CommentsRelationManager;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,55 +27,72 @@ class NewsResource extends Resource
     protected static ?string $navigationGroup = 'Новости';
 
     protected static ?int $navigationSort = 3;
-    
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('alias')
-                    ->label('Алиас')
-                    ->maxLength(255),
-                Forms\Components\Select::make('category_id')
-                    ->label('Категория')
-                    ->relationship('category', 'label_ru')
-                    ->searchable(),
-                Forms\Components\Select::make('tags')
-                    ->label('Теги')
-                    ->multiple()
-                    ->relationship('tags', 'name')
-                    ->searchable(),
-                Forms\Components\TextInput::make('title_kk')
-                    ->label('Заголовок kk')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('title_ru')
-                    ->label('Заголовок RU')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('title_en')
-                    ->label('Заголовок EN')
-                    ->maxLength(255),
-                TiptapEditor::make('content_kk')
-                    ->label('Контент kk'),
-                TiptapEditor::make('content_ru')
-                    ->label('Контент RU')
-                    ->required(),
-                TiptapEditor::make('content_en')
-                    ->label('Контент EN'),
-                Forms\Components\FileUpload::make('image')
-                    ->label('Изображение')
-                    ->image()
-                    ->disk('public')
-                    ->directory('news')
-                    ->visibility('public'),
-                Forms\Components\Toggle::make('status')
-                    ->label('Активна')
-                    ->default(true),
-                Forms\Components\DateTimePicker::make('created_at')
-                    ->label('Дата публикации')
-                    ->default(now())
-                    ->required()
-                    ->dehydrateStateUsing(fn ($state) => $state ? \Carbon\Carbon::parse($state)->timestamp : null),
-            ]);
+                Section::make()
+                    ->schema([
+                        Tabs::make('Tabs')
+                            ->tabs([
+                                Tabs\Tab::make('kz')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_kk')
+                                            ->label('Заголовок kk')
+                                            ->maxLength(255),
+                                        TiptapEditor::make('content_kk')
+                                            ->label('Контент kk'),
+                                    ]),
+                                Tabs\Tab::make('ru')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_ru')
+                                            ->label('Заголовок RU')
+                                            ->required()
+                                            ->maxLength(255),
+                                        TiptapEditor::make('content_ru')
+                                            ->label('Контент RU')
+                                            ->required(),
+                                    ]),
+                                Tabs\Tab::make('en')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_en')
+                                            ->label('Заголовок EN')
+                                            ->maxLength(255),
+                                        TiptapEditor::make('content_en')
+                                            ->label('Контент EN'),
+                                    ])
+                            ]),
+                        Forms\Components\Toggle::make('status')
+                            ->label('Активна')
+                            ->default(true),
+                        Forms\Components\DateTimePicker::make('date')
+                            ->label('Дата публикации')
+                            ->default(now())
+                            ->required(),
+                    ])->columnSpan(8),
+                Section::make()
+                    ->schema([
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Изображение')
+                            ->image()
+                            ->disk('public')
+                            ->directory('news')
+                            ->visibility('public'),
+                        Forms\Components\Select::make('category_id')
+                            ->label('Категория')
+                            ->relationship('category', 'label_ru')
+                            ->searchable()
+                            ->preload(),
+                        Forms\Components\Select::make('tags')
+                            ->label('Теги')
+                            ->multiple()
+                            ->relationship('tags', 'name')
+                            ->searchable()
+                            ->preload(),
+                    ])->columnSpan(4),
+
+            ])->columns(12);
     }
 
     public static function table(Table $table): Table
@@ -80,16 +100,18 @@ class NewsResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('image')
-                ->label('Фото')
-                ->formatStateUsing(function ($state, $record) {
-                    if ($state) {
-                        $imageUrl = $record->getOptimizedImageUrl();
-                        return '<img src="' . $imageUrl . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">';
-                    }
-                    return 'Нет фото';
-                })
-                ->html(),
+                    ->label('Фото')
+                    ->formatStateUsing(function ($state, $record) {
+                        if ($state) {
+                            $imageUrl = $record->getOptimizedImageUrl();
+                            return '<img src="' . $imageUrl . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">';
+                        }
+                        return 'Нет фото';
+                    })
+                    ->html(),
                 Tables\Columns\TextColumn::make('title_kk')
+                    ->url(fn(News $record): string => route('news.show', ['locale' => 'kk', 'news' => $record]))
+                    ->openUrlInNewTab()
                     ->label('Заголовок')
                     ->searchable()
                     ->limit(30),
@@ -100,7 +122,7 @@ class NewsResource extends Resource
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Дата')
-                    ->formatStateUsing(fn ($state) => $state ? \Carbon\Carbon::createFromTimestamp($state)->format('d.m.Y H:i') : '')
+                    ->formatStateUsing(fn($state) => $state ? \Carbon\Carbon::createFromTimestamp($state)->format('d.m.Y H:i') : '')
                     ->sortable()
             ])
             ->filters([
@@ -121,6 +143,13 @@ class NewsResource extends Resource
                 ]),
             ])
             ->defaultSort('id', 'desc');
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            CommentsRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
