@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\ListViewType;
+use App\Enums\RolesEnum;
 use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
 use App\Filament\Resources\PageResource\RelationManagers\FilesRelationManager;
@@ -24,7 +25,8 @@ use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class PageResource extends Resource
 {
@@ -216,6 +218,18 @@ class PageResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->when(
+            Auth::user()->hasRole(RolesEnum::STRUCTURE),
+            function (Builder $query) {
+                return $query->whereHas('menu', function (Builder $query) {
+                    $query->where('structure_id', Auth::user()->structure_id);
+                });
+            } 
+        );
     }
 
     public static function getRelations(): array

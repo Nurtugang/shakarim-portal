@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\RolesEnum;
 use App\Filament\Resources\StructureResource\Pages;
 use App\Filament\Resources\StructureResource\RelationManagers;
 use App\Filament\Resources\StructureResource\RelationManagers\DataRelationManager;
@@ -17,6 +18,7 @@ use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class StructureResource extends Resource
 {
@@ -63,7 +65,8 @@ class StructureResource extends Resource
                                    'left' => 'Слева',
                                    'right' => 'Справа',
                                    'center' => 'Центр',
-                               ]),
+                               ])
+                               ->visible(Auth::user()->hasRole(RolesEnum::ADMIN)),
                     Forms\Components\Select::make('layout_type')
                                ->label('тип')
                                ->required()
@@ -71,7 +74,8 @@ class StructureResource extends Resource
                                    'center_with_sides' => 'Центр с боковыми',
                                    'vertical_stack' => 'Вертикальный',
                                    'horizontal_row' => 'Горизонтальный',
-                               ]),
+                               ])
+                               ->visible(Auth::user()->hasRole(RolesEnum::ADMIN)),
                 Forms\Components\Select::make('parent_id')
                     ->label('Родительское меню')
                     ->options(Structure::all()->pluck('title_ru', 'id'))
@@ -123,6 +127,14 @@ class StructureResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->when(
+            Auth::user()->hasRole(RolesEnum::STRUCTURE),
+            fn (Builder $query) => $query->where('id',Auth::user()->structure_id)
+        );
     }
 
     public static function getRelations(): array

@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -38,74 +39,78 @@ class MenuResource extends Resource
         return $form
             ->schema([
                 Section::make('')
-                ->schema([
-                    Radio::make('type')
-                    ->label('Тип')
-    ->required()
-    ->options([
-        1 => 'Top',
-        2 => 'Footer',
-    ]),
-                    Tabs::make('')
-                ->tabs([
-                    Tabs\Tab::make('kz')
                     ->schema([
-                        Forms\Components\TextInput::make('title_kk')
-                           ->label('Заголовок(kz)')
-                           ->required()
-                           ->maxLength(255),
-                        Forms\Components\TextInput::make('link_kk')
-                           ->label('Ссылка(kz)')
-                           ->maxLength(255),   
-                    ]),
-                    Tabs\Tab::make('ru')
-                    ->schema([
-                        Forms\Components\TextInput::make('title_ru')
-                           ->label('Заголовок(ru)')
-                           ->required()
-                           ->maxLength(255),
-                        Forms\Components\TextInput::make('link_ru')
-                           ->label('Ссылка(ru)')
-                           ->maxLength(255),   
-                    ]),
-                    Tabs\Tab::make('en')
-                    ->schema([
-                        Forms\Components\TextInput::make('title_en')
-                           ->label('Заголовок(en)')
-                           ->required()
-                           ->maxLength(255),
-                        Forms\Components\TextInput::make('link_en')
-                           ->label('Ссылка(en)')
-                           ->maxLength(255),   
-                    ]),
-                ]),
-                
-                Forms\Components\Toggle::make('is_external_link')
-                    ->label('Внешняя ссылка')
-                    ->default(0),  
-                Forms\Components\TextInput::make('sort')
-                    ->label('Позиция')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\Select::make('parent_id')
-                    ->label('Родительское меню')
-                    ->options(Menu::all()->pluck('title_ru', 'id'))
-                    ->searchable(),
-                Forms\Components\Toggle::make('active')
-                    ->label('Активно')
-                    ->default(1)                        
-                ])->columnSpan(8),
-                
+                        Radio::make('type')
+                            ->label('Тип')
+                            ->required()
+                            ->options([
+                                1 => 'Top',
+                                2 => 'Footer',
+                            ]),
+                        Tabs::make('')
+                            ->tabs([
+                                Tabs\Tab::make('kz')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_kk')
+                                            ->label('Заголовок(kz)')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('link_kk')
+                                            ->label('Ссылка(kz)')
+                                            ->maxLength(255),
+                                    ]),
+                                Tabs\Tab::make('ru')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_ru')
+                                            ->label('Заголовок(ru)')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('link_ru')
+                                            ->label('Ссылка(ru)')
+                                            ->maxLength(255),
+                                    ]),
+                                Tabs\Tab::make('en')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_en')
+                                            ->label('Заголовок(en)')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('link_en')
+                                            ->label('Ссылка(en)')
+                                            ->maxLength(255),
+                                    ]),
+                            ]),
+
+                        Forms\Components\Toggle::make('is_external_link')
+                            ->label('Внешняя ссылка')
+                            ->default(0),
+                        Forms\Components\TextInput::make('sort')
+                            ->label('Позиция')
+                            ->required()
+                            ->numeric()
+                            ->default(0),
+                        Forms\Components\Select::make('parent_id')
+                            ->label('Родительское меню')
+                            ->options(Menu::all()->pluck('title_ru', 'id'))
+                            ->searchable(),
+                        Forms\Components\Select::make('structure_id')
+                            ->relationship('structure', 'title_ru')
+                            ->searchable()
+                            ->preload()
+                            ->label('Структура'),
+                        Forms\Components\Toggle::make('active')
+                            ->label('Активно')
+                            ->default(1),
+                    ])->columnSpan(8),
 
                 Section::make()
-                   ->schema([
-                    Forms\Components\FileUpload::make('banner')
-                        ->directory('banner')
-                        ->image()
-                        ->optimize('webp')
-                        ->label('Баннер')
-                   ])->columnSpan(4)
+                    ->schema([
+                        Forms\Components\FileUpload::make('banner')
+                            ->directory('banner')
+                            ->image()
+                            ->optimize('webp')
+                            ->label('Баннер')
+                    ])->columnSpan(4)
             ])->columns(12);
     }
 
@@ -120,12 +125,12 @@ class MenuResource extends Resource
                     ->label('Ссылка')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('sort')
-                ->label('Позиция')
+                    ->label('Позиция')
                     ->numeric(),
                 Tables\Columns\TextColumn::make('parent.title_ru')
-                ->label('Родительское меню'),
+                    ->label('Родительское меню'),
                 Tables\Columns\IconColumn::make('active')
-                ->label('Активно')
+                    ->label('Активно')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

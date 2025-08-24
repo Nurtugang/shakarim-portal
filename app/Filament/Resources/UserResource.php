@@ -36,6 +36,11 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
+                Select::make('structure_id')
+                    ->relationship('structure', 'title_ru')
+                    ->searchable()
+                    ->preload()
+                    ->label('Структура'),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),

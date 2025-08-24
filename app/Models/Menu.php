@@ -25,6 +25,7 @@ class Menu extends Model
         'parent_id',
         'active',
         'banner',
+        'structure_id'
     ];
     public function parent()
     {
@@ -62,6 +63,11 @@ class Menu extends Model
         }
         
         return '#';
+    }
+
+    public function structure()
+    {
+        return $this->belongsTo(Structure::class);
     }
 
     protected static function boot()

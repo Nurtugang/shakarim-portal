@@ -31,7 +31,7 @@
                                         <i class="fas fa-newspaper mr-1"></i>{{ $news->category->{'label_' . app()->getLocale()} }}
                                     </span>
                                     <span class="text-gray-500 text-sm">
-                                        <i class="far fa-calendar mr-1"></i>{{ $news->date->format('d.m.Y') }}
+                                        <i class="far fa-calendar mr-1"></i>{{ $news->date?->format('d.m.Y') }}
                                     </span>
                                 </div>
                                 <div class="text-left md:text-right">

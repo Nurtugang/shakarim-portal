@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         'name',
         'email',
         'password',
+        'structure_id',
     ];
 
     /**
@@ -53,9 +54,14 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         ];
     }
 
-    public function sendPasswordResetNotification($token) {
-        $this->notify(new ResetPasswordNotification($token));
+    public function structure()
+    {
+        return $this->belongsTo(Structure::class);
     }
+
+    // public function sendPasswordResetNotification($token) {
+    //     $this->notify(new ResetPasswordNotification($token));
+    // }
 
     public function canAccessPanel(Panel $panel): bool
     {
