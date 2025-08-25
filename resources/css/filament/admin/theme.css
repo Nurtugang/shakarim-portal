@@ -6,10 +6,10 @@
     background-color: #2e363e !important;
 }
 .fi-sidebar-item-active .fi-sidebar-item-button {
-    background-color: #80C342 !important;  
+    background-color: #314266 !important;  
 }
 .fi-sidebar-item-button:hover {
-    background-color: #80C342 !important;
+    background-color: #314266 !important;
 }
 .fi-sidebar-item-icon{
     @apply text-white !important;
@@ -21,7 +21,7 @@
     @apply text-gray-300 !important;
 }
 .fi-logo{
-    @apply text-amber-700 !important;
+    @apply text-primary-700 !important;
 }
 .fi-ta-text-item{
     white-space: normal;

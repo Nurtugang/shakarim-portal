@@ -67,7 +67,7 @@
                                 <!-- 2026 Rankings -->
                                 <div class="mb-8">
                                     <div class="flex items-center mb-6">
-                                        <h3 class="text-2xl font-bold text-gray-800">Рейтинги 2026</h3>
+                                        <h3 class="text-2xl font-bold text-gray-800">{{ __('Рейтинги 2026')}}</h3>
                                     </div>
 
                                     <div class="bg-gradient-to-br from-yellow-50 to-amber-50 border-yellow-500 rounded-lg p-6">
@@ -75,7 +75,7 @@
                                             <div>
                                                 <h4 class="text-lg font-bold text-yellow-800 mb-2">QS World University Rankings 2026</h4>
                                                 <p class="text-gray-700 text-sm leading-relaxed">
-                                                    19 июня 2025 года Университет Шакарима был официально включен в QS World University Rankings 2026 — один из самых престижных и влиятельных мировых рейтингов университетов. Среди них было 20 учреждений из Казахстана, включая трех новичков — и Университет Шакарима гордится тем, что является одним из них, войдя в топ-18% лучших университетов мира.
+                                                    {{ __('19 июня 2025 года Университет Шакарима был официально включен в QS World University Rankings 2026 — один из самых престижных и влиятельных мировых рейтингов университетов. Среди них было 20 учреждений из Казахстана, включая трех новичков — и Университет Шакарима гордится тем, что является одним из них, войдя в топ-18% лучших университетов мира.')}}
                                                 </p>
                                             </div>
                                         </div>
@@ -85,7 +85,7 @@
                                 <!-- 2025 Rankings -->
                                 <div class="mb-8">
                                     <div class="flex items-center mb-6">
-                                        <h3 class="text-2xl font-bold text-gray-800">Рейтинги 2025</h3>
+                                        <h3 class="text-2xl font-bold text-gray-800">{{ __('Рейтинги 2025')}}</h3>
                                     </div>
 
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -95,7 +95,7 @@
                                                 <h4 class="font-bold text-blue-800">QS Asia University Rankings 2025</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm">
-                                                Университет Шакарима занимает позицию #501-520 среди 985 университетов Азии.
+                                                {{ __('Университет Шакарима занимает позицию #501-520 среди 985 университетов Азии.')}}
                                             </p>
                                         </div>
 
@@ -105,20 +105,20 @@
                                                 <h4 class="font-bold text-green-800">QS Sustainability Rankings 2025</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm mb-3">
-                                                Рейтинг 1351-1400 среди 1744 университетов из 107 стран. Топ-10 среди казахстанских университетов.
+                                                {{ __('Рейтинг 1351-1400 среди 1744 университетов из 107 стран. Топ-10 среди казахстанских университетов.')}}
                                             </p>
                                             <div class="space-y-1 text-xs">
                                                 <div class="flex justify-between">
-                                                    <span class="text-gray-600">Социальное воздействие в ЦА:</span>
-                                                    <span class="font-semibold text-green-700">3 место</span>
+                                                    <span class="text-gray-600">{{ __('Социальное воздействие в ЦА:')}}</span>
+                                                    <span class="font-semibold text-green-700">{{ __('3 место')}}</span>
                                                 </div>
                                                 <div class="flex justify-between">
-                                                    <span class="text-gray-600">Экологическое воздействие в ЦА:</span>
-                                                    <span class="font-semibold text-green-700">7 место</span>
+                                                    <span class="text-gray-600">{{ __('Экологическое воздействие в ЦА:')}}</span>
+                                                    <span class="font-semibold text-green-700">{{ __('7 место')}}</span>
                                                 </div>
                                                 <div class="flex justify-between">
-                                                    <span class="text-gray-600">Экологические исследования в ЦА:</span>
-                                                    <span class="font-semibold text-green-700">1 место</span>
+                                                    <span class="text-gray-600">{{ __('Экологические исследования в ЦА:')}}</span>
+                                                    <span class="font-semibold text-green-700">{{ __('1 место')}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +129,7 @@
                                                 <h4 class="font-bold text-purple-800">THE Impact Rankings 2025</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm">
-                                                В 2025 году Университет Шакарима дебютировал в престижном глобальном рейтинге THE Impact Rankings, который оценивает вклад университетов в Цели устойчивого развития ООН.
+                                                {{ __('В 2025 году Университет Шакарима дебютировал в престижном глобальном рейтинге THE Impact Rankings, который оценивает вклад университетов в Цели устойчивого развития ООН.')}}
                                             </p>
                                         </div>
                                     </div>
@@ -138,7 +138,7 @@
                                 <!-- 2024 Rankings -->
                                 <div class="mb-8">
                                     <div class="flex items-center mb-6">
-                                        <h3 class="text-2xl font-bold text-gray-800">Рейтинги 2024</h3>
+                                        <h3 class="text-2xl font-bold text-gray-800">{{ __('Рейтинги 2024')}}</h3>
                                     </div>
 
                                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -155,17 +155,17 @@
                                                 <h4 class="font-bold text-indigo-800">QS Stars International Ranking 2024</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm mb-4">
-                                                Система международного рейтинга QS Stars присвоила нашему университету 4-звездочный рейтинг.
+                                                {{ __('Система международного рейтинга QS Stars присвоила нашему университету 4-звездочный рейтинг.')}}
                                             </p>
                                             
                                             <div class="space-y-2">
                                                 <div class="text-xs">
-                                                    <span class="font-semibold text-green-700">5 звезд:</span>
-                                                    <span class="text-gray-600"> Преподавание, Трудоустройство, Управление, Социальное воздействие</span>
+                                                    <span class="font-semibold text-green-700">{{ __('5 звезд:')}}</span>
+                                                    <span class="text-gray-600"> {{ __('Преподавание, Трудоустройство, Управление, Социальное воздействие')}}</span>
                                                 </div>
                                                 <div class="text-xs">
-                                                    <span class="font-semibold text-blue-700">4 звезды:</span>
-                                                    <span class="text-gray-600"> Инфраструктура, Разнообразие, Академическое развитие</span>
+                                                    <span class="font-semibold text-blue-700">{{ __('4 звезды:')}}</span>
+                                                    <span class="text-gray-600"> {{ __('Инфраструктура, Разнообразие, Академическое развитие')}}</span>
                                                 </div>
                                             </div>
                                             
@@ -173,7 +173,7 @@
                                             target="_blank" 
                                             class="inline-flex items-center mt-3 text-xs text-indigo-600 hover:text-indigo-800 transition-colors">
                                                 <i class="fas fa-external-link-alt mr-1"></i>
-                                                Подробная информация
+                                                {{ __('Подробная информация')}}
                                             </a>
                                         </div>
 
@@ -183,13 +183,13 @@
                                                 <h4 class="font-bold text-green-800">UI Green Metric 2024</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm mb-3">
-                                                662-е место среди самых экологически чистых образовательных учреждений в мире, 8-е место среди университетов Казахстана.
+                                                {{ __('662-е место среди самых экологически чистых образовательных учреждений в мире, 8-е место среди университетов Казахстана.')}}
                                             </p>
                                             <a href="https://greenmetric.ui.ac.id/rankings/overall-rankings-2024" 
                                             target="_blank" 
                                             class="inline-flex items-center text-xs text-green-600 hover:text-green-800 transition-colors">
                                                 <i class="fas fa-external-link-alt mr-1"></i>
-                                                Официальный сайт
+                                                {{ __('Официальный сайт')}}
                                             </a>
                                         </div>
 
@@ -199,13 +199,13 @@
                                                 <h4 class="font-bold text-gray-800">National H-index 2024</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm mb-3">
-                                                19-е место среди 84 университетов в рейтинге образовательных учреждений по научной продуктивности и публикационной активности.
+                                                {{ __('19-е место среди 84 университетов в рейтинге образовательных учреждений по научной продуктивности и публикационной активности.')}}
                                             </p>
                                             <a href="https://kz.h-index.com/en/shakarim-university" 
                                             target="_blank" 
                                             class="inline-flex items-center text-xs text-gray-600 hover:text-gray-800 transition-colors">
                                                 <i class="fas fa-external-link-alt mr-1"></i>
-                                                Подробная информация
+                                                {{ __('Подробная информация')}}
                                             </a>
                                         </div>
                                     </div>
@@ -214,27 +214,27 @@
                                 <!-- 2023 Rankings -->
                                 <div class="mb-8">
                                     <div class="flex items-center mb-6">
-                                        <h3 class="text-2xl font-bold text-gray-800">Рейтинги 2023</h3>
+                                        <h3 class="text-2xl font-bold text-gray-800">{{ __('Рейтинги 2023')}}</h3>
                                     </div>
 
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <!-- Website Rating -->
                                         <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
                                             <div class="flex items-center mb-3">
-                                                <h4 class="font-bold text-orange-800">Рейтинг веб-сайтов 2023</h4>
+                                                <h4 class="font-bold text-orange-800">{{ __('Рейтинг веб-сайтов 2023')}}</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm">
-                                                44-е место среди 103 университетов Казахстана в рейтинге веб-сайтов казахстанских вузов по данным Независимого агентства по обеспечению качества в образовании.
+                                                {{ __('44-е место среди 103 университетов Казахстана в рейтинге веб-сайтов казахстанских вузов по данным Независимого агентства по обеспечению качества в образовании.')}}
                                             </p>
                                         </div>
 
                                         <!-- Scientific Publications -->
                                         <div class="bg-teal-50 border border-teal-200 rounded-lg p-6">
                                             <div class="flex items-center mb-3">
-                                                <h4 class="font-bold text-teal-800">Научные публикации 2023</h4>
+                                                <h4 class="font-bold text-teal-800">{{ __('Научные публикации 2023')}}</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm">
-                                                20-е место среди 97 университетов Казахстана в рейтинге вузов по научным публикациям по данным Независимого агентства по обеспечению качества в образовании.
+                                                {{ __('20-е место среди 97 университетов Казахстана в рейтинге вузов по научным публикациям по данным Независимого агентства по обеспечению качества в образовании.')}}
                                             </p>
                                         </div>
                                     </div>
@@ -243,10 +243,10 @@
                                 <!-- Additional Info -->
                                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
                                     <h4 class="font-bold text-blue-800 mb-3 flex items-center">
-                                        Рейтинг образовательных программ НПП «Атамекен»
+                                        {{ __('Рейтинг образовательных программ НПП «Атамекен»')}}
                                     </h4>
                                     <p class="text-gray-700 text-sm">
-                                        Результаты рейтинга образовательных программ Университета Шакарима были представлены на официальном сайте Национальной палаты предпринимателей Республики Казахстан «Атамекен».
+                                        {{ __('Результаты рейтинга образовательных программ Университета Шакарима были представлены на официальном сайте Национальной палаты предпринимателей Республики Казахстан «Атамекен».')}}
                                     </p>
                                 </div>
                             </div>
@@ -392,7 +392,7 @@
                                                     </div>
                                                     <div class="flex items-center">
                                                         <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm mr-3">
-                                                            {{ $accreditations->count() }} {{ __('программ') }}
+                                                            {{ $accreditations->count() }}
                                                         </span>
                                                         <i class="fas fa-chevron-down transform transition-transform duration-200" id="icon-organ-{{ $loop->index }}"></i>
                                                     </div>
@@ -495,7 +495,7 @@
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50">
             <h3 id="modalTitle" class="text-lg font-semibold text-gray-900">
-                Сертификат
+                {{ __('Сертификат') }}
             </h3>
             <button onclick="closeCertificateModal()" 
                     class="text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full p-2 transition-colors duration-200">
@@ -524,11 +524,11 @@
             <button onclick="downloadCertificate()" 
                     class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200">
                 <i class="fas fa-download mr-2"></i>
-                Скачать
+                {{ __('Скачать') }}
             </button>
             <button onclick="closeCertificateModal()" 
                     class="inline-flex items-center px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg transition-colors duration-200">
-                Закрыть
+                {{ __('Закрыть') }}
             </button>
         </div>
     </div>
