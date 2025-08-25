@@ -160,7 +160,11 @@ class PageResource extends Resource
 
                 Select::make('menu_id')
                     ->label('Меню')
-                    ->options(Menu::all()->pluck('title_ru', 'id'))
+                    ->options(Menu::query()
+                        ->when(!Auth::user()->hasRole(RolesEnum::ADMIN), function ($query) {
+                            return $query->where('structure_id', Auth::user()->structure_id);
+                        })
+                        ->pluck('title_ru', 'id'))
                     ->searchable(),   
                 Forms\Components\Select::make('parent_id')
                     ->label('Родительская страница')

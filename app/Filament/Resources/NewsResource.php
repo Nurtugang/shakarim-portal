@@ -80,6 +80,7 @@ class NewsResource extends Resource
                             ->directory('news')
                             ->visibility('public'),
                         Forms\Components\Select::make('category_id')
+                            ->required()
                             ->label('Категория')
                             ->relationship('category', 'label_ru')
                             ->searchable()
@@ -120,9 +121,8 @@ class NewsResource extends Resource
                 Tables\Columns\IconColumn::make('status')
                     ->label('Статус')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make('date')
                     ->label('Дата')
-                    ->formatStateUsing(fn($state) => $state ? \Carbon\Carbon::createFromTimestamp($state)->format('d.m.Y H:i') : '')
                     ->sortable()
             ])
             ->filters([
