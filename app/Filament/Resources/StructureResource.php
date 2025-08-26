@@ -49,6 +49,10 @@ class StructureResource extends Resource
                                ->label('Название(en)')
                                ->required()
                                ->maxLength(255),
+                        Forms\Components\TextInput::make('title_cn')
+                               ->label('Название(cn)')
+                               ->required()
+                               ->maxLength(255),       
                 
                     Forms\Components\TextInput::make('sort_order')
                     ->label('Сортировка')

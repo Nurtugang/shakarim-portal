@@ -177,6 +177,7 @@
                             <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-8 w-auto">
                         </a>
                     </div>
+                    @if($quote)
                     <div class="relative">
                         <div class="text-blue-100 text-sm leading-relaxed mb-3">
                             <span class="italic">{!! html_entity_decode($quote->text) !!}</span>
@@ -185,6 +186,7 @@
                             — {{ $quote->author }}
                         </div>
                     </div>
+                    @endif
                     </div>
                         @foreach($footer_menu as $section)
                             <div>

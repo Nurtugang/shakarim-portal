@@ -61,7 +61,16 @@ class NewsResource extends Resource
                                             ->maxLength(255),
                                         TiptapEditor::make('content_en')
                                             ->label('Контент EN'),
-                                    ])
+                                    ]),
+                                Tabs\Tab::make('cn')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_cn')
+                                            ->label('Заголовок CN')
+                                            ->maxLength(255),
+                                        TiptapEditor::make('content_cn')
+                                            ->label('Контент CN'),
+                                    ])    
+
                             ]),
                         Forms\Components\Toggle::make('status')
                             ->label('Активна')

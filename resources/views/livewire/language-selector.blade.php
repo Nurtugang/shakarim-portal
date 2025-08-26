@@ -30,6 +30,15 @@
                        : 'text-gray-600 hover:bg-gray-200' }}">
             ENG
         </button>
+        <button
+            wire:click="changeLanguage('cn')"
+            @click="menuVisible = false"
+            class="px-3 py-1 rounded text-xs transition-colors duration-150
+                   {{ $currentLanguage === 'cn'
+                       ? 'bg-shakarim-blue text-white'
+                       : 'text-gray-600 hover:bg-gray-200' }}">
+            中文
+        </button>
     </div>
 
     <!-- Dropdown для мобильных устройств (до md) -->
@@ -79,7 +88,7 @@
         const currentUrl = new URL(window.location.href);
 
         const segments = currentUrl.pathname.split('/');
-        if (['kk', 'ru', 'en'].includes(segments[1])) {
+        if (['kk', 'ru', 'en', 'cn'].includes(segments[1])) {
             segments[1] = language;
         } else {
             segments.splice(1, 0, language);

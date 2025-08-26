@@ -12,7 +12,7 @@ class Localization
 {
     public function handle(Request $request, Closure $next)
     {
-    if (!empty($request->segment(1)) && in_array($request->segment(1),['kz','ru','en'])){
+    if (!empty($request->segment(1)) && in_array($request->segment(1),['kz','ru','en','cn'])){
         App::setLocale($request->segment(1));
     }
         elseif (Session::has('locale')) {

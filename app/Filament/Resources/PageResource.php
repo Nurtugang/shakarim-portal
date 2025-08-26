@@ -102,6 +102,25 @@ class PageResource extends Resource
                                     ->action(fn ($get, $set) => $set('content_en', $get('content_ru')))
                             ]), 
                         ]),
+                        Tabs\Tab::make('cn')
+                        ->schema([
+                            Forms\Components\TextInput::make('title_cn')
+                            ->label('Заголовок(cn)')
+                            ->required()
+                            ->maxLength(255),
+                        TiptapEditor::make('content_cn')
+                        ->output(TiptapOutput::Json)
+                        ->label('Контнет(cn)')
+                            ->required()
+                            ->directory('/pages')
+                            ->columnSpanFull(),
+                            Forms\Components\Actions::make([
+                                Forms\Components\Actions\Action::make('copy_content_from_en')
+                                    ->label('Скопировать с английского')
+                                    ->action(fn ($get, $set) => $set('content_cn', $get('content_en')))
+                            ]), 
+                        ]),
+                        
                         Tabs\Tab::make('Форма')
                                     ->schema([
                                         Group::make()

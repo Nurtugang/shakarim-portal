@@ -9,6 +9,7 @@
         "php": "^8.2",
         "anhskohbo/no-captcha": "^3.7",
         "awcodes/filament-tiptap-editor": "^3.0",
+        "doctrine/dbal": "^4.3",
         "filament/filament": "^3.3",
         "joshembling/image-optimizer": "^1.6",
         "laravel/framework": "^12.0",

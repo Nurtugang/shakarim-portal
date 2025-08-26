@@ -12,6 +12,7 @@ class LanguageSelector extends Component
         'kk' => 'kz',
         'ru' => 'ru',
         'en' => 'en',
+        'cn' => 'cn',
     ];
     
     public function mount()
