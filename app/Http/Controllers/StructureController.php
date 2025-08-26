@@ -15,13 +15,19 @@ class StructureController extends Controller
 
     public function index(string $locale)
     {
-         $structures = Structure::whereNull('parent_id')
+        $structures = Structure::whereNull('parent_id')
                                 ->with('childrenRecursive')
                                 ->where('active',true)
+                                ->where('is_structure',true)
                                 ->orderBy('sort_order')
-                                ->first(); 
+                                ->first();
+        $schools = Structure::where('active',true)
+                                ->where('is_structure',false)
+                                ->orderBy('sort_order')
+                                ->get();
 
-        return view('structure.index',compact('structures'));
+
+        return view('structure.index',compact('structures','schools'));
     }
 
     public function show(string $locale,Structure $structure)

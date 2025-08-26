@@ -16,13 +16,15 @@ class Structure extends Model
         'position',
         'layout_type',
         'active',
-        'is_vice_rector'
+        'is_structure',
+        'link'
     ];
 
     public function children()
     {
         return $this->hasMany(Structure::class, 'parent_id')
         ->where('active', true)
+        ->where('is_structure',true)
         ->orderBy('sort_order');
     }
     public function childrenRecursive()

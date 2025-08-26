@@ -35,6 +35,11 @@
                 </ol>
             </div>
         </div>
+        <div class="flex flex-wrap items-center justify-center space-x-2 mb-10">
+            @foreach ($schools as $school)
+            <a class="p-4 bg-shakarim-light text-white rounded-xl hover:bg-shakarim-blue transition-colors mb-2" href="{{ $school->link??'#' }}" class="text-sm text-gray-500 hover:text-shakarim-blue transition-colors" target="_blank">{{ $school->{'title_'.app()->getLocale()} }}</a>
+            @endforeach
+        </div>
     </div>
 </section>
 

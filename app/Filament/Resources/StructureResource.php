@@ -4,20 +4,16 @@ namespace App\Filament\Resources;
 
 use App\Enums\RolesEnum;
 use App\Filament\Resources\StructureResource\Pages;
-use App\Filament\Resources\StructureResource\RelationManagers;
 use App\Filament\Resources\StructureResource\RelationManagers\DataRelationManager;
 use App\Filament\Resources\StructureResource\RelationManagers\EmployeesRelationManager;
 use App\Models\Structure;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class StructureResource extends Resource
@@ -80,8 +76,13 @@ class StructureResource extends Resource
                     ->label('Родительское меню')
                     ->options(Structure::all()->pluck('title_ru', 'id'))
                     ->searchable(),
-                    Forms\Components\Toggle::make('active')
+                Forms\Components\TextInput::make('link')
+                    ->label('Ссылка'),    
+                Forms\Components\Toggle::make('active')
                     ->label('Активно')
+                    ->default(1),
+                Forms\Components\Toggle::make('is_structure')
+                    ->label('Структура')
                     ->default(1),
                 ])
                 
