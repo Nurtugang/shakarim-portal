@@ -46,7 +46,7 @@
         <button 
             @click="menuVisible = !menuVisible" 
             class="px-3 py-1 bg-shakarim-blue text-white rounded text-xs flex items-center">
-            {{ $currentLanguage === 'kk' ? 'ҚАЗ' : ($currentLanguage === 'ru' ? 'РУС' : 'ENG') }}
+            {{ $currentLanguage === 'kk' ? 'ҚАЗ' : ($currentLanguage === 'ru' ? 'РУС' : ($currentLanguage === 'cn' ? '中文' : 'ENG')) }}
             <i class="fas fa-chevron-down ml-1 text-xs"></i>
         </button>
 
@@ -74,6 +74,13 @@
                 class="block w-full px-3 py-2 text-left text-xs text-gray-700 hover:bg-gray-100
                        {{ $currentLanguage === 'en' ? 'bg-blue-50 text-shakarim-blue font-medium' : '' }}">
                 ENG
+            </button>
+            <button 
+                wire:click="changeLanguage('cn')" 
+                @click="menuVisible = false" 
+                class="block w-full px-3 py-2 text-left text-xs text-gray-700 hover:bg-gray-100
+                       {{ $currentLanguage === 'cn' ? 'bg-blue-50 text-shakarim-blue font-medium' : '' }}">
+                中文
             </button>
         </div>
     </div>
