@@ -86,7 +86,7 @@ Route::group([
 
     Route::get('/rector-blog', [RectorBlogController::class, 'index'])->name('rector.blog');
     Route::get('/rector-blog/{post:slug}', [RectorBlogController::class, 'show'])->name('rector.post');
-
+    
     Route::get('/under-development', function (string $locale) {
         return view('under-development.index');
     })->name('under-development');
@@ -94,6 +94,10 @@ Route::group([
     Route::get('/university/about', function (string $locale) {
         return view('university.about.index');
     })->name('university.about.index');
+
+    Route::get('/university/contacts', function (string $locale) {
+        return view('university.contacts.index');
+    })->name('university.contacts.index');
 
 });
 

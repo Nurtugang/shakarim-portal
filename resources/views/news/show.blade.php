@@ -25,18 +25,33 @@
                     <article class="bg-white rounded-xl shadow-lg overflow-hidden">
                         <!-- Article Header -->
                         <div class="p-3 md:p-6 border-b border-gray-100">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 space-y-3 md:space-y-0">
-                                <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
-                                    <span class="bg-shakarim-blue text-white px-2 md:px-3 py-1 rounded-full text-xs font-medium w-fit">
-                                        <i class="fas fa-newspaper mr-1"></i>{{ $news->category->{'label_' . app()->getLocale()} }}
-                                    </span>
-                                    <span class="text-gray-500 text-sm">
-                                        <i class="far fa-calendar mr-1"></i>{{ $news->date?->format('d.m.Y') }}
-                                    </span>
-                                </div>
-                                <div class="text-left md:text-right">
-                                    <span class="text-gray-600 text-sm font-medium">{{ __('От')}}:</span>
-                                    <span class="text-shakarim-blue font-semibold ml-1">{{ __('Медиа-центр')}}</span>
+                            <div class="mb-4">
+                                <div class="flex items-center justify-between">
+                                    <!-- Мобильная версия -->
+                                    <div class="flex md:hidden items-center justify-between w-full">
+                                        <span class="bg-shakarim-blue text-white px-2 py-1 rounded-full text-xs font-medium">
+                                            <i class="fas fa-newspaper mr-1"></i>{{ $news->category->{'label_' . app()->getLocale()} }}
+                                        </span>
+                                        <span class="text-gray-500 text-sm">
+                                            <i class="far fa-calendar mr-1"></i>{{ $news->date?->format('d.m.Y') }}
+                                        </span>
+                                    </div>
+                                    
+                                    <!-- Десктопная версия -->
+                                    <div class="hidden md:flex items-center justify-between w-full">
+                                        <div class="flex items-center gap-3">
+                                            <span class="bg-shakarim-blue text-white px-3 py-1 rounded-full text-xs font-medium">
+                                                <i class="fas fa-newspaper mr-1"></i>{{ $news->category->{'label_' . app()->getLocale()} }}
+                                            </span>
+                                            <span class="text-gray-500 text-sm">
+                                                <i class="far fa-calendar mr-1"></i>{{ $news->date?->format('d.m.Y') }}
+                                            </span>
+                                        </div>
+                                        <div class="text-right">
+                                            <span class="text-gray-600 text-sm font-medium">{{ __('От')}}:</span>
+                                            <span class="text-shakarim-blue font-semibold ml-1">{{ __('Медиа-центр')}}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-shakarim-blue leading-tight">

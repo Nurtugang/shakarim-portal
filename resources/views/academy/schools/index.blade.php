@@ -179,9 +179,9 @@
                             <div class="flex flex-col lg:flex-row lg:items-start space-y-6 lg:space-y-0 lg:space-x-6">
                                 <div class="flex-shrink-0 mx-auto lg:mx-0">
                                     <div class="w-48 h-64 bg-shakarim-dark rounded-lg overflow-hidden">
-                                        <img src="{{ Storage::url('schools/deans/kabdrakhimova_gaukhar_danilova.webp') }}" alt="Кабдрахимова Гаухар Даниловна" class="w-full h-3/4 object-cover">
+                                        <img src="{{ Storage::url('schools/deans/zharykbasov_erlan_sauykovich.webp') }}" alt="Жарыкбасов Ерлан Сауыкович" class="w-full h-3/4 object-cover">
                                         <div class="h-1/4 bg-shakarim-dark p-3 flex flex-col justify-center">
-                                            <h3 class="text-sm font-semibold text-white leading-tight text-center">{{ __('Кабдрахимова Гаухар Даниловна')}}</h3>
+                                            <h3 class="text-sm font-semibold text-white leading-tight text-center">{{ __('Жарыкбасов Ерлан Сауыкович')}}</h3>
                                             <p class="text-xs text-gray-300 text-center">{{ __('Декан') }}</p>
                                         </div>
                                     </div>
