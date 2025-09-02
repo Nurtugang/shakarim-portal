@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom/base.css') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icons/logo_sgu.png') }}">
+    <link rel="stylesheet" href="{{ asset("css/bvi/bvi.min.css") }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @filamentStyles
     
@@ -46,8 +47,8 @@
                         <i class="fas fa-search fa-lg"></i>
                     </button>
                     
-                    <a href="{{ route('under-development', ['locale' => app()->getLocale()]) }}"
-                        class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
+                    <a href="#"
+                        class="bvi-open text-gray-600 hover:text-shakarim-blue transition-colors duration-150 p-1 rounded"
                         title="{{ __('Accessibility') }}">
                         <i class="fas fa-eye fa-lg"></i>
                     </a>
@@ -295,9 +296,16 @@
 
     @livewireScripts
     @filamentScripts
+    <script src="/js/bvi/bvi.min.js"></script>
+          <script>
+            new isvek.Bvi({
+              target: '.bvi-open',
+              fontSize: 14,
+            })
+          </script>
     <!-- Scripts для каждой страницы наследующий этот шаблон -->
     @stack('scripts') 
-
+    
     <script src="{{ asset('js/custom/mobile.js') }}"></script>
     <script src="{{ asset('js/custom/back-to-top.js') }}"></script>
     <script src="{{ asset('js/custom/search.js') }}"></script>
