@@ -95,6 +95,10 @@ Route::group([
         return view('university.about.index');
     })->name('university.about.index');
 
+    Route::get('/university/board', function (string $locale) {
+        return view('university.board.index');
+    })->name('university.board.index');
+
     Route::get('/university/contacts', function (string $locale) {
         return view('university.contacts.index');
     })->name('university.contacts.index');
@@ -102,6 +106,8 @@ Route::group([
 });
 
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');
+Route::post('/science/offers/store', [SciencePurchasesOfferController::class, 'store'])->name('science.offers.store');
+
 Route::post('/rector-question', [RectorBlogController::class, 'storeQuestion'])->name('rector.question.store');
 Route::get('/events', EventController::class);
 

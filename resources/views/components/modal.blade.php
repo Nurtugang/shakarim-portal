@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="mt-6 text-right">
-                    <button type="button" @click="show = false" class="px-4 py-2 mr-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300">
+                    <button type="button" @click="isModalOpen = false" class="px-4 py-2 mr-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300">
                         Отмена
                     </button>
                     <button type="submit" class="px-4 py-2 font-bold text-white bg-blue-600 rounded-md hover:bg-blue-700">

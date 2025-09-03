@@ -1,5 +1,7 @@
 <x-layout metaTitle="Закупки">
 
+<div x-data="{ isModalOpen: false, selectedPurchaseId: null }">
+
   <!-- Breadcrumb Section -->
   <section class="bg-gray-100 py-3 border-b">
     <div class="max-w-7xl mx-auto px-4">
@@ -71,6 +73,12 @@
                               {{ __('Жоспарланған құны')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              {{ __('Саны')}}
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              {{ __('Сомма')}}
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
                               {{ __('Сатып алу мерзімдер')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
@@ -102,6 +110,16 @@
                               <td class="px-4 py-4 text-sm font-semibold text-gray-900 border-r border-gray-200 last:border-r-0">
                                 <span class="inline-flex items-center px-2 py-1 rounded-md bg-green-100 text-green-800 whitespace-nowrap">
                                   {{ $purchase->price }}
+                                </span>
+                              </td>
+                              <td class="px-4 py-4 text-sm text-gray-700 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
+                                <span class="inline-flex items-center px-2 py-1 rounded-md bg-green-100 text-green-800 whitespace-nowrap">
+                                  {{ $purchase->quantity }}
+                                </span>
+                              </td>
+                              <td class="px-4 py-4 text-sm text-gray-700 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
+                                <span class="inline-flex items-center px-2 py-1 rounded-md bg-green-100 text-green-800 whitespace-nowrap">
+                                  {{ $purchase->total_price }}
                                 </span>
                               </td>
                               <td class="px-4 py-4 text-sm text-gray-700 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
@@ -171,12 +189,49 @@
   </section>
 
   <!-- Modal Component -->
-  <x-modal
-    x-show="isModalOpen"
-    x-on:keydown.escape.window="isModalOpen = false"
-    x-cloak
-    style="display: none;"
-  ></x-modal>
+ <x-modal x-show="isModalOpen" x-on:keydown.escape.window="isModalOpen = false" x-cloak style="display: none;">
+  <form method="POST" action="{{ route('science.offers.store', ['locale' => app()->getLocale()]) }}" enctype="multipart/form-data" class="p-6">
+    @csrf
+    <input type="hidden" name="purchase_id" :value="selectedPurchaseId">
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">{{ __('Организация') }}</label>
+      <input type="text" name="organization" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">{{ __('Руководитель') }}</label>
+      <input type="text" name="head" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">{{ __('Контакт') }}</label>
+      <input type="text" name="contact" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">{{ __('Файл') }} (pdf, doc, xls)</label>
+      <input type="file" name="filename" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+    </div>
+    <div class="mb-4">
+        {!! NoCaptcha::renderJs() !!}
+          <div class="block sm:hidden">
+              {!! NoCaptcha::display(['data-size' => 'compact']) !!}
+          </div>
+          <div class="hidden sm:block">
+              {!! NoCaptcha::display(['data-size' => 'normal']) !!}
+          </div>
+          @error('g-recaptcha-response')
+              <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+          @enderror
+    </div>
+    <div class="flex justify-end">
+      <button type="submit" class="px-4 py-2 bg-shakarim-blue text-white rounded hover:bg-shakarim-dark">
+        {{ __('Отправить') }}
+      </button>
+    </div>
+  </form>
+</x-modal>
 
   @push('scripts')
   <script>

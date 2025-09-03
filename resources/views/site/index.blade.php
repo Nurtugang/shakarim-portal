@@ -23,7 +23,7 @@
 
             <!-- Slide 2: Modern Campus -->
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                 style="background-image: url('/img/hero/university_building.webp'); background-size: cover; background-position: center;">
+                 style="background-image: url('/img/hero/university_building_md.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-shakarim-blue bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Modern Campus') }}</h2>
@@ -36,12 +36,12 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/university_building.webp');"></div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/university_building_md.webp');"></div>
             </div>
 
             <!-- Slide 3: Academic Programs -->
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                 style="background-image: url('/img/hero/general_photo.webp'); background-size: cover; background-position: center;">
+                 style="background-image: url('/img/hero/general_photo_md.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-slate-700 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Educational Programs') }}</h2>
@@ -66,7 +66,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/general_photo.webp');">
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/general_photo_md.webp');">
                 </div>
             </div>
 
@@ -250,8 +250,13 @@
                                     <div class="w-full md:w-1/3 relative">
                                         <div class="h-32 md:h-full overflow-hidden bg-gray-100">
                                             <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
-                                                <img src="{{ $item->getOptimizedImageUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                @if($item->image)
+                                                    <img src="{{ $item->getOptimizedImageUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                @else
+                                                    <img src="{{ asset('img/hero/university_building_md.webp') }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                @endif
                                             </a>
+
                                         </div>
                                     </div>
                                     <div class="p-3 md:p-4 w-full md:w-2/3 flex flex-col justify-between">

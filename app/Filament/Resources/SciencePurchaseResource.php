@@ -113,6 +113,11 @@ class SciencePurchaseResource extends Resource
                     ->label('Планируемая стоимость')
                     ->required()
                     ->maxLength(20),
+                Forms\Components\TextInput::make('quantity')
+                    ->label('Количество')
+                    ->numeric()
+                    ->default(1)
+                    ->required(),
                 Forms\Components\TextInput::make('payment_terms')
                 ->label('Условия оплаты')
                     ->required()
@@ -137,6 +142,12 @@ class SciencePurchaseResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('price')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('quantity')
+                    ->label('Кол-во')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('total_price')
+                    ->label('Общая сумма')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('deadlines_kk')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('contacts')

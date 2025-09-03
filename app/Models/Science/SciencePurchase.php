@@ -19,6 +19,7 @@ class SciencePurchase extends Model
         'justification_ru',
         'justification_en',
         'price',
+        'quantity',
         'deadlines_kk',
         'deadlines_ru',
         'deadlines_en',
@@ -28,7 +29,9 @@ class SciencePurchase extends Model
     ];
 
     protected $casts = [
-        'status' => SciencePurchasesEnum::class
+        'status' => SciencePurchasesEnum::class,
+        'price' => 'float',
+        'quantity' => 'integer',
     ];
 
     public function irn(){
@@ -37,5 +40,10 @@ class SciencePurchase extends Model
 
     public function offers(){
         return $this->hasMany(SciencePurchasesOffer::class,"purchase_id","id");
+    }
+
+    public function getTotalPriceAttribute()
+    {
+        return $this->price * $this->quantity;
     }
 }

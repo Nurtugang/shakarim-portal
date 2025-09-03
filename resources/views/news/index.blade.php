@@ -73,19 +73,19 @@
                             @foreach ($news as $item)
                                 <div class="border rounded-lg bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
                                     <!-- Изображение новости -->
-                                    @if($item->image)
-                                        <div class="h-48 w-full overflow-hidden bg-gray-100">
-                                            <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
-                                                <img src="{{ $item->getOptimizedImageUrl() }}"
-                                                    alt="{{ $item->{'title_' . app()->getLocale()} }}" 
-                                                    class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
+                                    <div class="h-48 w-full overflow-hidden bg-gray-100">
+                                        <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
+                                                @if($item->image)
+                                                    <img src="{{ $item->getOptimizedImageUrl() }}"
+                                                        alt="{{ $item->{'title_' . app()->getLocale()} }}" 
+                                                        class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
+                                                @else
+                                                    <img src="{{ asset('img/hero/university_building_md.webp') }}"
+                                                        alt="{{ $item->{'title_' . app()->getLocale()} }}" 
+                                                        class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
+                                                @endif
                                             </a>
                                         </div>
-                                    @else
-                                        <div class="h-48 w-full bg-gray-200 flex items-center justify-center">
-                                            <i class="fas fa-image text-gray-400 text-3xl"></i>
-                                        </div>
-                                    @endif
                                     
                                     <!-- Контент карточки -->
                                     <div class="p-6 flex flex-col justify-between flex-1">

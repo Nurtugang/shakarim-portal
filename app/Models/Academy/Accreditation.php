@@ -16,6 +16,7 @@ class Accreditation extends Model
         'accredited',
         'type',
         'certificate',
+        'certificate2',
         'language',
         'start',
         'end',
@@ -39,6 +40,17 @@ class Accreditation extends Model
     {
         if ($this->certificate) {
             return asset('storage/certificates/' . $this->certificate);
+        }
+        return null;
+    }
+
+    /**
+     * Get certificate2 image URL
+     */
+    public function getCertificate2UrlAttribute()
+    {
+        if ($this->certificate2) {
+            return asset('storage/certificates/' . $this->certificate2);
         }
         return null;
     }

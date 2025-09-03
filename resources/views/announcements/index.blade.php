@@ -28,19 +28,19 @@
                             @foreach ($announcements as $item)
                                 <div class="border rounded-lg bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                                     <!-- Изображение объявления -->
-                                    @if($item->image)
-                                        <div class="h-48 w-full overflow-hidden bg-gray-100">
-                                            <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}">
+                                    <div class="h-48 w-full overflow-hidden bg-gray-100">
+                                        <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}">
+                                            @if($item->image)
                                                 <img src="{{ $item->getOptimizedImageUrl() }}"
                                                     alt="{{ $item->name }}" 
                                                     class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
-                                            </a>
-                                        </div>
-                                    @else
-                                        <div class="h-48 w-full bg-gray-200 flex items-center justify-center">
-                                            <i class="fas fa-bullhorn text-gray-400 text-3xl"></i>
-                                        </div>
-                                    @endif
+                                            @else
+                                                <img src="{{ asset('img/hero/university_building_md.webp') }}"
+                                                    alt="{{ $item->name }}" 
+                                                    class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
+                                            @endif
+                                        </a>
+                                    </div>
                                     
                                     <!-- Контент карточки -->
                                     <div class="p-6 flex flex-col justify-between min-h-[180px]">

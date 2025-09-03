@@ -1,4 +1,4 @@
-<x-layout :metaTitle="__('Аккредитация')">
+<x-layout :metaTitle="__('Аккредитация и рейтинги')">
 
     <!-- Breadcrumbs -->
     <section class="bg-gray-100 py-3 border-b">
@@ -8,7 +8,7 @@
                 <span>&#8250;</span>
                 <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => 1]) }}" class="hover:text-shakarim-blue">{{ __('Образование') }}</a>
                 <span>&#8250;</span>
-                <span class="text-shakarim-blue font-semibold">{{ __('Аккредитация') }}</span>
+                <span class="text-shakarim-blue font-semibold">{{ __('Аккредитация и рейтинги') }}</span>
             </nav>
         </div>
     </section>
@@ -16,7 +16,7 @@
     <!-- Main Content -->
     <section class="bg-white py-8">
         <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-8">{{ __('Аккредитация')}}</h1>
+            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-8">{{ __('Аккредитация и рейтинги')}}</h1>
             
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Sidebar Navigation -->
@@ -75,7 +75,7 @@
                                             <div>
                                                 <h4 class="text-lg font-bold text-yellow-800 mb-2">QS World University Rankings 2026</h4>
                                                 <p class="text-gray-700 text-sm leading-relaxed">
-                                                    {{ __('19 июня 2025 года Университет Шакарима был официально включен в QS World University Rankings 2026 — один из самых престижных и влиятельных мировых рейтингов университетов. Среди них было 20 учреждений из Казахстана, включая трех новичков — и Университет Шакарима гордится тем, что является одним из них, войдя в топ-18% лучших университетов мира.')}}
+                                                    {{ __('19 июня 2025 года Шәкәрім Университет был официально включен в QS World University Rankings 2026 — один из самых престижных и влиятельных мировых рейтингов университетов. Среди них было 20 учреждений из Казахстана, включая трех новичков — и Шәкәрім Университет гордится тем, что является одним из них, войдя в топ-18% лучших университетов мира.')}}
                                                 </p>
                                             </div>
                                         </div>
@@ -95,7 +95,7 @@
                                                 <h4 class="font-bold text-blue-800">QS Asia University Rankings 2025</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm">
-                                                {{ __('Университет Шакарима занимает позицию #501-520 среди 985 университетов Азии.')}}
+                                                {{ __('Шәкәрім Университет занимает позицию #501-520 среди 985 университетов Азии.')}}
                                             </p>
                                         </div>
 
@@ -129,7 +129,7 @@
                                                 <h4 class="font-bold text-purple-800">THE Impact Rankings 2025</h4>
                                             </div>
                                             <p class="text-gray-700 text-sm">
-                                                {{ __('В 2025 году Университет Шакарима дебютировал в престижном глобальном рейтинге THE Impact Rankings, который оценивает вклад университетов в Цели устойчивого развития ООН.')}}
+                                                {{ __('В 2025 году Шәкәрім Университет дебютировал в престижном глобальном рейтинге THE Impact Rankings, который оценивает вклад университетов в Цели устойчивого развития ООН.')}}
                                             </p>
                                         </div>
                                     </div>
@@ -449,14 +449,25 @@
                                                                             </span>
                                                                         </td>
                                                                         <td class="px-6 py-4 text-center">
-                                                                            @if($accreditation->certificate_url)
-                                                                                <button onclick="openCertificateModal('{{ $accreditation->certificate_url }}', '{{ $accreditation->name }}')"
-                                                                                        class="inline-flex items-center px-3 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition-colors duration-200">
-                                                                                    <i class="fas fa-eye"></i>
-                                                                                </button>
-                                                                            @else
-                                                                                <span class="text-gray-400">—</span>
-                                                                            @endif
+                                                                            <div class="flex justify-center space-x-2">
+                                                                                @if($accreditation->certificate_url)
+                                                                                    <button onclick="openCertificateModal('{{ $accreditation->certificate_url }}', '{{ $accreditation->name }}')"
+                                                                                            class="inline-flex items-center px-3 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition-colors duration-200">
+                                                                                        <i class="fas fa-eye"></i>
+                                                                                    </button>
+                                                                                @endif
+                                                                                
+                                                                                @if($accreditation->certificate2_url)
+                                                                                    <button onclick="openCertificateModal('{{ $accreditation->certificate2_url }}', '{{ $accreditation->name }} (2)')"
+                                                                                            class="inline-flex items-center px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-200">
+                                                                                        <i class="fas fa-eye"></i>
+                                                                                    </button>
+                                                                                @endif
+                                                                                
+                                                                                @if(!$accreditation->certificate_url && !$accreditation->certificate2_url)
+                                                                                    <span class="text-gray-400">—</span>
+                                                                                @endif
+                                                                            </div>
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach

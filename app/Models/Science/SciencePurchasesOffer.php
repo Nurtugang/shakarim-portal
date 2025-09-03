@@ -11,12 +11,15 @@ class SciencePurchasesOffer extends Model
         'organization',
         'head',
         'contact',
-        'bank_details',
-        'price_offer',
         'filename'
     ];
 
     public function getFile(){
         return asset('storage/purchase_offers/'.$this->filename);
+    }
+
+    public function purchase()
+    {
+        return $this->belongsTo(SciencePurchase::class, 'purchase_id');
     }
 }

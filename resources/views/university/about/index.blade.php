@@ -78,7 +78,7 @@
                 <div id="content-about" class="tab-content">
                     <div class="bg-white rounded-xl shadow-lg p-6">
                         <div class="mb-6">
-                            <img src="{{ asset('img/building.webp') }}" alt="{{ __('Университет Шакарима') }}" class="w-full h-48 md:h-64 object-cover rounded-lg shadow-md">
+                            <img src="{{ asset('img/building.webp') }}" alt="{{ __('Университет Шакарима') }}" class="w-full object-bottom h-48 md:h-72 object-cover rounded-lg shadow-md">
                         </div>
                         <div class="prose max-w-none text-gray-700 space-y-4">
                             <p><strong>{{ __('Шәкәрім Университет') }}</strong> – {{ __('это современный учебно-методический, научный и культурный центр северо-восточного региона Казахстана') }}.</p>
@@ -100,12 +100,6 @@
                         <!-- Historical Events Table -->
                         <div class="overflow-x-auto mb-8">
                             <table class="min-w-full border border-gray-200 rounded-lg">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">{{ __('Год') }}</th>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">{{ __('Событие') }}</th>
-                                    </tr>
-                                </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
                                         <td class="px-4 py-3 text-sm font-semibold text-gray-900">{{ __('1934 г.') }}</td>
@@ -206,12 +200,6 @@
                     <div class="bg-white rounded-xl shadow-lg p-6">
                         <div class="overflow-x-auto mb-8">
                             <table class="min-w-full border border-gray-200 rounded-lg">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">{{ __('Год') }}</th>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">{{ __('Событие') }}</th>
-                                    </tr>
-                                </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
                                         <td class="px-4 py-3 text-sm font-semibold text-gray-900">{{ __('1950-1960 гг.') }}</td>
@@ -304,12 +292,6 @@
                     <div class="bg-white rounded-xl shadow-lg p-6">
                         <div class="overflow-x-auto mb-8">
                             <table class="min-w-full border border-gray-200 rounded-lg">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">{{ __('Год') }}</th>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">{{ __('Событие') }}</th>
-                                    </tr>
-                                </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
                                         <td class="px-4 py-3 text-sm font-semibold text-gray-900">{{ __('1988 г.') }}</td>
@@ -387,12 +369,6 @@
                     <div class="bg-white rounded-xl shadow-lg p-6">
                         <div class="overflow-x-auto mb-8">
                             <table class="min-w-full border border-gray-200 rounded-lg">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">{{ __('Год') }}</th>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">{{ __('Событие') }}</th>
-                                    </tr>
-                                </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
                                         <td class="px-4 py-3 text-sm font-semibold text-gray-900">{{ __('2007 г.') }}</td>
@@ -422,7 +398,6 @@
                                         <img src="/storage/pages/5935f7d8-92f4-4490-bd86-3509dc2a9b32.jpg" alt="{{ __('ОРЫНБЕКОВ ДУМАН РЫМГАЛИЕВИЧ') }}" class="w-full h-full object-cover">
                                     </div>
                                     <h4 class="font-bold text-sm text-blue-800">{{ __('ОРЫНБЕКОВ ДУМАН РЫМГАЛИЕВИЧ') }}</h4>
-                                    <p class="text-xs text-blue-600 mt-2 font-medium">{{ __('Действующий ректор') }}</p>
                                     <p class="text-xs text-gray-600 mt-1">{{ __('С июля 2023 г. по настоящее время Председатель Правления-Ректор НАО «Шәкәрім Университет»') }}</p>
                                 </div>
                             </a>
