@@ -42,39 +42,45 @@
                         </div>
 
                         <!-- Контактная информация -->
-                        <div class="mt-6">
-                            <h3 class="text-base font-semibold text-white mb-3 border-b border-blue-300 pb-2">
-                                {{ __("Contact Information") }}
-                            </h3>
-                            
-                            <div class="space-y-2">
-                                <div class="flex items-start space-x-2">
-                                    <i class="fas fa-map-marker-alt text-blue-200 w-4 mt-0.5 text-xs"></i>
-                                    <span class="text-blue-100 text-xs">
-                                        {{ $structure->filteredData->address ?? '071412 Республика Казахстан, область Абай, город Семей, ул. Глинки, 20 "Д"' }}
-                                    </span>
-                                </div>
+                            <div class="mt-6">
+                                <h3 class="text-base font-semibold text-white mb-3 border-b border-blue-300 pb-2">
+                                    {{ __("Contact Information") }}
+                                </h3>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-x-2">
+                                        <div class="w-5 flex-shrink-0 text-center">
+                                            <i class="fas fa-map-marker-alt text-blue-200"></i>
+                                        </div>
+                                        <span class="text-blue-100 text-xs">
+                                            {{ $structure->filteredData->address ?? '071412 Республика Казахстан, область Абай, город Семей, ул. Глинки, 20 "Д"' }}
+                                        </span>
+                                    </div>
 
-                                @if($structure->filteredData->cabinet)
-                                <div class="flex items-center space-x-2">
-                                    <i class="fas fa-door-open text-blue-200 w-4 text-xs"></i>
-                                    <span class="text-blue-100 text-xs">
-                                        {{ __("Office") }}: {{ $structure->filteredData->cabinet }}
-                                    </span>
-                                </div>
-                                @endif
+                                    @if($structure->filteredData->cabinet)
+                                    <div class="flex items-center gap-x-2">
+                                        <div class="w-5 flex-shrink-0 text-center">
+                                            <i class="fas fa-door-open text-blue-200"></i>
+                                        </div>
+                                        <span class="text-blue-100 text-xs">
+                                            {{ __("Office") }}: {{ $structure->filteredData->cabinet }}
+                                        </span>
+                                    </div>
+                                    @endif
 
-                                @if($structure->filteredData->email)
-                                <div class="flex items-center space-x-2">
-                                    <i class="fas fa-envelope text-blue-200 w-4 text-xs"></i>
-                                    <a href="mailto:{{ $structure->filteredData->email }}" 
-                                       class="text-blue-100 hover:text-white transition-colors text-xs break-all">
-                                        {{ $structure->filteredData->email }}
-                                    </a>
+                                    @if($structure->filteredData->email)
+                                    <div class="flex items-center gap-x-2">
+                                        <div class="w-5 flex-shrink-0 text-center">
+                                            <i class="fas fa-envelope text-blue-200"></i>
+                                        </div>
+                                        <a href="mailto:{{ $structure->filteredData->email }}" 
+                                        class="text-blue-100 hover:text-white transition-colors text-xs break-all">
+                                            {{ $structure->filteredData->email }}
+                                        </a>
+                                    </div>
+                                    @endif
                                 </div>
-                                @endif
                             </div>
-                        </div>
                     </div>
 
                     <!-- Правая часть - Информация о структуре -->

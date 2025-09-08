@@ -5,7 +5,7 @@
         <div class="slider-container relative h-64 md:h-[400px]">
             <!-- Slide 1: QS Rankings -->
             <div class="slide active absolute inset-0 flex"
-                 style="background-image: url('/img/hero/graduates.webp'); background-size: cover; background-position: center;">
+                 style="background-image: url('/img/graduates.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('QS World University Rankings') }}</h2>
@@ -18,12 +18,12 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/graduates.webp');"></div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/graduates.webp');"></div>
             </div>
 
             <!-- Slide 2: Modern Campus -->
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                 style="background-image: url('/img/hero/university_building_md.webp'); background-size: cover; background-position: center;">
+                 style="background-image: url('/img/university_building.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-shakarim-blue bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Modern Campus') }}</h2>
@@ -36,12 +36,12 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/university_building_md.webp');"></div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/university_building.webp');"></div>
             </div>
 
             <!-- Slide 3: Academic Programs -->
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                 style="background-image: url('/img/hero/general_photo_md.webp'); background-size: cover; background-position: center;">
+                 style="background-image: url('/img/general_photo.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-slate-700 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Educational Programs') }}</h2>
@@ -66,7 +66,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/hero/general_photo_md.webp');">
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/general_photo.webp');">
                 </div>
             </div>
 
@@ -253,7 +253,7 @@
                                                 @if($item->image)
                                                     <img src="{{ $item->getOptimizedImageUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @else
-                                                    <img src="{{ asset('img/hero/university_building_md.webp') }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                    <img src="{{ asset('img/university_building.webp') }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @endif
                                             </a>
 

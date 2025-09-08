@@ -522,14 +522,14 @@
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-graduation-cap text-2xl text-shakarim-blue"></i>
                                             </div>
-                                            <div class="text-2xl font-bold text-shakarim-blue">12</div>
+                                            <div class="text-2xl font-bold text-shakarim-blue">10</div>
                                             <div class="text-sm text-gray-600">{{ __('Образовательных программ') }}</div>
                                         </div>
                                         <div class="text-center">
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-building text-2xl text-shakarim-blue"></i>
                                             </div>
-                                            <div class="text-2xl font-bold text-shakarim-blue">3</div>
+                                            <div class="text-2xl font-bold text-shakarim-blue">2</div>
                                             <div class="text-sm text-gray-600">{{ __('Кафедр') }}</div>
                                         </div>
                                     </div>

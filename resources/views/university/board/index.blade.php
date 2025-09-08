@@ -79,7 +79,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/ac8d0fcaaf30d8b99fb27c4076b091c8.png" 
+                                            <img src="{{ Storage::url('board/ac8d0fcaaf30d8b99fb27c4076b091c8.webp') }}" 
                                                 alt="{{ __('Нұрбаев Орман Кәрімұлы') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('nurbaev-details')" 
@@ -149,7 +149,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/55627f971685a1d174693a4a8b1c9474.jpeg" 
+                                            <img src="{{ Storage::url('board/55627f971685a1d174693a4a8b1c9474.webp') }}" 
                                                 alt="{{ __('Орынбеков Думан Рымғалиұлы') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('orynbekov-board-details')" 
@@ -210,7 +210,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/8a7025ecd63b842c128981e7b1703f27.jpeg" 
+                                            <img src="{{ Storage::url('board/8a7025ecd63b842c128981e7b1703f27.webp') }}" 
                                                 alt="{{ __('Қожахмет Мадияр Дүйсенбайұлы') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('kozhakhmet-details')" 
@@ -272,7 +272,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/6c892a85aefa1d0f92d8b59205ff4656.png" 
+                                            <img src="{{ Storage::url('board/6c892a85aefa1d0f92d8b59205ff4656.webp') }}" 
                                                 alt="{{ __('Кәрібаева Мамыр Қуанышқызы') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('karibaeva-details')" 
@@ -329,7 +329,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/5102f825f11ede3cd8184be31333e251.jpeg" 
+                                            <img src="{{ Storage::url('board/5102f825f11ede3cd8184be31333e251.webp') }}" 
                                                 alt="{{ __('Молдакасимов Ербол Бахтиярұлы') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('moldakasimov-details')" 
@@ -389,7 +389,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/d97de3dad96ec2f6928b841d33cdce1f.jpeg" 
+                                            <img src="{{ Storage::url('board/d97de3dad96ec2f6928b841d33cdce1f.webp') }}" 
                                                 alt="{{ __('Мукашев Балтабек Кумарбекович') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('mukashev-details')" 
@@ -453,7 +453,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/0872f61157a2be4b8fb2ad4c80504108.jpeg" 
+                                            <img src="{{ Storage::url('board/55627f971685a1d174693a4a8b1c9474.webp') }}" 
                                                 alt="{{ __('Орынбеков Думан Рымғалиұлы') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('board-orynbekov-details')" 
@@ -508,133 +508,13 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Қасымов Асқар Бағдатұлы -->
-                            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-                                <div class="p-6">
-                                    <div class="flex flex-row md:flex-row gap-4 md:gap-6">
-                                        <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/6d4769c57c8a7aa6929ee5a3ec96085c.png" 
-                                                alt="{{ __('Қасымов Асқар Бағдатұлы') }}" 
-                                                class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
-                                            <button onclick="toggleDetails('kasymov-details')" 
-                                                class="mt-3 md:hidden inline-flex items-center px-3 py-1.5 bg-shakarim-blue text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
-                                                <span>{{ __('Подробнее') }}</span>
-                                                <svg class="w-3 h-3 ml-1 transform transition-transform" id="kasymov-arrow-mobile" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="flex-grow">
-                                            <h3 class="text-sm md:text-xl font-bold text-shakarim-blue mb-2 text-left">
-                                                {{ __('Қасымов Асқар Бағдатұлы') }}
-                                            </h3>
-                                            <p class="text-sm md:text-lg font-medium text-gray-700 mb-4 text-left">
-                                                {{ __('Басқарма мүшесі - стратегия және әлеуметтік даму жөніндегі проректор') }}
-                                            </p>
-                                            <button onclick="toggleDetails('kasymov-details')" 
-                                                class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-blue-700 transition-colors desktop-only">
-                                                <span>{{ __('Подробнее') }}</span>
-                                                <svg class="w-4 h-4 ml-2 transform transition-transform" id="kasymov-arrow" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Detailed Information -->
-                                    <div id="kasymov-details" class="hidden mt-6 pt-6 border-t border-gray-200">
-                                        <div class="grid md:grid-cols-2 gap-6">
-                                            <div>
-                                                <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
-                                                <ul class="space-y-2 text-sm text-gray-700 list-disc list-inside">
-                                                    <li>{{ __('2010 ж. – Шәкәрім атындағы Семей мемлекеттік университеті (бакалавриат)') }}</li>
-                                                    <li>{{ __('2011 ж. – Қазақ гуманитарлық-заң инновациялық университеті (бакалавриат)') }}</li>
-                                                    <li>{{ __('2012 ж. – Шәкәрім атындағы Семей мемлекеттік университеті (магистратура)') }}</li>
-                                                    <li>{{ __('2015 ж. – К.И. Сәтбаев атындағы Қазақ ұлттық зерттеу техникалық университеті (докторантура)') }}</li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Еңбек өтілі') }}</h4>
-                                                <ul class="space-y-1 text-sm text-gray-700 list-disc list-inside">
-                                                    <li>{{ __('01.09.2014 - 31 05.2015 – Жалпы және теориялық физика кафедрасының ассистенті, Қ.И. Сәтбаев атындағы Қазақ ұлттық зерттеу техникалық университеті') }}</li>
-                                                    <li>{{ __('01.09.2015 - 31.05.2017 – Техникалық физика және жылуэнергетика кафедрасының аға оқытушысы, Шәкәрім атындағы Семей мемлекеттік университеті') }}</li>
-                                                    <li>{{ __('01.06.2017 - 20.01.2019 –Shakarim Kyundong Academic Collaboration Centre халықаралық факультетінің декан орынбасары') }}</li>
-                                                    <li>{{ __('21.01.2019 - 02.06.2024 – Техникалық физика және жылуэнергетика кафедрасының қауымдастырылған профессор м.а., «Семей қаласының Шәкәрім атындағы университеті» КеАҚ') }}</li>
-                                                    <li>{{ __('03.06.2024 - 01.12.2024 – Физика және химия ғылымдары зерттеу мектебінің деканы, «Семей қаласының Шәкәрім атындағы университеті» КеАҚ') }}</li>
-                                                    <li>{{ __('02.12.2024 – қазіргі уақытқа дейін – Басқарма мүшесі – Стратегия және әлеуметтік даму жөніндегі проректор, «Шәкәрім университеті» КеАҚ') }}</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Дулатбай Ерасыл Алтайұлы -->
-                            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-                                <div class="p-6">
-                                    <div class="flex flex-row md:flex-row gap-4 md:gap-6">
-                                        <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/84ee04871a1e37f887c5fa6a8779015e.jpeg" 
-                                                alt="{{ __('Дулатбай Ерасыл Алтайұлы') }}" 
-                                                class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
-                                            <button onclick="toggleDetails('dulatbay-details')" 
-                                                class="mt-3 md:hidden inline-flex items-center px-3 py-1.5 bg-shakarim-blue text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
-                                                <span>{{ __('Подробнее') }}</span>
-                                                <svg class="w-3 h-3 ml-1 transform transition-transform" id="dulatbay-arrow-mobile" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="flex-grow">
-                                            <h3 class="text-sm md:text-xl font-bold text-shakarim-blue mb-2 text-left">
-                                                {{ __('Дулатбай Ерасыл Алтайұлы') }}
-                                            </h3>
-                                            <p class="text-sm md:text-lg font-medium text-gray-700 mb-4 text-left">
-                                                {{ __('Басқарма мүшесі - интернационалдандыру және инновациялар жөніндегі проректор') }}
-                                            </p>
-                                            <button onclick="toggleDetails('dulatbay-details')" 
-                                                class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-blue-700 transition-colors desktop-only">
-                                                <span>{{ __('Подробнее') }}</span>
-                                                <svg class="w-4 h-4 ml-2 transform transition-transform" id="dulatbay-arrow" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Detailed Information -->
-                                    <div id="dulatbay-details" class="hidden mt-6 pt-6 border-t border-gray-200">
-                                        <div class="grid md:grid-cols-2 gap-6">
-                                            <div>
-                                                <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
-                                                <ul class="space-y-2 text-sm text-gray-700 list-disc list-inside">
-                                                    <li>{{ __('2011 - 2015 жж. – "Абылай хан атындағы Қазақ халықаралық қатынастар және әлем тілдері университеті" АҚ, бакалавриат') }}</li>
-                                                    <li>{{ __('2015 - 2017 жж. – "Қазақ ұлттық аграрлық университеті" КеАҚ, «Тағам қауіпсіздігі» мамандығы, дәрежесі - техника және технология магистрі') }}</li>
-                                                    <li>{{ __('2017 - 2023 жж. – "Солтүстік-Батыс ауыл және орман шаруашылығы университеті" (ҚХР), «Ауыл шаруашылығы экономикасы және менеджмент» мамандығы, дәрежесі – PhD') }}</li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Еңбек өтілі') }}</h4>
-                                                <ul class="space-y-1 text-sm text-gray-700 list-disc list-inside">
-                                                    <li>{{ __('01.09.2016 - 17.11.2016 жж. – «Халықаралық білім беру бағдарламалар бөлімінің» біліктілігі жоғары деңгейдегі маманы, Қазақ ұлттық аграрлық университеті, Алматы қ.') }}</li>
-                                                    <li>{{ __('17.11.2016 - 01.06.2017 жж. – «Академиялық ұтқырлық және халықаралық білім бағадарламалары орталығының» біліктілігі жоғары деңгейдегі маманы, Қазақ ұлттық аграрлық университеті, Алматы қ.') }}</li>
-                                                    <li>{{ __('01.09.2020 - 01.09.2022 жж. – «Халықаралық ынтымақтастық бөлімінің» жетекші маманы, Жәңгір хан атындағы Батыс Қазақстан аграрлық-техникалық университеті, Орал қ.') }}</li>
-                                                    <li>{{ __('01.09.2022- 09.03.2023 жж. – «Халықаралық ынтымақтастық бөліміне қарасты жобалық кеңсенің» жетекшісі, Жәңгір хан атындағы Батыс Қазақстан аграрлық-техникалық университеті, Орал қ.') }}</li>
-                                                    <li>{{ __('09.03.2023 - 30.08.2024 жж. – «Agrotech Hub» бөлімінің жетекшісі, Жәңгір хан атындағы Батыс Қазақстан аграрлық-техникалық университеті, Орал қ.') }}</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            
                             <!-- Дарибаев Беимбет Серикович -->
                             <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/2904eda49d5eb1fa86cb15b13b6c001c.jpeg" 
+                                            <img src="{{ Storage::url('board/01K3T9KRMNQT9AP0WWK82HCY5A.webp') }}" 
                                                 alt="{{ __('Дарибаев Беимбет Серикович') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('daribaev-details')" 
@@ -693,7 +573,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/f331bd400b3f41511be1a2d9cd799d89.jpeg" 
+                                            <img src="{{ Storage::url('board/f331bd400b3f41511be1a2d9cd799d89.webp') }}" 
                                                 alt="{{ __('Қалибекқызы Жанар') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('zhanar-details')" 
@@ -745,6 +625,126 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Дулатбай Ерасыл Алтайұлы -->
+                            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                                <div class="p-6">
+                                    <div class="flex flex-row md:flex-row gap-4 md:gap-6">
+                                        <div class="flex-shrink-0 flex flex-col items-center md:items-start">
+                                            <img src="{{ Storage::url('board/01K3T9NMA7BS1DH1Z597TNYQ6Z.webp') }}" 
+                                                alt="{{ __('Дулатбай Ерасыл Алтайұлы') }}" 
+                                                class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
+                                            <button onclick="toggleDetails('dulatbay-details')" 
+                                                class="mt-3 md:hidden inline-flex items-center px-3 py-1.5 bg-shakarim-blue text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
+                                                <span>{{ __('Подробнее') }}</span>
+                                                <svg class="w-3 h-3 ml-1 transform transition-transform" id="dulatbay-arrow-mobile" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h3 class="text-sm md:text-xl font-bold text-shakarim-blue mb-2 text-left">
+                                                {{ __('Дулатбай Ерасыл Алтайұлы') }}
+                                            </h3>
+                                            <p class="text-sm md:text-lg font-medium text-gray-700 mb-4 text-left">
+                                                {{ __('Басқарма мүшесі - интернационалдандыру және инновациялар жөніндегі проректор') }}
+                                            </p>
+                                            <button onclick="toggleDetails('dulatbay-details')" 
+                                                class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-blue-700 transition-colors desktop-only">
+                                                <span>{{ __('Подробнее') }}</span>
+                                                <svg class="w-4 h-4 ml-2 transform transition-transform" id="dulatbay-arrow" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Detailed Information -->
+                                    <div id="dulatbay-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
+                                                <ul class="space-y-2 text-sm text-gray-700 list-disc list-inside">
+                                                    <li>{{ __('2011 - 2015 жж. – "Абылай хан атындағы Қазақ халықаралық қатынастар және әлем тілдері университеті" АҚ, бакалавриат') }}</li>
+                                                    <li>{{ __('2015 - 2017 жж. – "Қазақ ұлттық аграрлық университеті" КеАҚ, «Тағам қауіпсіздігі» мамандығы, дәрежесі - техника және технология магистрі') }}</li>
+                                                    <li>{{ __('2017 - 2023 жж. – "Солтүстік-Батыс ауыл және орман шаруашылығы университеті" (ҚХР), «Ауыл шаруашылығы экономикасы және менеджмент» мамандығы, дәрежесі – PhD') }}</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Еңбек өтілі') }}</h4>
+                                                <ul class="space-y-1 text-sm text-gray-700 list-disc list-inside">
+                                                    <li>{{ __('01.09.2016 - 17.11.2016 жж. – «Халықаралық білім беру бағдарламалар бөлімінің» біліктілігі жоғары деңгейдегі маманы, Қазақ ұлттық аграрлық университеті, Алматы қ.') }}</li>
+                                                    <li>{{ __('17.11.2016 - 01.06.2017 жж. – «Академиялық ұтқырлық және халықаралық білім бағадарламалары орталығының» біліктілігі жоғары деңгейдегі маманы, Қазақ ұлттық аграрлық университеті, Алматы қ.') }}</li>
+                                                    <li>{{ __('01.09.2020 - 01.09.2022 жж. – «Халықаралық ынтымақтастық бөлімінің» жетекші маманы, Жәңгір хан атындағы Батыс Қазақстан аграрлық-техникалық университеті, Орал қ.') }}</li>
+                                                    <li>{{ __('01.09.2022- 09.03.2023 жж. – «Халықаралық ынтымақтастық бөліміне қарасты жобалық кеңсенің» жетекшісі, Жәңгір хан атындағы Батыс Қазақстан аграрлық-техникалық университеті, Орал қ.') }}</li>
+                                                    <li>{{ __('09.03.2023 - 30.08.2024 жж. – «Agrotech Hub» бөлімінің жетекшісі, Жәңгір хан атындағы Батыс Қазақстан аграрлық-техникалық университеті, Орал қ.') }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Қасымов Асқар Бағдатұлы -->
+                            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                                <div class="p-6">
+                                    <div class="flex flex-row md:flex-row gap-4 md:gap-6">
+                                        <div class="flex-shrink-0 flex flex-col items-center md:items-start">
+                                            <img src="{{ Storage::url('board/6d4769c57c8a7aa6929ee5a3ec96085c.webp') }}" 
+                                                alt="{{ __('Қасымов Асқар Бағдатұлы') }}" 
+                                                class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
+                                            <button onclick="toggleDetails('kasymov-details')" 
+                                                class="mt-3 md:hidden inline-flex items-center px-3 py-1.5 bg-shakarim-blue text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
+                                                <span>{{ __('Подробнее') }}</span>
+                                                <svg class="w-3 h-3 ml-1 transform transition-transform" id="kasymov-arrow-mobile" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h3 class="text-sm md:text-xl font-bold text-shakarim-blue mb-2 text-left">
+                                                {{ __('Қасымов Асқар Бағдатұлы') }}
+                                            </h3>
+                                            <p class="text-sm md:text-lg font-medium text-gray-700 mb-4 text-left">
+                                                {{ __('Басқарма мүшесі - стратегия және әлеуметтік даму жөніндегі проректор') }}
+                                            </p>
+                                            <button onclick="toggleDetails('kasymov-details')" 
+                                                class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-blue-700 transition-colors desktop-only">
+                                                <span>{{ __('Подробнее') }}</span>
+                                                <svg class="w-4 h-4 ml-2 transform transition-transform" id="kasymov-arrow" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Detailed Information -->
+                                    <div id="kasymov-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
+                                                <ul class="space-y-2 text-sm text-gray-700 list-disc list-inside">
+                                                    <li>{{ __('2010 ж. – Шәкәрім атындағы Семей мемлекеттік университеті (бакалавриат)') }}</li>
+                                                    <li>{{ __('2011 ж. – Қазақ гуманитарлық-заң инновациялық университеті (бакалавриат)') }}</li>
+                                                    <li>{{ __('2012 ж. – Шәкәрім атындағы Семей мемлекеттік университеті (магистратура)') }}</li>
+                                                    <li>{{ __('2015 ж. – К.И. Сәтбаев атындағы Қазақ ұлттық зерттеу техникалық университеті (докторантура)') }}</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Еңбек өтілі') }}</h4>
+                                                <ul class="space-y-1 text-sm text-gray-700 list-disc list-inside">
+                                                    <li>{{ __('01.09.2014 - 31 05.2015 – Жалпы және теориялық физика кафедрасының ассистенті, Қ.И. Сәтбаев атындағы Қазақ ұлттық зерттеу техникалық университеті') }}</li>
+                                                    <li>{{ __('01.09.2015 - 31.05.2017 – Техникалық физика және жылуэнергетика кафедрасының аға оқытушысы, Шәкәрім атындағы Семей мемлекеттік университеті') }}</li>
+                                                    <li>{{ __('01.06.2017 - 20.01.2019 –Shakarim Kyundong Academic Collaboration Centre халықаралық факультетінің декан орынбасары') }}</li>
+                                                    <li>{{ __('21.01.2019 - 02.06.2024 – Техникалық физика және жылуэнергетика кафедрасының қауымдастырылған профессор м.а., «Семей қаласының Шәкәрім атындағы университеті» КеАҚ') }}</li>
+                                                    <li>{{ __('03.06.2024 - 01.12.2024 – Физика және химия ғылымдары зерттеу мектебінің деканы, «Семей қаласының Шәкәрім атындағы университеті» КеАҚ') }}</li>
+                                                    <li>{{ __('02.12.2024 – қазіргі уақытқа дейін – Басқарма мүшесі – Стратегия және әлеуметтік даму жөніндегі проректор, «Шәкәрім университеті» КеАҚ') }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- Corporate Secretary Tab -->
@@ -755,7 +755,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/fd35e08bf6877a1feb15cf73ee10b68d.jpeg" 
+                                            <img src="{{ Storage::url('board/fd35e08bf6877a1feb15cf73ee10b68d.webp') }}" 
                                                 alt="{{ __('Маусымбаева Аида Ардаковна') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('mausymbaeva-details')" 
@@ -819,7 +819,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/5e3894c72fc2f311be384d71ba774c18.jpeg" 
+                                            <img src="{{ Storage::url('board/5e3894c72fc2f311be384d71ba774c18.webp') }}" 
                                                 alt="{{ __('Жаркенова Гульбахыт Елубаевна') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('zharkenova-details')" 
@@ -880,7 +880,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/231bf2a4a028192c115006d39575e308.jpeg" 
+                                            <img src="{{ Storage::url('board/231bf2a4a028192c115006d39575e308.webp') }}" 
                                                 alt="{{ __('Тасмағамбетов Мейрам Тоқтарұлы') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('tasmagambetov-details')" 
@@ -949,7 +949,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="https://old.shakarim.edu.kz/upload/directors/318890e1ca6d7c684477e23390720154.jpeg" 
+                                            <img src="{{ Storage::url('board/318890e1ca6d7c684477e23390720154.webp') }}" 
                                                 alt="{{ __('Аубакиров Жомартбек Заманбекұлы') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('aubakirov-details')" 
@@ -1166,25 +1166,25 @@
 <style>
     /* Определение цвета shakarim-blue, если он не определен в CSS */
     .bg-shakarim-blue {
-        background-color: #003163 !important;
+        background-color: #314266 !important;
     }
     
     .text-shakarim-blue {
-        color: #003163 !important;
+        color: #314266 !important;
     }
     
     .hover\:text-shakarim-blue:hover {
-        color: #003163 !important;
+        color: #314266 !important;
     }
 
     /* Tab button active states */
     .tab-button.active {
-        background-color: #003163 !important;
+        background-color: #314266 !important;
         color: white !important;
     }
 
     .desktop-tab-button.active {
-        background-color: #003163 !important;
+        background-color: #314266 !important;
         color: white !important;
     }
 
@@ -1306,12 +1306,12 @@
     }
 
     .tab-button.active {
-        background-color: #003163 !important;
+        background-color: #314266 !important;
         color: white !important;
     }
 
     .desktop-tab-button.active {
-        background-color: #003163 !important;
+        background-color: #314266 !important;
         color: white !important;
     }
 

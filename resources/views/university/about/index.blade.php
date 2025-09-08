@@ -48,23 +48,18 @@
                         <h3 class="text-lg font-semibold text-gray-800 mb-4">{{ __('Разделы')}}</h3>
                         <nav class="space-y-2">
                             <button onclick="showTab('about')" id="desktop-tab-about" class="desktop-tab-button active w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
-                                <i class="fas fa-university mr-2"></i>
                                 {{ __('Об университете')}}
                             </button>
                             <button onclick="showTab('period1')" id="desktop-tab-period1" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
-                                <i class="fas fa-history mr-2"></i>
                                 {{ __('1930-1950 годы')}}
                             </button>
                             <button onclick="showTab('period2')" id="desktop-tab-period2" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
-                                <i class="fas fa-history mr-2"></i>
                                 {{ __('1950-1980 годы')}}
                             </button>
                             <button onclick="showTab('period3')" id="desktop-tab-period3" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
-                                <i class="fas fa-history mr-2"></i>
                                 {{ __('1981-2000 годы')}}
                             </button>
                             <button onclick="showTab('period4')" id="desktop-tab-period4" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
-                                <i class="fas fa-history mr-2"></i>
                                 {{ __('2001-настоящее время')}}
                             </button>
                         </nav>
@@ -78,7 +73,7 @@
                 <div id="content-about" class="tab-content">
                     <div class="bg-white rounded-xl shadow-lg p-6">
                         <div class="mb-6">
-                            <img src="{{ asset('img/building.webp') }}" alt="{{ __('Университет Шакарима') }}" class="w-full object-bottom h-48 md:h-72 object-cover rounded-lg shadow-md">
+                            <img src="{{ asset('img/graduates.webp') }}" alt="{{ __('Университет Шакарима') }}" class="w-full object-centre h-48 md:h-72 object-cover rounded-lg shadow-md">
                         </div>
                         <div class="prose max-w-none text-gray-700 space-y-4">
                             <p><strong>{{ __('Шәкәрім Университет') }}</strong> – {{ __('это современный учебно-методический, научный и культурный центр северо-восточного региона Казахстана') }}.</p>

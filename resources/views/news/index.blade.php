@@ -80,7 +80,7 @@
                                                         alt="{{ $item->{'title_' . app()->getLocale()} }}" 
                                                         class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
                                                 @else
-                                                    <img src="{{ asset('img/hero/university_building_md.webp') }}"
+                                                    <img src="{{ asset('img/university_building.webp') }}"
                                                         alt="{{ $item->{'title_' . app()->getLocale()} }}" 
                                                         class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
                                                 @endif
