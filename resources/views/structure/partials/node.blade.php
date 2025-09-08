@@ -7,7 +7,7 @@
             @endphp
             <li>
         <div class="structure-header justify-content-center align-items-center">
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center relative">
                 @foreach ($leftChildren as $child_l)
                     <a href="{{ $child_l->getUrl() }}"
                     @class([
@@ -21,7 +21,7 @@
                 @endforeach
             </div>
                 <a class="d-block line position-relative" style="z-index:10" href="{{ $node->getUrl() }}">
-                    <button class="position-relative item green-button">{{ $node->{'title_'.app()->getLocale()} }}</button>
+                    <button  style="z-index: 20;" class="position-relative item green-button my-4 md:my-0" >{{ $node->{'title_'.app()->getLocale()} }}</button>
                 </a>
             <div class="d-flex flex-column align-items-center">
                 @foreach ($rightChildren as $child_r)
@@ -32,7 +32,7 @@
     'center-inline-right' => !$loop->first && !$loop->last,
     'bottom-inline-right' => $loop->last,
 ]) href="{{ $child_r->getUrl() }}">
-                    <button style="z-index:10" class="position-relative main-button d-block w-100">{{ $child_r->{'title_'.app()->getLocale()} }}</button>
+                    <button style="z-index:20;" class="position-relative main-button d-block w-100">{{ $child_r->{'title_'.app()->getLocale()} }}</button>
                 </a>
                 @endforeach
             </div>
@@ -52,24 +52,24 @@
             @endphp
         <li>
         <div class="structure-header justify-content-center align-items-center">
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center relative">
                 @foreach ($leftChildren as $child_l)
                     <a href="{{ $child_l->getUrl() }}" @class([
-    'pb-2 w-100 position-relative' => count($leftChildren) ===1,
+    'pb-2 w-100 position-relative px-4' => count($leftChildren) ===1,
 ])>
                         <button class="main-button d-block w-100">{{ $child_l->{'title_'.app()->getLocale()} }}</button>
                     </a>
                 @endforeach
             </div>
                 <a class="d-block line position-relative" style="z-index:10" href="{{ $node->getUrl() }}">
-                    <button class="position-relative item green-button">{{ $node->{'title_'.app()->getLocale()} }}</button>
+                    <button  style="z-index: 20;" class="position-relative item green-button mx-auto">{{ $node->{'title_'.app()->getLocale()} }}</button>
                 </a>
             <div class="d-flex flex-column align-items-center">
                 @foreach ($rightChildren as $child_r)
                  <a @class([
-    'pb-2 w-100 position-relative' => count($leftChildren) ===1,
+    'pb-2 w-100 position-relative px-4 bottom-inline-center' => count($leftChildren) ===1,
 ]) href="{{ $child_r->getUrl() }}">
-                    <button style="z-index:10" class="position-relative main-button d-block w-100">{{ $child_r->{'title_'.app()->getLocale()} }}</button>
+                    <button style="z-index:10;" class="position-relative main-button d-block w-100">{{ $child_r->{'title_'.app()->getLocale()} }}</button>
                 </a>
                 @endforeach
             </div>

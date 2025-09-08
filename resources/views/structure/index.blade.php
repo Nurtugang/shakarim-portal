@@ -19,10 +19,10 @@
         <div class="rounded-xl p-6">
             <div class="structure-bg">
                 <ol class="organizational-chart overflow-hidden">
-                    <li>
-                        <div class="structure-header justify-content-center align-items-center">
+                    <li class="mb-4">
+                        <div class="main structure-header justify-content-center align-items-center">
                             <a style="z-index:10" target="_blank" href="https://www.gov.kz/memleket/entities/sci?lang=kz">
-                                <button class="item green-button">{{ $structures->{'title_'.app()->getLocale()} }}</button>
+                                <button style="z-index: 20;" class="item green-button my-4 md:my-0">{{ $structures->{'title_'.app()->getLocale()} }}</button>
                             </a>
                         </div>
                     </li>

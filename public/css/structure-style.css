@@ -150,7 +150,6 @@ ol.organizational-chart li > div {
     border-radius: 8px;
     min-height: 2em;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 
@@ -326,7 +325,7 @@ ol.organizational-chart > li > div > div > a.bottom-inline::before {
 
 ol.organizational-chart > li > div > div > a.bottom-inline::before {
     width: 3px;
-    height: 1em;
+    height: 23px;
     right: 0;
     top: 0;
 }
@@ -351,6 +350,12 @@ ol.organizational-chart > li > div > div > a.bottom-inline-right::before {
     height: 2em;
     left: 0;
     top: 0;
+}
+ol.organizational-chart > li > div > div > a.bottom-inline-center::after {
+    width: 2em;
+    height: 4px;
+    left: 0;
+    top: 2em;
 }
 
 ol.organizational-chart > li > div > div > a.bottom-inline-right::after {
@@ -545,30 +550,102 @@ ol.organizational-chart > li > div > div > a.center-inline-right::after {
 }
 
 @media screen and (max-width: 768px) {
-    ol.organizational-chart > li > div > div > a.top-inline::before {
+    organizational-chart{
+        position: relative;
+    }
+    ol.organizational-chart > li::after{
+        height: 100%;
         left: 0;
+        top: 17px;
+        width: 3px;
+    }
+
+    .green-button{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ol.organizational-chart > li > div:first-of-type:after {
+    top: 0 !important;
+    height: 100px;
+    left: 0;
+    width: 3px;
+}
+ol.organizational-chart > li > div.main:before {
+        left: 0 !important;
+        top: 17px !important;
+        height: 4px;
+        width: 48% !important;
+    }
+    ol.organizational-chart > li > div.main:after {
+        top: 17px !important;
+    }
+
+    /* ol.organizational-chart > li > div:first-of-type:after {
+    top: 20px !important;
+    height: 40px;
+    left: 0;
+    width: 3px;
+} */
+ ol.organizational-chart > li > div > div > a.bottom-inline-center::after {
+        content: '';
+        position: absolute;
+        background-color: #6b7280;
+        width: 2em;
+        height: 3px;
+        left: 10px;
+        top: 50%;
+}
+ ol.organizational-chart > li > div > div > a.bottom-inline-center::before {
+        content: '';
+        position: absolute;
+        background-color: #6b7280;
+        width: 3px;
+        height: 35px;
+        left: 10px;
+        bottom: 50%;
+}
+
+ol.organizational-chart > li > div > div > a.bottom-inline-right::after {
+    left: 10px;
+}
+ol.organizational-chart > li > div > div > a.top-inline-right::after {
+    left: 10px;
+}
+
+ol.organizational-chart > li > div > div > a.top-inline::before {
+    height: 2em;
+}
+
+    ol.organizational-chart > li > div > div > a.bottom-inline-right::before {
+    left: 10px;
+    top: -10px;
+    height: 43px;
+}
+    ol.organizational-chart > li > div > div > a.top-inline::before {
+        left: 10px;
     }
     
     ol.organizational-chart > li > div > div > a.top-inline::after {
-        left: 0;
+        left: 10px;
     }
     
     ol.organizational-chart > li > div > div > a.center-inline::before {
         height: 100%;
-        left: 0;
+        left: 10px;
     }
 
     ol.organizational-chart > li > div > div > a.center-inline::after {
-        left: 0;
+        left: 10px;
     }
 
     ol.organizational-chart > li > div > div > a.bottom-inline::before {
         height: 100%;
-        left: 0;
+        left: 10px;
     }
 
     ol.organizational-chart > li > div > div > a.bottom-inline::after {
-        left: 0;
+        left: 10px;
     }
 
     ol.organizational-chart > li > div > a.line {
@@ -576,7 +653,19 @@ ol.organizational-chart > li > div > div > a.center-inline-right::after {
     }
 
     ol.organizational-chart > li > div > a.line::before {
-        width: 50%;
+        height: 62px !important;
+        left: 50%;
+        top: 0 !important;
+        width: 3px;
+        /* width: 40%;
+        left: 10px;
+        top: 0 !important; */
+    }
+    ol.organizational-chart > li > div > a.line::after {
+        height: 1em;
+        left: 50%;
+        top: 0;
+        width: 3px;
     }
 
     ol.organizational-chart > li > div > a.line::after {
@@ -584,23 +673,45 @@ ol.organizational-chart > li > div > div > a.center-inline-right::after {
         position: absolute;
         background-color: #6b7280;
         display: inline-block;
-        height: 100%;
-        top: 0;
-        width: 3px !important;
-        left: 0;
+        height: 3px;
+        top: 59px;
+        width: 48% !important;
+        left: 10px;
+    }
+    ol.organizational-chart > li > div > div.relative::after{
+        content: '';
+        position: absolute;
+        background-color: #6b7280;
+        display: inline-block;
+        height: 3px;
+        bottom: 0;
+        width: 48% !important;
+        left: 10px;
     }
 
     ol.organizational-chart > li > div > div > a.top-inline-right::before {
-        height: 100%;
+        height: 60px;
+        left: 10px;
+    }
+
+    ol.organizational-chart > li > div > div.relative::before {
+        content: '';
+        position: absolute;
+        background-color: #6b7280;
+        display: inline-block;
+        height: 31px;
+        bottom: 0;
+        width: 3px !important;
+        left: 10px;
     }
 
     ol.organizational-chart > li > ol:after {
         left: 0;
-        width: 60%;
+        width: 50%;
     }
     
     ol.organizational-chart > li > ol:before {
-        left: 60%;
+        left: 50%;
     }
     
     .main-button {
@@ -608,7 +719,10 @@ ol.organizational-chart > li > div > div > a.center-inline-right::after {
     }
     
     ol.organizational-chart > li > div:before {
-        left: 60% !important;
+        left: 10px !important;
+    top: 17px !important;
+    height: 3px;
+    width: 48% !important;
     }
     
     .structure-header {
@@ -617,8 +731,26 @@ ol.organizational-chart > li > div > div > a.center-inline-right::after {
 
     .green-button {
         line-height: 17px;
-        font-size: 14px;
+        font-size: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
+    .flex-column {
+        width: 100% !important;
+    }
+    .d-block {
+        width: 100% !important;
+    }
+    /* ol.organizational-chart > li > .main:after {
+    content: '';
+        position: absolute;
+        background-color: #6b7280;
+        display: inline-block;
+        width: 50%;
+        top: 50% !important;
+        height: 3px !important;
+        left: 0;
+} */
 }
 
 /* Utilities */
