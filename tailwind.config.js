@@ -22,5 +22,11 @@ export default {
             }
         },
     },
+    safelist: [
+    'text-3xl',
+    'md:text-6xl',
+    'font-heading',
+    'text-4xl',
+  ],
   plugins: [],
 }

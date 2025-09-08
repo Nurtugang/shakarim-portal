@@ -29,3 +29,6 @@
 .max-h-\[40rem\] {
   max-height: 40rem;
 }
+.tiptap-prosemirror-wrapper{
+    background-color: antiquewhite;
+}
