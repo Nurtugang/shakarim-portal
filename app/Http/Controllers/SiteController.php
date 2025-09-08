@@ -27,8 +27,10 @@ class SiteController extends Controller
             ->limit(3)
             ->get();
 
-        $slider = TextWidget::query()->where('key','slider')->first();
-        
-        return view('site.index', compact('news','events', 'announcements','slider'));
+        $welcome = TextWidget::query()->where('key','welcome')->first();
+        $card = TextWidget::query()->where('key','card')->first();
+        $schools = TextWidget::query()->where('key','schools')->first();
+
+        return view('site.index', compact('news','events','welcome','card','schools', 'announcements'));
     }
 }

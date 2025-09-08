@@ -5,6 +5,7 @@ const dots = document.querySelectorAll('.slide-dot');
 const totalSlides = slides.length;
 
 function showSlide(n) {
+    // Hide all slides
     slides.forEach(slide => {
         slide.style.opacity = '0';
     });
@@ -48,7 +49,7 @@ showSlide(0);
 let touchStartX = 0;
 let touchEndX = 0;
 
-const sliderContainer = document.querySelector('.slider-container'); // Assuming .page-wrapper contains the slider
+const sliderContainer = document.querySelector('.page-wrapper'); // Assuming .page-wrapper contains the slider
 
 if (sliderContainer) {
     sliderContainer.addEventListener('touchstart', e => {

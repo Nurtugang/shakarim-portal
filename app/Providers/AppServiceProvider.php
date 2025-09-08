@@ -10,7 +10,6 @@ use App\Filament\TiptapBlock\GalleryBlock;
 use App\Filament\TiptapBlock\InfoBlock;
 use App\Filament\TiptapBlock\ListBlock;
 use App\Filament\TiptapBlock\PdfViewBlock;
-use App\Filament\TiptapBlock\SliderBlock;
 use App\Filament\TiptapBlock\TabsBlock;
 use App\Filament\TiptapBlock\WelcomeBlock;
 use FilamentTiptapEditor\TiptapEditor;
@@ -50,7 +49,6 @@ class AppServiceProvider extends ServiceProvider
                     TabsBlock::class,
                     PdfViewBlock::class,
                     ListBlock::class,
-                    SliderBlock::class,
                     // GalleryBlock::class,
                     // InfoBlock::class,
                     // FullSliderBlock::class,
