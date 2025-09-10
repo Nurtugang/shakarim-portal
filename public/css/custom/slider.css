@@ -1,0 +1,23 @@
+.slider-container .slide {
+    transition: opacity 0.7s ease-in-out, visibility 0.7s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slider-container .slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.slide-dot.active {
+    background-color: white;
+    opacity: 1;
+}
+.slide-dot {
+    background-color: white;
+    opacity: 0.5;
+}

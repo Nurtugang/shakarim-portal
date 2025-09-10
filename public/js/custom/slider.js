@@ -1,75 +1,108 @@
-// Slider functionality
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.slide-dot');
-const totalSlides = slides.length;
+document.addEventListener('DOMContentLoaded', function() {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider-container .slide');
+    const dots = document.querySelectorAll('.slider-container .slide-dot');
+    const totalSlides = slides.length;
+    let slideInterval; // Переменная для хранения таймера
 
-function showSlide(n) {
-    // Hide all slides
-    slides.forEach(slide => {
-        slide.style.opacity = '0';
-    });
+    // Основная функция, которая показывает нужный слайд
+    function showSlide(index) {
+        // Проверяем, чтобы индекс не выходил за рамки
+        if (index >= totalSlides) {
+            index = 0;
+        } else if (index < 0) {
+            index = totalSlides - 1;
+        }
+
+        // Убираем класс 'active' у ВСЕХ слайдов и точек
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+
+        // Добавляем класс 'active' только НУЖНОМУ слайду и точке
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+
+        // Обновляем текущий индекс
+        currentSlide = index;
+    }
     
-    // Remove active class from all dots
-    dots.forEach(dot => {
-        dot.classList.remove('active');
-        dot.classList.add('bg-opacity-50');
-    });
+    // Функция для переключения на следующий слайд
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
 
-    // Show current slide
-    slides[n].style.opacity = '1';
+    // Функция для переключения на предыдущий слайд
+    function previousSlide() {
+        showSlide(currentSlide - 1);
+    }
     
-    // Highlight current dot
-    dots[n].classList.add('active');
-    dots[n].classList.remove('bg-opacity-50');
-
-    currentSlide = n;
-}
-
-function nextSlide() {
-    const next = (currentSlide + 1) % totalSlides;
-    showSlide(next);
-}
-
-function previousSlide() {
-    const prev = (currentSlide - 1 + totalSlides) % totalSlides;
-    showSlide(prev);
-}
-
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        showSlide(index);
-    });
-});
-
-setInterval(nextSlide, 5000);
-
-showSlide(0);
-
-let touchStartX = 0;
-let touchEndX = 0;
-
-const sliderContainer = document.querySelector('.page-wrapper'); // Assuming .page-wrapper contains the slider
-
-if (sliderContainer) {
-    sliderContainer.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
-    });
-
-    sliderContainer.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].clientX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        const swipeThreshold = 50; // Minimum distance for a swipe
-
-        if (touchEndX < touchStartX - swipeThreshold) {
-            // Swiped left
+    // --- Настройка автоматического переключения ---
+    function startSlideShow() {
+        slideInterval = setInterval(() => {
             nextSlide();
-        } else if (touchEndX > touchStartX + swipeThreshold) {
-            // Swiped right
-            previousSlide();
+        }, 5000); // 5 секунд
+    }
+    
+    // Сбрасываем таймер при ручном переключении, чтобы было удобнее
+    function resetInterval() {
+        clearInterval(slideInterval);
+        startSlideShow();
+    }
+    
+    // --- Навешиваем обработчики событий ---
+
+    // Кликаем по точкам
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            resetInterval(); // Сбрасываем таймер
+        });
+    });
+
+    // Делаем функции nextSlide и previousSlide доступными для HTML (для кнопок onclick)
+    window.nextSlide = function() {
+        nextSlide();
+        resetInterval();
+    };
+    
+    window.previousSlide = function() {
+        previousSlide();
+        resetInterval();
+    };
+
+    // --- Логика для свайпов на мобильных устройствах ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const sliderContainer = document.querySelector('.slider-container'); 
+
+    if (sliderContainer) {
+        sliderContainer.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        sliderContainer.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50; // Минимальное расстояние для свайпа
+
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // Свайп влево -> следующий слайд
+                window.nextSlide();
+            } else if (touchEndX > touchStartX + swipeThreshold) {
+                // Свайп вправо -> предыдущий слайд
+                window.previousSlide();
+            }
         }
     }
-}
+    
+    // --- Инициализация слайдера ---
+    showSlide(0); // Показываем первый слайд при загрузке страницы
+    startSlideShow(); // Запускаем автоматическое переключение
+});

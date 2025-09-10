@@ -1,28 +1,83 @@
+<link rel="stylesheet" href="{{ asset('css/custom/slider.css') }}">
+
 <x-layout>
 
     <!-- Hero Section with Slider -->
     <section class="relative bg-white overflow-hidden">
         <div class="slider-container relative h-64 md:h-[400px]">
-            <!-- Slide 1: QS Rankings -->
+            
+
+            <!-- Slide 5: Tokayev -->
             <div class="slide active absolute inset-0 flex"
-                 style="background-image: url('/img/graduates.webp'); background-size: cover; background-position: center;">
+                 style="background-image: url('/img/tokaev.webp'); background-size: cover; background-position: top;">
                 <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
-                        <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('QS World University Rankings') }}</h2>
-                        <div class="text-3xl md:text-6xl font-heading font-bold text-yellow-400 mb-1 md:mb-2">#1401+</div>
-                        <p class="text-sm md:text-lg font-body text-slate-200">{{ __('Shakarim University first entered the global ranking') }}</p>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'akkreditteu-zane-reitingter']) }}">
+                        <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Message from the Head of State Kassym-Jomart Tokayev to the people of Kazakhstan') }}</h2>
+                        <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'ongirlik-koshbasshynyng-zhanga-martebesi-shakarim-university-alghash-ret-qs-world-university-rankings-2026-zhahandyq-reytingine-yendi']) }}">
                             <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
                                 {{ __('More') }}
                             </button>
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/graduates.webp');"></div>
+                <div class="hidden md:block w-1/2 bg-cover bg-top" style="background-image: url('/img/tokaev.webp');"></div>
+            </div>
+
+            <!-- Slide 4: AI Sana -->
+            <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
+                 style="background-image: url('/img/ai_sana.webp'); background-size: cover; background-position: center;">
+                <div class="w-full md:w-1/2 bg-slate-700 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
+                    <div class="text-center">
+                        <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Shakarim University AI-Sana Program Results') }}</h2>
+                        <div class="grid grid-cols-4 gap-2 md:gap-4 mb-3 md:mb-6">
+                            <div>
+                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">5</div>
+                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('AI Agents') }}</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">2</div>
+                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Ready solutions') }}</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">3</div>
+                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('In development') }}</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">∞</div>
+                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Opportunities') }}</div>
+                            </div>
+                        </div>
+                        <a href="https://aisana.shakarim.kz/">
+                            <button class="bg-white text-slate-700 px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
+                                {{ __('More') }}
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/ai_sana.webp');">
+                </div>
+            </div>
+
+            <!-- Slide 1: QS Rankings -->
+            <div class="slide active absolute inset-0 flex"
+                 style="background-image: url('/img/qs_world_university_rankings.webp'); background-size: cover; background-position: center;">
+                <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
+                    <div class="text-center">
+                        <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('QS World University Rankings') }}</h2>
+                        <div class="text-3xl md:text-6xl font-heading font-bold text-yellow-400 mb-1 md:mb-2">#1401+</div>
+                        <p class="text-sm md:text-lg font-body text-slate-200">{{ __('Shakarim University first entered the global ranking') }}</p>
+                        <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'ongirlik-koshbasshynyng-zhanga-martebesi-shakarim-university-alghash-ret-qs-world-university-rankings-2026-zhahandyq-reytingine-yendi']) }}">
+                            <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
+                                {{ __('More') }}
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/qs_world_university_rankings.webp');"></div>
             </div>
 
             <!-- Slide 2: Modern Campus -->
-            <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
+            <div class="slide absolute inset-0 flex"
                  style="background-image: url('/img/university_building.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-shakarim-blue bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
@@ -40,7 +95,7 @@
             </div>
 
             <!-- Slide 3: Academic Programs -->
-            <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
+            <div class="slide absolute inset-0 flex"
                  style="background-image: url('/img/general_photo.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-slate-700 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
@@ -72,9 +127,11 @@
 
             <!-- Slide Navigation -->
             <div class="absolute bottom-3 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-                <button class="slide-dot active w-2 h-2 md:w-3 md:h-3 rounded-full bg-white" data-slide="0"></button>
-                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full bg-white bg-opacity-50" data-slide="1"></button>
-                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full bg-white bg-opacity-50" data-slide="2"></button>
+                <button class="slide-dot active w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="0"></button>
+                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="1"></button>
+                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="2"></button>
+                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="3"></button>
+                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="4"></button>
             </div>
 
             <!-- Navigation Arrows -->
@@ -464,4 +521,5 @@
 
     <script src="{{ asset('js/custom/slider.js') }}"></script>
     <script src="{{ asset('js/custom/slider2.js') }}"></script>
+    
 </x-layout>
