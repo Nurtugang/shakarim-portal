@@ -1,4 +1,4 @@
-<x-layout metaTitle="{{ __('Корпоративтік басқару - Басқарма') }}">
+<x-layout metaTitle="{{ __('Корпоративтік басқару') }}">
 
 <!-- Breadcrumbs and Section -->
 <section class="bg-gray-100 py-3 border-b">
@@ -8,7 +8,7 @@
             <span>&#8250;</span>
             <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => 1]) }}" class="hover:text-shakarim-blue">{{ __('Университет') }}</a>
             <span>&#8250;</span>
-            <span class="text-shakarim-blue font-semibold">{{ __('Корпоративтік басқару - Басқарма') }}</span>
+            <span class="text-shakarim-blue font-semibold">{{ __('Корпоративтік басқару') }}</span>
         </nav>
     </div>
 </section>
@@ -16,7 +16,7 @@
 <!-- Main Content -->
 <section class="bg-white py-8">
     <div class="max-w-7xl mx-auto px-4">
-        <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-8 mt-2">{{ __('Корпоративтік басқару - Басқарма') }}</h1>
+        <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-8 mt-2">{{ __('Корпоративтік басқару') }}</h1>
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Sidebar Navigation -->
                 <div class="lg:w-1/4">

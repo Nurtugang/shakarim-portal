@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom/base.css') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icons/logo_sgu.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logo_sgu.png') }}">
     <link rel="stylesheet" href="{{ asset("css/bvi/bvi.min.css") }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @filamentStyles
@@ -87,7 +87,7 @@
                 <!-- Logo -->
                 <div class="flex items-center lg:flex-none flex-1 lg:flex-initial justify-center lg:justify-start">
                     <a href="{{ route('site.index', ['locale' => app()->getLocale()]) }}">
-                        <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-8 md:h-10 w-auto">
+                        <img src="{{ asset('university.png') }}" alt="Shakarim University Logo" class="h-8 md:h-10 w-auto">
                     </a>
                 </div>
 
@@ -175,7 +175,7 @@
                 <div>
                     <div class="flex items-center mb-4">
                         <a href="{{ route('site.index', ['locale' => app()->getLocale()]) }}">
-                            <img src="{{ asset('icons/university.png') }}" alt="Shakarim University Logo" class="h-8 w-auto">
+                            <img src="{{ asset('university.png') }}" alt="Shakarim University Logo" class="h-8 w-auto">
                         </a>
                     </div>
                     @if($quote)
