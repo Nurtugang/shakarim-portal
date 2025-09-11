@@ -44,6 +44,61 @@ class News extends Model
     }
 
     /**
+     * Создать изображение из файла в зависимости от расширения
+     */
+    private function createImageFromFile($path)
+    {
+        if (!file_exists($path)) {
+            \Log::error("Файл не существует: {$path}");
+            return null;
+        }
+
+        // Получаем реальный MIME-тип файла
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($finfo, $path);
+        finfo_close($finfo);
+
+        \Log::info("Обрабатываем файл: {$path}, MIME-тип: {$mimeType}");
+
+        try {
+            switch ($mimeType) {
+                case 'image/jpeg':
+                    $image = imagecreatefromjpeg($path);
+                    break;
+                case 'image/png':
+                    $image = imagecreatefrompng($path);
+                    break;
+                case 'image/gif':
+                    $image = imagecreatefromgif($path);
+                    break;
+                case 'image/webp':
+                    if (function_exists('imagecreatefromwebp')) {
+                        $image = imagecreatefromwebp($path);
+                    } else {
+                        \Log::error("WebP не поддерживается");
+                        return null;
+                    }
+                    break;
+                default:
+                    \Log::error("Неподдерживаемый MIME-тип: {$mimeType} для файла: {$path}");
+                    return null;
+            }
+
+            if (!$image) {
+                \Log::error("Не удалось создать изображение из файла: {$path}");
+                return null;
+            }
+
+            return $image;
+
+        } catch (\Exception $e) {
+            \Log::error("Ошибка создания изображения из {$path}: " . $e->getMessage());
+            return null;
+        }
+    }
+
+
+    /**
      * Boot метод для автоматической обработки изображений
      */
     protected static function boot()
@@ -53,6 +108,7 @@ class News extends Model
         static::saved(function ($news) {
             if ($news->image && $news->wasChanged('image')) {
                 $news->createWebpVersion();
+                $news->createThumbnail();
             }
         });
     }
@@ -88,18 +144,7 @@ class News extends Model
                 $image = null;
                 $extension = strtolower(pathinfo($this->image, PATHINFO_EXTENSION));
                 
-                switch ($extension) {
-                    case 'jpg':
-                    case 'jpeg':
-                        $image = imagecreatefromjpeg($originalPath);
-                        break;
-                    case 'png':
-                        $image = imagecreatefrompng($originalPath);
-                        break;
-                    case 'gif':
-                        $image = imagecreatefromgif($originalPath);
-                        break;
-                }
+                $image = $this->createImageFromFile($originalPath);
                 
                 if ($image) {
                     // Уменьшаем размер в 2 раза
@@ -123,6 +168,75 @@ class News extends Model
     }
 
     /**
+     * Создать thumbnail версию изображения (400x300 для списков новостей)
+     */
+    public function createThumbnail(): void
+    {
+        if (!$this->image) return;
+        
+        $originalPath = storage_path('app/public/news/' . $this->image);
+        
+        if (!file_exists($originalPath)) return;
+        
+        // Создаем папку thumbnails если не существует
+        $thumbDir = storage_path('app/public/news/thumbnails');
+        if (!is_dir($thumbDir)) {
+            mkdir($thumbDir, 0755, true);
+        }
+        
+        $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
+        $thumbPath = $thumbDir . '/' . $nameWithoutExtension . '.webp';
+        
+        // Создаем thumbnail размером 400x300
+        try {
+            if (function_exists('imagewebp')) {
+                $image = $this->createImageFromFile($originalPath);
+                
+                if ($image) {
+                    $originalWidth = imagesx($image);
+                    $originalHeight = imagesy($image);
+                    
+                    // Целевые размеры
+                    $targetWidth = 400;
+                    $targetHeight = 300;
+                    
+                    // Вычисляем масштаб для сохранения пропорций
+                    $scaleX = $targetWidth / $originalWidth;
+                    $scaleY = $targetHeight / $originalHeight;
+                    $scale = max($scaleX, $scaleY); // Берем больший масштаб чтобы заполнить весь thumbnail
+                    
+                    // Вычисляем новые размеры с сохранением пропорций
+                    $newWidth = round($originalWidth * $scale);
+                    $newHeight = round($originalHeight * $scale);
+                    
+                    // Создаем временное изображение с новыми размерами
+                    $scaled = imagecreatetruecolor($newWidth, $newHeight);
+                    imagecopyresampled($scaled, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
+                    
+                    // Создаем финальный thumbnail с обрезкой по центру
+                    $thumbnail = imagecreatetruecolor($targetWidth, $targetHeight);
+                    
+                    // Вычисляем смещение для центрирования
+                    $offsetX = ($newWidth - $targetWidth) / 2;
+                    $offsetY = ($newHeight - $targetHeight) / 2;
+                    
+                    imagecopy($thumbnail, $scaled, 0, 0, $offsetX, $offsetY, $targetWidth, $targetHeight);
+                    
+                    // Сохраняем как WebP
+                    imagewebp($thumbnail, $thumbPath, 85);
+                    
+                    // Освобождаем память
+                    imagedestroy($image);
+                    imagedestroy($scaled);
+                    imagedestroy($thumbnail);
+                }
+            }
+        } catch (\Exception $e) {
+            \Log::error('Ошибка создания thumbnail: ' . $e->getMessage());
+        }
+    }
+
+    /**
      * Установить атрибут image
      * Если значение содержит 'news/', сохраняем только имя файла
      */
@@ -134,6 +248,7 @@ class News extends Model
             $this->attributes['image'] = $value;
         }
     }
+
     /**
      * Категория новости
      */
@@ -178,18 +293,30 @@ class News extends Model
             return '';
         }
 
-        // Убираем расширение из оригинального имени файла
         $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
-        
-        // Формируем путь к webp версии
         $webpPath = 'news/webp/' . $nameWithoutExtension . '.webp';
-        
-        // Проверяем существует ли webp версия
+
         if (Storage::disk('public')->exists($webpPath)) {
             return Storage::url($webpPath);
         }
-        
-        // Если webp не существует, возвращаем оригинал
         return Storage::url('news/' . $this->image);
+    }
+
+    /**
+     * Получить URL thumbnail изображения для списков новостей
+     */
+    public function getThumbnailUrl(): string
+    {
+        if (!$this->image) {
+            return '';
+        }
+
+        $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
+        $thumbPath = 'news/thumbnails/' . $nameWithoutExtension . '.webp';
+        
+        if (Storage::disk('public')->exists($thumbPath)) {
+            return Storage::url($thumbPath);
+        }
+        return $this->getOptimizedImageUrl();
     }
 }

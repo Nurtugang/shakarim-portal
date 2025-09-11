@@ -13,7 +13,7 @@
                 <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Message from the Head of State Kassym-Jomart Tokayev to the people of Kazakhstan') }}</h2>
-                        <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'ongirlik-koshbasshynyng-zhanga-martebesi-shakarim-university-alghash-ret-qs-world-university-rankings-2026-zhahandyq-reytingine-yendi']) }}">
+                        <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'duman-orynbekov-sakarim-universitetinin-rektory-texnologiialyq-serpilis-pen-cifrlyq-transformaciia-sakarim-universitetinin-zoldaudan-tuyndaityn-zana-bastamalarga-ulesi']) }}">
                             <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
                                 {{ __('More') }}
                             </button>
@@ -47,7 +47,7 @@
                                 <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Opportunities') }}</div>
                             </div>
                         </div>
-                        <a href="https://aisana.shakarim.kz/">
+                        <a target="_blank" href="https://aisana.shakarim.kz/">
                             <button class="bg-white text-slate-700 px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
                                 {{ __('More') }}
                             </button>
@@ -257,7 +257,7 @@
                                         <div class="h-32 md:h-full overflow-hidden bg-gray-100">
                                             <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
                                                 @if($item->image)
-                                                    <img src="{{ $item->getOptimizedImageUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                    <img src="{{ $item->getThumbnailUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @else
                                                     <img src="{{ asset('img/university_building.webp') }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @endif
