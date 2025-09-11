@@ -4,8 +4,10 @@ namespace App\Filament\Resources\PageResource\RelationManagers;
 
 use App\Models\PageFile;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -42,7 +44,9 @@ class FilesRelationManager extends RelationManager
                             Forms\Components\FileUpload::make('files_kk')
                               ->directory('files')
                               ->multiple()
-                              ->label('Файлы(kz)'),  
+                              ->label('Файлы(kz)'),
+                            RichEditor::make('description_kk')
+                              ->label('Описание(kz)'),    
                         ]),
                         Tabs\Tab::make('ru')
                         ->schema([
@@ -54,7 +58,9 @@ class FilesRelationManager extends RelationManager
                             Forms\Components\FileUpload::make('files_ru')
                               ->directory('files')
                               ->multiple()
-                              ->label('Файлы(ru)'),   
+                              ->label('Файлы(ru)'),
+                            RichEditor::make('description_ru')
+                              ->label('Описание(ru)'),   
                         ]),
                         Tabs\Tab::make('en')
                         ->schema([
@@ -65,7 +71,9 @@ class FilesRelationManager extends RelationManager
                             Forms\Components\FileUpload::make('files_en')
                               ->directory('files')
                               ->multiple()
-                              ->label('Файлы(en)'),    
+                              ->label('Файлы(en)'), 
+                            RichEditor::make('description_en')
+                              ->label('Описание(en)'),   
                         ]),
                     ]),
                     Forms\Components\TextInput::make('position')

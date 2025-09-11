@@ -26,8 +26,8 @@ use App\Http\Controllers\AnnouncementController;
 
 use App\Http\Controllers\RectorBlogController;
 use App\Http\Controllers\RectorQuestionController;
-
-
+use App\Models\PageFile;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -110,15 +110,3 @@ Route::post('/science/offers/store', [SciencePurchasesOfferController::class, 's
 
 Route::post('/rector-question', [RectorBlogController::class, 'storeQuestion'])->name('rector.question.store');
 Route::get('/events', EventController::class);
-
-Route::get('/pdf-viewer/{filename}', function ($filename) {
-    $pdfPath = storage_path("app/public/pdfs/{$filename}");
-
-    if (!file_exists($pdfPath)) {
-        abort(404);
-    }
-
-    $pdfUrl = asset("storage/pdfs/{$filename}");
-
-    return view('pdf.viewer', compact('pdfUrl'));
-});
