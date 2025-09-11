@@ -11,6 +11,9 @@ class PageFile extends Model
         'title_ru',
         'title_en',
         'page_id',
+        'description_kk',
+        'description_ru',
+        'description_en',
         'files_kk',
         'files_ru',
         'files_en',
@@ -28,6 +31,10 @@ class PageFile extends Model
         'files_ru' => 'array',
         'files_en' => 'array',
     ];
+    public function getFormattedDate()
+    {
+        return $this->created_at?$this->created_at->locale(app()->getLocale(),'kk')->translatedFormat('d F Y'):'';
+    }
 
     public function getFile(){
         return '/storage/'.$this->{'file_'.app()->getLocale()};
@@ -41,6 +48,14 @@ class PageFile extends Model
           }
  
         return $files;
+    }
+
+    public function getThumbnail(){
+        if($this->thumbnail)
+        {
+            return '/storage/'.$this->thumbnail;
+        } 
+        return null;
     }
 
 
