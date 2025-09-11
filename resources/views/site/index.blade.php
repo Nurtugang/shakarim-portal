@@ -76,62 +76,11 @@
                 <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/qs_world_university_rankings.webp');"></div>
             </div>
 
-            <!-- Slide 2: Modern Campus -->
-            <div class="slide absolute inset-0 flex"
-                 style="background-image: url('/img/university_building.webp'); background-size: cover; background-position: center;">
-                <div class="w-full md:w-1/2 bg-shakarim-blue bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
-                    <div class="text-center">
-                        <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Modern Campus') }}</h2>
-                        <div class="text-3xl md:text-6xl font-heading font-bold text-blue-200 mb-1 md:mb-2">12</div>
-                        <p class="text-sm md:text-lg font-body text-blue-100">{{ __('Academic buildings, 700+ thousand books, 1300+ computers') }}</p>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}">
-                            <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
-                                {{ __('More') }}
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/university_building.webp');"></div>
-            </div>
-
-            <!-- Slide 3: Academic Programs -->
-            <div class="slide absolute inset-0 flex"
-                 style="background-image: url('/img/general_photo.webp'); background-size: cover; background-position: center;">
-                <div class="w-full md:w-1/2 bg-slate-700 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
-                    <div class="text-center">
-                        <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Educational Programs') }}</h2>
-                        <div class="grid grid-cols-3 gap-2 md:gap-4 mb-3 md:mb-6">
-                            <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">57</div>
-                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Bachelor') }}</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">58</div>
-                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Master') }}</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">13</div>
-                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Doctorate') }}</div>
-                            </div>
-                        </div>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bilim-beru-bagdarlamalary']) }}">
-                            <button class="bg-white text-slate-700 px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
-                                {{ __('View Programs') }}
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/general_photo.webp');">
-                </div>
-            </div>
-
             <!-- Slide Navigation -->
             <div class="absolute bottom-3 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
                 <button class="slide-dot active w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="0"></button>
                 <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="1"></button>
                 <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="2"></button>
-                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="3"></button>
-                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="4"></button>
             </div>
 
             <!-- Navigation Arrows -->
