@@ -112,6 +112,20 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'nitro' => [
+            'driver'    => 'mysql',
+            'host'      => env('NITRO_DB_HOST'),
+            'port'      => env('NITRO_DB_PORT'),
+            'database'  => env('NITRO_DB_DATABASE'),
+            'username'  => env('NITRO_DB_USERNAME'),
+            'password'  => env('NITRO_DB_PASSWORD'),
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix'    => '',
+            'strict'    => true,
+            'engine'    => null,
+        ],
+
     ],
 
     /*

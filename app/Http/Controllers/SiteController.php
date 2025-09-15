@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TextWidget;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
@@ -20,7 +21,6 @@ class SiteController extends Controller
             ->limit(3)
             ->get();
         
-        // Фильтруем объявления по текущей локали
         $announcements = \App\Models\Announcement::where('status', 1)
             ->where('language', app()->getLocale())
             ->orderBy('date', 'desc')
@@ -31,6 +31,10 @@ class SiteController extends Controller
         $card = TextWidget::query()->where('key','card')->first();
         $schools = TextWidget::query()->where('key','schools')->first();
 
-        return view('site.index', compact('news','events','welcome','card','schools', 'announcements'));
+        $connection = DB::connection('nitro');
+        $results = $connection->select('SELECT COUNT(*) AS total FROM students WHERE isStudent = 1');
+        $students_count = $results[0]->total;
+
+        return view('site.index', compact('news','events','welcome','card','schools', 'announcements', 'students_count'));
     }
 }

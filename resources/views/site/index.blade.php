@@ -178,11 +178,11 @@
                     </div>
                     <div class="grid grid-cols-2 gap-3 md:gap-6">
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">57</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">72</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Bachelor programs') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">58</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">62</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Master programs') }}</div>
                         </div>
                         <div>
@@ -198,7 +198,7 @@
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Graduate employment rate') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">5773</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">{{ $students_count }}</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Students') }}</div>
                         </div>
                     </div>
