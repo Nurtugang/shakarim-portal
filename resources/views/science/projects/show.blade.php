@@ -113,6 +113,51 @@
                             </div>
                         @endif
                     </div>
+                    
+                    @if($project->members->isNotEmpty())
+                        <div class="mt-8">
+                            <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                                <h2 class="text-xl font-semibold text-shakarim-blue mb-6 flex items-center">
+                                    <i class="fas fa-users mr-3"></i>
+                                    {{ __('Ғылыми топ') }}
+                                </h2>
+                                
+                                <div class="space-y-6">
+                                    @foreach($project->members as $member)
+                                        <div class="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
+                                            <h3 class="text-lg font-semibold text-gray-800">{{ $member->fullname }}</h3>
+
+                                            {{-- Блок с идентификаторами (Scopus, ORCID и т.д.) --}}
+                                            <div class="flex flex-wrap gap-2 my-3">
+                                                @if($member->scopusid)
+                                                    <a href="https://www.scopus.com/authid/detail.uri?authorId={{ $member->scopusid }}" target="_blank" rel="noopener noreferrer" class="inline-block text-xs bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full hover:bg-blue-200 transition-colors duration-200">
+                                                        <strong>Scopus:</strong> {{ $member->scopusid }}
+                                                    </a>
+                                                @endif
+                                                @if($member->researcherid)
+                                                    <a href="https://www.webofscience.com/wos/author/record/{{ $member->researcherid }}" target="_blank" rel="noopener noreferrer" class="inline-block text-xs bg-green-100 text-green-800 px-2.5 py-1 rounded-full hover:bg-green-200 transition-colors duration-200">
+                                                        <strong>ResearcherID:</strong> {{ $member->researcherid }}
+                                                    </a>
+                                                @endif
+                                                @if($member->orcid)
+                                                    <a href="https://orcid.org/{{ $member->orcid }}" target="_blank" rel="noopener noreferrer" class="inline-block text-xs bg-gray-200 text-gray-800 px-2.5 py-1 rounded-full hover:bg-gray-300 transition-colors duration-200">
+                                                        <strong>ORCID:</strong> {{ $member->orcid }}
+                                                    </a>
+                                                @endif
+                                            </div>
+
+                                            {{-- Дополнительная информация от редактора Tiptap --}}
+                                            @if($member->localized_additionally)
+                                                <div class="prose prose-blue max-w-none text-gray-700 leading-relaxed text-sm mt-4">
+                                                    {!! $member->localized_additionally !!}
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
 
                     <!-- Navigation -->
                     <div class="mt-12 pt-8 border-t border-gray-200">

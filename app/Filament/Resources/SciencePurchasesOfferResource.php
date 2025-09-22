@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\RolesEnum;
 use App\Filament\Resources\SciencePurchasesOfferResource\Pages;
 use App\Models\Science\SciencePurchasesOffer;
 use Filament\Forms;
@@ -9,6 +10,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class SciencePurchasesOfferResource extends Resource
 {
@@ -16,6 +19,11 @@ class SciencePurchasesOfferResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?int $navigationSort = 3;
+
+    public static function canViewAny(): bool
+    {
+        return !Auth::user()->hasRole(RolesEnum::STRUCTURE);
+    }
 
     public static function getNavigationLabel(): string
     {
@@ -36,9 +44,14 @@ class SciencePurchasesOfferResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Placeholder::make('irn')
+                    ->label('ИРН')
+                    ->content(fn (?SciencePurchasesOffer $record): string => $record?->purchase?->irn?->name ?? '-')
+                    ->visible(fn (string $operation): bool => $operation !== 'create'),
+
                 Forms\Components\Select::make('purchase_id')
                     ->label('Закупка')
-                    ->relationship('purchase', 'name_ru') // или name_kk/en, выбери что удобнее
+                    ->relationship('purchase', 'name_ru')
                     ->required(),
                 Forms\Components\TextInput::make('organization')
                     ->label('Организация')
@@ -66,9 +79,14 @@ class SciencePurchasesOfferResource extends Resource
         return $table
             ->defaultSort('created_at', 'desc')
             ->columns([
+                Tables\Columns\TextColumn::make('purchase.irn.name')
+                    ->label('ИРН')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('purchase.name_ru')
                     ->label('Закупка')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('organization')
                     ->label('Организация')
                     ->searchable(),
@@ -82,6 +100,21 @@ class SciencePurchasesOfferResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('filename')
                     ->label('Файл')
+                    ->formatStateUsing(function (?string $state): ?string {
+                        if (blank($state)) {
+                            return null;
+                        }
+                        $filename = pathinfo($state, PATHINFO_FILENAME);
+                        $extension = pathinfo($state, PATHINFO_EXTENSION);
+                        
+                        $maxLength = 20;
+
+                        if (mb_strlen($filename) > $maxLength) {
+                            $filename = mb_substr($filename, 0, $maxLength) . '...';
+                        }
+                        return "{$filename}.{$extension}";
+                    })
+                    ->tooltip(fn (Model $record): ?string => $record->filename)
                     ->url(fn ($record) => $record->getFile(), true)
                     ->openUrlInNewTab(),
             ])

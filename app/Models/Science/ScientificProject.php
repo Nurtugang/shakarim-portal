@@ -3,6 +3,8 @@
 namespace App\Models\Science;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Science\ScienceMember;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ScientificProject extends Model
 {
@@ -178,5 +180,13 @@ class ScientificProject extends Model
             ->orderBy('id', 'desc')
             ->get()
             ->groupBy('years');
+    }
+    
+    /**
+     * Отношение "один ко многим": у проекта много участников.
+     */
+    public function members(): HasMany
+    {
+        return $this->hasMany(ScienceMember::class, 'project_id');
     }
 }

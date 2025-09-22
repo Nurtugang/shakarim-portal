@@ -1,100 +1,40 @@
-<div x-data="{ menuVisible: false }" class="relative">
-    <!-- Обычные кнопки для планшетов и больших экранов (md+) -->
-    <div class="hidden md:flex items-center space-x-2 lang-selector">
-        <button
-            wire:click="changeLanguage('kk')"
-            @click="menuVisible = false"
-            class="px-3 py-1 rounded text-xs transition-colors duration-150
-                   {{ $currentLanguage === 'kk'
-                       ? 'bg-shakarim-blue text-white'
-                       : 'text-gray-600 hover:bg-gray-200' }}">
-            ҚАЗ
-        </button>
-
-        <button
-            wire:click="changeLanguage('ru')"
-            @click="menuVisible = false"
-            class="px-3 py-1 rounded text-xs transition-colors duration-150
-                   {{ $currentLanguage === 'ru'
-                       ? 'bg-shakarim-blue text-white'
-                       : 'text-gray-600 hover:bg-gray-200' }}">
-            РУС
-        </button>
-
-        <button
-            wire:click="changeLanguage('en')"
-            @click="menuVisible = false"
-            class="px-3 py-1 rounded text-xs transition-colors duration-150
-                   {{ $currentLanguage === 'en'
-                       ? 'bg-shakarim-blue text-white'
-                       : 'text-gray-600 hover:bg-gray-200' }}">
-            ENG
-        </button>
-        <button
-            wire:click="changeLanguage('cn')"
-            @click="menuVisible = false"
-            class="px-3 py-1 rounded text-xs transition-colors duration-150
-                   {{ $currentLanguage === 'cn'
-                       ? 'bg-shakarim-blue text-white'
-                       : 'text-gray-600 hover:bg-gray-200' }}">
-            中文
-        </button>
-    </div>
-
-    <!-- Dropdown для мобильных устройств (до md) -->
-    <div class="md:hidden relative">
-        <button 
-            @click="menuVisible = !menuVisible" 
-            class="px-3 py-1 bg-shakarim-blue text-white rounded text-xs flex items-center">
-            {{ $currentLanguage === 'kk' ? 'ҚАЗ' : ($currentLanguage === 'ru' ? 'РУС' : ($currentLanguage === 'cn' ? '中文' : 'ENG')) }}
-            <i class="fas fa-chevron-down ml-1 text-xs"></i>
-        </button>
-
-        <div x-show="menuVisible" 
-             x-transition
-             @click.away="menuVisible = false" 
-             class="absolute top-full right-0 mt-1 bg-white shadow-lg rounded border z-[9999] min-w-[60px]">
-            <button 
-                wire:click="changeLanguage('kk')" 
-                @click="menuVisible = false" 
-                class="block w-full px-3 py-2 text-left text-xs text-gray-700 hover:bg-gray-100 
-                       {{ $currentLanguage === 'kk' ? 'bg-blue-50 text-shakarim-blue font-medium' : '' }}">
-                ҚАЗ
-            </button>
-            <button 
-                wire:click="changeLanguage('ru')" 
-                @click="menuVisible = false" 
-                class="block w-full px-3 py-2 text-left text-xs text-gray-700 hover:bg-gray-100
-                       {{ $currentLanguage === 'ru' ? 'bg-blue-50 text-shakarim-blue font-medium' : '' }}">
-                РУС
-            </button>
-            <button 
-                wire:click="changeLanguage('en')" 
-                @click="menuVisible = false" 
-                class="block w-full px-3 py-2 text-left text-xs text-gray-700 hover:bg-gray-100
-                       {{ $currentLanguage === 'en' ? 'bg-blue-50 text-shakarim-blue font-medium' : '' }}">
-                ENG
-            </button>
-            <button 
-                wire:click="changeLanguage('cn')" 
-                @click="menuVisible = false" 
-                class="block w-full px-3 py-2 text-left text-xs text-gray-700 hover:bg-gray-100
-                       {{ $currentLanguage === 'cn' ? 'bg-blue-50 text-shakarim-blue font-medium' : '' }}">
-                中文
-            </button>
+<div x-data="{ menuVisible: false }" class="relative inline-block">
+    <button
+        @click="menuVisible = !menuVisible"
+        class="inline-flex items-center justify-center w-full px-3 py-1 bg-shakarim-blue text-white rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-shakarim-blue">
+        <span>{{ $languages[$currentLanguage] }}</span>
+        <svg class="w-5 h-5 -mr-1 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </button>
+    
+    <div x-show="menuVisible"
+         x-transition
+         @click.away="menuVisible = false"
+         class="absolute left-0 mt-2 w-full rounded-md shadow-lg bg-white border z-[9999]"
+         style="display: none;">
+        <div class="py-1">
+            @foreach($languages as $code => $name)
+                <button
+                    wire:click="changeLanguage('{{ $code }}')"
+                    @click="menuVisible = false"
+                    class="block w-full text-center px-4 py-2 text-sm hover:bg-gray-100
+                           {{ $currentLanguage === $code ? 'bg-blue-50 text-shakarim-blue font-semibold' : 'text-gray-700' }}">
+                    {{ $name }}
+                </button>
+            @endforeach
         </div>
     </div>
 </div>
 
+
 @script
 <script>
     $wire.on('language-changed', (event) => {
-
         const language = event[0].language;
-        
         const currentUrl = new URL(window.location.href);
-
         const segments = currentUrl.pathname.split('/');
+
         if (['kk', 'ru', 'en', 'cn'].includes(segments[1])) {
             segments[1] = language;
         } else {

@@ -36,7 +36,6 @@ class StructureResource extends Resource
             ->schema([
                 Section::make('')
                 ->schema([
-
                         Forms\Components\TextInput::make('title_kk')
                         ->label('Название(kz)')
                           ->required()
@@ -52,13 +51,7 @@ class StructureResource extends Resource
                         Forms\Components\TextInput::make('title_cn')
                                ->label('Название(cn)')
                                ->required()
-                               ->maxLength(255),       
-                
-                    Forms\Components\TextInput::make('sort_order')
-                    ->label('Сортировка')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
+                               ->maxLength(255),
                     Forms\Components\Select::make('position')
                                ->label('Позиция')
                                ->options([
@@ -66,7 +59,7 @@ class StructureResource extends Resource
                                    'right' => 'Справа',
                                    'center' => 'Центр',
                                ])
-                               ->visible(Auth::user()->hasRole(RolesEnum::ADMIN)),
+                               ->disabled(!Auth::user()->hasRole(RolesEnum::ADMIN)),
                     Forms\Components\Select::make('layout_type')
                                ->label('тип')
                                ->required()
@@ -75,21 +68,25 @@ class StructureResource extends Resource
                                    'vertical_stack' => 'Вертикальный',
                                    'horizontal_row' => 'Горизонтальный',
                                ])
-                               ->visible(Auth::user()->hasRole(RolesEnum::ADMIN)),
+                               ->disabled(!Auth::user()->hasRole(RolesEnum::ADMIN)),
                 Forms\Components\Select::make('parent_id')
                     ->label('Родительское меню')
                     ->options(Structure::all()->pluck('title_ru', 'id'))
-                    ->searchable(),
+                    ->searchable()
+                    ->disabled(!Auth::user()->hasRole(RolesEnum::ADMIN)),
                 Forms\Components\TextInput::make('link')
-                    ->label('Ссылка'),    
+                    ->label('Ссылка')
+                    ->disabled(!Auth::user()->hasRole(RolesEnum::ADMIN)),
                 Forms\Components\Toggle::make('active')
                     ->label('Активно')
-                    ->default(1),
+                    ->default(1)
+                    ->disabled(!Auth::user()->hasRole(RolesEnum::ADMIN)),
                 Forms\Components\Toggle::make('is_structure')
                     ->label('Структура')
-                    ->default(1),
+                    ->default(1)
+                    ->disabled(!Auth::user()->hasRole(RolesEnum::ADMIN)),
                 ])
-                
+
             ]);
     }
 

@@ -8,29 +8,29 @@ class LanguageSelector extends Component
 {
     public $currentLanguage;
 
-    public $languages = [
-        'kk' => 'kz',
-        'ru' => 'ru',
-        'en' => 'en',
-        'cn' => 'cn',
+    // Массив с кодами языков и их отображаемыми именами
+    // Это "единый источник правды", что очень удобно
+    public array $languages = [
+        'kk' => 'ҚАЗ',
+        'ru' => 'РУС',
+        'en' => 'ENG',
+        'cn' => '中文',
     ];
-    
+
     public function mount()
     {
-        // Инициализируем текущий язык из сессии или задаем значение по умолчанию
         $this->currentLanguage = session('locale', 'kk');
     }
 
     public function changeLanguage($language)
     {
+        if (!array_key_exists($language, $this->languages)) {
+            return;
+        }
+
         $this->currentLanguage = $language;
-
-        // Логика, например, сохранение выбранного языка в сессии
         session()->put('locale', $language);
-
         $this->dispatch('language-changed', ['language' => $language]);
-
-       // return redirect(request()->header('Referer'));
     }
 
     public function render()
