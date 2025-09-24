@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\RolesEnum;
 use App\Filament\Resources\ScienceDissertationResource\Pages;
 use App\Models\Science\ScienceDissertation;
-use FilamentTiptapEditor\TiptapEditor;
+use Awcodes\FilamentTiptapEditor\TiptapEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
@@ -13,12 +14,40 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class ScienceDissertationResource extends Resource
 {
     protected static ?string $model = ScienceDissertation::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    
+    protected static ?int $navigationSort = 4; // Сортировка в меню
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Материалы защиты диссертаций';
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return 'Материалы защиты диссертаций';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'материал';
+    }
+    
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Наука';
+    }
+
+    public static function canViewAny(): bool
+    {
+        return !Auth::user()->hasRole(RolesEnum::STRUCTURE);
+    }
 
     public static function form(Form $form): Form
     {
@@ -48,14 +77,13 @@ class ScienceDissertationResource extends Resource
 
                 Section::make('Содержимое диссертации')
                     ->schema([
-                        // Используем табы для удобного переключения языков
                         Tabs::make('Content')
                             ->tabs([
                                 Tabs\Tab::make('Русский')
                                     ->schema([
                                         TiptapEditor::make('content_ru')
-                                            ->label('') // Убираем лишний лейбл
-                                            ->profile('default') // 'default' или ваш кастомный профиль
+                                            ->label('')
+                                            ->profile('default')
                                             ->required(),
                                     ]),
                                 Tabs\Tab::make('Казахский')
@@ -92,7 +120,7 @@ class ScienceDissertationResource extends Resource
                     ->sortable(),
                 TextColumn::make('category_ru')
                     ->label('Категория')
-                    ->limit(50) // Ограничиваем длину для отображения
+                    ->limit(50)
                     ->searchable(),
                 TextColumn::make('updated_at')
                     ->label('Последнее обновление')
