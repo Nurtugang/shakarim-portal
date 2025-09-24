@@ -11,6 +11,7 @@ use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\MenuController;
 
+use App\Http\Controllers\Science\ScienceDissertationController;
 use App\Http\Controllers\Science\SciencePurchaseController;
 use App\Http\Controllers\Science\SciencePurchasesOfferController;
 use App\Http\Controllers\Science\ScienceCentresController;
@@ -67,7 +68,7 @@ Route::group([
 
     Route::get('/sitemap', [SitemapController::class, 'index'])->name('sitemap');
     Route::get('/search', [SearchController::class, 'index'])->name('search');
-
+    Route::get('/science/dissertations', [ScienceDissertationController::class, 'index'])->name('science.dissertations.index');
     Route::get('/science/purchases', [SciencePurchaseController::class,'index'])->name('science.purchases');
     Route::get('/science/centres', [ScienceCentresController::class, 'index'])->name('science.centres');
     Route::get('/science/journals', [ScienceJournalsController::class, 'index'])->name('science.journals');
