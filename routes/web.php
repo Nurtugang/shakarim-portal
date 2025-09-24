@@ -71,7 +71,10 @@ Route::group([
     Route::get('/science/dissertations', [ScienceDissertationController::class, 'index'])->name('science.dissertations.index');
     Route::get('/science/purchases', [SciencePurchaseController::class,'index'])->name('science.purchases');
     Route::get('/science/centres', [ScienceCentresController::class, 'index'])->name('science.centres');
-    Route::get('/science/journals', [ScienceJournalsController::class, 'index'])->name('science.journals');
+    Route::get('/science/journals', function (string $locale) {
+        return view('science.journals.index');
+    })->name('science.journals');
+    Route::get('/science/journals/tech', [ScienceJournalsController::class, 'techIndex'])->name('science.journals.tech');
     Route::get('/science/best-teachers', [BestTeacherController::class, 'index'])->name('science.best-teachers');
     Route::get('/science/aspirants', [AspirantController::class, 'index'])->name('science.aspirants');
     Route::get('/science/projects', [ScientificProjectsController::class, 'index'])->name('science.projects.index');

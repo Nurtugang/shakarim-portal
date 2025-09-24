@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Enums\RolesEnum;
 use App\Filament\Resources\ScienceDissertationResource\Pages;
 use App\Models\Science\ScienceDissertation;
-use Awcodes\FilamentTiptapEditor\TiptapEditor;
+use FilamentTiptapEditor\TiptapEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;

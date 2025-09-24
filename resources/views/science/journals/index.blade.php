@@ -26,7 +26,7 @@
                                 <h3 class="text-base sm:text-xl font-semibold text-shakarim-blue leading-tight">{{ __('Вестник Университета Шакарима. Серия технические науки')}}</h3>
                             </div>
                             <div class="sm:ml-6 flex-shrink-0">
-                                <a href="https://tech.vestnik.shakarim.kz/jour/index" target="_blank">
+                                <a href="{{ route('science.journals.tech', ['locale' => app()->getLocale()]) }}">
                                 	<button class="bg-shakarim-blue hover:bg-shakarim-dark text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-medium transition-colors w-full sm:w-auto">
                                     	{{ __('Перейти')}}
                                 	</button>
@@ -42,7 +42,7 @@
                                 <h3 class="text-base sm:text-xl font-semibold text-shakarim-blue leading-tight">{{ __('Shakarim Journal of History')}}</h3>
                             </div>
                             <div class="sm:ml-6 flex-shrink-0">
-                                <a href="https://history.vestnik.shakarim.kz/index.php/my/index" target="_blank">
+                                <a href="https://history.shakarim.kz/index.php/my/index" target="_blank">
                                 	<button class="bg-shakarim-blue hover:bg-shakarim-dark text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-medium transition-colors w-full sm:w-auto">
                                     	{{ __('Перейти')}}
                                 	</button>
