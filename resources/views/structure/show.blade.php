@@ -5,7 +5,7 @@
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
                 <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
                 <span>&#8250;</span>
-                <a href="{{ route('structure.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __("Organizational Structure") }}</a>
+                <a href="{{ route('structure.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __("Организационная структура") }}</a>
                 <span>&#8250;</span>
                 <span class="text-shakarim-blue font-semibold">
                     {{ \Illuminate\Support\Str::limit($structure->{'title_'.app()->getLocale()}, 40) }}

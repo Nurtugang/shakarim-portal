@@ -30,13 +30,24 @@ class NewsApiController extends Controller
 
         $result = [];
         
+        // Путь к изображению по умолчанию
+        $defaultImage = asset('img/university_building.webp');
+
         foreach ($news as $item) {
+            // Определяем пути к файлам для проверки
+            $imagePath = $item->image ? 'news/' . $item->image : null;
+            $thumbnailPath = $item->image ? 'news/thumbnails/' . pathinfo($item->image, PATHINFO_FILENAME) . '.webp' : null;
+            $previewPath = $item->image ? 'news/previews/' . pathinfo($item->image, PATHINFO_FILENAME) . '.webp' : null;
+
             $result[] = [
                 'id' => $item->id,
                 'title' => $item->{"title_$lang"} ?? $item->title_kk,
                 'content' => $item->{"content_$lang"} ?? $item->content_kk,
                 'date' => $item->date->format('Y-m-d H:i:s'),
-                'image_url' => $item->image ? url('storage/news/' . $item->image) : null,
+                // Проверяем наличие файла перед выдачей URL
+                'image_url' => ($imagePath && Storage::disk('public')->exists($imagePath)) ? asset('storage/' . $imagePath) : $defaultImage,
+                'image_thumbnail' => ($thumbnailPath && Storage::disk('public')->exists($thumbnailPath)) ? asset('storage/' . $thumbnailPath) : $defaultImage,
+                'image_preview'   => ($previewPath && Storage::disk('public')->exists($previewPath)) ? asset('storage/' . $previewPath) : $defaultImage,
             ];
         }
 
@@ -61,20 +72,32 @@ class NewsApiController extends Controller
         }
 
         $announcements = Announcement::where('status', 1)
+            ->where('language', $lang)
             ->orderBy('date', 'desc')
             ->limit(5)
             ->get();
 
         $result = [];
         
+        // Путь к изображению по умолчанию
+        $defaultImage = asset('img/university_building.webp');
+
         foreach ($announcements as $item) {
+            // Определяем пути к файлам для проверки
+            $imagePath = $item->image ? 'announcement/' . $item->image : null;
+            $thumbnailPath = $item->image ? 'announcement/thumbnails/' . pathinfo($item->image, PATHINFO_FILENAME) . '.webp' : null;
+            $previewPath = $item->image ? 'announcement/previews/' . pathinfo($item->image, PATHINFO_FILENAME) . '.webp' : null;
+
             // Для объявлений используем одно поле content и name
             $result[] = [
                 'id' => $item->id,
                 'title' => $item->name,
                 'content' => $item->content,
                 'date' => date('Y-m-d H:i:s', $item->date),
-                'image_url' => $item->image ? url('storage/announcement/' . $item->image) : null,
+                // Проверяем наличие файла перед выдачей URL
+                'image_url' => ($imagePath && Storage::disk('public')->exists($imagePath)) ? asset('storage/' . $imagePath) : $defaultImage,
+                'image_thumbnail' => ($thumbnailPath && Storage::disk('public')->exists($thumbnailPath)) ? asset('storage/' . $thumbnailPath) : $defaultImage,
+                'image_preview'   => ($previewPath && Storage::disk('public')->exists($previewPath)) ? asset('storage/' . $previewPath) : $defaultImage,
             ];
         }
 

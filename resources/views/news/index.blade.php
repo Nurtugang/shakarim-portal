@@ -92,7 +92,7 @@
                                         <div>
                                             <div class="flex items-center justify-between mb-3">
                                                 <span class="text-gray-400 text-sm">
-                                                    {{ $item->date->format('d.m.Y') }}
+                                                    {{ $item->date?->format('d.m.Y') }}
                                                 </span>
                                                 @if ($item->category)
                                                     <a href="{{ route('news', ['locale' => app()->getLocale(), 'category' => $item->category->id]) }}"
@@ -206,7 +206,7 @@
                                         <a href="{{ route('news', ['locale' => app()->getLocale(), 'tag' => $tag->id]) }}" 
                                            class="px-3 py-1 {{ $colorClasses }} rounded-full text-xs font-medium transition duration-200 hover:scale-105"
                                            title="Показать все новости с тегом {{ $tag->name }}">
-                                            {{ $tag->name }} ({{ $tag->news_count }})
+                                            {{ $tag->name }}
                                         </a>
                                     @endforeach
                                 </div>

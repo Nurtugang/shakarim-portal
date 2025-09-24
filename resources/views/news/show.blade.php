@@ -279,7 +279,7 @@
                             <a href="{{ route('news', ['locale' => app()->getLocale(), 'tag' => $tag->id]) }}" 
                             class="px-2 md:px-4 py-1 md:py-2 {{ $colorClasses }} rounded-full text-xs md:text-sm font-medium transition duration-200 hover:scale-105"
                             title="Показать все новости с тегом {{ $tag->name }}">
-                                {{ $tag->name }} ({{ $tag->news_count }})
+                                {{ $tag->name }} {{ $tag->news_count }}
                             </a>
                         @endforeach
                     </div>

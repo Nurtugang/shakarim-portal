@@ -14,7 +14,7 @@ class NewsController extends Controller
 {
     public function index(string $locale, Request $request)
     {
-        $query = News::query()->with('comments',fn($q) => $q->where('is_approved', true))->where('status', 1);
+        $query = News::query()->with(['category:id,label_ru,label_kk,label_en'])->where('status', 1);
         
         $selectedTag = null;
         if ($request->has('tag') && $request->tag) {
@@ -40,13 +40,12 @@ class NewsController extends Controller
         $news->appends($request->query());
         $news->withPath(route('news', ['locale' => $locale]));
 
-        $popularTags = NewsTag::withCount(['news' => function ($query) {
-                $query->where('status', 1);
-            }])
-            ->having('news_count', '>', 0)
-            ->orderBy('news_count', 'desc')
-            ->take(8)
-            ->get();
+        $popularTags = NewsTag::select(['id', 'name'])
+        ->whereHas('news', function($q) {
+            $q->where('status', 1);
+        })
+        ->take(8)
+        ->get();
 
         $categories = NewsCategory::withCount(['news' => function ($query) {
                 $query->where('status', 1);
@@ -60,9 +59,10 @@ class NewsController extends Controller
 
     public function show(string $locale, News $news)
     {
-        $popularTags = NewsTag::withCount('news')
-        ->having('news_count', '>', 0)
-        ->orderBy('news_count', 'desc')
+        $popularTags = NewsTag::select(['id', 'name'])
+        ->whereHas('news', function($q) {
+            $q->where('status', 1);
+        })
         ->take(8)
         ->get();
 

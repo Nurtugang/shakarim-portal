@@ -49,23 +49,23 @@
                                     <!-- Контакты -->
                                     <div class="mb-6">
                                         <div class="flex flex-col space-y-3">
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fas fa-phone mr-3 text-shakarim-blue w-4"></i>
-                                                <span>+7 (708) 367-72-37</span>
-                                            </div>
                                             <div class="flex items-start text-sm text-gray-600">
-                                                <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
-                                                <span class="break-all text-xs sm:text-sm">engineering_research_school@shakarim.kz</span>
+                                                <a href="mailto:food_engineering@shakarim.kz">
+                                                    <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span class="break-all text-xs sm:text-sm">food_engineering@shakarim.kz</span>
+                                                </a>
                                             </div>
                                             <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fab fa-instagram mr-3 text-shakarim-blue w-4"></i>
-                                                <span>shakarim.ishpi</span>
+                                                <a href="https://www.instagram.com/shakarim_food_engineering" target="_blank"> 
+                                                    <i class="fab fa-instagram mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span>shakarim_food_engineering</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <!-- Статистика -->
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    <div class="hidden md:grid md:grid-cols-4 gap-6">
                                         <div class="text-center">
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-users text-2xl text-shakarim-blue"></i>
@@ -124,21 +124,21 @@
                                     </div>
                                     <div class="mb-6">
                                         <div class="flex flex-col space-y-3">
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fas fa-phone mr-3 text-shakarim-blue w-4"></i>
-                                                <span>+7 7787774434</span>
-                                            </div>
                                             <div class="flex items-start text-sm text-gray-600">
-                                                <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
-                                                <span class="break-all text-xs sm:text-sm">vet_agriculture_research@shakarim.kz</span>
+                                                <a href="mailto:vet_agriculture@shakarim.kz">
+                                                    <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span class="break-all text-xs sm:text-sm">vet_agriculture@shakarim.kz</span>
+                                                </a>
                                             </div>
                                             <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fab fa-instagram mr-3 text-shakarim-blue w-4"></i>
-                                                <span>shakarim_vaa_rsh</span>
+                                                <a href="https://www.instagram.com/shakarim_vet_agriculture" target="_blank">
+                                                    <i class="fab fa-instagram mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span>shakarim_vet_agriculture</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    <div class="hidden md:grid md:grid-cols-4 gap-6">
                                         <div class="text-center">
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-users text-2xl text-shakarim-blue"></i>
@@ -197,21 +197,21 @@
                                     </div>
                                     <div class="mb-6">
                                         <div class="flex flex-col space-y-3">
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fas fa-phone mr-3 text-shakarim-blue w-4"></i>
-                                                <span>+7 (747) 312-30-13</span>
-                                            </div>
                                             <div class="flex items-start text-sm text-gray-600">
-                                                <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
-                                                <span class="break-all text-xs sm:text-sm">phys_chem_research_school@shakarim.kz</span>
+                                                <a href="mailto:phys_chem@shakarim.kz">
+                                                    <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span class="break-all text-xs sm:text-sm">phys_chem@shakarim.kz</span>
+                                                </a>
                                             </div>
                                             <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fab fa-instagram mr-3 text-shakarim-blue w-4"></i>
-                                                <span>shakarim.fizhim</span>
+                                                <a href="https://www.instagram.com/shakarim_phys_chem" target="_blank">
+                                                    <i class="fab fa-instagram mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span>shakarim_phys_chem</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    <div class="hidden md:grid md:grid-cols-4 gap-6">
                                         <div class="text-center">
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-users text-2xl text-shakarim-blue"></i>
@@ -270,21 +270,21 @@
                                     </div>
                                     <div class="mb-6">
                                         <div class="flex flex-col space-y-3">
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fas fa-phone mr-3 text-shakarim-blue w-4"></i>
-                                                <span>+77778543877</span>
-                                            </div>
                                             <div class="flex items-start text-sm text-gray-600">
-                                                <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
-                                                <span class="break-all text-xs sm:text-sm">education_school@shakarim.kz</span>
+                                                <a href="mailto:education@shakarim.kz">
+                                                    <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span class="break-all text-xs sm:text-sm">education@shakarim.kz</span>
+                                                </a>
                                             </div>
                                             <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fab fa-instagram mr-3 text-shakarim-blue w-4"></i>
-                                                <span>shakarim_vsho</span>
+                                                <a href="https://www.instagram.com/shakarim_education" target="_blank">
+                                                    <i class="fab fa-instagram mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span>shakarim_education</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    <div class="hidden md:grid md:grid-cols-4 gap-6">
                                         <div class="text-center">
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-users text-2xl text-shakarim-blue"></i>
@@ -343,21 +343,21 @@
                                     </div>
                                     <div class="mb-6">
                                         <div class="flex flex-col space-y-3">
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fas fa-phone mr-3 text-shakarim-blue w-4"></i>
-                                                <span>+7 (775) 792 33 34</span>
-                                            </div>
                                             <div class="flex items-start text-sm text-gray-600">
-                                                <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
-                                                <span class="break-all text-xs sm:text-sm">phys_math_school@shakarim.kz</span>
+                                                <a href="mailto:stem@shakarim.kz">
+                                                    <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span class="break-all text-xs sm:text-sm">stem@shakarim.kz</span>
+                                                </a>
                                             </div>
                                             <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fab fa-instagram mr-3 text-shakarim-blue w-4"></i>
-                                                <span>shakarim_fizmat</span>
+                                                <a href="https://www.instagram.com/shakarim_stem" target="_blank">
+                                                    <i class="fab fa-instagram mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span>shakarim_stem</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    <div class="hidden md:grid md:grid-cols-4 gap-6">
                                         <div class="text-center">
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-users text-2xl text-shakarim-blue"></i>
@@ -416,21 +416,21 @@
                                     </div>
                                     <div class="mb-6">
                                         <div class="flex flex-col space-y-3">
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fas fa-phone mr-3 text-shakarim-blue w-4"></i>
-                                                <span>+7 (777) 706-23-85</span>
-                                            </div>
                                             <div class="flex items-start text-sm text-gray-600">
-                                                <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
-                                                <span class="break-all text-xs sm:text-sm">natural_sciences_school@shakarim.kz</span>
+                                                <a href="mailto:sports_nat_sciences@shakarim.kz">
+                                                    <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span class="break-all text-xs sm:text-sm">sports_nat_sciences@shakarim.kz</span>
+                                                </a>
                                             </div>
                                             <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fab fa-instagram mr-3 text-shakarim-blue w-4"></i>
-                                                <span>shakarim_vshen</span>
+                                                <a href="https://www.instagram.com/shakarim_sports_nat_sciences" target="_blank">
+                                                    <i class="fab fa-instagram mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span>shakarim_sports_nat_sciences</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    <div class="hidden md:grid md:grid-cols-4 gap-6">
                                         <div class="text-center">
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-users text-2xl text-shakarim-blue"></i>
@@ -489,21 +489,21 @@
                                     </div>
                                     <div class="mb-6">
                                         <div class="flex flex-col space-y-3">
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fas fa-phone mr-3 text-shakarim-blue w-4"></i>
-                                                <span>+7 (775) 433-44-95</span>
-                                            </div>
                                             <div class="flex items-start text-sm text-gray-600">
-                                                <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
-                                                <span class="break-all text-xs sm:text-sm">ai_construction_school@shakarim.kz</span>
+                                                <a href="mailto:digtech_civil_eng@shakarim.kz">
+                                                    <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span class="break-all text-xs sm:text-sm">digtech_civil_eng@shakarim.kz</span>
+                                                </a>
                                             </div>
                                             <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fab fa-instagram mr-3 text-shakarim-blue w-4"></i>
-                                                <span>shakarim_vsh_iis</span>
+                                                <a href="https://www.instagram.com/shakarim_digtech_civil_eng" target="_blank">
+                                                    <i class="fab fa-instagram mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span>shakarim_digtech_civil_eng</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    <div class="hidden md:grid md:grid-cols-4 gap-6">
                                         <div class="text-center">
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-users text-2xl text-shakarim-blue"></i>
@@ -562,26 +562,26 @@
                                     </div>
                                     <div class="mb-6">
                                         <div class="flex flex-col space-y-3">
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fas fa-phone mr-3 text-shakarim-blue w-4"></i>
-                                                <span>+7 (702) 945-67-89</span>
-                                            </div>
                                             <div class="flex items-start text-sm text-gray-600">
-                                                <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
-                                                <span class="break-all text-xs sm:text-sm">business_school@shakarim.kz</span>
+                                                <a href="mailto:business_com@shakarim.kz">
+                                                    <i class="fas fa-envelope mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span class="break-all text-xs sm:text-sm">business_com@shakarim.kz</span>
+                                                </a>
                                             </div>
                                             <div class="flex items-center text-sm text-gray-600">
-                                                <i class="fab fa-instagram mr-3 text-shakarim-blue w-4"></i>
-                                                <span>shakarim_bjm</span>
+                                                <a href="https://www.instagram.com/shakarim_business_com" target="_blank">
+                                                    <i class="fab fa-instagram mr-2 text-shakarim-blue w-4 mt-0.5 flex-shrink-0"></i>
+                                                    <span>shakarim_business_com</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    <div class="hidden md:grid md:grid-cols-4 gap-6">
                                         <div class="text-center">
                                             <div class="flex justify-center mb-2">
                                                 <i class="fas fa-users text-2xl text-shakarim-blue"></i>
                                             </div>
-                                            <div class="text-2xl font-bold text-shakarim-blue">449</div>
+                                            <div class="text-2xl font-bold text-shakarim-blue">765</div>
                                             <div class="text-sm text-gray-600">{{ __('Обучающихся') }}</div>
                                         </div>
                                         <div class="text-center">

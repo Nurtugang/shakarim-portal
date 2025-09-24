@@ -52,12 +52,13 @@ class AnnouncementResource extends Resource
                     ->label('Изображение')
                     ->image()
                     ->disk('public')
-                    ->directory('announcements')
+                    ->directory('announcement')
                     ->visibility('public'),
                 Forms\Components\DateTimePicker::make('date')
                     ->label('Дата публикации')
                     ->default(now())
-                    ->required(),
+                    ->required()
+                    ->format('U'),
                 Forms\Components\Toggle::make('status')
                     ->label('Активно')
                     ->default(true),

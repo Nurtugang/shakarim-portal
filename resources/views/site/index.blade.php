@@ -301,7 +301,7 @@
                             @foreach($announcements as $item)
                                 <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}">
                                     <div class="border-l-4 border-shakarim-blue pl-3 md:pl-4">
-                                        <div class="text-xs md:text-sm text-gray-500">{{ \Carbon\Carbon::createFromTimestamp($item->created_at)->locale(app()->getLocale())->isoFormat('D MMMM') }}</div>
+                                        <div class="text-xs md:text-sm text-gray-500">{{ \Carbon\Carbon::createFromTimestamp($item->date)->locale(app()->getLocale())->isoFormat('D MMMM') }}</div>
                                         <h4 class="font-semibold text-sm md:text-base">{{ $item->{'name'} }}</h4>
                                     </div>
                                 </a>

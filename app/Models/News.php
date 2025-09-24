@@ -172,67 +172,147 @@ class News extends Model
      */
     public function createThumbnail(): void
     {
-        if (!$this->image) return;
-        
+        if (!$this->image) {
+            \Log::warning("createThumbnail: у новости ID={$this->id} нет image");
+            return;
+        }
+
         $originalPath = storage_path('app/public/news/' . $this->image);
-        
-        if (!file_exists($originalPath)) return;
-        
-        // Создаем папку thumbnails если не существует
+
+        if (!file_exists($originalPath)) {
+            \Log::error("createThumbnail: файл не найден {$originalPath}");
+            return;
+        }
+
         $thumbDir = storage_path('app/public/news/thumbnails');
         if (!is_dir($thumbDir)) {
             mkdir($thumbDir, 0755, true);
+            \Log::info("createThumbnail: создана папка {$thumbDir}");
         }
-        
+
         $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
         $thumbPath = $thumbDir . '/' . $nameWithoutExtension . '.webp';
-        
-        // Создаем thumbnail размером 400x300
+
         try {
             if (function_exists('imagewebp')) {
                 $image = $this->createImageFromFile($originalPath);
-                
-                if ($image) {
-                    $originalWidth = imagesx($image);
-                    $originalHeight = imagesy($image);
-                    
-                    // Целевые размеры
-                    $targetWidth = 400;
-                    $targetHeight = 300;
-                    
-                    // Вычисляем масштаб для сохранения пропорций
-                    $scaleX = $targetWidth / $originalWidth;
-                    $scaleY = $targetHeight / $originalHeight;
-                    $scale = max($scaleX, $scaleY); // Берем больший масштаб чтобы заполнить весь thumbnail
-                    
-                    // Вычисляем новые размеры с сохранением пропорций
-                    $newWidth = round($originalWidth * $scale);
-                    $newHeight = round($originalHeight * $scale);
-                    
-                    // Создаем временное изображение с новыми размерами
-                    $scaled = imagecreatetruecolor($newWidth, $newHeight);
-                    imagecopyresampled($scaled, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
-                    
-                    // Создаем финальный thumbnail с обрезкой по центру
-                    $thumbnail = imagecreatetruecolor($targetWidth, $targetHeight);
-                    
-                    // Вычисляем смещение для центрирования
-                    $offsetX = ($newWidth - $targetWidth) / 2;
-                    $offsetY = ($newHeight - $targetHeight) / 2;
-                    
-                    imagecopy($thumbnail, $scaled, 0, 0, $offsetX, $offsetY, $targetWidth, $targetHeight);
-                    
-                    // Сохраняем как WebP
-                    imagewebp($thumbnail, $thumbPath, 85);
-                    
-                    // Освобождаем память
-                    imagedestroy($image);
-                    imagedestroy($scaled);
-                    imagedestroy($thumbnail);
+
+                if (!$image) {
+                    \Log::error("createThumbnail: не удалось создать GD-ресурс из {$originalPath}");
+                    return;
                 }
+
+                $originalWidth = imagesx($image);
+                $originalHeight = imagesy($image);
+                \Log::info("createThumbnail: исходные размеры {$originalWidth}x{$originalHeight}");
+
+                $targetWidth = 400;
+                $targetHeight = 300;
+
+                $scaleX = $targetWidth / $originalWidth;
+                $scaleY = $targetHeight / $originalHeight;
+                $scale = max($scaleX, $scaleY);
+
+                $newWidth = round($originalWidth * $scale);
+                $newHeight = round($originalHeight * $scale);
+
+                \Log::info("createThumbnail: масштабируем до {$newWidth}x{$newHeight}");
+
+                $scaled = imagecreatetruecolor($newWidth, $newHeight);
+                imagecopyresampled($scaled, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
+
+                $thumbnail = imagecreatetruecolor($targetWidth, $targetHeight);
+
+                $offsetX = ($newWidth - $targetWidth) / 2;
+                $offsetY = ($newHeight - $targetHeight) / 2;
+
+                \Log::info("createThumbnail: обрезка с offsetX={$offsetX}, offsetY={$offsetY}");
+
+                imagecopy($thumbnail, $scaled, 0, 0, $offsetX, $offsetY, $targetWidth, $targetHeight);
+
+                imagewebp($thumbnail, $thumbPath, 85);
+                \Log::info("createThumbnail: thumbnail сохранён {$thumbPath}");
+
+                imagedestroy($image);
+                imagedestroy($scaled);
+                imagedestroy($thumbnail);
+            } else {
+                \Log::error("createThumbnail: функция imagewebp не доступна");
             }
         } catch (\Exception $e) {
             \Log::error('Ошибка создания thumbnail: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Создать маленькое изображение (preview) для мобильных устройств (150x150)
+     */
+    public function createPreview(): void
+    {
+        if (!$this->image) {
+            \Log::warning("createPreview: у новости ID={$this->id} нет image");
+            return;
+        }
+
+        $originalPath = storage_path('app/public/news/' . $this->image);
+
+        if (!file_exists($originalPath)) {
+            \Log::error("createPreview: файл не найден {$originalPath}");
+            return;
+        }
+
+        $previewDir = storage_path('app/public/news/previews');
+        if (!is_dir($previewDir)) {
+            mkdir($previewDir, 0755, true);
+            \Log::info("createPreview: создана папка {$previewDir}");
+        }
+
+        $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
+        $previewPath = $previewDir . '/' . $nameWithoutExtension . '.webp';
+
+        try {
+            if (function_exists('imagewebp')) {
+                $image = $this->createImageFromFile($originalPath);
+
+                if (!$image) {
+                    \Log::error("createPreview: не удалось создать GD-ресурс из {$originalPath}");
+                    return;
+                }
+
+                $originalWidth = imagesx($image);
+                $originalHeight = imagesy($image);
+
+                $targetWidth = 150;
+                $targetHeight = 150;
+
+                $scaleX = $targetWidth / $originalWidth;
+                $scaleY = $targetHeight / $originalHeight;
+                $scale = max($scaleX, $scaleY);
+
+                $newWidth = round($originalWidth * $scale);
+                $newHeight = round($originalHeight * $scale);
+
+                $scaled = imagecreatetruecolor($newWidth, $newHeight);
+                imagecopyresampled($scaled, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
+
+                $preview = imagecreatetruecolor($targetWidth, $targetHeight);
+                $offsetX = ($newWidth - $targetWidth) / 2;
+                $offsetY = ($newHeight - $targetHeight) / 2;
+
+                imagecopy($preview, $scaled, 0, 0, $offsetX, $offsetY, $targetWidth, $targetHeight);
+
+                imagewebp($preview, $previewPath, 80);
+
+                imagedestroy($image);
+                imagedestroy($scaled);
+                imagedestroy($preview);
+
+                \Log::info("createPreview: сохранён {$previewPath}");
+            } else {
+                \Log::error("createPreview: функция imagewebp не доступна");
+            }
+        } catch (\Exception $e) {
+            \Log::error('Ошибка создания preview: ' . $e->getMessage());
         }
     }
 
@@ -319,4 +399,23 @@ class News extends Model
         }
         return $this->getOptimizedImageUrl();
     }
+
+    /**
+     * Получить URL маленького preview изображения
+     */
+    public function getPreviewUrl(): string
+    {
+        if (!$this->image) {
+            return '';
+        }
+
+        $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
+        $previewPath = 'news/previews/' . $nameWithoutExtension . '.webp';
+
+        if (Storage::disk('public')->exists($previewPath)) {
+            return Storage::url($previewPath);
+        }
+        return $this->getThumbnailUrl();
+    }
+
 }
