@@ -27,6 +27,9 @@ use App\Http\Controllers\AnnouncementController;
 
 use App\Http\Controllers\RectorBlogController;
 use App\Http\Controllers\RectorQuestionController;
+
+use App\Http\Controllers\DevelopmentGoalsController;
+
 use App\Models\Award;
 use App\Models\PageFile;
 use Carbon\Carbon;
@@ -99,6 +102,9 @@ Route::group([
 
     Route::get('/rector-blog', [RectorBlogController::class, 'index'])->name('rector.blog');
     Route::get('/rector-blog/{post:slug}', [RectorBlogController::class, 'show'])->name('rector.post');
+
+    Route::get('/development-goals', [DevelopmentGoalsController::class, 'index'])
+     ->name('development-goals.index');
     
     Route::get('/under-development', function (string $locale) {
         return view('under-development.index');
@@ -119,6 +125,7 @@ Route::group([
     Route::get('/university/endowment', function (string $locale) {
         return view('university.endowment.index');
     })->name('university.endowment.index');
+    
 
 });
 
