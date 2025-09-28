@@ -103,6 +103,21 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <!-- Дополнительный блок -->
+                <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
+                    <div class="flex items-center mb-3 md:mb-4">
+                        <i class="fas fa-users text-xl md:text-2xl text-gray-800 mr-2 md:mr-3 transition-colors duration-300"></i>
+                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('University') }}</h3>
+                    </div>
+                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('Visit again') }}</p>
+                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
+                        <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Platonus</a>
+                        <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim Hub</a>
+                        <a href="https://shakarim.kz/" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Шәкәрім Құдайбердіұлы') }}</a>
+                        <a href="{{ route('awards.index', app()->getLocale()) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Награды') }}</a>
+                    </div>
+                </div>
+
                 <!-- Талапкерлерге блок -->
                 <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
                     <div class="flex items-center mb-3 md:mb-4">
@@ -130,21 +145,6 @@
                         <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim Hub</a>
                         <a href="https://kitaphana.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Библиотека') }}</a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'shakarim-top-100']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim TOP-100</a>
-                    </div>
-                </div>
-
-                <!-- Қызметкерлерге блок -->
-                <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
-                    <div class="flex items-center mb-3 md:mb-4">
-                        <i class="fas fa-users text-xl md:text-2xl text-gray-800 mr-2 md:mr-3 transition-colors duration-300"></i>
-                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Employees') }}</h3>
-                    </div>
-                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('For our employees') }}</p>
-                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
-                        <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Platonus</a>
-                        <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim Hub</a>
-                        <a href="{{ route('structure.index', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Организационная структура') }}</a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'mamandarga-arnalgan-kurstar']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Курсы для профессионалов') }}</a>
                     </div>
                 </div>
 
