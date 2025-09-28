@@ -27,6 +27,7 @@ use App\Http\Controllers\AnnouncementController;
 
 use App\Http\Controllers\RectorBlogController;
 use App\Http\Controllers\RectorQuestionController;
+use App\Models\Award;
 use App\Models\PageFile;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -79,6 +80,14 @@ Route::group([
     Route::get('/science/aspirants', [AspirantController::class, 'index'])->name('science.aspirants');
     Route::get('/science/projects', [ScientificProjectsController::class, 'index'])->name('science.projects.index');
     Route::get('/science/projects/{id}', [ScientificProjectsController::class, 'show'])->name('science.projects.show');
+
+    Route::get('/awards', function () {
+        // Теперь группируем по двум уровням: сначала по категории, потом по награде.
+        // Переменную переименовали для ясности.
+        $groupedAwards = Award::orderBy('sort')->orderBy('year', 'desc')->get()->groupBy(['category', 'reward']);
+
+        return view('awards.index', compact('groupedAwards'));
+    })->name('awards.index');
 
     Route::get('/accreditation', [AccreditationController::class, 'index'])->name('academy.accreditation.index');
     Route::get('/academy/schools', [AcademySchoolsController::class, 'index'])->name('academy.schools');
