@@ -378,14 +378,14 @@
                         <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Partnerships and exchange programs') }}</p>
                     </div>
                 </a>
-                <a href="{{ route('under-development', ['locale' => app()->getLocale()]) }}" class="group">
+                <a href="{{ route('university.endowment.index', ['locale' => app()->getLocale()]) }}" class="group">
                     <div class="group bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center h-full flex flex-col justify-center">
                         <i class="fas fa-donate text-2xl md:text-3xl text-shakarim-blue group-hover:text-white mb-2 md:mb-4 transition-colors"></i>
                         <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-xs md:text-base">{{ __('Endowment') }}</h3>
                         <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Make a contribution to the development of the university') }}</p>
                     </div>
                 </a>
-                <a href="{{ route('under-development', ['locale' => app()->getLocale()]) }}" class="group">
+                <a target="_blank" href="https://t.me/ShakarimAdmissionBot" class="group">
                     <div class="group bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center h-full flex flex-col justify-center">
                         <i class="fas fa-robot text-2xl md:text-3xl text-shakarim-blue group-hover:text-white mb-2 md:mb-4 transition-colors"></i>
                         <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-xs md:text-base">{{ __('Virtual Assistant') }}</h3>

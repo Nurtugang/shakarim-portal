@@ -116,6 +116,10 @@ Route::group([
         return view('university.contacts.index');
     })->name('university.contacts.index');
 
+    Route::get('/university/endowment', function (string $locale) {
+        return view('university.endowment.index');
+    })->name('university.endowment.index');
+
 });
 
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');

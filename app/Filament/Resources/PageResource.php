@@ -106,12 +106,10 @@ class PageResource extends Resource
                         ->schema([
                             Forms\Components\TextInput::make('title_cn')
                             ->label('Заголовок(cn)')
-                            ->required()
                             ->maxLength(255),
                         TiptapEditor::make('content_cn')
                         ->output(TiptapOutput::Json)
                         ->label('Контнет(cn)')
-                            ->required()
                             ->directory('/pages')
                             ->columnSpanFull(),
                             Forms\Components\Actions::make([
