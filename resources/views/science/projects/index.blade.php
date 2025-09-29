@@ -154,12 +154,12 @@
                             </h3>
                             <div class="space-y-3">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-sm text-gray-600">{{ __('Барлық жобалар:') }}</span>
+                                    <span class="text-sm text-gray-600">{{ __('Барлық жобалар') }}:</span>
                                     <span class="font-semibold text-shakarim-blue text-lg">{{ $projectsByYears->flatten()->count() }}</span>
                                 </div>
                                 @if(count($years) > 0)
                                     <div class="flex justify-between items-center">
-                                        <span class="text-sm text-gray-600">{{ __('Кезең:') }}</span>
+                                        <span class="text-sm text-gray-600">{{ __('Кезең') }}:</span>
                                         <span class="font-semibold text-shakarim-blue">2020-2026</span>
                                     </div>
                                 @endif

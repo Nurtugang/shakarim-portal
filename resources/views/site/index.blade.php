@@ -109,7 +109,7 @@
                         <i class="fas fa-users text-xl md:text-2xl text-gray-800 mr-2 md:mr-3 transition-colors duration-300"></i>
                         <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('University') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('Visit again') }}</p>
+                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('See more') }}</p>
                     <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
                         <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Platonus</a>
                         <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim Hub</a>

@@ -83,10 +83,10 @@
                             <div class="max-w-md mx-auto">
                                 <i class="fas fa-bullhorn text-6xl text-gray-300 mb-4"></i>
                                 <h3 class="text-xl font-semibold text-gray-600 mb-2">
-                                    Объявлений пока нет
+                                    {{ __('Объявлений пока нет')}}
                                 </h3>
                                 <p class="text-gray-500 mb-6">
-                                    Следите за обновлениями на нашем сайте
+                                    {{ __('Следите за обновлениями на нашем сайте')}}
                                 </p>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                             <div class="bg-white rounded-xl shadow-md p-6">
                                 <h3 class="text-lg font-bold text-shakarim-blue mb-4 flex items-center">
                                     <i class="fas fa-clock mr-2"></i>
-                                    Последние объявления
+                                    {{ __('Последние объявления')}}
                                 </h3>
                                 <div class="space-y-3">
                                     @foreach($announcements->take(5) as $announcement)

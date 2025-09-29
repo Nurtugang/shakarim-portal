@@ -42,7 +42,7 @@
                                     @if($project->month)
                                         <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full">
                                             <i class="fas fa-clock mr-1"></i>
-                                            {{ $project->month }} {{ __('месяц') }}
+                                            {{ $project->month }} {{ __('ай') }}
                                         </span>
                                     @endif
                                 </div>
@@ -211,12 +211,12 @@
                             </h3>
                             <div class="space-y-3 text-sm">
                                 <div class="flex justify-between items-start">
-                                    <span class="text-gray-600 font-medium">{{ __('Кезең:') }}</span>
+                                    <span class="text-gray-600 font-medium">{{ __('Кезең') }}:</span>
                                     <span class="text-gray-800 font-semibold">{{ $project->years }}</span>
                                 </div>
                                 @if($project->month)
                                     <div class="flex justify-between items-start">
-                                        <span class="text-gray-600 font-medium">{{ __('Ұзақтығы:') }}</span>
+                                        <span class="text-gray-600 font-medium">{{ __('Ұзақтығы') }}:</span>
                                         <span class="text-gray-800">{{ $project->month }} {{ __('ай') }}</span>
                                     </div>
                                 @endif
@@ -226,7 +226,7 @@
                                 </div>
                                 @if($project->created_at)
                                     <div class="flex justify-between items-start">
-                                        <span class="text-gray-600 font-medium">{{ __('Қосылған:') }}</span>
+                                        <span class="text-gray-600 font-medium">{{ __('Қосылған') }}:</span>
                                         <span class="text-gray-800">{{ date('d.m.Y', $project->created_at) }}</span>
                                     </div>
                                 @endif
