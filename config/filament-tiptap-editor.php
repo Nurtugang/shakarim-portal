@@ -70,7 +70,7 @@ return [
     'disk' => 'public',
     'directory' => 'images',
     'visibility' => 'public',
-    'preserve_file_names' => false,
+    'preserve_file_names' => true,
     'max_file_size' => 80042,
     'min_file_size' => 0,
     'image_resize_mode' => null,

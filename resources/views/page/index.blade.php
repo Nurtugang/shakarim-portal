@@ -1,19 +1,30 @@
-<x-layout :metaTitle="$page->{'title_'.app()->getLocale()}">
+<x-layout :metaTitle="$page ? $page->{'title_'.app()->getLocale()} : ''">
     <!-- Breadcrumbs and Section -->
+    @if($page->menu)
     <section class="bg-gray-100 py-3 border-b">
         <div class="max-w-7xl mx-auto px-4">
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
-                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница')}}</a>
-                <span>&#8250;</span>
-                <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => $page->menu->parent]) }}" class="hover:text-shakarim-blue">{{ $page->menu->parent->{'title_'.app()->getLocale()} }}</a>
-                <span>&#8250;</span>
-                <span class="text-shakarim-blue font-semibold">{{ $page->menu->{'title_'.app()->getLocale()} }}</span>
+                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
+                    @if($page->menu->parent)
+                        <span>&#8250;</span>
+                        <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => $page->menu->parent]) }}" class="hover:text-shakarim-blue">
+                            {{ $page->menu->parent->{'title_'.app()->getLocale()} ?? '' }}
+                        </a>
+                    @endif
+
+                    <span>&#8250;</span>
+                    <span class="text-shakarim-blue font-semibold">
+                        {{ $page->menu?->{'title_'.app()->getLocale()} ?? '' }}
+                    </span>
             </nav>
         </div>
     </section>
+    @endif
     <section class="bg-white py-8">
         <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-8 mt-2">{{ $page->menu->{'title_'.app()->getLocale()} }}</h1>
+            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-8 mt-2">
+                {{ $page->menu ? $page->menu->{'title_'.app()->getLocale()} : $page->{'title_'.app()->getLocale()} }}
+            </h1>
             <div class="main-content">
                 <!-- Контент из админки -->
                 <div class="tiptap-content">
