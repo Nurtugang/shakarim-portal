@@ -396,7 +396,7 @@
         </div>
     </section>
     
-    <!-- Partners Section -->
+        <!-- Partners Section -->
     <section class="py-6 md:py-8">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-8 md:mb-12">
@@ -408,60 +408,60 @@
             
             <div class="relative flex items-center">
                 <!-- Left Arrow -->
-                <button id="partnersPrev" class="absolute left-0 z-10 bg-white shadow-lg rounded-full p-2 md:p-3 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors hidden">
+                <button id="partnersPrev" class="absolute left-0 md:-left-4 z-10 bg-white shadow-lg rounded-full p-2 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors hidden md:block">
                     <i class="fas fa-chevron-left"></i>
                 </button>
 
                 <!-- Partners container -->
-                <div class="overflow-x-hidden scrollbar-hide flex-1 mx-8 md:mx-12" id="partnersContainer">
-                    <div id="partnersWrapper" class="flex justify-center gap-6 md:gap-8 pb-4">
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                <div class="overflow-x-auto scrollbar-hide flex-1 mx-0 md:mx-8" id="partnersContainer">
+                    <div id="partnersWrapper" class="flex justify-start items-center gap-6 md:gap-8 pb-4">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://farabi.university/" target="_blank"><img src="{{ Storage::url('partners/farabi.webp') }}" alt="farabi" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://abu.edu.kz/" target="_blank"><img src="{{ Storage::url('partners/ABU.webp') }}" alt="ABU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://global.kduniv.ac.kr/" target="_blank"><img src="{{ Storage::url('partners/KDU.webp') }}" alt="KDU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="http://eurostudies.pl/" target="_blank"><img src="{{ Storage::url('partners/WSG.webp') }}" alt="WSG" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://astanait.edu.kz/" target="_blank"><img src="{{ Storage::url('partners/AITU.webp') }}" alt="AITU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://dulaty.kz/" target="_blank"><img src="{{ Storage::url('partners/dulati.webp') }}" alt="dulati" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://mephi.ru/" target="_blank"><img src="{{ Storage::url('partners/mifi.webp') }}" alt="mifi" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://www.pittstate.edu/" target="_blank"><img src="{{ Storage::url('partners/pittstate.webp') }}" alt="pittstate" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://en.lzu.edu.cn/" target="_blank"><img src="{{ Storage::url('partners/lanzhou.webp') }}" alt="lanzhou" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://www.docmen-project.pl/" target="_blank"><img src="{{ Storage::url('partners/docmen.webp') }}" alt="docmen" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="#" target="_blank"><img src="{{ Storage::url('partners/complete.webp') }}" alt="complete" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://se-btrz.com/" target="_blank"><img src="{{ Storage::url('partners/SE.webp') }}" alt="SE" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://abai-museum.kz/" target="_blank"><img src="{{ Storage::url('partners/abaimuseum.webp') }}" alt="abaimuseum" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
-                        <div class="partner-item flex-shrink-0 w-20 md:w-28 min-h-12 md:min-h-16 flex items-center justify-center p-2 md:p-3">
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="#" target="_blank"><img src="{{ Storage::url('partners/semeymchs.webp') }}" alt="semeymchs" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Right Arrow -->
-                <button id="partnersNext" class="absolute right-0 z-10 bg-white shadow-lg rounded-full p-2 md:p-3 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors hidden">
+                <button id="partnersNext" class="absolute right-0 md:-right-4 z-10 bg-white shadow-lg rounded-full p-2 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors hidden md:block">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -470,5 +470,15 @@
 
     <script src="{{ asset('js/custom/slider.js') }}"></script>
     <script src="{{ asset('js/custom/slider2.js') }}"></script>
+    <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+    </style>
     
 </x-layout>
