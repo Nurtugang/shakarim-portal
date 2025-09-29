@@ -30,6 +30,8 @@ use App\Http\Controllers\RectorQuestionController;
 
 use App\Http\Controllers\DevelopmentGoalsController;
 
+use App\Http\Controllers\MinorController;
+
 use App\Models\Award;
 use App\Models\PageFile;
 use Carbon\Carbon;
@@ -103,9 +105,11 @@ Route::group([
     Route::get('/rector-blog', [RectorBlogController::class, 'index'])->name('rector.blog');
     Route::get('/rector-blog/{post:slug}', [RectorBlogController::class, 'show'])->name('rector.post');
 
-    Route::get('/development-goals', [DevelopmentGoalsController::class, 'index'])
-     ->name('development-goals.index');
+    Route::get('/development-goals', [DevelopmentGoalsController::class, 'index'])->name('development-goals.index');
     
+    Route::get('/minors', [MinorController::class, 'index'])->name('minor.index');
+    Route::get('/minor/{id}', [MinorController::class, 'show'])->name('minor.show');
+
     Route::get('/under-development', function (string $locale) {
         return view('under-development.index');
     })->name('under-development');
