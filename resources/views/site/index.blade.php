@@ -398,23 +398,23 @@
     
     <!-- Partners Section -->
     <section class="py-6 md:py-8">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-8 md:mb-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-4 md:mb-6">
                 <h2 class="text-lg md:text-2xl font-bold text-shakarim-blue mb-4 flex items-center justify-center">
                     <i class="fas fa-handshake text-sm md:text-base mr-2"></i>
                     {{ __('Наши партнеры') }}
                 </h2>
             </div>
             
-            <div class="relative flex items-center">
+            <div class="relative px-4">
                 <!-- Left Arrow -->
-                <button id="partnersPrev" class="absolute left-0 z-10 bg-white shadow-lg rounded-full p-2 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors hidden md:block">
+                <button id="partnersPrev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors">
                     <i class="fas fa-chevron-left"></i>
                 </button>
 
                 <!-- Partners container -->
-                <div class="overflow-x-auto scrollbar-hide flex-1 md:mx-12" id="partnersContainer">
-                    <div id="partnersWrapper" class="flex justify-start items-center gap-6 md:gap-8 pb-4">
+                <div class="overflow-x-auto scrollbar-hide mx-8" id="partnersContainer">
+                    <div id="partnersWrapper" class="flex justify-start items-center gap-6 md:gap-8 py-4">
                         <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://farabi.university/" target="_blank"><img src="{{ Storage::url('partners/farabi.webp') }}" alt="farabi" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
@@ -461,7 +461,7 @@
                 </div>
                 
                 <!-- Right Arrow -->
-                <button id="partnersNext" class="absolute right-0 z-10 bg-white shadow-lg rounded-full p-2 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors hidden md:block">
+                <button id="partnersNext" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 text-shakarim-blue hover:bg-shakarim-blue hover:text-white transition-colors">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
