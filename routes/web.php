@@ -32,6 +32,8 @@ use App\Http\Controllers\DevelopmentGoalsController;
 
 use App\Http\Controllers\MinorController;
 
+use App\Http\Controllers\OrganizationController;
+
 use App\Models\Award;
 use App\Models\PageFile;
 use Carbon\Carbon;
@@ -109,6 +111,9 @@ Route::group([
     
     Route::get('/minors', [MinorController::class, 'index'])->name('minor.index');
     Route::get('/minor/{id}', [MinorController::class, 'show'])->name('minor.show');
+
+    Route::get('/organization/science', [OrganizationController::class, 'science'])->name('organization.science');
+    Route::get('/organization/social', [OrganizationController::class, 'social'])->name('organization.social');
 
     Route::get('/under-development', function (string $locale) {
         return view('under-development.index');
