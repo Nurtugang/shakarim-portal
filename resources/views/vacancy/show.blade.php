@@ -30,14 +30,6 @@
     <!-- Vacancy Content Section -->
     <section class="bg-white py-8">
         <div class="max-w-7xl mx-auto px-4">
-            <!-- Back Button -->
-            <div class="mb-6">
-                <a href="{{ route('vacancy.index', ['locale' => $vacancy->language]) }}" 
-                   class="inline-flex items-center text-shakarim-blue hover:underline">
-                    <i class="fas fa-arrow-left mr-2"></i>
-                    {{ __('Назад к списку') }}
-                </a>
-            </div>
 
             <!-- Page Title -->
             <div class="mb-8">

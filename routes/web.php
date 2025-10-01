@@ -32,6 +32,8 @@ use App\Http\Controllers\DevelopmentGoalsController;
 
 use App\Http\Controllers\MinorController;
 
+use App\Http\Controllers\VacancyController;
+
 use App\Http\Controllers\OrganizationController;
 
 use App\Models\Award;
@@ -111,6 +113,9 @@ Route::group([
     
     Route::get('/minors', [MinorController::class, 'index'])->name('minor.index');
     Route::get('/minor/{id}', [MinorController::class, 'show'])->name('minor.show');
+
+    Route::get('/vacancies', [VacancyController::class, 'index'])->name('vacancy.index');
+    Route::get('/vacancy/{id}', [VacancyController::class, 'show'])->name('vacancy.show');
 
     Route::get('/organization/science', [OrganizationController::class, 'science'])->name('organization.science');
     Route::get('/organization/social', [OrganizationController::class, 'social'])->name('organization.social');

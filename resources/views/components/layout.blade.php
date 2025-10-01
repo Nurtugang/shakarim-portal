@@ -24,18 +24,18 @@
                     <a href="mailto:kense@shakarim.kz">
                         <span class="text-gray-600"><i class="fas fa-envelope mr-1"></i> kense@shakarim.kz</span>
                     </a>
-                    <a href="https://old.shakarim.edu.kz" target="_blank" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
-                        <span class="text-gray-600"><i class="fas fa-share-square mr-1"></i>{{ __('Старый сайт') }}</span>
-                    </a>  
+                    <button id="old-site-btn" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
+                        <span class="text-gray-600"><i class="fas fa-info-circle mr-1"></i>{{ __('Старый сайт') }}</span>
+                    </button>
                     <a href="https://aisana.shakarim.kz" target="_blank" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
                         <span class="text-gray-600"><i class="fas fa-share-square mr-1"></i> AI-Sana</span>
                     </a>               
                 </div>
 
                 <div class="block md:hidden">
-                    <a href="https://old.shakarim.edu.kz" target="_blank" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
-                        <span class="text-gray-600 text-sm"><i class="fas fa-share-square mr-1"></i>{{ __('Старый сайт') }}</span>
-                    </a>
+                    <button id="old-site-btn-mobile" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
+                        <span class="text-gray-600 text-sm"><i class="fas fa-info-circle mr-1"></i>{{ __('Старый сайт') }}</span>
+                    </button>
                 </div>
 
                 <div class="flex items-center space-x-2 ml-auto relative">
@@ -73,6 +73,40 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+
+    <!-- Modal for Old Site Notice -->
+    <div id="old-site-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <div class="text-center mb-4">
+                <i class="fas fa-exclamation-circle text-yellow-500 text-5xl mb-4"></i>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">{{ __('Уведомление') }}</h3>
+            </div>
+            
+            <p class="text-gray-700 mb-4 text-center">
+                {{ __('Старый сайт университета продолжает работать, однако он больше не актуален. Основной акцент делается на новом сайте, где размещается самая свежая и полная информация. По всем вопросам обращайтесь:') }}
+            </p>
+            
+            <div class="space-y-3">
+                <a href="mailto:dev@shakarim.kz" class="flex items-center justify-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <i class="fas fa-envelope text-shakarim-blue"></i>
+                    <span class="text-gray-700">dev@shakarim.kz</span>
+                </a>
+                
+                <a href="https://wa.me/77470652274" target="_blank" class="flex items-center justify-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+                    <span class="text-gray-700">+7 (747) 065-22-74</span>
+                </a>
+            </div>
+            
+            <button id="close-modal-btn" class="mt-6 w-full bg-shakarim-blue text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                {{ __('Понятно') }}
+            </button>
         </div>
     </div>
 
@@ -293,16 +327,44 @@
         <i class="fas fa-arrow-up text-sm md:text-base"></i>
     </button>
 
+    <!-- Scripts для каждой страницы наследующий этот шаблон -->
     @livewireScripts
     @filamentScripts
     <script src="/js/bvi/bvi.min.js"></script>
-          <script>
-            new isvek.Bvi({
-              target: '.bvi-open',
-              fontSize: 14,
-            })
-          </script>
-    <!-- Scripts для каждой страницы наследующий этот шаблон -->
+    <script>
+        new isvek.Bvi({
+            target: '.bvi-open',
+            fontSize: 14,
+        })
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('old-site-modal');
+            const oldSiteBtn = document.getElementById('old-site-btn');
+            const oldSiteBtnMobile = document.getElementById('old-site-btn-mobile');
+            const closeModal = document.getElementById('close-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            
+            function openModal() {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeModalFn() {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+            
+            if (oldSiteBtn) oldSiteBtn.addEventListener('click', openModal);
+            if (oldSiteBtnMobile) oldSiteBtnMobile.addEventListener('click', openModal);
+            if (closeModal) closeModal.addEventListener('click', closeModalFn);
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModalFn);
+            
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModalFn();
+            });
+        });
+    </script>
     @stack('scripts') 
     
     <script src="{{ asset('js/custom/mobile.js') }}"></script>

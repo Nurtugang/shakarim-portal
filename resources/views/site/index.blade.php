@@ -113,7 +113,7 @@
                     <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
                         <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Platonus</a>
                         <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim Hub</a>
-                        <a href="https://shakarim.kz/" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Шәкәрім Құдайбердіұлы') }}</a>
+                        <a href="https://shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Шәкәрім Құдайбердіұлы') }}</a>
                         <a href="{{ route('awards.index', app()->getLocale()) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Награды') }}</a>
                     </div>
                 </div>
@@ -128,8 +128,8 @@
                     <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
                         <a href="{{ route('university.about.index', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Об университете') }}</a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Виртуальный тур') }}</a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'studenttik-omir']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Студенческая жизнь') }}</a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bailanys-1']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Контакты') }}</a>
+                        <a href="{{ route('organization.social', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Студенческая жизнь') }}</a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'qabyldau-komissiiasymen-bailanystary']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Контакты') }}</a>
                     </div>
                 </div>
 

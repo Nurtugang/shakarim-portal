@@ -25,7 +25,6 @@
                 <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">
                     {{ __('Вакансии') }}
                 </h1>
-                <p class="text-gray-600 mt-2">{{ __('Актуальные предложения по трудоустройству') }}</p>
             </div>
 
             <!-- Vacancies List -->

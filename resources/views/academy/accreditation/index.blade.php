@@ -420,13 +420,6 @@
                                                                     <tr class="hover:bg-gray-50 transition-colors duration-200">
                                                                         <td class="px-6 py-4">
                                                                             <div class="flex items-start">
-                                                                                <div class="flex-shrink-0 mr-3">
-                                                                                    @if($accreditation->accredited)
-                                                                                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                                                                    @else
-                                                                                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                                                                    @endif
-                                                                                </div>
                                                                                 <div>
                                                                                     <div class="text-sm font-medium text-gray-900">
                                                                                         {{ $accreditation->name }}

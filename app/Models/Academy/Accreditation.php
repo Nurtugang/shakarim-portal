@@ -13,7 +13,6 @@ class Accreditation extends Model
     protected $fillable = [
         'name',
         'organ',
-        'accredited',
         'type',
         'certificate',
         'certificate2',
@@ -26,7 +25,6 @@ class Accreditation extends Model
     ];
 
     protected $casts = [
-        'accredited' => 'boolean',
         'created_at' => 'timestamp',
         'updated_at' => 'timestamp',
         'start' => 'timestamp',
@@ -119,7 +117,6 @@ class Accreditation extends Model
         
         return [
             'total' => $accreditations->count(),
-            'accredited' => $accreditations->where('accredited', true)->count(),
             'organs' => $accreditations->pluck('organ')->unique()->count(),
             'types' => $accreditations->pluck('type')->unique()->count(),
             'bachelor' => $accreditations->where('type', 'Bachelor')->count(),
