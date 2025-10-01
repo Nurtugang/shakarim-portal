@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DevelopmentGoal extends Model
 {
@@ -18,22 +19,14 @@ class DevelopmentGoal extends Model
         'title',
         'content',
         'thumbnail',
-        'category_id',
         'position',
     ];
 
     protected $casts = [
         'position' => 'integer',
-        'category_id' => 'integer',
     ];
 
-    /**
-     * Получить категорию этой цели развития
-     */
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(DevelopmentGoalCategory::class, 'category_id');
-    }
+    
 
     /**
      * Scope для фильтрации по языку
@@ -43,13 +36,6 @@ class DevelopmentGoal extends Model
         return $query->where('language', $language);
     }
 
-    /**
-     * Scope для фильтрации по категории
-     */
-    public function scopeInCategory(Builder $query, int $categoryId): Builder
-    {
-        return $query->where('category_id', $categoryId);
-    }
 
     /**
      * Scope для сортировки по позиции
@@ -59,13 +45,7 @@ class DevelopmentGoal extends Model
         return $query->orderBy('position');
     }
 
-    /**
-     * Scope для получения целей с категориями
-     */
-    public function scopeWithCategory(Builder $query): Builder
-    {
-        return $query->with('category');
-    }
+    
 
     /**
      * Получить URL для миниатюры
@@ -106,8 +86,7 @@ class DevelopmentGoal extends Model
      */
     public function getNextGoal(): ?self
     {
-        return self::where('category_id', $this->category_id)
-                   ->where('language', $this->language)
+        return self::where('language', $this->language)
                    ->where('position', '>', $this->position)
                    ->orderBy('position')
                    ->first();
@@ -118,10 +97,26 @@ class DevelopmentGoal extends Model
      */
     public function getPreviousGoal(): ?self
     {
-        return self::where('category_id', $this->category_id)
-                   ->where('language', $this->language)
+        return self::where('language', $this->language)
                    ->where('position', '<', $this->position)
                    ->orderBy('position', 'desc')
                    ->first();
     }
+
+    /**
+     * Связь с образовательными программами
+     */
+    public function educationPrograms(): HasMany
+    {
+        return $this->hasMany(DevelopmentGoalEducation::class, 'development_goal_id');
+    }
+
+    /**
+     * Получить образовательные программы для текущего языка
+     */
+    public function getEducationProgramsForLanguage(string $language)
+    {
+        return $this->educationPrograms()->where('language', $language)->get();
+    }
+
 }

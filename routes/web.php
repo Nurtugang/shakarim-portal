@@ -1,46 +1,44 @@
 <?php
 
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Middleware\Localization;
 
-use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SiteController;
-use App\Http\Controllers\StructureController;
-use App\Http\Controllers\SitemapController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\StructureController;
+use App\Http\Controllers\AnnouncementController;
 
-use App\Http\Controllers\Science\ScienceDissertationController;
-use App\Http\Controllers\Science\SciencePurchaseController;
-use App\Http\Controllers\Science\SciencePurchasesOfferController;
-use App\Http\Controllers\Science\ScienceCentresController;
-use App\Http\Controllers\Science\ScienceJournalsController;
-use App\Http\Controllers\Science\BestTeacherController;
 use App\Http\Controllers\Science\AspirantController;
+use App\Http\Controllers\Science\BestTeacherController;
+use App\Http\Controllers\Science\ScienceCentresController;
+use App\Http\Controllers\Science\SciencePurchaseController;
+use App\Http\Controllers\Science\ScienceJournalsController;
 use App\Http\Controllers\Science\ScientificProjectsController;
+use App\Http\Controllers\Science\ScienceDissertationController;
+use App\Http\Controllers\Science\SciencePurchasesOfferController;
 
 use App\Http\Controllers\Academy\AccreditationController;
 use App\Http\Controllers\Academy\AcademySchoolsController;
 
-use App\Http\Controllers\AnnouncementController;
-
-use App\Http\Controllers\RectorBlogController;
-use App\Http\Controllers\RectorQuestionController;
-
-use App\Http\Controllers\DevelopmentGoalsController;
 
 use App\Http\Controllers\MinorController;
-
 use App\Http\Controllers\VacancyController;
-
+use App\Http\Controllers\RectorBlogController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\RectorQuestionController;
+use App\Http\Controllers\DevelopmentGoalsController;
 
 use App\Models\Award;
 use App\Models\PageFile;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+
 
 Route::post('language', function (Request $request) {
     \Illuminate\Support\Facades\App::setLocale($request->locale);
@@ -64,8 +62,7 @@ Route::group([
     'where' => ['locale' => '[a-zA-Z]{2}'],
     'middleware' => Localization::class
 ], function () {
-    Route::get('/', SiteController::class)
-    ->name('site.index');
+    Route::get('/', SiteController::class)->name('site.index');
     Route::get('/page/{page:slug?}',[PageController::class,'index'])->name('page');
     Route::get('/list/{pageList:slug}',[PageController::class,'listItem'])->name('list.item');
 
@@ -91,8 +88,6 @@ Route::group([
     Route::get('/science/projects/{id}', [ScientificProjectsController::class, 'show'])->name('science.projects.show');
 
     Route::get('/awards', function () {
-        // Теперь группируем по двум уровням: сначала по категории, потом по награде.
-        // Переменную переименовали для ясности.
         $groupedAwards = Award::orderBy('sort')->orderBy('year', 'desc')->get()->groupBy(['category', 'reward']);
 
         return view('awards.index', compact('groupedAwards'));

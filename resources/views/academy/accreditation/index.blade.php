@@ -525,11 +525,6 @@
         
         <!-- Modal Footer -->
         <div class="flex items-center justify-end p-4 border-t border-gray-200 bg-gray-50 space-x-3">
-            <button onclick="downloadCertificate()" 
-                    class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200">
-                <i class="fas fa-download mr-2"></i>
-                {{ __('Скачать') }}
-            </button>
             <button onclick="closeCertificateModal()" 
                     class="inline-flex items-center px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg transition-colors duration-200">
                 {{ __('Закрыть') }}
@@ -601,21 +596,6 @@
         const modal = document.getElementById('certificateModal');
         modal.classList.add('hidden');
         document.body.style.overflow = 'auto';
-    }
-
-    function downloadCertificate() {
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-        
-        if (modalImage.src) {
-            const link = document.createElement('a');
-            link.href = modalImage.src;
-            link.download = modalTitle.textContent.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.jpg';
-            link.target = '_blank';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
