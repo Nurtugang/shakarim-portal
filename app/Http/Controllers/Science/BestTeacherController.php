@@ -4,23 +4,23 @@ namespace App\Http\Controllers\Science;
 
 use App\Http\Controllers\Controller;
 use App\Models\Science\BestTeacher;
-use App\Models\Faculty;
+use App\Models\Science\ScienceDirection;
 
 class BestTeacherController extends Controller
 {
     public function index()
     {
-        $bestTeachers = BestTeacher::with(['faculty', 'department'])
-            ->orderBy('faculty_id')
+        $bestTeachers = BestTeacher::with(['scienceDirection'])
+            ->orderBy('science_direction_id')
             ->orderBy('year', 'desc')
             ->get()
-            ->groupBy('faculty_id');
+            ->groupBy('science_direction_id');
 
-        $faculties = Faculty::whereIn('id', $bestTeachers->keys())
-            ->orderBy('sort')
+        $scienceDirections = ScienceDirection::whereIn('id', $bestTeachers->keys())
+            ->orderBy('id')
             ->get()
             ->keyBy('id');
 
-        return view('science.best-teachers.index', compact('bestTeachers', 'faculties'));
+        return view('science.best-teachers.index', compact('bestTeachers', 'scienceDirections'));
     }
 }

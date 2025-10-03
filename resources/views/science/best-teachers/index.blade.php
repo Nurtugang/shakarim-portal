@@ -37,23 +37,23 @@
 
                     <!-- Проверка на наличие данных -->
                     @if($bestTeachers->count() > 0)
-                        <!-- Факультеты с преподавателями -->
+                        <!-- Научные направления с преподавателями -->
                         <div class="space-y-4 mb-12">
-                            @foreach($faculties as $facultyId => $faculty)
-                                @if(isset($bestTeachers[$facultyId]))
+                            @foreach($scienceDirections as $directionId => $direction)
+                                @if(isset($bestTeachers[$directionId]))
                                     <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                                        <!-- Заголовок факультета -->
+                                        <!-- Заголовок научного направления -->
                                         <button class="w-full px-6 py-4 bg-gray-50 hover:bg-gray-100 text-left font-medium text-shakarim-blue flex items-center justify-between transition-colors duration-200"
                                                 type="button" 
-                                                onclick="toggleCollapse('faculty-{{ $facultyId }}')">
-                                            <span class="text-lg font-semibold">{{ $faculty->title }}</span>
-                                            <i class="fas fa-chevron-down transform transition-transform duration-200" id="icon-faculty-{{ $facultyId }}"></i>
+                                                onclick="toggleCollapse('direction-{{ $directionId }}')">
+                                            <span class="text-lg font-semibold">{{ $direction->name }}</span>
+                                            <i class="fas fa-chevron-down transform transition-transform duration-200" id="icon-direction-{{ $directionId }}"></i>
                                         </button>
 
-                                        <!-- Содержимое факультета -->
-                                        <div id="faculty-{{ $facultyId }}" class="hidden">
+                                        <!-- Содержимое научного направления -->
+                                        <div id="direction-{{ $directionId }}" class="hidden">
                                             <div class="p-6 space-y-6">
-                                                @foreach($bestTeachers[$facultyId] as $teacher)
+                                                @foreach($bestTeachers[$directionId] as $teacher)
                                                     <div class="flex flex-col md:flex-row items-center md:items-start gap-6 p-4 bg-gray-50 rounded-lg">
                                                         <!-- Фото преподавателя -->
                                                         <div class="flex-shrink-0">
@@ -124,8 +124,8 @@
                                         <span class="font-semibold text-shakarim-blue">{{ $bestTeachers->flatten()->count() }}</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <span class="text-sm text-gray-600">{{ __('Факультетов:') }}</span>
-                                        <span class="font-semibold text-shakarim-blue">{{ $faculties->count() }}</span>
+                                        <span class="text-sm text-gray-600">{{ __('Научные направления') }}:</span>
+                                        <span class="font-semibold text-shakarim-blue">{{ $scienceDirections->count() }}</span>
                                     </div>
                                     @php
                                         $years = $bestTeachers->flatten()->pluck('year')->unique()->sort();
@@ -143,19 +143,19 @@
                         </div>
 
                         <!-- Быстрая навигация -->
-                        @if($faculties->count() > 0)
+                        @if($scienceDirections->count() > 0)
                             <div class="bg-white rounded-xl shadow-md p-6">
                                 <h3 class="text-lg font-bold text-shakarim-blue mb-4 flex items-center">
-                                    <i class="fas fa-university mr-2"></i>
-                                    {{ __('Факультеты') }}
+                                    <i class="fas fa-microscope mr-2"></i>
+                                    {{ __('Научные направления') }}
                                 </h3>
                                 <div class="space-y-2">
-                                    @foreach($faculties as $faculty)
-                                        <button onclick="scrollToFaculty('faculty-{{ $faculty->id }}')"
+                                    @foreach($scienceDirections as $direction)
+                                        <button onclick="scrollToDirection('direction-{{ $direction->id }}')"
                                                class="flex items-center justify-between w-full p-2 rounded-lg hover:bg-gray-50 transition duration-200 text-left">
-                                            <span class="text-sm font-medium text-gray-700">{{ $faculty->title }}</span>
+                                            <span class="text-sm font-medium text-gray-700">{{ $direction->name }}</span>
                                             <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
-                                                {{ $bestTeachers[$faculty->id]->count() }}
+                                                {{ $bestTeachers[$direction->id]->count() }}
                                             </span>
                                         </button>
                                     @endforeach
@@ -174,7 +174,7 @@ function toggleCollapse(elementId) {
     const element = document.getElementById(elementId);
     const icon = document.getElementById('icon-' + elementId);
     
-    document.querySelectorAll('[id^="faculty-"]').forEach(el => {
+    document.querySelectorAll('[id^="direction-"]').forEach(el => {
         if (el.id !== elementId) {
             el.classList.add('hidden');
             document.getElementById('icon-' + el.id).classList.remove('rotate-180');
@@ -190,11 +190,11 @@ function toggleCollapse(elementId) {
     }
 }
 
-function scrollToFaculty(facultyId) {
-    const element = document.getElementById(facultyId);
+function scrollToDirection(directionId) {
+    const element = document.getElementById(directionId);
     if (element) {
         if (element.classList.contains('hidden')) {
-            toggleCollapse(facultyId);
+            toggleCollapse(directionId);
         }
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

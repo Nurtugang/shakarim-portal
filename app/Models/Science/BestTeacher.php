@@ -23,6 +23,7 @@ class BestTeacher extends Model
         'year',
         'faculty_id',
         'department_id',
+        'science_direction_id',
         'image'
     ];
 
@@ -80,5 +81,13 @@ class BestTeacher extends Model
     public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    /**
+     * Связь с научным направлением
+     */
+    public function scienceDirection(): BelongsTo
+    {
+        return $this->belongsTo(ScienceDirection::class, 'science_direction_id');
     }
 }
