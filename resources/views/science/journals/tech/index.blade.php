@@ -23,7 +23,7 @@
             <a href="https://tech.vestnik.shakarim.kz/" 
                target="_blank" 
                rel="noopener noreferrer" 
-               class="block max-w-sm mx-auto mb-8 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 aspect-[3/1] md:aspect-[4/1]">
+               class="block max-w-sm mx-auto mb-8 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                 <img src="{{ asset('img/tech.webp') }}" 
                      alt="{{ __('Ғылыми басылымдар') }}" 
                      class="w-full h-full object-cover">

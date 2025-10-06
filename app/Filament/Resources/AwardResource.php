@@ -14,10 +14,12 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Model;
 
 class AwardResource extends Resource
 {
@@ -110,9 +112,6 @@ class AwardResource extends Resource
                         FileUpload::make('image')
                             ->label('Изображение')
                             ->directory('awards')
-                            ->disk('public')
-                            // Разрешаем загрузку webp
-                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                             ->image()
                             ->imageEditor()
                             ->columnSpanFull(),
@@ -124,13 +123,17 @@ class AwardResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('image')
-                    ->label('Файл изображения')
-                    ->limit(25) // Укорачиваем длинное имя файла
-                    ->tooltip(fn (?string $state): ?string => $state) // Показываем полное имя при наведении
-                    ->url(fn (Award $record): ?string => $record->image ? Storage::url('awards/' . $record->image) : null, true) // Генерируем ссылку
-                    ->searchable()
-                    ->sortable(),
+                ImageColumn::make('image')
+                    ->label('Изображение')
+                    ->circular()
+                    ->disk('public')
+                    ->getStateUsing(function (Model $record): ?string {
+                        if (! $record->image) {
+                            return null;
+                        }
+                        
+                        return 'awards/' . $record->image;
+                    }),
 
                 TextColumn::make('fullname_ru')
                     ->label('Полное имя')

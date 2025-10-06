@@ -16,4 +16,13 @@ class EditAward extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        if (!empty($data['image']) && !str_starts_with($data['image'], 'awards/')) {
+            $data['image'] = 'awards/' . $data['image'];
+        }
+
+        return $data;
+    }
 }

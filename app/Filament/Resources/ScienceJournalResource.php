@@ -99,7 +99,6 @@ class ScienceJournalResource extends Resource
                             ->getUploadedFileNameForStorageUsing(
                                 fn (TemporaryUploadedFile $file): string => 'document_' . time() . '.' . $file->getClientOriginalExtension()
                             )
-                            ->mutateDehydratedStateUsing(fn (?string $state): ?string => $state ? basename($state) : null)
                             ->nullable()
                             ->columnSpanFull(),
                     ]),

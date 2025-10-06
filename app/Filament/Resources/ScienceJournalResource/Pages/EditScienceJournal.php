@@ -16,4 +16,16 @@ class EditScienceJournal extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $directory = 'science-journals';
+        $field = 'filename';
+
+        if (!empty($data[$field]) && !str_starts_with($data[$field], $directory . '/')) {
+            $data[$field] = $directory . '/' . $data[$field];
+        }
+
+        return $data;
+    }
 }

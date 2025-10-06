@@ -100,7 +100,14 @@ class BestTeacherResource extends Resource
                             ->required(),
                     ]),
 
-                
+                Section::make('Изображение')
+                    ->schema([
+                        FileUpload::make('image')
+                            ->label('Фотография')
+                            ->image()
+                            ->directory('best-teachers')
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 
@@ -110,13 +117,16 @@ class BestTeacherResource extends Resource
             ->columns([
                 TextColumn::make('id')->sortable(),
                 
-                ImageColumn::make('image')
+                TextColumn::make('image')
                     ->label('Фото')
-                    ->circular()
-                    ->disk('public')
-                    ->getStateUsing(function ($record) {
-                        return $record->image ? 'best-teachers/' . $record->image : null;
-                    }),
+                    ->formatStateUsing(function ($state, $record) {
+                        if ($state) {
+                            $imageUrl = $record->getImageUrlAttribute();
+                            return '<img src="' . $imageUrl . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">';
+                        }
+                        return 'Нет фото';
+                    })
+                    ->html(),
 
                 TextColumn::make('fullname_ru')
                     ->label('ФИО')
