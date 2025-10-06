@@ -8,6 +8,7 @@ enum RolesEnum: string
     case PRESS = 'press';
     case STRUCTURE = 'structure';
     case SCIENCE = 'science';
+    case DEVELOPMENT = 'development';
 
     public function getLabel(): string
     {
@@ -17,6 +18,7 @@ enum RolesEnum: string
             self::PRESS => 'Пресс-служба',
             self::STRUCTURE => 'Структура',
             self::SCIENCE => 'Наука',
+            self::DEVELOPMENT => 'development',
         };
     }
 }

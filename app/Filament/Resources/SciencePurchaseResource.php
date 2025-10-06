@@ -17,6 +17,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
+use App\Enums\RolesEnum;
+
 
 class SciencePurchaseResource extends Resource
 {
@@ -41,6 +44,10 @@ class SciencePurchaseResource extends Resource
         return 'Наука';
     }
 
+    public static function canViewAny(): bool
+    {
+        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::SCIENCE]);
+    }
 
     public static function form(Form $form): Form
     {

@@ -56,8 +56,7 @@ class DevelopmentGoal extends Model
             return null;
         }
 
-        // Предполагаем, что миниатюры хранятся в storage/app/public/development_goals/
-        return asset('storage/development_goals/' . $this->thumbnail);
+        return asset('storage/dev_goals/' . $this->thumbnail);
     }
 
     /**

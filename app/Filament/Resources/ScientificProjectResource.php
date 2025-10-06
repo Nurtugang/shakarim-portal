@@ -34,7 +34,7 @@ class ScientificProjectResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return !Auth::user()->hasRole(RolesEnum::STRUCTURE);
+        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::SCIENCE]);
     }
 
     public static function form(Form $form): Form
