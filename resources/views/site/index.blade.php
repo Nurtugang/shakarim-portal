@@ -94,72 +94,141 @@
     </section>
 
     <!-- Useful Links Section -->
-    <section class="py-4 md:py-8 bg-gray-50">
-        <div class="max-w-7xl mx-auto p-4 overflow-hidden">
-            <div class="text-center mb-4 md:mb-8">
-                <h2 class="text-lg md:text-2xl font-heading font-bold text-shakarim-blue break-words">
-                    <i class="fas fa-link mr-2 md:mr-3"></i>{{ __('Useful Links') }}
+    <section class="py-6 md:py-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-6 md:mb-8">
+                <h2 class="text-xl md:text-2xl font-heading font-bold text-shakarim-blue">
+                    {{ __('Useful Links') }}
                 </h2>
+                <p class="text-sm text-gray-600 font-body mt-1">{{ __('Quick access to important resources') }}</p>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                <!-- Дополнительный блок -->
-                <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
-                    <div class="flex items-center mb-3 md:mb-4">
-                        <i class="fas fa-users text-xl md:text-2xl text-gray-800 mr-2 md:mr-3 transition-colors duration-300"></i>
-                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('University') }}</h3>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                <!-- University Block -->
+                <div class="bg-white rounded-xl p-3 md:p-6 shadow-md border-2 border-transparent hover:border-shakarim-blue hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center mb-3 md:mb-4">
+                        <div class="w-8 h-8 md:w-12 md:h-12 bg-shakarim-blue rounded-2xl flex items-center justify-center mb-2 md:mb-3">
+                            <i class="fas fa-university text-sm md:text-xl text-white"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800">{{ __('University') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('See more') }}</p>
-                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
-                        <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Platonus</a>
-                        <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim Hub</a>
-                        <a href="https://shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Шәкәрім Құдайбердіұлы') }}</a>
-                        <a href="{{ route('awards.index', app()->getLocale()) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Награды') }}</a>
-                    </div>
-                </div>
-
-                <!-- Талапкерлерге блок -->
-                <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
-                    <div class="flex items-center mb-3 md:mb-4">
-                        <i class="fas fa-user-plus text-xl md:text-2xl text-gray-800 mr-2 md:mr-3"></i>
-                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Applicants') }}</h3>
-                    </div>
-                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('For prospective students') }}</p>
-                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
-                        <a href="{{ route('university.about.index', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Об университете') }}</a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Виртуальный тур') }}</a>
-                        <a href="{{ route('organization.social', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Студенческая жизнь') }}</a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'qabyldau-komissiiasymen-bailanystary']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Контакты') }}</a>
-                    </div>
-                </div>
-
-                <!-- Білім алушыларға блок -->
-                <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
-                    <div class="flex items-center mb-3 md:mb-4">
-                        <i class="fas fa-graduation-cap text-xl md:text-2xl text-gray-800 mr-2 md:mr-3 transition-colors duration-300"></i>
-                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Students') }}</h3>
-                    </div>
-                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('For Shakarim students') }}</p>
-                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
-                        <a href="https://platonus.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Platonus</a>
-                        <a href="https://hub.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• Shakarim Hub</a>
-                        <a href="https://kitaphana.shakarim.kz/" target="_blank" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Библиотека') }}</a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bilim-alusynyn-zolsiltemesi']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Путеводитель обучающегося') }}</a>
+                    <div class="space-y-1.5 md:space-y-2">
+                        <a href="https://shakarim.kz/" target="_blank" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-user-circle mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Шәкәрім Құдайбердіұлы') }}</span>
+                        </a>
+                        <a href="{{ route('awards.index', app()->getLocale()) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-trophy mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Награды') }}</span>
+                        </a>
+                        <a href="https://hub.shakarim.kz/shakarim_hub.apk" target="_blank" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fa-brands fa-android mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">Android App</span>
+                        </a>
+                        <a href="https://apps.apple.com/kz/app/shakarim-university/id6753332756" target="_blank" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fa-brands fa-apple mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">iOS App</span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Серіктестерге блок -->
-                <div class="group bg-white rounded-xl p-4 md:p-6 border border-gray-100">
-                    <div class="flex items-center mb-3 md:mb-4">
-                        <i class="fas fa-handshake text-xl md:text-2xl text-gray-800 mr-2 md:mr-3 transition-colors duration-300"></i>
-                        <h3 class="font-heading font-bold text-lg md:text-lg text-gray-800 transition-colors duration-300">{{ __('For Partners') }}</h3>
+                <!-- For Applicants Block -->
+                <div class="bg-white rounded-xl p-3 md:p-6 shadow-md border-2 border-transparent hover:border-shakarim-blue hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center mb-3 md:mb-4">
+                        <div class="w-8 h-8 md:w-12 md:h-12 bg-shakarim-blue rounded-2xl flex items-center justify-center mb-2 md:mb-3">
+                            <i class="fas fa-user-graduate text-sm md:text-xl text-white"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800">{{ __('For Applicants') }}</h3>
                     </div>
-                    <p class="text-gray-800 text-base md:text-sm font-body mb-4 md:mb-4 transition-colors duration-300">{{ __('For our partners') }}</p>
-                    <div class="space-y-2 md:space-y-2 text-base md:text-sm font-body">
-                        <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'international-cooperation-center']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Центр международного сотрудничества') }}</a>
-                        <a href="{{ route('science.purchases', ['locale' => app()->getLocale()]) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Научные государственные закупки') }}</a>
-                        <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'public-procurement-department']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Отдел государственных закупок') }}</a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'innovaciialar-narygy']) }}" class="block text-gray-800 hover:text-shakarim-blue transition-colors duration-300 relative hover:bg-gray-100 hover:px-2 hover:-mx-2 rounded transition-all duration-300">• {{ __('Маркет инноваций') }}</a>
+                    <div class="space-y-1.5 md:space-y-2">
+                        <a href="{{ route('university.about.index', ['locale' => app()->getLocale()]) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-info-circle mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Об университете') }}</span>
+                        </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-vr-cardboard mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Виртуальный тур') }}</span>
+                        </a>
+                        <a href="{{ route('organization.social', ['locale' => app()->getLocale()]) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-heart mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Студенческая жизнь') }}</span>
+                        </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'qabyldau-komissiiasymen-bailanystary']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-phone mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Контакты') }}</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- For Students Block -->
+                <div class="bg-white rounded-xl p-3 md:p-6 shadow-md border-2 border-transparent hover:border-shakarim-blue hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center mb-3 md:mb-4">
+                        <div class="w-8 h-8 md:w-12 md:h-12 bg-shakarim-blue rounded-2xl flex items-center justify-center mb-2 md:mb-3">
+                            <i class="fas fa-book-reader text-sm md:text-xl text-white"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800">{{ __('For Students') }}</h3>
+                    </div>
+                    <div class="space-y-1.5 md:space-y-2">
+                        <a href="https://platonus.shakarim.kz/" target="_blank" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-laptop mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">Platonus</span>
+                        </a>
+                        <a href="https://hub.shakarim.kz/" target="_blank" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-inbox mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">Shakarim Hub</span>
+                        </a>
+                        <a href="https://kitaphana.shakarim.kz/" target="_blank" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-book mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Библиотека') }}</span>
+                        </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bilim-alusynyn-zolsiltemesi']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-map-marked-alt mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Путеводитель обучающегося') }}</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- For Partners Block -->
+                <div class="bg-white rounded-xl p-3 md:p-6 shadow-md border-2 border-transparent hover:border-shakarim-blue hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center mb-3 md:mb-4">
+                        <div class="w-8 h-8 md:w-12 md:h-12 bg-shakarim-blue rounded-2xl flex items-center justify-center mb-2 md:mb-3">
+                            <i class="fas fa-handshake text-sm md:text-xl text-white"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800">{{ __('For Partners') }}</h3>
+                    </div>
+                    <div class="space-y-1.5 md:space-y-2">
+                        <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'international-cooperation-center']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-globe-americas mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Центр международного сотрудничества') }}</span>
+                        </a>
+                        <a href="{{ route('science.purchases', ['locale' => app()->getLocale()]) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-flask mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Научные государственные закупки') }}</span>
+                        </a>
+                        <a href="{{ route('structure.show', ['locale' => app()->getLocale(), 'structure' => 'public-procurement-department']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-shopping-cart mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Отдел государственных закупок') }}</span>
+                        </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'innovaciialar-narygy']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-lightbulb mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Маркет инноваций') }}</span>
+                        </a>
                     </div>
                 </div>
             </div>
