@@ -53,9 +53,11 @@
                                 <div class="mb-3 md:mb-4 pb-3 md:pb-4 border-b border-gray-200">
                                     <div class="flex items-start space-x-2 md:space-x-3">
                                         @if($org->hasDeanImage())
-                                            <img src="{{ $org->getDeanImageUrl() }}" 
-                                                 alt="{{ $org->{'dean_' . $locale} }}"
-                                                 class="w-12 h-12 md:w-16 md:h-16 rounded-full object-contain border-2 border-shakarim-blue flex-shrink-0">
+                                            <div class="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 overflow-hidden rounded-full border-2 border-shakarim-blue">
+                                                <img src="{{ $org->getDeanImageUrl() }}" 
+                                                    alt="{{ $org->{'dean_' . $locale} }}"
+                                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                                            </div>
                                         @else
                                             <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
                                                 <i class="fas fa-user text-gray-400 text-lg md:text-2xl"></i>
@@ -91,7 +93,12 @@
                                     @if($org->insta)
                                         <div class="flex items-center text-xs md:text-sm text-gray-700">
                                             <i class="fab fa-instagram text-shakarim-blue mr-2 w-3 md:w-4 text-xs"></i>
-                                            {{ $org->insta }}
+                                            <a href="https://www.instagram.com/{{ ltrim($org->insta, '@') }}" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            class="hover:text-shakarim-blue transition-colors truncate">
+                                                {{ $org->insta }}
+                                            </a>
                                         </div>
                                     @endif
                                 </div>

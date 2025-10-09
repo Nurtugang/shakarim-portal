@@ -363,6 +363,12 @@
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) closeModalFn();
             });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModalFn();
+                }
+            });
         });
     </script>
     @stack('scripts') 

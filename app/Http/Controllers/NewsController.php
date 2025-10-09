@@ -59,19 +59,30 @@ class NewsController extends Controller
 
     public function show(string $locale, News $news)
     {
+        // Проверяем cookie для этой новости
+        $cookieName = 'news_viewed_' . $news->id;
+        
+        if (!request()->cookie($cookieName)) {
+            // Увеличиваем счетчик просмотров
+            $news->increment('views');
+            
+            // Устанавливаем cookie на 24 часа (1440 минут)
+            cookie()->queue($cookieName, true, 1440);
+        }
+        
         $popularTags = NewsTag::select(['id', 'name'])
-        ->whereHas('news', function($q) {
-            $q->where('status', 1);
-        })
-        ->take(8)
-        ->get();
+            ->whereHas('news', function($q) {
+                $q->where('status', 1);
+            })
+            ->take(8)
+            ->get();
 
         $latestNews = News::where('status', 1)
-        ->where('id', '!=', $news->id)
-        ->orderBy('created_at', 'desc')
-        ->take(5)
-        ->select('id', 'alias', 'title_kk', 'title_ru', 'title_en', 'created_at')
-        ->get();
+            ->where('id', '!=', $news->id)
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->select('id', 'alias', 'title_kk', 'title_ru', 'title_en', 'created_at')
+            ->get();
 
         $comments = NewsComment::where('news_id', $news->id)
             ->where('is_approved', true)

@@ -94,12 +94,17 @@
                                                 <span class="text-gray-400 text-sm">
                                                     {{ $item->date?->format('d.m.Y') }}
                                                 </span>
-                                                @if ($item->category)
-                                                    <a href="{{ route('news', ['locale' => app()->getLocale(), 'category' => $item->category->id]) }}"
-                                                       class="bg-shakarim-light text-white text-xs font-semibold px-3 py-1 rounded hover:bg-shakarim-blue transition">
-                                                        {{ $item->category->{'label_' . app()->getLocale()} }}
-                                                    </a>
-                                                @endif
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-gray-500 text-xs">
+                                                        <i class="far fa-eye mr-1"></i>{{ number_format($item->views, 0, ',', ' ') }}
+                                                    </span>
+                                                    @if ($item->category)
+                                                        <a href="{{ route('news', ['locale' => app()->getLocale(), 'category' => $item->category->id]) }}"
+                                                        class="bg-shakarim-light text-white text-xs font-semibold px-3 py-1 rounded hover:bg-shakarim-blue transition">
+                                                            {{ $item->category->{'label_' . app()->getLocale()} }}
+                                                        </a>
+                                                    @endif
+                                                </div>
                                             </div>
                                             
                                             <h3 class="font-semibold text-shakarim-blue mb-4 line-clamp-3 leading-relaxed">

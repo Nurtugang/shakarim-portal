@@ -60,16 +60,16 @@
                 <div class="lg:w-3/4">
                     @foreach($dissertationsByCategory as $category => $dissertations)
                     <div id="content-{{ Str::slug($category) }}" class="tab-content {{ $loop->first ? '' : 'hidden' }}">
-                        <div class="space-y-6">
+                        <div class="space-y-6" x-data="{ activeIndex: null }">
                             @foreach($dissertations as $dissertation)
-                            <div x-data="{ open: false }" class="bg-white rounded-xl shadow-lg overflow-hidden">
-                                <button @click="open = !open" class="w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center">
+                            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                                <button @click="activeIndex = (activeIndex === {{ $loop->index }}) ? null : {{ $loop->index }}" class="w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center">
                                     <span class="font-semibold text-gray-800">{{ $dissertation->{'fio_'.app()->getLocale()} }}</span>
-                                    <svg x-bind:class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg :class="{ 'rotate-180': activeIndex === {{ $loop->index }} }" class="w-5 h-5 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </button>
-                                <div x-show="open" x-collapse class="p-6 border-t border-gray-200">
+                                <div x-show="activeIndex === {{ $loop->index }}" x-collapse class="p-6 border-t border-gray-200">
                                     <div class="prose max-w-none tiptap-content">
                                         {!! tiptap_converter()->asHTML($dissertation->{'content_'.app()->getLocale()}) !!}
                                     </div>

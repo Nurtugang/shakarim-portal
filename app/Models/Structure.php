@@ -54,9 +54,25 @@ class Structure extends Model
 
     public function getUrl()
     {
-        if(!$this->slug){
+        if (!empty($this->link)) {
+            if (filter_var($this->link, FILTER_VALIDATE_URL)) {
+                return $this->link;
+            }
+            return url(app()->getLocale() . '/' . ltrim($this->link, '/'));
+        }
+
+        if (empty($this->slug)) {
             return '#';
         }
-        return route('structure.show', ['locale' => app()->getLocale(),'structure' => $this->slug]);
+        return route('structure.show', ['locale' => app()->getLocale(), 'structure' => $this->slug]);
+    }
+
+    /**
+     * Проверяет, является ли ссылка внешней.
+     * @return bool
+     */
+    public function isExternalLink(): bool
+    {
+        return !empty($this->link) && filter_var($this->link, FILTER_VALIDATE_URL);
     }
 }

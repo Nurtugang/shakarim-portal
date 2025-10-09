@@ -377,6 +377,13 @@
                             @endforeach
                         </div>
                     </div>
+                    <div class="text-center mt-4">
+                        <a href="{{ route('announcements.index', ['locale' => app()->getLocale()]) }}" 
+                        class="inline-block bg-shakarim-blue text-white px-4 py-2 md:px-6 md:py-2 rounded-lg hover:bg-blue-700 transition text-sm md:text-base">
+                            {{ __('Все объявления') }}
+                        </a>
+                    </div>
+                    
                     <!-- Quick Access -->
                     <div class="bg-shakarim-blue text-white rounded-xl p-4 md:p-6">
                         <h3 class="text-lg md:text-xl font-bold mb-4 md:mb-6">{{ __('Quick Access') }}</h3>

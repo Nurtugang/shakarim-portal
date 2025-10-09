@@ -50,7 +50,6 @@ class StructureResource extends Resource
                                ->maxLength(255),
                         Forms\Components\TextInput::make('title_cn')
                                ->label('Название(cn)')
-                               ->required()
                                ->maxLength(255),
                     Forms\Components\Select::make('position')
                                ->label('Позиция')

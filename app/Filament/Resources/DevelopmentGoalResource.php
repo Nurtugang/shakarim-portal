@@ -56,7 +56,8 @@ class DevelopmentGoalResource extends Resource
                             ])
                             ->required()
                             ->native(false)
-                            ->default('ru'),
+                            ->default('ru')
+                            ->disabled(),
 
                         Forms\Components\TextInput::make('title')
                             ->label('Заголовок')

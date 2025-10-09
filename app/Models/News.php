@@ -24,6 +24,7 @@ class News extends Model
         'category_id',
         'date',
         'status',
+        'views',
         'created_at',
         'created_by',
         'updated_by'

@@ -35,6 +35,9 @@
                                         <span class="text-gray-500 text-sm">
                                             <i class="far fa-calendar mr-1"></i>{{ $news->date?->format('d.m.Y') }}
                                         </span>
+                                        <span class="text-gray-500 text-sm">
+                                            <i class="far fa-eye mr-1"></i>{{ number_format($news->views, 0, ',', ' ') }}
+                                        </span>
                                     </div>
                                     
                                     <!-- Десктопная версия -->
@@ -45,6 +48,9 @@
                                             </span>
                                             <span class="text-gray-500 text-sm">
                                                 <i class="far fa-calendar mr-1"></i>{{ $news->date?->format('d.m.Y') }}
+                                            </span>
+                                            <span class="text-gray-500 text-sm">
+                                                <i class="far fa-eye mr-1"></i>{{ number_format($news->views, 0, ',', ' ') }}
                                             </span>
                                         </div>
                                         <div class="text-right">

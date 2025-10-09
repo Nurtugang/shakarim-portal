@@ -469,6 +469,10 @@
         .desktop-dev-tab-button:hover:not(.active) {
             color: #003163;
         }
+        
+        .dev-tab-content a {
+            color: #0000EE;
+        }
 
         /* Table responsive */
         @media (max-width: 768px) {
