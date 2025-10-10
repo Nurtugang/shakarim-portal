@@ -15,7 +15,7 @@ class RectorBlogController extends Controller
 
         $questions = RectorQuestion::where('is_published', true)
             ->latest()
-            ->take(5)
+            ->take(50)
             ->get();
 
         return view('rector.blog', compact('posts', 'questions'));

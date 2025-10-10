@@ -267,7 +267,7 @@
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Graduate employment rate') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">{{ $students_count }}</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2"></div> 
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Students') }}</div>
                         </div>
                     </div>

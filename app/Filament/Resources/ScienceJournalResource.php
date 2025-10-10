@@ -67,7 +67,7 @@ class ScienceJournalResource extends Resource
                                     ]),
                                 Tabs\Tab::make('Казахский')
                                     ->schema([
-                                        TextInput::make('name_kz')
+                                        TextInput::make('name_kk')
                                             ->label('Название (KZ)')
                                             ->required(),
                                     ]),
@@ -121,9 +121,15 @@ class ScienceJournalResource extends Resource
                 TextColumn::make('number')
                     ->label('Номер выпуска')
                     ->searchable(),
-                TextColumn::make('filename')
-                    ->label('Файл')
-                    ->url(fn (ScienceJournal $record): ?string => $record->filename ? Storage::url('science-journals/' . $record->filename) : null, true)
+            TextColumn::make('filename')
+                ->label('Файл')
+                ->formatStateUsing(fn () => 'Скачать файл') 
+                ->url(function (ScienceJournal $record): ?string {
+                    if ($record->filename) {
+                        return Storage::url($record->filename);
+                    }
+                    return null;
+                }, true)
             ])
             ->filters([
                 //
