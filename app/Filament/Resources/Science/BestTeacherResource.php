@@ -105,8 +105,9 @@ class BestTeacherResource extends Resource
                         FileUpload::make('image')
                             ->label('Фотография')
                             ->image()
+                            ->columnSpanFull()
                             ->directory('best-teachers')
-                            ->columnSpanFull(),
+                            ->imageEditor(),
                     ]),
             ]);
     }

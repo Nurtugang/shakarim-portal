@@ -57,7 +57,7 @@ a:hover {
     line-height: 29px;
     font-size: 16px;
     padding: 12px 25px;
-    background-color: #003163;
+    background-color: #4f6392;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -196,7 +196,7 @@ ol.organizational-chart > li > ol:after {
 }
 
 ol.organizational-chart > li > ol > li > div {
-    background-color: #003163;
+    background-color: #4f6392;
 }
 
 ol.organizational-chart > li > ol > li > div h2 {

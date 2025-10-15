@@ -123,7 +123,7 @@
                             <i class="fas fa-trophy mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Награды') }}</span>
                         </a>
-                        <a href="https://hub.shakarim.kz/shakarim_hub.apk" target="_blank" 
+                        <a href="https://hub.shakarim.kz/shakarim-university.apk" target="_blank" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fa-brands fa-android mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">Android App</span>

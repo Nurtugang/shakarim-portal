@@ -42,6 +42,11 @@ class PageResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Страницы';
 
+    public static function canViewAny(): bool
+    {
+        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::PRESS]);
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -51,7 +56,7 @@ class PageResource extends Resource
                     Tabs::make('Tabs')
                       ->tabs([
                         Tabs\Tab::make('kz')
-                        ->schema([
+                        ->schema([      
                             Forms\Components\TextInput::make('title_kk')
                             ->label('Заголовок(kz)')
                             ->required()
@@ -65,7 +70,7 @@ class PageResource extends Resource
                                ->directory('/pages')
                                ->columnSpanFull()
                         
-    ]),
+                    ]),
                         Tabs\Tab::make('ru')
                         ->schema([
                             Forms\Components\TextInput::make('title_ru')
@@ -74,7 +79,7 @@ class PageResource extends Resource
                             ->maxLength(255),
                         TiptapEditor::make('content_ru')
                         ->output(TiptapOutput::Json)
-                        ->label('Контнет(ru)')
+                        ->label('Контент(ru)')
                                    ->required()
                                    ->directory('/pages')
                                    ->columnSpanFull(),
@@ -92,7 +97,7 @@ class PageResource extends Resource
                             ->maxLength(255),
                         TiptapEditor::make('content_en')
                         ->output(TiptapOutput::Json)
-                        ->label('Контнет(en)')
+                        ->label('Контент(en)')
                             ->required()
                             ->directory('/pages')
                             ->columnSpanFull(),
@@ -109,7 +114,7 @@ class PageResource extends Resource
                             ->maxLength(255),
                         TiptapEditor::make('content_cn')
                         ->output(TiptapOutput::Json)
-                        ->label('Контнет(cn)')
+                        ->label('Контент(cn)')
                             ->directory('/pages')
                             ->columnSpanFull(),
                             Forms\Components\Actions::make([

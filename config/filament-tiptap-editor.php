@@ -37,7 +37,6 @@ return [
     |
     */
     'media_action' => FilamentTiptapEditor\Actions\MediaAction::class,
-    //    'media_action' => Awcodes\Curator\Actions\MediaAction::class,
     'edit_media_action' => FilamentTiptapEditor\Actions\EditMediaAction::class,
     'link_action' => FilamentTiptapEditor\Actions\LinkAction::class,
     'grid_builder_action' => FilamentTiptapEditor\Actions\GridBuilderAction::class,
@@ -101,12 +100,6 @@ return [
     'extensions_script' => null,
     'extensions_styles' => null,
     'extensions' => [
-        // [
-        //     'id' => 'iframe',
-        //     'name' => 'iFrame',
-        //     'button' => 'tools.iframe',
-        //     'parser' => iFrame::class
-        // ],
         [
             'id' => 'pdfViewer', // Должно совпадать с 'name' в JS (PdfViewerNode.name) и PHP (PdfViewerPhpNode::$name)
             'name' => 'PDF Viewer', // Отображаемое имя (не используется напрямую, но полезно)
@@ -122,10 +115,6 @@ return [
     |
     | Possibility to define presets colors in ColorPicker.
     | Only hexadecimal value
-    'preset_colors' => [
-        'primary' => '#f59e0b',
-        //..
-    ]
     |
     */
     'preset_colors' => [],
