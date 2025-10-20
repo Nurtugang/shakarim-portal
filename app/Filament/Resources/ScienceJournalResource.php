@@ -16,7 +16,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile; // Импортируем класс
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ScienceJournalResource extends Resource
 {
@@ -126,7 +126,7 @@ class ScienceJournalResource extends Resource
                 ->formatStateUsing(fn () => 'Скачать файл') 
                 ->url(function (ScienceJournal $record): ?string {
                     if ($record->filename) {
-                        return Storage::url($record->filename);
+                        return Storage::url('science-journals/' . $record->filename); 
                     }
                     return null;
                 }, true)

@@ -28,4 +28,16 @@ class EditScienceJournal extends EditRecord
 
         return $data;
     }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $directory = 'science-journals';
+        $field = 'filename';
+
+        if (!empty($data[$field]) && str_starts_with($data[$field], $directory . '/')) {
+            $data[$field] = substr($data[$field], strlen($directory) + 1);
+        }
+        
+        return $data;
+    }
 }

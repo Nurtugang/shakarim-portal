@@ -263,11 +263,11 @@
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Years of experience') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">95%</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">90%</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Graduate employment rate') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2"></div> 
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">6539</div> 
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Students') }}</div>
                         </div>
                     </div>
@@ -290,19 +290,19 @@
 
                         <div class="flex flex-col items-start justify-between md:flex-row">
                             <div class="border-t border-gray-200 pt-3 md:pt-4">
-                                <div class="text-lg md:text-2xl font-heading font-bold text-shakarim-blue mb-1">{{ __('QS Central Asia Rankings') }}</div>
+                                <div class="text-lg md:text-2xl font-heading font-bold text-shakarim-blue mb-1">{{ __('QS Sustainability Rankings') }}</div>
                                 <div class="text-xs md:text-sm font-body text-gray-600 mb-2">{{ __('In 2025 ranking') }}</div>
                                 <div class="text-xs md:text-sm font-body text-gray-600"></div>
                             </div>
-                            <div class="text-2xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-1 md:mt-0 md:text-right">301-350</div>
+                            <div class="text-2xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-1 md:mt-0 md:text-right">1351-1400</div>
                         </div>
 
                         <div class="flex flex-col items-start justify-between md:flex-row">
                             <div class="border-t border-gray-200 pt-3 md:pt-4">
-                                <div class="text-lg md:text-2xl font-heading font-bold text-shakarim-blue mb-1">{{ __('AD Scientific Index ranking') }}</div>
+                                <div class="text-lg md:text-2xl font-heading font-bold text-shakarim-blue mb-1">{{ __('UI Green Metric') }}</div>
                                 <div class="text-xs md:text-sm font-body text-gray-600">{{ __('In Kazakhstan') }}</div>
                             </div>
-                            <div class="text-2xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-1 md:mt-4">#15</div>
+                            <div class="text-2xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-1 md:mt-4">#8</div>
                         </div>
 
                     </div>
