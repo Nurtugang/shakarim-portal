@@ -21,6 +21,18 @@
     <!-- Organizations Grid -->
     <section class="bg-white py-6 md:py-12">
         <div class="max-w-7xl mx-auto px-4">
+            {{-- ЗАГОЛОВОК СТРАНИЦЫ --}}
+            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-6 md:mb-8">
+                {{ request()->is('*/organization/science') ? __('Научные студенческие кружки') : __('Студентческие организации') }}
+            </h1>
+
+            {{-- ИНФОРМАЦИЯ, КОТОРАЯ ОТОБРАЖАЕТСЯ ТОЛЬКО НА СТРАНИЦЕ 'science' --}}
+            @if(request()->is('*/organization/science'))
+                <div class="prose max-w-none mb-8 md:mb-10">
+                    <p>{{ __('С целью привлечения студентов к научно-исследовательской деятель­ности на кафедрах университета действуют кружки по научным интересам. В настоящее время функционируют 30 студенческих научных кружков и объединений, занимаясь в которых студенты приобретают навыки научного поиска и работы по своим квалификационным направлениям.') }}</p>
+                </div>
+            @endif
+
             @if($organizations->isEmpty())
                 <div class="text-center py-12">
                     <i class="fas fa-inbox text-6xl text-gray-300 mb-4"></i>

@@ -324,33 +324,33 @@
                                 </div>
                             </div>
 
-                            <!-- Молдакасимов Ербол Бахтиярұлы -->
+                            <!-- Махмутова Меруерт Маутханқызы -->
                             <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="{{ Storage::url('board/5102f825f11ede3cd8184be31333e251.webp') }}" 
-                                                alt="{{ __('Молдакасимов Ербол Бахтиярұлы') }}" 
-                                                class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
-                                            <button onclick="toggleDetails('moldakasimov-details')" 
-                                                class="mt-3 md:hidden inline-flex items-center px-3 py-1.5 bg-shakarim-blue text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
+                                            <img src="{{ Storage::url('board/Makhmutova.webp') }}" 
+                                                 alt="{{ __('Махмутова Меруерт Маутханқызы') }}" 
+                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
+                                            <button onclick="toggleDetails('makhmutova-details')" 
+                                                    class="mt-3 md:hidden inline-flex items-center px-3 py-1.5 bg-shakarim-blue text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
                                                 <span>{{ __('Подробнее') }}</span>
-                                                <svg class="w-3 h-3 ml-1 transform transition-transform" id="moldakasimov-arrow-mobile" fill="currentColor" viewBox="0 0 20 20">
+                                                <svg class="w-3 h-3 ml-1 transform transition-transform" id="makhmutova-arrow-mobile" fill="currentColor" viewBox="0 0 20 20">
                                                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
                                                 </svg>
                                             </button>
                                         </div>
                                         <div class="flex-grow">
                                             <h3 class="text-sm md:text-xl font-bold text-shakarim-blue mb-2 text-left">
-                                                {{ __('Молдакасимов Ербол Бахтиярұлы') }}
+                                                {{ __('Махмутова Меруерт Маутханқызы') }}
                                             </h3>
                                             <p class="text-sm md:text-lg font-medium text-gray-700 mb-4 text-left">
                                                 {{ __('Директорлар кеңесінің мүшесі, тәуелсіз директор') }}
                                             </p>
-                                            <button onclick="toggleDetails('moldakasimov-details')" 
-                                                class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-blue-700 transition-colors desktop-only">
+                                            <button onclick="toggleDetails('makhmutova-details')" 
+                                                    class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-blue-700 transition-colors desktop-only">
                                                 <span>{{ __('Подробнее') }}</span>
-                                                <svg class="w-4 h-4 ml-2 transform transition-transform" id="moldakasimov-arrow" fill="currentColor" viewBox="0 0 20 20">
+                                                <svg class="w-4 h-4 ml-2 transform transition-transform" id="makhmutova-arrow" fill="currentColor" viewBox="0 0 20 20">
                                                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
                                                 </svg>
                                             </button>
@@ -358,25 +358,27 @@
                                     </div>
                                     
                                     <!-- Detailed Information -->
-                                    <div id="moldakasimov-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                    <div id="makhmutova-details" class="hidden mt-6 pt-6 border-t border-gray-200">
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
                                                 <ul class="space-y-2 text-sm text-gray-700 list-disc list-inside">
-                                                    <li>{{ __('Әл-Фараби атындағы ҚазҰУ, Алматы қ. (2006). («Батыс Еуропа» аймағы бойынша мамандық, Аймақтану бакалавры (үздік диплом)') }}</li>
-                                                    <li>{{ __('Иорк университеті, Ұлыбритания (2008). «Мемлекеттік басқару» мамандығының магистрі') }}</li>
+                                                    <li>{{ __('С.М. Киров атындағы Қазақ мемлекеттік университетінің физика факультеті (1985).') }}</li>
+                                                    <li>{{ __('ҚР Президенті жанындағы Ұлттық мемлекеттік басқару жоғары мектебі (1997).') }}</li>
+                                                    <li>{{ __('Қазақ мемлекеттік басқару академиясында бюджетаралық қатынастар бойынша диссертация қорғады (2000).') }}</li>
                                                 </ul>
                                             </div>
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Еңбек өтілі') }}</h4>
                                                 <ul class="space-y-1 text-sm text-gray-700 list-disc list-inside">
-                                                    <li>{{ __('«ҚР Президенті жанындағы Мемлекеттік басқару академиясы» РМҚК. Аға сарапшы, сыртқы байланыстар қызметі басшысының орынбасары (2008-2012)') }}</li>
-                                                    <li>{{ __('ҚР БҒМ «Ақпараттық-талдау орталығы» АҚ. Білім беру менеджментін зерттеу басқармасының жетекші талдаушысы, ТжКБ жобалары басқармасының бастығы, халықаралық салыстырмалы зерттеулер Департаментінің директоры (2012-2016)') }}</li>
-                                                    <li>{{ __('ҚР ҰЭМ «Экономикалық зерттеулер институты» АҚ. Жобаларды үйлестірушісі, кәсіпкерлікті дамыту орталығының директоры м. а. (2016)') }}</li>
-                                                    <li>{{ __('ҚР ПМК, ҚР ЕХӘҚМ, ҚР АШМ, БҰҰДБ, Boston Consulting Group және т. б. тапсырысы бойынша жобаларда білім беру, еңбек нарығы, адами капиталды дамыту саласында тәуелсіз зерттеуші (2016-2018)') }}</li>
-                                                    <li>{{ __('«BTS Digital» ЖШС. Кеңесші, білім беру орталығының зерттеу жетекшісі (2018-2021)') }}</li>
-                                                    <li>{{ __('ҚР БҒМ «Болон процесі және академиялық ұтқырлық орталығы» ШЖҚ РМК Директоры (2021-2022)') }}</li>
-                                                    <li>{{ __('Қазақстан Республикасы халқының табысын арттырудың 2025 жылға дейінгі бағдарламасы шеңберінде білім беру, еңбек нарығы саласындағы тәуелсіз зерттеуші, жоба бойынша әдіснаманың форсайты (2022 жылғы сәуірден бастап)') }}</li>
+                                                    <li>{{ __('Алматыдағы Public Policy Research Center (PPRC) директоры және құрылтайшысы.') }}</li>
+                                                    <li>{{ __('Үкіметке және халықаралық ұйымдарға (АДБ, Дүниежүзілік банк, ХВҚ, БҰҰДБ, ХКҰ, ЭСКАТО, ЮНИСЕФ, FAO, UN Women, ЭЫДҰ, БҰҰ Экономикалық және әлеуметтік мәселелер департаменті, Windrush Ventures Limited (Tony Blair кеңсесі ретінде сауда жасайтын), Қазақстандағы Еуропалық Одақ Делегациясы және т.б.) кеңес береді.') }}</li>
+                                                    <li>{{ __('Ұлттық экономика министрлігі, Ұлттық Банк және Қаржы нарығын реттеу және дамыту агенттігі жанындағы Сараптамалық кеңестердің мүшесі.') }}</li>
+                                                    <li>{{ __('Премьер-министрдің төрағалығымен Экономика жөніндегі сараптамалық кеңестің мүшесі (2016-2019).') }}</li>
+                                                    <li>{{ __('Қазақстан Республикасы Қауіпсіздік Кеңесі жанындағы Сараптамалық кеңестің мүшесі (2011-2016).') }}</li>
+                                                    <li>{{ __('ҚР Үкіметі жанындағы Экономикалық консультанттар кеңесінің мүшесі (2008-2012).') }}</li>
+                                                    <li>{{ __('Эрнст энд Янг өткізетін "Жыл кәсіпкері" байқауының ұлттық қазылар алқасының мүшесі.') }}</li>
+                                                    <li>{{ __('Экономикалық саясат, бюджеттік реформалар мен мұнай кірістері, жергілікті басқаруды реформалау мәселелеріне арналған көптеген еңбектерді жариялады.') }}</li>
                                                 </ul>
                                             </div>
                                         </div>
