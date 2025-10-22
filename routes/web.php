@@ -38,7 +38,9 @@ use App\Http\Controllers\DevelopmentGoalsController;
 
 use App\Models\Award;
 use App\Models\PageFile;
-
+use App\Models\Nirs\NirsMainContent;
+use App\Models\Nirs\NirsConference;
+use App\Models\Nirs\NirsItem;
 
 Route::post('language', function (Request $request) {
     \Illuminate\Support\Facades\App::setLocale($request->locale);
@@ -86,7 +88,19 @@ Route::group([
     Route::get('/science/aspirants', [AspirantController::class, 'index'])->name('science.aspirants');
     Route::get('/science/projects', [ScientificProjectsController::class, 'index'])->name('science.projects.index');
     Route::get('/science/projects/{id}', [ScientificProjectsController::class, 'show'])->name('science.projects.show');
+    Route::get('/science/srws', function () {
+        $mainContent = \App\Models\Nirs\NirsMainContent::find(1);
 
+        $conferences = \App\Models\Nirs\NirsConference::orderBy('created_at', 'desc')->get();
+
+        $itemsByYear = \App\Models\Nirs\NirsItem::orderBy('year', 'desc')
+                                                ->orderBy('created_at', 'desc')
+                                                ->get()
+                                                ->groupBy('year');
+
+        return view('science.srws.index', compact('mainContent', 'conferences', 'itemsByYear'));
+        
+    })->name('science.srws.index');
     Route::get('/awards', function () {
         $groupedAwards = Award::orderBy('sort')->orderBy('year', 'desc')->get()->groupBy(['category', 'reward']);
 
