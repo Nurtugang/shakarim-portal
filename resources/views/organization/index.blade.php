@@ -41,13 +41,13 @@
             @else
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
                     @foreach($organizations as $org)
-                        <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-200">
+                        <a href="{{ route('organization.show', ['locale' => $locale, 'organization' => $org->id]) }}" class="block bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-200 group">
                             <!-- Organization Image -->
                             @if($org->hasImage())
                                 <div class="h-36 md:h-48 overflow-hidden bg-gray-100">
                                     <img src="{{ $org->getImageUrl() }}" 
-                                         alt="{{ $org->{'name_' . $locale} }}"
-                                         class="w-full h-full object-contain hover:scale-105 transition-transform duration-300">
+                                        alt="{{ $org->{'name_' . $locale} }}"
+                                        class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
                                 </div>
                             @else
                                 <div class="h-36 md:h-48 bg-gradient-to-br from-shakarim-blue to-blue-600 flex items-center justify-center">
@@ -68,7 +68,7 @@
                                             <div class="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 overflow-hidden rounded-full border-2 border-shakarim-blue">
                                                 <img src="{{ $org->getDeanImageUrl() }}" 
                                                     alt="{{ $org->{'dean_' . $locale} }}"
-                                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                             </div>
                                         @else
                                             <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
@@ -96,26 +96,19 @@
                                     @if($org->phone)
                                         <div class="flex items-center text-xs md:text-sm text-gray-700">
                                             <i class="fas fa-phone text-shakarim-blue mr-2 w-3 md:w-4 text-xs"></i>
-                                            <a href="tel:{{ $org->phone }}" class="hover:text-shakarim-blue transition-colors truncate">
-                                                {{ $org->phone }}
-                                            </a>
+                                            <span class="truncate">{{ $org->phone }}</span>
                                         </div>
                                     @endif
 
                                     @if($org->insta)
                                         <div class="flex items-center text-xs md:text-sm text-gray-700">
                                             <i class="fab fa-instagram text-shakarim-blue mr-2 w-3 md:w-4 text-xs"></i>
-                                            <a href="https://www.instagram.com/{{ ltrim($org->insta, '@') }}" 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                            class="hover:text-shakarim-blue transition-colors truncate">
-                                                {{ $org->insta }}
-                                            </a>
+                                            <span class="truncate">{{ $org->insta }}</span>
                                         </div>
                                     @endif
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             @endif

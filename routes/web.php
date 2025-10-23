@@ -41,6 +41,7 @@ use App\Models\PageFile;
 use App\Models\Nirs\NirsMainContent;
 use App\Models\Nirs\NirsConference;
 use App\Models\Nirs\NirsItem;
+use App\Models\Organization;
 
 Route::post('language', function (Request $request) {
     \Illuminate\Support\Facades\App::setLocale($request->locale);
@@ -128,6 +129,12 @@ Route::group([
 
     Route::get('/organization/science', [OrganizationController::class, 'science'])->name('organization.science');
     Route::get('/organization/social', [OrganizationController::class, 'social'])->name('organization.social');
+    Route::get('/organization/{organization:id}', function ($locale, App\Models\Organization $organization) {
+        return view('organization.show', [
+            'organization' => $organization,
+            'locale' => $locale
+        ]);
+    })->name('organization.show');
 
     Route::get('/under-development', function (string $locale) {
         return view('under-development.index');
