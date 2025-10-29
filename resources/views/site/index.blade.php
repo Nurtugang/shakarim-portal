@@ -266,8 +266,25 @@
                             <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">90%</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Graduate employment rate') }}</div>
                         </div>
+                        @php
+                            $studentCount = 6554;
+                            try {
+                                $response = Illuminate\Support\Facades\Http::timeout(5)->get('https://api.semgu.kz/dashboard/students/index.php');
+
+                                if ($response->successful()) {
+                                    $data = $response->json();
+                                    if (isset($data['fulldata']['full'])) {
+                                        $studentCount = $data['fulldata']['full'];
+                                    }
+                                }
+                            } catch (\Exception $e) {
+                            }
+                        @endphp
+
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">6539</div> 
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">
+                                {{ $studentCount }}
+                            </div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Students') }}</div>
                         </div>
                     </div>
