@@ -85,6 +85,7 @@ class NewsResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Изображение')
                             ->image()
+                            ->imageEditor() 
                             ->disk('public')
                             ->directory('news')
                             ->visibility('public'),
