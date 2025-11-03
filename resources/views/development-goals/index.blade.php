@@ -212,7 +212,8 @@
                                 <a href="{{ $doc->getFileUrl() }}" 
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm">
+                                class="inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm"
+                                style="color: white !important;">
                                     <i class="fas fa-external-link-alt mr-2"></i>
                                     {{ __('Открыть') }}
                                 </a>
@@ -249,7 +250,8 @@
                                 <a href="{{ $report->getFileUrl() }}" 
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition text-sm">
+                                class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition text-sm"
+                                style="color: white !important;">
                                     <i class="fas fa-external-link-alt mr-2"></i>
                                     {{ __('Открыть') }}
                                 </a>
@@ -303,6 +305,14 @@
                                             <li>or use any other acceptable method of informing Shakarim University employees.</li>
                                         </ul>
                                     </div>
+                                    <a href="{{ Storage::url('dev_documents/Modern%20Slavery%20Policy.pdf') }}" 
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm"
+                                        style="color: white !important;">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    {{ __('Открыть') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -363,6 +373,14 @@
                                             <li>acquisition of procurement items tending towards the minimum environmental impact, the production of which is carried out with a the use of environmentally friendly, recyclable raw materials.</li>
                                         </ul>
                                     </div>
+                                    <a href="{{ Storage::url('dev_documents/Purchasing%20Policy.pdf') }}" 
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm"
+                                        style="color: white !important;">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    {{ __('Открыть') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -381,7 +399,7 @@
                             <div id="content-edi" class="hidden mt-1 rounded-b-lg overflow-hidden">
                                 <div class="p-6 bg-white border border-t-0 border-gray-200">
                                     <div class="text-gray-700 space-y-4 text-base">
-                                        <p>NJSC `University named after Shakarim&rsquo; was developed in accordance with the following Concept of Family and Gender Policy in the Republic of Kazakhstan until 2030.</p>
+                                        <p>NJSC «Shakarim University» was developed in accordance with the following Concept of Family and Gender Policy in the Republic of Kazakhstan until 2030.</p>
                                         <p>The implementation of the policy will contribute to the creation of conditions for the implementation of a favorable environment in which every employee and student has equal access to opportunities, participates in making decisions concerning their own lives without discrimination, regardless of origin, gender and health status. Shakarim University accepts diversity as a necessary condition for finding the best solutions to the country and global problems of the modern world.</p>
                                         
                                         <p><strong>To protect and improve equality, diversity and inclusion, Shakarim University's actions are aimed at:</strong></p>
@@ -416,8 +434,16 @@
                                         <p><strong>Monitoring and Evaluation:</strong> to monitor and evaluate its EDI efforts to ensure they are effective and to make necessary changes. Regular evaluations and feedback from students, staff and other stakeholders will help identify areas for improvement and develop specific actions.</p>
                                         
                                         <h4 class="text-lg font-bold pt-4">Consultation.</h4>
-                                        <p>The University seeks to encourage the active engagement of students and staff in promoting equality, diversity and inclusion across a range of university functions, using feedback from students and employees, including potential complaints, to determine how the College's commitment to equity, diversity and inclusion can be more effectively achieved.</p>
+                                        <p>The University seeks to encourage the active engagement of students and staff in promoting equality, diversity and inclusion across a range of university functions, using feedback from students and employees, including potential complaints, to determine how the University's commitment to equity, diversity and inclusion can be more effectively achieved.</p>
                                     </div>
+                                    <a href="{{ Storage::url('dev_documents/Equality,%20Diversity%20and%20Inclusivity%20Policy.pdf') }}" 
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm"
+                                        style="color: white !important;">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    {{ __('Открыть') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
