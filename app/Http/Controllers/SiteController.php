@@ -20,7 +20,7 @@ class SiteController extends Controller
         $news = \App\Models\News::select('id', 'title_'.app()->getLocale(), 'content_'.app()->getLocale(),'image', 'alias', 'date' )
             ->orderBy('id', 'desc')
             ->where('status', 1)
-            ->limit(3)
+            ->limit(4)
             ->get();
 
         $events = \App\Models\Event::orderBy('start_date')
@@ -31,7 +31,7 @@ class SiteController extends Controller
         $announcements = \App\Models\Announcement::where('status', 1)
             ->where('language', app()->getLocale())
             ->orderBy('date', 'desc')
-            ->limit(3)
+            ->limit(4)
             ->get();
 
         $welcome = TextWidget::query()->where('key','welcome')->first();
