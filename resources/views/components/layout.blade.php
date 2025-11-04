@@ -29,7 +29,10 @@
                     </button>
                     <a href="https://aisana.shakarim.kz" target="_blank" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
                         <span class="text-gray-600"><i class="fas fa-share-square mr-1"></i> AI-Sana</span>
-                    </a>               
+                    </a>     
+                    <a href="https://agrohub.shakarim.kz/" target="_blank" class="text-gray-600 hover:text-shakarim-blue transition-colors duration-150">
+                        <span class="text-gray-600"><i class="fa-solid fa-seedling"></i> AgroHub</span>
+                    </a>             
                 </div>
 
                 <div class="block md:hidden">
