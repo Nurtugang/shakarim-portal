@@ -16,7 +16,7 @@ class News extends Model
         'alias',
         'image',
         'content_kk',
-        'content_ru', 
+        'content_ru',
         'content_en',
         'title_kk',
         'title_ru',
@@ -24,6 +24,7 @@ class News extends Model
         'category_id',
         'date',
         'status',
+        'slider_order',
         'views',
         'created_at',
         'created_by',
@@ -353,6 +354,14 @@ class News extends Model
     public function scopeActive($query)
     {
         return $query->where('status', 1);
+    }
+
+    /**
+     * Новости для слайдера на главной
+     */
+    public function scopeInSlider($query)
+    {
+        return $query->whereNotNull('slider_order')->orderBy('slider_order');
     }
 
     /**

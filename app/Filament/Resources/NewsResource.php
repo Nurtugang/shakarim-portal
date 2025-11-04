@@ -89,6 +89,11 @@ class NewsResource extends Resource
                             ->disk('public')
                             ->directory('news')
                             ->visibility('public'),
+                        Forms\Components\TextInput::make('slider_order')
+                            ->label('Порядок в слайдере')
+                            ->numeric()
+                            ->minValue(1)
+                            ->helperText('Оставьте пустым, чтобы не показывать в слайдере.'),
                         Forms\Components\Select::make('category_id')
                             ->required()
                             ->label('Категория')
@@ -126,6 +131,10 @@ class NewsResource extends Resource
                     ->label('Заголовок')
                     ->searchable()
                     ->limit(30),
+                 Tables\Columns\TextColumn::make('slider_order')
+                    ->label('В слайдере')
+                    ->sortable()
+                    ->formatStateUsing(fn ($state) => $state ? "Да ({$state})" : 'Нет'),
                 Tables\Columns\TextColumn::make('category.label_ru')
                     ->label('Категория'),
                 Tables\Columns\IconColumn::make('status')

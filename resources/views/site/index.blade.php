@@ -4,12 +4,40 @@
 
     <!-- Hero Section with Slider -->
     <section class="relative bg-white overflow-hidden">
-        <div class="slider-container relative h-64 md:h-[400px]">
-            
+        {{-- Возвращаем оригинальную высоту и размеры --}}
+        <div class="slider-container relative" style="height: 560px;">
 
-            <!-- Slide 5: Tokayev -->
-            <div class="slide active absolute inset-0 flex"
-                 style="background-image: url('/img/tokaev.webp'); background-size: cover; background-position: top;">
+            {{-- ======================================================= --}}
+            {{-- 1. ДИНАМИЧЕСКИЕ СЛАЙДЫ ИЗ АДМИНКИ (БУДУТ ПЕРВЫМИ)  --}}
+            {{-- ======================================================= --}}
+            @foreach($sliderNews as $slideNews)
+                <div class="slide @if($loop->first) active @else opacity-0 transition-opacity duration-700 @endif absolute inset-0 flex"
+                    style="background-image: url('{{ $slideNews->getOptimizedImageUrl() }}'); background-size: cover; background-position: center;">
+                    <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
+                        <div class="text-center">
+                            {{-- Возвращаем оригинальный размер шрифта --}}
+                            <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">
+                                {{ $slideNews->{'title_' . app()->getLocale()} }}
+                            </h2>
+                            <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => $slideNews->alias]) }}">
+                                <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
+                                    {{ __('More') }}
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('{{ $slideNews->getOptimizedImageUrl() }}');"></div>
+                </div>
+            @endforeach
+
+            {{-- ================================================= --}}
+            {{-- 2. СТАТИЧНЫЕ СЛАЙДЫ (КАК В ОРИГИНАЛЕ)         --}}
+            {{-- ================================================= --}}
+
+            <!-- Slide: Tokayev -->
+            {{-- Этот слайд будет активным, только если из админки не пришло ни одного слайда --}}
+            <div class="slide @if($sliderNews->isEmpty()) active @else opacity-0 transition-opacity duration-700 @endif absolute inset-0 flex"
+                style="background-image: url('/img/tokaev.webp'); background-size: cover; background-position: top;">
                 <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Message from the Head of State Kassym-Jomart Tokayev to the people of Kazakhstan') }}</h2>
@@ -23,9 +51,9 @@
                 <div class="hidden md:block w-1/2 bg-cover bg-top" style="background-image: url('/img/tokaev.webp');"></div>
             </div>
 
-            <!-- Slide 4: AI Sana -->
+            <!-- Slide: AI Sana -->
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                 style="background-image: url('/img/ai_sana.webp'); background-size: cover; background-position: center;">
+                style="background-image: url('/img/ai_sana.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-slate-700 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Shakarim University AI-Sana Program Results') }}</h2>
@@ -54,13 +82,13 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/ai_sana.webp');">
-                </div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/ai_sana.webp');"></div>
             </div>
 
-            <!-- Slide 1: QS Rankings -->
-            <div class="slide active absolute inset-0 flex"
-                 style="background-image: url('/img/qs_world_university_rankings.webp'); background-size: cover; background-position: center;">
+            <!-- Slide: QS Rankings -->
+            {{-- Я убрал отсюда класс 'active', так как активным должен быть только один слайд при загрузке --}}
+            <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
+                style="background-image: url('/img/qs_world_university_rankings.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                     <div class="text-center">
                         <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('QS World University Rankings') }}</h2>
@@ -76,20 +104,31 @@
                 <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/qs_world_university_rankings.webp');"></div>
             </div>
 
-            <!-- Slide Navigation -->
-            <div class="absolute bottom-3 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-                <button class="slide-dot active w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="0"></button>
-                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="1"></button>
-                <button class="slide-dot w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="2"></button>
-            </div>
 
-            <!-- Navigation Arrows -->
-            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10 hidden md:block" onclick="previousSlide()">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10 hidden md:block" onclick="nextSlide()">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            {{-- ================================================= --}}
+            {{-- 3. НАВИГАЦИЯ (ТОЧКИ И СТРЕЛКИ)                 --}}
+            {{-- ================================================= --}}
+            @php
+                // Считаем общее количество слайдов (динамические + 3 статичных)
+                $totalSlides = $sliderNews->count() + 3;
+            @endphp
+
+            @if($totalSlides > 1)
+                <!-- Slide Navigation -->
+                <div class="absolute bottom-3 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                    @for ($i = 0; $i < $totalSlides; $i++)
+                        <button class="slide-dot @if($i == 0) active @endif w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="{{ $i }}"></button>
+                    @endfor
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10 hidden md:block" onclick="previousSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10 hidden md:block" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            @endif
         </div>
     </section>
 

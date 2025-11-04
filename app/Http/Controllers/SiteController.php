@@ -10,6 +10,13 @@ class SiteController extends Controller
 {
     public function __invoke()
     {
+        $sliderNews = \App\Models\News::query()
+            ->select('id', 'title_'.app()->getLocale(), 'image', 'alias')
+            ->active()
+            ->inSlider()
+            ->take(5)
+            ->get();
+
         $news = \App\Models\News::select('id', 'title_'.app()->getLocale(), 'content_'.app()->getLocale(),'image', 'alias', 'date' )
             ->orderBy('id', 'desc')
             ->where('status', 1)
@@ -35,6 +42,6 @@ class SiteController extends Controller
         // $results = $connection->select('SELECT COUNT(*) AS total FROM students WHERE isStudent = 1');
         // $students_count = $results[0]->total;
 
-        return view('site.index', compact('news','events','welcome','card','schools', 'announcements'/*, 'students_count'*/));
+        return view('site.index', compact('sliderNews','news','events','welcome','card','schools', 'announcements'/*, 'students_count'*/));
     }
 }
