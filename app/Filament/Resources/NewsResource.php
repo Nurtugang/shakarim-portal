@@ -8,6 +8,7 @@ use App\Models\NewsTag;
 use App\Filament\Resources\NewsResource\Pages;
 use App\Filament\Resources\NewsResource\RelationManagers\CommentsRelationManager;
 use Filament\Forms;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
@@ -15,6 +16,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
+use Illuminate\Support\Facades\Storage;
 
 class NewsResource extends Resource
 {
@@ -82,13 +84,56 @@ class NewsResource extends Resource
                     ])->columnSpan(8),
                 Section::make()
                     ->schema([
+                        // --- ГЛАВНОЕ ИЗОБРАЖЕНИЕ ---
+                        Placeholder::make('image_preview')
+                            ->label('Текущее главное изображение')
+                            ->content(function ($record) {
+                                if ($record?->image) {
+                                    return new \Illuminate\Support\HtmlString('<img src="' . Storage::url('news/' . $record->image) . '" style="max-width: 100%; height: auto; border-radius: 8px;">');
+                                }
+                                return new \Illuminate\Support\HtmlString('<div style="padding: 1rem; text-align: center; color: #9ca3af;">Нет изображения</div>');
+                            }),
                         Forms\Components\FileUpload::make('image')
-                            ->label('Изображение')
-                            ->image()
-                            ->imageEditor() 
-                            ->disk('public')
-                            ->directory('news')
-                            ->visibility('public'),
+                            ->label('Загрузить/заменить главное изображение')
+                            ->image()->imageEditor()->disk('public')->directory('news')->visibility('public'),
+
+                        // --- ИЗОБРАЖЕНИЕ ДЛЯ СЛАЙДЕРА ---
+                        Placeholder::make('image_slider_preview')
+                            ->label('Текущее изображение для слайдера')
+                            ->content(function ($record) {
+                                if ($record?->image_slider) {
+                                    return new \Illuminate\Support\HtmlString('<img src="' . Storage::url('news/slider/' . $record->image_slider) . '" style="max-width: 100%; height: auto; border-radius: 8px;">');
+                                }
+                                return new \Illuminate\Support\HtmlString('<div style="padding: 1rem; text-align: center; color: #9ca3af;">Нет изображения</div>');
+                            }),
+                        Forms\Components\FileUpload::make('image_slider')
+                            ->label('Загрузить/заменить изображение для слайдера')
+                            ->image()->imageEditor()->disk('public')->directory('news/slider')->visibility('public'),
+
+                        // --- ИЗОБРАЖЕНИЕ ДЛЯ СПИСКОВ ---
+                        Placeholder::make('image_post_preview')
+                            ->label('Текущее изображение для списков')
+                            ->content(function ($record) {
+                                if ($record?->image_post) {
+                                    // Берем имя файла без расширения
+                                    $nameWithoutExtension = pathinfo($record->image_post, PATHINFO_FILENAME);
+                                    // Строим правильный URL к .webp thumbnail'у
+                                    $imageUrl = Storage::url('news/thumbnails/' . $nameWithoutExtension . '.webp');
+                                    
+                                    // Проверяем, существует ли thumbnail. Если нет, показываем оригинал.
+                                    if (!Storage::disk('public')->exists('news/thumbnails/' . $nameWithoutExtension . '.webp')) {
+                                        $imageUrl = Storage::url('news/' . $record->image_post);
+                                    }
+                                    
+                                    return new \Illuminate\Support\HtmlString('<img src="' . $imageUrl . '" style="max-width: 100%; height: auto; border-radius: 8px;">');
+                                }
+                                return new \Illuminate\Support\HtmlString('<div style="padding: 1rem; text-align: center; color: #9ca3af;">Нет изображения</div>');
+                            }),
+                        Forms\Components\FileUpload::make('image_post')
+                            ->label('Загрузить/заменить изображение для списков')
+                            ->helperText('400x300px')
+                            ->image()->imageEditor()->disk('public')->directory('news')->visibility('public'),
+                        
                         Forms\Components\TextInput::make('slider_order')
                             ->label('Порядок в слайдере')
                             ->numeric()
@@ -115,11 +160,14 @@ class NewsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('image')
+                Tables\Columns\TextColumn::make('image_post')
                     ->label('Фото')
-                    ->formatStateUsing(function ($state, $record) {
+                    ->formatStateUsing(function ($state) {
                         if ($state) {
-                            $imageUrl = $record->getOptimizedImageUrl();
+                            // Берем имя файла без расширения
+                            $nameWithoutExtension = pathinfo($state, PATHINFO_FILENAME);
+                            // Строим правильный URL к .webp thumbnail'у
+                            $imageUrl = Storage::url('news/thumbnails/' . $nameWithoutExtension . '.webp');
                             return '<img src="' . $imageUrl . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">';
                         }
                         return 'Нет фото';

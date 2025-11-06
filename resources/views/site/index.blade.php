@@ -5,14 +5,14 @@
     <!-- Hero Section with Slider -->
     <section class="relative bg-white overflow-hidden">
         {{-- Возвращаем оригинальную высоту и размеры --}}
-        <div class="slider-container relative" style="height: 560px;">
+        <div class="slider-container relative h-64 md:h-[400px]">
 
             {{-- ======================================================= --}}
             {{-- 1. ДИНАМИЧЕСКИЕ СЛАЙДЫ ИЗ АДМИНКИ (БУДУТ ПЕРВЫМИ)  --}}
             {{-- ======================================================= --}}
             @foreach($sliderNews as $slideNews)
                 <div class="slide @if($loop->first) active @else opacity-0 transition-opacity duration-700 @endif absolute inset-0 flex"
-                    style="background-image: url('{{ $slideNews->getOptimizedImageUrl() }}'); background-size: cover; background-position: center;">
+                    style="background-image: url('{{ $slideNews->getSliderImageUrl() }}'); background-size: cover; background-position: center;">
                     <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                         <div class="text-center">
                             {{-- Возвращаем оригинальный размер шрифта --}}
@@ -26,7 +26,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('{{ $slideNews->getOptimizedImageUrl() }}');"></div>
+                    <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('{{ $slideNews->getSliderImageUrl() }}');"></div>
                 </div>
             @endforeach
 
@@ -381,8 +381,8 @@
                                     <div class="w-full md:w-1/3 relative">
                                         <div class="h-32 md:h-full overflow-hidden bg-gray-100">
                                             <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
-                                                @if($item->image)
-                                                    <img src="{{ $item->getThumbnailUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                @if($item->image_post)
+                                                    <img src="{{ $item->getPostThumbnailUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @else
                                                     <img src="{{ asset('img/university_building.webp') }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @endif

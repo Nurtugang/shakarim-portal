@@ -67,7 +67,8 @@
                         <!-- News Image -->
                         @if($news->image)
                             <div class="p-3 md:p-6">
-                                <img src="{{ $news->getOptimizedImageUrl() }}" 
+                                {{-- ВЫЗЫВАЕМ НОВЫЙ МЕТОД 'getMainImageUrl()' --}}
+                                <img src="{{ $news->getMainImageUrl() }}" 
                                     alt="{{ $news->{'title_' . app()->getLocale()} }}" 
                                     class="w-full h-auto max-w-full mx-auto rounded-lg shadow-lg">
                             </div>

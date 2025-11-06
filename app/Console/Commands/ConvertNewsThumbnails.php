@@ -8,36 +8,28 @@ use Illuminate\Support\Facades\Storage;
 
 class ConvertNewsThumbnails extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'news:convert-images
                             {--type=thumbnails : Что создавать: thumbnails, previews или both}
                             {--force : Пересоздать существующие файлы}
                             {--limit= : Ограничить количество обрабатываемых записей}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Создать изображения (thumbnails или previews) для новостей';
+    protected $description = 'Создать изображения (thumbnails или previews) для новостей из поля image_post';
 
-    /**
-     * Execute the console command.
-     */
     public function handle()
     {
+        // СНАЧАЛА СКОПИРУЕМ СТАРЫЕ ЗНАЧЕНИЯ, ЕСЛИ image_post ПУСТОЙ
+        $this->info('Шаг 1: Копируем имена файлов из `image` в `image_post` для старых записей...');
+        $updatedCount = News::whereNotNull('image')->whereNull('image_post')->update(['image_post' => \DB::raw('image')]);
+        $this->info("Скопировано {$updatedCount} записей.");
+        
         $force = $this->option('force');
         $limit = $this->option('limit');
-        $type  = $this->option('type'); // thumbnails | previews | both
+        $type  = $this->option('type');
 
-        $this->info("Начинаем конвертацию изображений новостей в {$type}...");
+        $this->info("Шаг 2: Начинаем создание {$type} из поля `image_post`...");
 
-        // Получаем новости с изображениями
-        $query = News::whereNotNull('image')->where('image', '!=', '');
+        // ИЗМЕНЕНО: Используем `image_post`
+        $query = News::whereNotNull('image_post')->where('image_post', '!=', '');
         if ($limit) {
             $query->limit((int)$limit);
         }
@@ -45,11 +37,11 @@ class ConvertNewsThumbnails extends Command
         $total = $news->count();
 
         if ($total === 0) {
-            $this->warn('Не найдено новостей с изображениями для обработки.');
+            $this->warn('Не найдено новостей с `image_post` для обработки.');
             return 0;
         }
 
-        $this->info("Найдено {$total} новостей с изображениями.");
+        $this->info("Найдено {$total} новостей с `image_post`.");
         $progressBar = $this->output->createProgressBar($total);
         $progressBar->start();
 
@@ -59,17 +51,20 @@ class ConvertNewsThumbnails extends Command
 
         foreach ($news as $newsItem) {
             try {
-                $originalPath = storage_path('app/public/news/' . $newsItem->image);
+                // ИЗМЕНЕНО: Используем `image_post`
+                $originalPath = storage_path('app/public/news/' . $newsItem->image_post);
                 if (!file_exists($originalPath)) {
                     $this->newLine();
-                    $this->warn("Файл не найден: {$newsItem->image} (ID: {$newsItem->id})");
+                    $this->warn("Файл не найден: {$newsItem->image_post} (ID: {$newsItem->id})");
                     $skipped++;
                     $progressBar->advance();
                     continue;
                 }
 
-                $nameWithoutExtension = pathinfo($newsItem->image, PATHINFO_FILENAME);
+                // ИЗМЕНЕНО: Используем `image_post`
+                $nameWithoutExtension = pathinfo($newsItem->image_post, PATHINFO_FILENAME);
 
+                // ... остальная логика остается той же ...
                 $targets = [];
                 if ($type === 'thumbnails' || $type === 'both') {
                     $targets['thumbnails'] = 'news/thumbnails/' . $nameWithoutExtension . '.webp';
@@ -88,13 +83,15 @@ class ConvertNewsThumbnails extends Command
 
                     if ($mode === 'thumbnails') {
                         $newsItem->createThumbnail();
-                    } elseif ($mode === 'previews') {
-                        $newsItem->createPreview();
-                    }
+                    } 
+                    // Мы удалили createPreview, поэтому эту часть можно закомментировать или удалить
+                    // elseif ($mode === 'previews') {
+                    //     $newsItem->createPreview();
+                    // }
 
                     if (!Storage::disk('public')->exists($path)) {
                         $this->newLine();
-                        $this->error("Не удалось создать {$mode} для: {$newsItem->image} (ID: {$newsItem->id})");
+                        $this->error("Не удалось создать {$mode} для: {$newsItem->image_post} (ID: {$newsItem->id})");
                         $errors++;
                         $created = false;
                     }
@@ -106,7 +103,7 @@ class ConvertNewsThumbnails extends Command
 
             } catch (\Exception $e) {
                 $this->newLine();
-                $this->error("Ошибка при обработке {$newsItem->image} (ID: {$newsItem->id}): " . $e->getMessage());
+                $this->error("Ошибка при обработке {$newsItem->image_post} (ID: {$newsItem->id}): " . $e->getMessage());
                 $errors++;
             }
 
@@ -115,17 +112,11 @@ class ConvertNewsThumbnails extends Command
 
         $progressBar->finish();
         $this->newLine(2);
-
-        // Выводим статистику
+        
         $this->info("Конвертация завершена!");
         $this->table(
             ['Статус', 'Количество'],
-            [
-                ['Обработано', $processed],
-                ['Пропущено', $skipped],
-                ['Ошибок', $errors],
-                ['Всего', $total]
-            ]
+            [['Обработано', $processed], ['Пропущено', $skipped], ['Ошибок', $errors], ['Всего', $total]]
         );
 
         return $errors === 0 ? 0 : 1;

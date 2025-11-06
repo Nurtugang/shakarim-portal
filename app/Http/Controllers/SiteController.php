@@ -17,7 +17,7 @@ class SiteController extends Controller
             ->take(5)
             ->get();
 
-        $news = \App\Models\News::select('id', 'title_'.app()->getLocale(), 'content_'.app()->getLocale(),'image', 'alias', 'date' )
+        $news = \App\Models\News::select('id', 'title_'.app()->getLocale(), 'content_'.app()->getLocale(),'image', 'image_post', 'alias', 'date' )
             ->orderBy('id', 'desc')
             ->where('status', 1)
             ->limit(4)
