@@ -55,7 +55,7 @@
             <div class="structure-header justify-content-center align-items-center">
                 <div class="d-flex flex-column align-items-center relative">
                     @foreach ($leftChildren as $child_l)
-                        <a href="{{ $child_l->getUrl() }}" @if($child_l->isExternalLink()) target="_blank" rel="noopener noreferrer" @endif @class(['pb-2 w-100 position-relative px-4' => count($leftChildren) === 1])>
+                        <a href="{{ $child_l->getUrl() }}" @if($child_l->isExternalLink()) target="_blank" rel="noopener noreferrer" @endif @class(['pl-4 w-100 position-relative' => count($leftChildren) === 1])>
                             <button class="main-button d-block w-100">{{ $child_l->{'title_'.app()->getLocale()} }}</button>
                         </a>
                     @endforeach
@@ -65,7 +65,7 @@
                 </a>
                 <div class="d-flex flex-column align-items-center">
                     @foreach ($rightChildren as $child_r)
-                        <a href="{{ $child_r->getUrl() }}" @if($child_r->isExternalLink()) target="_blank" rel="noopener noreferrer" @endif @class(['pb-2 w-100 position-relative px-4 bottom-inline-center' => count($leftChildren) === 1])>
+                        <a href="{{ $child_r->getUrl() }}" @if($child_r->isExternalLink()) target="_blank" rel="noopener noreferrer" @endif @class(['pr-4 w-100 position-relative bottom-inline-center' => count($leftChildren) === 1])>
                             <button style="z-index:10;" class="position-relative main-button d-block w-100">{{ $child_r->{'title_'.app()->getLocale()} }}</button>
                         </a>
                     @endforeach
