@@ -27,7 +27,11 @@
                                 <!-- Логотип школы -->
                                 <div class="flex-shrink-0 mx-auto lg:mx-0">
                                     <div class="w-48 h-48 bg-white rounded-lg flex items-center justify-center overflow-hidden">
-                                        <img src="{{ Storage::url($school['logo']) }}" alt="Логотип {{ $school['name'] }}" class="max-w-full max-h-full object-contain">
+                                        <img src="{{ Storage::url($school['logo']) }}" 
+                                             alt="Логотип {{ $school['name'] }}" 
+                                             class="max-w-full max-h-full object-contain"
+                                             loading="lazy"
+                                             decoding="async">
                                     </div>
                                 </div>
                                 

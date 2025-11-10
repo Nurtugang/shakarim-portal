@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Academy;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 
 class AcademySchoolsController extends Controller
 {
@@ -65,48 +66,76 @@ class AcademySchoolsController extends Controller
         $locale = app()->getLocale();
         $lang = $locale === 'kz' ? 'kz' : ($locale === 'en' ? 'en' : 'ru');
         
-        $schools = [];
-        
-        foreach ($this->faculties as $faculty) {
-            try {
-                $response = Http::timeout(5)->get(env('SHAKARIM_API_URL') . '/site/faculties', [
-                    'facultyid' => $faculty['id'],
-                    'lang' => $lang
-                ]);
-                
-                if ($response->successful()) {
-                    $data = $response->json();
-                    $schools[] = [
-                        'name' => $data['facname'] ?? '',
-                        'logo' => $faculty['logo'],
-                        'url' => $faculty['url'] . '/' . $lang,
-                        'email' => $data['email'] ?? '',
-                        'phone' => $data['phone'] ?? '',
-                        'instagram' => $faculty['instagram'] ?? '',
-                        'students' => $data['colstud'] ?? 0,
-                        'teachers' => $data['ppscount'] ?? 0,
-                        'programs' => $data['opcount'] ?? 0,
-                        'departments' => $data['colcaf'] ?? 0,
-                    ];
+        // Кешируем результат на 6 часов (21600 секунд)
+        $schools = Cache::remember("schools_data_{$lang}", 21600, function () use ($lang) {
+            $schoolsData = [];
+            $apiUrl = env('SHAKARIM_API_URL') . '/site/faculties';
+            
+            // Параллельные запросы с оптимизацией
+            $responses = Http::pool(fn ($pool) => 
+                collect($this->faculties)->map(fn ($faculty) => 
+                    $pool->as($faculty['id'])
+                        ->timeout(2)
+                        ->retry(1, 100) // 1 повторная попытка с задержкой 100ms
+                        ->connectTimeout(1)
+                        ->withHeaders([
+                            'Accept' => 'application/json',
+                            'Connection' => 'keep-alive'
+                        ])
+                        ->get($apiUrl, [
+                            'facultyid' => $faculty['id'],
+                            'lang' => $lang
+                        ])
+                )
+            );
+            
+            foreach ($this->faculties as $faculty) {
+                try {
+                    $response = $responses[$faculty['id']];
+                    
+                    // Проверяем, что это успешный Response, а не Exception
+                    if ($response instanceof \Illuminate\Http\Client\Response && $response->successful()) {
+                        $data = $response->json();
+                        $schoolsData[] = [
+                            'name' => $data['facname'] ?? '',
+                            'logo' => $faculty['logo'],
+                            'url' => $faculty['url'] . '/' . $lang,
+                            'email' => $data['email'] ?? '',
+                            'phone' => $data['phone'] ?? '',
+                            'instagram' => $faculty['instagram'] ?? '',
+                            'students' => (int)($data['colstud'] ?? 0),
+                            'teachers' => (int)($data['ppscount'] ?? 0),
+                            'programs' => (int)($data['opcount'] ?? 0),
+                            'departments' => (int)($data['colcaf'] ?? 0),
+                        ];
+                    } else {
+                        $schoolsData[] = $this->getDefaultSchoolData($faculty, $lang);
+                    }
+                } catch (\Exception $e) {
+                    Log::error('Error fetching faculty data: ' . $e->getMessage());
+                    $schoolsData[] = $this->getDefaultSchoolData($faculty, $lang);
                 }
-            } catch (\Exception $e) {
-                Log::error('Error fetching faculty data: ' . $e->getMessage());
-                // В случае ошибки добавляем пустые данные
-                $schools[] = [
-                    'name' => 'Загрузка...',
-                    'logo' => $faculty['logo'],
-                    'url' => $faculty['url'] . '/' . $lang,
-                    'email' => '',
-                    'phone' => '',
-                    'instagram' => $faculty['instagram'] ?? '',
-                    'students' => 0,
-                    'teachers' => 0,
-                    'programs' => 0,
-                    'departments' => 0,
-                ];
             }
-        }
+            
+            return $schoolsData;
+        });
         
         return view('academy.schools.index', compact('schools'));
+    }
+    
+    private function getDefaultSchoolData($faculty, $lang)
+    {
+        return [
+            'name' => 'Загрузка...',
+            'logo' => $faculty['logo'],
+            'url' => $faculty['url'] . '/' . $lang,
+            'email' => '',
+            'phone' => '',
+            'instagram' => $faculty['instagram'] ?? '',
+            'students' => 0,
+            'teachers' => 0,
+            'programs' => 0,
+            'departments' => 0,
+        ];
     }
 }
