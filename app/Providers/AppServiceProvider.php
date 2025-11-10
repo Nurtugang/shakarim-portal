@@ -7,6 +7,7 @@ use App\Filament\TiptapBlock\CardBlock;
 use App\Filament\TiptapBlock\ContactsListBlock;
 use App\Filament\TiptapBlock\FullSliderBlock;
 use App\Filament\TiptapBlock\GalleryBlock;
+use App\Filament\TiptapBlock\ImageCarouselBlock;
 use App\Filament\TiptapBlock\InfoBlock;
 use App\Filament\TiptapBlock\ListBlock;
 use App\Filament\TiptapBlock\PdfViewBlock;
@@ -44,11 +45,13 @@ class AppServiceProvider extends ServiceProvider
         
         TiptapEditor::configureUsing(function (TiptapEditor $component) {
             $component
+                ->profile('default')
                 ->blocks([
                     AccordionBlock::class,
                     TabsBlock::class,
                     PdfViewBlock::class,
                     ListBlock::class,
+                    ImageCarouselBlock::class,
                     // GalleryBlock::class,
                     // InfoBlock::class,
                     // FullSliderBlock::class,

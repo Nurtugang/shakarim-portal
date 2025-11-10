@@ -265,6 +265,7 @@ let lightboxInstance = null;
 function initImageLightbox() {
     if (document.querySelector('.tiptap-content')) {
         lightboxInstance = new ImageLightbox();
+        window.lightboxInstance = lightboxInstance;
     }
 }
 
