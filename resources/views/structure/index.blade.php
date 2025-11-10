@@ -16,10 +16,10 @@
 <!-- ОСНОВНОЙ КОНТЕНТ СТРУКТУРЫ -->
 <section class="bg-shakarim-gray py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="rounded-xl p-6">
+        <div class="rounded-xl">
             <div class="structure-bg">
                 <ol class="organizational-chart overflow-hidden">
-                    <li class="mb-4">
+                    <li>
                         <div class="main structure-header justify-content-center align-items-center">
                             <a style="z-index:10" target="_blank" href="https://www.gov.kz/memleket/entities/sci?lang=kz">
                                 <button style="z-index: 20;" class="item green-button my-4 md:my-0">{{ $structures->{'title_'.app()->getLocale()} }}</button>
@@ -35,11 +35,13 @@
                 </ol>
             </div>
         </div>
-        <div class="flex flex-wrap items-center justify-center space-x-2 mb-10">
-            @foreach ($schools as $school)
-            <a class="p-4 bg-shakarim-light text-white rounded-xl hover:bg-shakarim-blue transition-colors mb-2" href="{{ $school->link??'#' }}" class="text-sm text-gray-500 hover:text-shakarim-blue transition-colors" target="_blank">{{ $school->{'title_'.app()->getLocale()} }}</a>
-            @endforeach
-        </div>
+        <div class="flex flex-wrap items-center justify-center mb-10">
+    @foreach ($schools as $school)
+    <a class="p-4 bg-shakarim-light text-white rounded-xl hover:bg-shakarim-blue transition-colors mb-2 w-full sm:w-auto text-center sm:mx-1" href="{{ $school->link??'#' }}" target="_blank">
+        {{ $school->{'title_'.app()->getLocale()} }}
+    </a>
+    @endforeach
+</div>
     </div>
 </section>
 
