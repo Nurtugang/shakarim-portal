@@ -15,10 +15,150 @@
     color: #1f2937 !important;
 }
 
+/* Отступы для абзацев */
+.dynamic-content p {
+    margin-bottom: 0.5em !important;
+    margin-top: 0 !important;
+}
+
+.dynamic-content p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Отступы для заголовков */
+.dynamic-content h1,
+.dynamic-content h2,
+.dynamic-content h3,
+.dynamic-content h4,
+.dynamic-content h5,
+.dynamic-content h6 {
+    margin-top: 0.75em !important;
+    margin-bottom: 0.375em !important;
+    font-weight: 700 !important;
+}
+
+.dynamic-content h1:first-child,
+.dynamic-content h2:first-child,
+.dynamic-content h3:first-child,
+.dynamic-content h4:first-child,
+.dynamic-content h5:first-child,
+.dynamic-content h6:first-child {
+    margin-top: 0 !important;
+}
+
+/* Размеры заголовков */
+.dynamic-content h1 {
+    font-size: 2em !important;
+}
+
+.dynamic-content h2 {
+    font-size: 1.5em !important;
+}
+
+.dynamic-content h3 {
+    font-size: 1.25em !important;
+}
+
+.dynamic-content h4 {
+    font-size: 1.1em !important;
+}
+
+.dynamic-content h5,
+.dynamic-content h6 {
+    font-size: 1em !important;
+}
+
+/* Отступы для списков */
+.dynamic-content ul,
+.dynamic-content ol {
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+    padding-left: 2em !important;
+}
+
+.dynamic-content li {
+    margin-bottom: 0.25em !important;
+}
+
+.dynamic-content li:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Отступы для цитат */
+.dynamic-content blockquote {
+    margin-top: 0.75em !important;
+    margin-bottom: 0.75em !important;
+    padding-left: 1.5em !important;
+    border-left: 4px solid #3b82f6 !important;
+    font-style: italic !important;
+    color: #4b5563 !important;
+}
+
+/* Отступы для горизонтальных линий */
+.dynamic-content hr {
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+    border: none !important;
+    border-top: 1px solid #e5e7eb !important;
+}
+
+/* Отступы для таблиц */
+.dynamic-content table {
+    margin-top: 0.75em !important;
+    margin-bottom: 0.75em !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+
+.dynamic-content table td,
+.dynamic-content table th {
+    padding: 0.75em !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.dynamic-content table th {
+    background-color: #f3f4f6 !important;
+    font-weight: 600 !important;
+}
+
+/* Отступы для кода */
+.dynamic-content pre {
+    margin-top: 0.75em !important;
+    margin-bottom: 0.75em !important;
+    padding: 1em !important;
+    background-color: #f3f4f6 !important;
+    border-radius: 0.5em !important;
+    overflow-x: auto !important;
+}
+
+.dynamic-content code {
+    background-color: #f3f4f6 !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 0.25em !important;
+    font-family: 'Courier New', monospace !important;
+}
+
+.dynamic-content pre code {
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+
 @media (max-width: 768px) {
     .dynamic-content,
     .dynamic-content * {
         font-size: 14px !important;
         line-height: 1.5 !important;
+    }
+    
+    .dynamic-content h1 {
+        font-size: 1.75em !important;
+    }
+    
+    .dynamic-content h2 {
+        font-size: 1.5em !important;
+    }
+    
+    .dynamic-content h3 {
+        font-size: 1.25em !important;
     }
 }

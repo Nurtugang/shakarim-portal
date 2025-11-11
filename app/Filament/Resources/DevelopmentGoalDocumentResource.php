@@ -82,6 +82,12 @@ class DevelopmentGoalDocumentResource extends Resource
                                 fn ($file): string => (string) str($file->getClientOriginalName())
                                     ->prepend(now()->timestamp . '_')
                             )
+                            ->saveUploadedFileUsing(function ($file, $state, $set) {
+                                $fileName = (string) str($file->getClientOriginalName())
+                                    ->prepend(now()->timestamp . '_');
+                                $file->storeAs('dev_documents', $fileName, 'public');
+                                return $fileName;
+                            })
                             ->columnSpanFull(),
                     ])
                     ->columns(2),
