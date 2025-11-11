@@ -563,6 +563,9 @@
                             <a href="https://astanait.edu.kz/" target="_blank"><img src="{{ Storage::url('partners/AITU.webp') }}" alt="AITU" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
                         <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
+                            <a href="https://auezov.edu.kz/" target="_blank"><img src="{{ Storage::url('partners/auezov.webp') }}" alt="auezov" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
+                        </div>
+                        <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://dulaty.kz/" target="_blank"><img src="{{ Storage::url('partners/dulati.webp') }}" alt="dulati" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>
                         <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
