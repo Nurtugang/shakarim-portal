@@ -35,7 +35,7 @@ class EventResource extends Resource
                     ->schema([
                         Forms\Components\Tabs::make('')
                             ->tabs([
-                                Forms\Components\Tabs\Tab::make('kz')
+                                Forms\Components\Tabs\Tab::make('kk')
                                     ->schema([
                                         Forms\Components\TextInput::make('title_kk')
                                             ->required()

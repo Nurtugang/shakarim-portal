@@ -37,7 +37,7 @@
                                     <span class="text-shakarim-blue font-semibold ml-1">{{ __('Медиа-центр')}}</span>
                                 </div>
                             </div>
-                            <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-shakarim-blue leading-tight">
+                            <h1 class="text-md sm:text-lg md:text-xl lg:text-2xl font-heading font-bold text-shakarim-blue leading-tight">
                                 {{ $announcement->name }}
                             </h1>
                             @if($announcement->description)

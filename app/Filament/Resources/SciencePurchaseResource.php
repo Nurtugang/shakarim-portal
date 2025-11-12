@@ -61,22 +61,22 @@ class SciencePurchaseResource extends Resource
                     ->required(),
                     Tabs::make('')
                 ->tabs([
-                    Tabs\Tab::make('kz')
+                    Tabs\Tab::make('kk')
                     ->schema([
                         Forms\Components\TextInput::make('name_kk')
-                        ->label('Наименование(kz)')
+                        ->label('Наименование(kk)')
                     ->required()
                     ->maxLength(255),
                     Forms\Components\Textarea::make('description_kk')
-                    ->label('Характеристики(kz)')
+                    ->label('Характеристики(kk)')
                     ->required()
                     ->columnSpanFull(),
                     Forms\Components\Textarea::make('justification_kk')
-                    ->label('Обоснование закупок оборудования(kz)')
+                    ->label('Обоснование закупок оборудования(kk)')
                     ->required()
                     ->columnSpanFull(),
                     Forms\Components\TextInput::make('deadlines_kk')
-                    ->label('Сроки закупок(kz)')
+                    ->label('Сроки закупок(kk)')
                     ->maxLength(20),
                     ]),
                         Tabs\Tab::make('ru')

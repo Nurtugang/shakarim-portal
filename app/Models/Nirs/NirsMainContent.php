@@ -13,7 +13,7 @@ class NirsMainContent extends Model
 
     protected $fillable = [
         'content_ru',
-        'content_kz',
+        'content_kk',
         'content_en',
         'content_cn',
     ];
@@ -21,10 +21,9 @@ class NirsMainContent extends Model
     public function getContentAttribute(): ?string
     {
         $locale = app()->getLocale();
-        $locale = $locale === 'kk' ? 'kz' : $locale; 
         $locale = $locale === 'eu' ? 'ru' : $locale; 
         
-        if (!in_array($locale, ['ru', 'kz', 'en', 'cn'])) {
+        if (!in_array($locale, ['ru', 'kk', 'en', 'cn'])) {
             $locale = 'ru'; 
         }
 

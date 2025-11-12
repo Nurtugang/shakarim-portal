@@ -34,7 +34,7 @@ class ScienceMember extends Model
         'scopusid',
         'researcherid',
         'orcid',
-        'additionally_kz',
+        'additionally_kk',
         'additionally_ru',
         'additionally_en',
         'project_id',
@@ -72,8 +72,7 @@ class ScienceMember extends Model
         
         switch ($locale) {
             case 'kk':
-            case 'kz':
-                return $this->additionally_kz;
+                return $this->additionally_kk;
             case 'en':
                 return $this->additionally_en ?: $this->additionally_ru; // Если нет английской версии, используется русская
             default:

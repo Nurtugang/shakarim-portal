@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-shakarim-blue leading-tight">
+                            <h1 class="text-md sm:text-lg md:text-xl lg:text-2xl font-heading font-bold text-shakarim-blue leading-tight">
                                 {{ $news->{'title_' . app()->getLocale()} }}
                             </h1>
                         </div>

@@ -115,7 +115,7 @@ class DevelopmentGoalResource extends Resource
                     ->label('Язык')
                     ->badge()
                     ->formatStateUsing(fn (string $state): string => match ($state) {
-                        'kk' => 'KZ',
+                        'kk' => 'kk',
                         'ru' => 'RU',
                         'en' => 'EN',
                         'cn' => 'CN',

@@ -146,12 +146,11 @@ class ScientificProjectResource extends Resource
                                         ->label('ORCID'),
                                 ]),
 
-                                // ↓↓↓ ИЗМЕНЕННЫЙ БЛОК ↓↓↓
                                 Forms\Components\Tabs::make('Дополнительная информация')
                                     ->tabs([
-                                        Forms\Components\Tabs\Tab::make('KZ')
+                                        Forms\Components\Tabs\Tab::make('KK')
                                             ->schema([
-                                                TiptapEditor::make('additionally_kz')
+                                                TiptapEditor::make('additionally_kk')
                                                     ->label('Қосымша ақпарат')
                                                     ->columnSpanFull(),
                                             ]),

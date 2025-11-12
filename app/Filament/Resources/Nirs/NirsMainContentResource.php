@@ -54,7 +54,7 @@ class NirsMainContentResource extends Resource
                                     ]),
                                 Tabs\Tab::make('Казахский')
                                     ->schema([
-                                        TiptapEditor::make('content_kz')
+                                        TiptapEditor::make('content_kk')
                                             ->label('')
                                             ->profile('default'),
                                     ]),

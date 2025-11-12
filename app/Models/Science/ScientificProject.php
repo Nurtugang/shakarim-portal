@@ -52,7 +52,6 @@ class ScientificProject extends Model
         
         switch ($locale) {
             case 'kk':
-            case 'kz':
                 return $this->name_kk;
             case 'en':
                 return $this->name_en ?: $this->name_ru;
@@ -70,7 +69,6 @@ class ScientificProject extends Model
         
         switch ($locale) {
             case 'kk':
-            case 'kz':
                 return $this->supervisor_kk;
             case 'en':
                 return $this->supervisor_en ?: $this->supervisor_ru;
@@ -88,7 +86,6 @@ class ScientificProject extends Model
         
         switch ($locale) {
             case 'kk':
-            case 'kz':
                 return $this->relevance_kk;
             case 'en':
                 return $this->relevance_en ?: $this->relevance_ru;
@@ -106,7 +103,6 @@ class ScientificProject extends Model
         
         switch ($locale) {
             case 'kk':
-            case 'kz':
                 return $this->target_kk;
             case 'en':
                 return $this->target_en ?: $this->target_ru;
@@ -124,7 +120,6 @@ class ScientificProject extends Model
         
         switch ($locale) {
             case 'kk':
-            case 'kz':
                 return $this->expectation_kk;
             case 'en':
                 return $this->expectation_en ?: $this->expectation_ru;
@@ -142,7 +137,6 @@ class ScientificProject extends Model
         
         switch ($locale) {
             case 'kk':
-            case 'kz':
                 return $this->result_kk;
             case 'en':
                 return $this->result_en ?: $this->result_ru;

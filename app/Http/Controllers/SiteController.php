@@ -17,7 +17,7 @@ class SiteController extends Controller
             ->take(5)
             ->get();
 
-        $news = \App\Models\News::select('id', 'title_'.app()->getLocale(), 'content_'.app()->getLocale(),'image', 'image_post', 'alias', 'date' )
+        $news = \App\Models\News::select('id', 'title_'.app()->getLocale(), 'content_'.app()->getLocale(),'image', 'alias', 'date' )
             ->orderBy('id', 'desc')
             ->where('status', 1)
             ->limit(4)
@@ -38,10 +38,6 @@ class SiteController extends Controller
         $card = TextWidget::query()->where('key','card')->first();
         $schools = TextWidget::query()->where('key','schools')->first();
 
-        // $connection = DB::connection('nitro');
-        // $results = $connection->select('SELECT COUNT(*) AS total FROM students WHERE isStudent = 1');
-        // $students_count = $results[0]->total;
-
-        return view('site.index', compact('sliderNews','news','events','welcome','card','schools', 'announcements'/*, 'students_count'*/));
+        return view('site.index', compact('sliderNews','news','events','welcome','card','schools', 'announcements'));
     }
 }

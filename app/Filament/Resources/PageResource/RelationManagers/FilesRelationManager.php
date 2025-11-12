@@ -34,19 +34,19 @@ class FilesRelationManager extends RelationManager
                 ->schema([
                     Tabs::make('Tabs')
                     ->tabs([
-                        Tabs\Tab::make('kz')
+                        Tabs\Tab::make('kk')
                         ->schema([
                             Forms\Components\TextInput::make('title_kk')
                               ->required()
-                              ->label('Заголовок(kz)')
+                              ->label('Заголовок(kk)')
                               ->maxLength(255),
                         
                             Forms\Components\FileUpload::make('files_kk')
                               ->directory('files')
                               ->multiple()
-                              ->label('Файлы(kz)'),
+                              ->label('Файлы(kk)'),
                             RichEditor::make('description_kk')
-                              ->label('Описание(kz)'),    
+                              ->label('Описание(kk)'),    
                         ]),
                         Tabs\Tab::make('ru')
                         ->schema([

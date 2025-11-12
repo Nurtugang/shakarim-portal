@@ -49,14 +49,14 @@ class MenuResource extends Resource
                             ]),
                         Tabs::make('')
                             ->tabs([
-                                Tabs\Tab::make('kz')
+                                Tabs\Tab::make('kk')
                                     ->schema([
                                         Forms\Components\TextInput::make('title_kk')
-                                            ->label('Заголовок(kz)')
+                                            ->label('Заголовок(kk)')
                                             ->required()
                                             ->maxLength(255),
                                         Forms\Components\TextInput::make('link_kk')
-                                            ->label('Ссылка(kz)')
+                                            ->label('Ссылка(kk)')
                                             ->maxLength(255),
                                     ]),
                                 Tabs\Tab::make('ru')

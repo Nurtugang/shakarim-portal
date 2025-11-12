@@ -30,7 +30,7 @@ class TextWidgetResource extends Resource
             ->schema([
                 Tabs::make('Tabs')
                     ->tabs([
-                        Tabs\Tab::make('kz')
+                        Tabs\Tab::make('kk')
                             ->schema([
                                 Forms\Components\TextInput::make('title_kk')
                                     ->required()

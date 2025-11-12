@@ -75,10 +75,8 @@
                                     <!-- Изображение новости -->
                                     <div class="h-48 w-full overflow-hidden bg-gray-100">
                                         <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
-                                                {{-- ПРОВЕРЯЕМ НОВОЕ ПОЛЕ 'image_post' --}}
-                                                @if($item->image_post)
-                                                    {{-- ВЫЗЫВАЕМ НОВЫЙ МЕТОД 'getPostThumbnailUrl()' --}}
-                                                    <img src="{{ $item->getPostThumbnailUrl() }}"
+                                                @if($item->image)
+                                                    <img src="{{ $item->getThumbnailUrl() }}"
                                                         alt="{{ $item->{'title_' . app()->getLocale()} }}" 
                                                         class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
                                                 @else

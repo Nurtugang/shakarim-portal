@@ -12,7 +12,7 @@ class AspirantDoc extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name_kz',
+        'name_kk',
         'name_ru',
         'name_en',
         'aspirant_id',
@@ -30,7 +30,6 @@ class AspirantDoc extends Model
     public function getNameAttribute(): string
     {
         $locale = app()->getLocale();
-        $locale = $locale === 'kk' ? 'kz' : $locale;
         return $this->{"name_{$locale}"} ?? $this->name_ru;
     }
 

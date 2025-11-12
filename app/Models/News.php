@@ -15,7 +15,6 @@ class News extends Model
     protected $fillable = [
         'alias',
         'image',
-        'image_post',
         'image_slider',
         'content_kk',
         'content_ru',
@@ -108,13 +107,21 @@ class News extends Model
     protected static function boot()
     {
         parent::boot();
-        
+
         static::saved(function ($news) {
-            if ($news->image_post && $news->wasChanged('image_post')) {
-                $news->createThumbnail();
+            if ($news->image) {
+                try {
+                    $news->createThumbnail();
+                    $news->createPreview();
+                } catch (\Throwable $e) {
+                    \Log::error("❌ Ошибка при вызове createThumbnail/createPreview: " . $e->getMessage());
+                }
+            } else {
+                \Log::warning("⚠️ [News boot:saved] image отсутствует у ID={$news->id}");
             }
         });
     }
+
 
     public function getFormattedDate()
     {
@@ -126,12 +133,7 @@ class News extends Model
      */
     public function createThumbnail(): void
     {
-        if (!$this->image_post) {
-            \Log::warning("createThumbnail: у новости ID={$this->id} нет image_post");
-            return;
-        }
-
-        $originalPath = storage_path('app/public/news/' . $this->image_post);
+        $originalPath = storage_path('app/public/news/' . $this->image);
 
         if (!file_exists($originalPath)) {
             \Log::error("createThumbnail: файл не найден {$originalPath}");
@@ -141,10 +143,9 @@ class News extends Model
         $thumbDir = storage_path('app/public/news/thumbnails');
         if (!is_dir($thumbDir)) {
             mkdir($thumbDir, 0755, true);
-            \Log::info("createThumbnail: создана папка {$thumbDir}");
         }
 
-        $nameWithoutExtension = pathinfo($this->image_post, PATHINFO_FILENAME);
+        $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
         $thumbPath = $thumbDir . '/' . $nameWithoutExtension . '.webp';
 
         try {
@@ -158,7 +159,6 @@ class News extends Model
 
                 $originalWidth = imagesx($image);
                 $originalHeight = imagesy($image);
-                \Log::info("createThumbnail: исходные размеры {$originalWidth}x{$originalHeight}");
 
                 $targetWidth = 400;
                 $targetHeight = 300;
@@ -170,8 +170,6 @@ class News extends Model
                 $newWidth = round($originalWidth * $scale);
                 $newHeight = round($originalHeight * $scale);
 
-                \Log::info("createThumbnail: масштабируем до {$newWidth}x{$newHeight}");
-
                 $scaled = imagecreatetruecolor($newWidth, $newHeight);
                 imagecopyresampled($scaled, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
 
@@ -180,13 +178,8 @@ class News extends Model
                 $offsetX = ($newWidth - $targetWidth) / 2;
                 $offsetY = ($newHeight - $targetHeight) / 2;
 
-                \Log::info("createThumbnail: обрезка с offsetX={$offsetX}, offsetY={$offsetY}");
-
                 imagecopy($thumbnail, $scaled, 0, 0, $offsetX, $offsetY, $targetWidth, $targetHeight);
-
                 imagewebp($thumbnail, $thumbPath, 85);
-                \Log::info("createThumbnail: thumbnail сохранён {$thumbPath}");
-
                 imagedestroy($image);
                 imagedestroy($scaled);
                 imagedestroy($thumbnail);
@@ -195,6 +188,52 @@ class News extends Model
             }
         } catch (\Exception $e) {
             \Log::error('Ошибка создания thumbnail: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Создать preview версию изображения (150x150 для мобилки)
+     */
+    public function createPreview(): void
+    {
+        $originalPath = storage_path('app/public/news/' . $this->image);
+        if (!file_exists($originalPath)) {
+            \Log::error("createPreview: файл не найден {$originalPath}");
+            return;
+        }
+
+        $previewDir = storage_path('app/public/news/previews');
+        if (!is_dir($previewDir)) {
+            mkdir($previewDir, 0755, true);
+        }
+
+        $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
+        $previewPath = $previewDir . '/' . $nameWithoutExtension . '.webp';
+
+        try {
+            if (function_exists('imagewebp')) {
+                $image = $this->createImageFromFile($originalPath);
+                if (!$image) return;
+
+                $originalWidth = imagesx($image);
+                $originalHeight = imagesy($image);
+
+                $targetWidth = 150;
+                $targetHeight = 150;
+
+                $scaled = imagecreatetruecolor($targetWidth, $targetHeight);
+                imagecopyresampled($scaled, $image, 0, 0, 0, 0, $targetWidth, $targetHeight, $originalWidth, $originalHeight);
+
+                imagewebp($scaled, $previewPath, 85);
+
+                imagedestroy($image);
+                imagedestroy($scaled);
+
+            } else {
+                \Log::error("createPreview: функция imagewebp не доступна");
+            }
+        } catch (\Exception $e) {
+            \Log::error("Ошибка создания превью: " . $e->getMessage());
         }
     }
 
@@ -208,15 +247,6 @@ class News extends Model
             $this->attributes['image'] = basename($value);
         } else {
             $this->attributes['image'] = $value;
-        }
-    }
-
-    public function setImagePostAttribute($value)
-    {
-        if ($value && str_contains($value, 'news/')) {
-            $this->attributes['image_post'] = basename($value);
-        } else {
-            $this->attributes['image_post'] = $value;
         }
     }
 
@@ -281,9 +311,7 @@ class News extends Model
         return Storage::disk('public')->url('news/' . $this->image);
     }
 
-    /**
-     * Получить URL изображения для слайдера
-     */
+    // Изображение слайдера
     public function getSliderImageUrl(): string
     {
         if (!$this->image_slider) {
@@ -292,22 +320,40 @@ class News extends Model
         return Storage::disk('public')->url('news/slider/' . $this->image_slider);
     }
 
-    /**
-     * Получить URL thumbnail изображения для списков новостей
-     */
-    public function getPostThumbnailUrl(): string
+    // Изображение превью (для мобилки) [150x150]
+    public function getPreviewUrl(): string
     {
-        if (!$this->image_post) {
+        if (!$this->image) {
+            \Log::warning("getPreviewUrl: у новости ID={$this->id} нет image");
             return '';
         }
 
-        $nameWithoutExtension = pathinfo($this->image_post, PATHINFO_FILENAME);
-        $thumbPath = 'news/thumbnails/' . $nameWithoutExtension . '.webp';
-        
-        if (Storage::disk('public')->exists($thumbPath)) {
-            return Storage::url($thumbPath);
+        $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
+        $previewPath = 'news/previews/' . $nameWithoutExtension . '.webp';
+
+        if (Storage::disk('public')->exists($previewPath)) {
+            return Storage::url($previewPath);
         }
-        
-        return Storage::disk('public')->url('news/' . $this->image_post);
+
+        return Storage::disk('public')->url('news/' . $this->image);
+    }
+
+    // Изображение thumbnail (для списков новостей) [400x300]
+    public function getThumbnailUrl(): string
+    {
+        if (!$this->image) {
+            \Log::warning("getThumbnailUrl: у новости ID={$this->id} нет image");
+            return '';
+        }
+
+        $nameWithoutExtension = pathinfo($this->image, PATHINFO_FILENAME);
+        $thumbnailPath = 'news/thumbnails/' . $nameWithoutExtension . '.webp';
+
+        if (Storage::disk('public')->exists($thumbnailPath)) {
+            return Storage::url($thumbnailPath);
+        }
+
+        \Log::info("getThumbnailUrl: thumbnail не найден, используем оригинал news/{$this->image}");
+        return Storage::disk('public')->url('news/' . $this->image);
     }
 }

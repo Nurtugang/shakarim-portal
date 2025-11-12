@@ -32,14 +32,14 @@ class ListsRelationManager extends RelationManager
           ->schema([
             Tabs::make('')
               ->tabs([
-                Tabs\Tab::make('kz')
+                Tabs\Tab::make('kk')
                   ->schema([
                     Forms\Components\TextInput::make('title_kk')
-                      ->label('Заголовок(kz)')
+                      ->label('Заголовок(kk)')
                       ->required()
                       ->maxLength(255),
                     TiptapEditor::make('content_kk')
-                      ->label('Контент(kz)')
+                      ->label('Контент(kk)')
                       ->required()
                       ->columnSpanFull(),
                   ]),

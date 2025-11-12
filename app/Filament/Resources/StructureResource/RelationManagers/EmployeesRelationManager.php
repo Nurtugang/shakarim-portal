@@ -26,14 +26,14 @@ class EmployeesRelationManager extends RelationManager
                 ->schema([
 Tabs::make('')
                 ->tabs([
-                    Tabs\Tab::make('kz')
+                    Tabs\Tab::make('kk')
                     ->schema([
                         Forms\Components\TextInput::make('fullname_kk')
-                          ->label('ФИО(kz)')
+                          ->label('ФИО(kk)')
                           ->required()
                           ->maxLength(255),
                         Forms\Components\TextInput::make('position_kk')
-                          ->label('Должность(kz)')
+                          ->label('Должность(kk)')
                           ->required()
                           ->maxLength(255),
                     ]),

@@ -60,10 +60,6 @@ class Accreditation extends Model
     {
         $locale = app()->getLocale();
         
-        if ($locale === 'kz') {
-            $locale = 'kk';
-        }
-        
         return $query->where('language', $locale);
     }
 

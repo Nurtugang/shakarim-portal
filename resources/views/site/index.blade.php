@@ -4,18 +4,13 @@
 
     <!-- Hero Section with Slider -->
     <section class="relative bg-white overflow-hidden">
-        {{-- Возвращаем оригинальную высоту и размеры --}}
         <div class="slider-container relative h-64 md:h-[400px]">
 
-            {{-- ======================================================= --}}
-            {{-- 1. ДИНАМИЧЕСКИЕ СЛАЙДЫ ИЗ АДМИНКИ (БУДУТ ПЕРВЫМИ)  --}}
-            {{-- ======================================================= --}}
             @foreach($sliderNews as $slideNews)
                 <div class="slide @if($loop->first) active @else opacity-0 transition-opacity duration-700 @endif absolute inset-0 flex"
                     style="background-image: url('{{ $slideNews->getSliderImageUrl() }}'); background-size: cover; background-position: center;">
                     <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
                         <div class="text-center">
-                            {{-- Возвращаем оригинальный размер шрифта --}}
                             <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">
                                 {{ $slideNews->{'title_' . app()->getLocale()} }}
                             </h2>
@@ -30,12 +25,7 @@
                 </div>
             @endforeach
 
-            {{-- ================================================= --}}
-            {{-- 2. СТАТИЧНЫЕ СЛАЙДЫ (КАК В ОРИГИНАЛЕ)         --}}
-            {{-- ================================================= --}}
-
             <!-- Slide: Tokayev -->
-            {{-- Этот слайд будет активным, только если из админки не пришло ни одного слайда --}}
             <div class="slide @if($sliderNews->isEmpty()) active @else opacity-0 transition-opacity duration-700 @endif absolute inset-0 flex"
                 style="background-image: url('/img/tokaev.webp'); background-size: cover; background-position: top;">
                 <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
@@ -85,31 +75,31 @@
                 <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/ai_sana.webp');"></div>
             </div>
 
-            <!-- Slide: QS Rankings -->
-            {{-- Я убрал отсюда класс 'active', так как активным должен быть только один слайд при загрузке --}}
+            <!-- Slide: QS -->
             <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                style="background-image: url('/img/qs_world_university_rankings.webp'); background-size: cover; background-position: center;">
+                style="background-image: url('/img/qs_world_university_rankings_asia.webp'); background-size: cover; background-position: center;">
                 <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
-                    <div class="text-center">
-                        <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('QS World University Rankings') }}</h2>
-                        <div class="text-3xl md:text-6xl font-heading font-bold text-yellow-400 mb-1 md:mb-2">#1401+</div>
-                        <p class="text-sm md:text-lg font-body text-slate-200">{{ __('Shakarim University first entered the global ranking') }}</p>
-                        <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'ongirlik-koshbasshynyng-zhanga-martebesi-shakarim-university-alghash-ret-qs-world-university-rankings-2026-zhahandyq-reytingine-yendi']) }}">
-                            <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
-                                {{ __('More') }}
-                            </button>
-                        </a>
+                    <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
+                        <div class="text-center">
+                            <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">
+                                {{ __('QS World University Rankings 2026') }}
+                            </h2>
+                            <div class="flex justify-center items-center gap-6 text-yellow-400 font-heading font-bold mb-2">
+                                <div class="text-3xl md:text-6xl">1401+ <span class="text-white text-xl md:text-3xl"><br>{{ __('в мире') }}</span></div>
+                                <div class="text-3xl md:text-6xl">493 <span class="text-white text-xl md:text-3xl"><br>{{ __('в Азии') }}</span></div>
+                            </div>
+                            <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'shakarim-university-aziianyn-uzdik-500-universitetinin-qatarynda']) }}">
+                                <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
+                                    {{ __('Подробнее') }}
+                                </button>
+                            </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/qs_world_university_rankings.webp');"></div>
+                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/qs.jpg');"></div>
             </div>
 
-
-            {{-- ================================================= --}}
-            {{-- 3. НАВИГАЦИЯ (ТОЧКИ И СТРЕЛКИ)                 --}}
-            {{-- ================================================= --}}
             @php
-                // Считаем общее количество слайдов (динамические + 3 статичных)
                 $totalSlides = $sliderNews->count() + 3;
             @endphp
 
@@ -381,8 +371,8 @@
                                     <div class="w-full md:w-1/3 relative">
                                         <div class="h-32 md:h-full overflow-hidden bg-gray-100">
                                             <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
-                                                @if($item->image_post)
-                                                    <img src="{{ $item->getPostThumbnailUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                @if($item->image)
+                                                    <img src="{{ $item->getThumbnailUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @else
                                                     <img src="{{ asset('img/university_building.webp') }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @endif

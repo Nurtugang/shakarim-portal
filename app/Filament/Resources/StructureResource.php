@@ -37,7 +37,7 @@ class StructureResource extends Resource
                 Section::make('')
                 ->schema([
                         Forms\Components\TextInput::make('title_kk')
-                        ->label('Название(kz)')
+                        ->label('Название(kk)')
                           ->required()
                           ->maxLength(255),
                         Forms\Components\TextInput::make('title_ru')

@@ -68,7 +68,7 @@ class ScienceJournalResource extends Resource
                                 Tabs\Tab::make('Казахский')
                                     ->schema([
                                         TextInput::make('name_kk')
-                                            ->label('Название (KZ)')
+                                            ->label('Название (kk)')
                                             ->required(),
                                     ]),
                                 Tabs\Tab::make('Английский')

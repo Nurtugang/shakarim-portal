@@ -55,17 +55,17 @@ class PageResource extends Resource
                 ->schema([
                     Tabs::make('Tabs')
                       ->tabs([
-                        Tabs\Tab::make('kz')
+                        Tabs\Tab::make('kk')
                         ->schema([      
                             Forms\Components\TextInput::make('title_kk')
-                            ->label('Заголовок(kz)')
+                            ->label('Заголовок(kk)')
                             ->required()
                             ->maxLength(255)
                             ->reactive()
                             ->debounce(500),
                         TiptapEditor::make('content_kk')
                         ->output(TiptapOutput::Json)
-                        ->label('Контент(kz)')
+                        ->label('Контент(kk)')
                                ->required()
                                ->directory('/pages')
                                ->columnSpanFull()
@@ -132,7 +132,7 @@ class PageResource extends Resource
                                             Grid::make()
                                                     ->schema([
                                                         Forms\Components\TextInput::make('title_kk')
-                                                            ->label('Название формы(kz)')
+                                                            ->label('Название формы(kk)')
                                                             ->maxLength(255),
                                                         Forms\Components\TextInput::make('title_ru')
                                                             ->requiredWith('title_kk')
@@ -147,7 +147,7 @@ class PageResource extends Resource
                                                     ->schema([
                                                         Forms\Components\TextInput::make('name_kk')
                                                             ->requiredWith('title_kk')
-                                                            ->label('Название поля(kz)'),
+                                                            ->label('Название поля(kk)'),
                                                         Forms\Components\TextInput::make('name_ru')
                                                             ->requiredWith('title_kk')
                                                             ->label('Название поля(ru)'),
