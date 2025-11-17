@@ -44,26 +44,35 @@ class Menu extends Model
 
    public function getUrl()
     {
-        if ($this->is_external_link) {
-            return $this->{'link_' . app()->getLocale()};
-        } elseif ($this->{'link_' . app()->getLocale()}) {
-            $link = $this->{'link_' . app()->getLocale()};
-            
-            if (str_starts_with($link, '/') || str_starts_with($link, 'http')) {
-                return $link;
-            }
-            
-            try {
-                return route($link, ['locale' => app()->getLocale()]);
-            } catch (\Exception $e) {
-                return $link;
-            }
-        } elseif ($this->page) {
-            return route('page', ['locale' => app()->getLocale(), 'page' => $this->page]);
+        $locale = app()->getLocale();
+        $link = $this->{'link_' . $locale};
+
+        if ($this->is_external_link && $link) {
+            return $link;
         }
-        
+
+        if ($link) {
+            $cleanLink = ltrim($link, '/');
+            $cleanLink = preg_replace("#^{$locale}/#", '', $cleanLink);
+
+            if (str_starts_with($cleanLink, 'http')) {
+                return $cleanLink;
+            }
+
+            try {
+                return url("/{$locale}/{$cleanLink}");
+            } catch (\Exception $e) {
+                return "/{$locale}/{$cleanLink}";
+            }
+        }
+
+        if ($this->page) {
+            return route('page', ['locale' => $locale, 'page' => $this->page]);
+        }
+
         return '#';
     }
+
 
     public function structure()
     {

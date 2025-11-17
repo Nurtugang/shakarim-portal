@@ -16,6 +16,9 @@ use Filament\Tables\Table;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
+use Illuminate\Support\Facades\Auth;
+use App\Enums\RolesEnum;
+
 class NirsConferenceResource extends Resource
 {
     protected static ?string $model = NirsConference::class;
@@ -39,6 +42,11 @@ class NirsConferenceResource extends Resource
     public static function getModelLabel(): string
     {
         return 'документ конференции';
+    }
+
+    public static function canViewAny(): bool
+    {
+        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::SCIENCE]);
     }
 
     public static function form(Form $form): Form

@@ -69,8 +69,9 @@
                                     <div class="flex items-center mb-6">
                                         <h3 class="text-2xl font-bold text-gray-800">{{ __('Рейтинги 2026')}}</h3>
                                     </div>
-
-                                    <div class="bg-gradient-to-br from-yellow-50 to-amber-50 border-yellow-500 rounded-lg p-6">
+                                    <!-- QS World University Rankings 2026 -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="bg-gradient-to-br from-yellow-50 to-amber-50 border-yellow-500 rounded-lg p-6">
                                         <div class="flex items-start">
                                             <div>
                                                 <h4 class="text-lg font-bold text-yellow-800 mb-2">QS World University Rankings 2026</h4>
@@ -80,6 +81,18 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- QS Asia University Rankings 2026 -->
+                                    <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                                        <div class="flex items-center mb-3">
+                                            <h4 class="font-bold text-green-800">QS Asia University Rankings 2026</h4>
+                                        </div>
+                                        <p class="text-gray-700 text-sm mb-3">
+                                            {{ __('QS Asia University Rankings 2026')}}
+                                        </p>
+                                    </div>
+                                    </div>
+                                    
                                 </div>
 
                                 <!-- 2025 Rankings -->

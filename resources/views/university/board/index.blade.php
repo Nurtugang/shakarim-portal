@@ -757,7 +757,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="{{ Storage::url('board/fd35e08bf6877a1feb15cf73ee10b68d.webp') }}" 
+                                            <img src="{{ Storage::url('board/aida ardakovna.jpg') }}" 
                                                 alt="{{ __('Маусымбаева Аида Ардаковна') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('mausymbaeva-details')" 

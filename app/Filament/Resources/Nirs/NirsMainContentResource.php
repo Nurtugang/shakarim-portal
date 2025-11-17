@@ -11,6 +11,9 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 
+use Illuminate\Support\Facades\Auth;
+use App\Enums\RolesEnum;
+
 class NirsMainContentResource extends Resource
 {
     protected static ?string $model = NirsMainContent::class;
@@ -34,6 +37,11 @@ class NirsMainContentResource extends Resource
     public static function getModelLabel(): string
     {
         return 'Основная информация';
+    }
+
+    public static function canViewAny(): bool
+    {
+        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::SCIENCE]);
     }
 
     public static function form(Form $form): Form

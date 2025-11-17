@@ -15,6 +15,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 
+use Illuminate\Support\Facades\Auth;
+use App\Enums\RolesEnum;
+
 class NirsItemResource extends Resource
 {
     protected static ?string $model = NirsItem::class;
@@ -38,6 +41,11 @@ class NirsItemResource extends Resource
     public static function getModelLabel(): string
     {
         return 'запись НИРС';
+    }
+
+    public static function canViewAny(): bool
+    {
+        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::SCIENCE]);
     }
 
     public static function form(Form $form): Form

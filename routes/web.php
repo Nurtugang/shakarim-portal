@@ -36,6 +36,9 @@ use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RectorQuestionController;
 use App\Http\Controllers\DevelopmentGoalsController;
 
+use App\Http\Controllers\Student\StudentParlamentController;
+
+
 use App\Models\Award;
 use App\Models\PageFile;
 use App\Models\Nirs\NirsMainContent;
@@ -127,6 +130,9 @@ Route::group([
     Route::get('/vacancies', [VacancyController::class, 'index'])->name('vacancy.index');
     Route::get('/vacancy/{id}', [VacancyController::class, 'show'])->name('vacancy.show');
 
+    Route::get('/student/parlament', [StudentParlamentController::class, 'index'])->name('student.parlament.index');
+    
+
     Route::get('/organization/science', [OrganizationController::class, 'science'])->name('organization.science');
     Route::get('/organization/social', [OrganizationController::class, 'social'])->name('organization.social');
     Route::get('/organization/{organization:id}', function ($locale, App\Models\Organization $organization) {
@@ -156,7 +162,6 @@ Route::group([
         return view('university.endowment.index');
     })->name('university.endowment.index');
     
-
 });
 
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');
