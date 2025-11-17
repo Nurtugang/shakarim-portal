@@ -64,7 +64,7 @@ class AcademySchoolsController extends Controller
     public function index()
     {
         $locale = app()->getLocale();
-        $lang = $locale === 'kz' ? 'kz' : ($locale === 'en' ? 'en' : 'ru');
+        $lang = $locale === 'kk' ? 'kz' : ($locale === 'en' ? 'en' : 'ru');
         
         // Кешируем результат на 6 часов (21600 секунд)
         $schools = Cache::remember("schools_data_{$lang}", 21600, function () use ($lang) {
