@@ -31,6 +31,31 @@
                                     <span class="text-gray-500 text-sm">
                                         <i class="far fa-calendar mr-1"></i>{{ \Carbon\Carbon::createFromTimestamp($announcement->date)->locale(app()->getLocale())->isoFormat('D MMMM, YYYY') }}
                                     </span>
+                                    @if($announcement->type)
+                                        @if($announcement->type->value === 'competition')
+                                            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-700">
+                                                <i class="fas fa-trophy"></i>
+                                                @if(app()->getLocale() === 'kk')
+                                                    {{ $announcement->type->getLabelKk() }}
+                                                @elseif(app()->getLocale() === 'ru')
+                                                    {{ $announcement->type->getLabelRu() }}
+                                                @else
+                                                    {{ $announcement->type->getLabelEn() }}
+                                                @endif
+                                            </span>
+                                        @else
+                                            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
+                                                <i class="fas fa-megaphone"></i>
+                                                @if(app()->getLocale() === 'kk')
+                                                    {{ $announcement->type->getLabelKk() }}
+                                                @elseif(app()->getLocale() === 'ru')
+                                                    {{ $announcement->type->getLabelRu() }}
+                                                @else
+                                                    {{ $announcement->type->getLabelEn() }}
+                                                @endif
+                                            </span>
+                                        @endif
+                                    @endif
                                 </div>
                                 <div class="text-left md:text-right">
                                     <span class="text-gray-600 text-sm font-medium">{{ __('От:')}}</span>

@@ -415,8 +415,15 @@
                         <div class="space-y-3 md:space-y-4 grid grid-cols-1 gap-3 md:gap-4">
                             @foreach($announcements as $item)
                                 <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}">
-                                    <div class="border-l-4 border-shakarim-blue pl-3 md:pl-4">
-                                        <div class="text-xs md:text-sm text-gray-500">{{ \Carbon\Carbon::createFromTimestamp($item->date)->locale(app()->getLocale())->isoFormat('D MMMM') }}</div>
+                                    <div class="border-l-4 {{ $item->type && $item->type->value === 'competition' ? 'border-orange-500' : 'border-shakarim-blue' }} pl-3 md:pl-4">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="text-xs md:text-sm text-gray-500">{{ \Carbon\Carbon::createFromTimestamp($item->date)->locale(app()->getLocale())->isoFormat('D MMMM') }}</div>
+                                            @if($item->type && $item->type->value === 'competition')
+                                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-orange-100 text-orange-700">
+                                                    <i class="fas fa-trophy text-xs"></i>
+                                                </span>
+                                            @endif
+                                        </div>
                                         <h4 class="font-semibold text-sm md:text-base">{{ $item->{'name'} }}</h4>
                                     </div>
                                 </a>
@@ -442,7 +449,7 @@
                             class="block bg-white bg-opacity-20 p-2 md:p-3 rounded-lg hover:bg-opacity-30 transition text-sm md:text-base">
                                 <i class="fas fa-envelope mr-2"></i> Shakarim Hub
                             </a>
-                            <a href="https://mooc.semgu.kz" target="_blank"
+                            <a href="https://mooc.shakarim.kz" target="_blank"
                             class="block bg-white bg-opacity-20 p-2 md:p-3 rounded-lg hover:bg-opacity-30 transition text-sm md:text-base">
                                 <i class="fas fa-book mr-2"></i> Moodle
                             </a>

@@ -49,6 +49,31 @@
                                                 <span class="text-gray-400 text-sm">
                                                     {{ \Carbon\Carbon::createFromTimestamp($item->date)->format('d.m.Y') }}
                                                 </span>
+                                                @if($item->type)
+                                                    @if($item->type->value === 'competition')
+                                                        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-700">
+                                                            <i class="fas fa-trophy"></i>
+                                                            @if(app()->getLocale() === 'kk')
+                                                                {{ $item->type->getLabelKk() }}
+                                                            @elseif(app()->getLocale() === 'ru')
+                                                                {{ $item->type->getLabelRu() }}
+                                                            @else
+                                                                {{ $item->type->getLabelEn() }}
+                                                            @endif
+                                                        </span>
+                                                    @else
+                                                        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
+                                                            <i class="fas fa-megaphone"></i>
+                                                            @if(app()->getLocale() === 'kk')
+                                                                {{ $item->type->getLabelKk() }}
+                                                            @elseif(app()->getLocale() === 'ru')
+                                                                {{ $item->type->getLabelRu() }}
+                                                            @else
+                                                                {{ $item->type->getLabelEn() }}
+                                                            @endif
+                                                        </span>
+                                                    @endif
+                                                @endif
                                             </div>
                                             
                                             <h3 class="font-semibold text-shakarim-blue mb-4 line-clamp-3 leading-relaxed">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AnnouncementTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +20,7 @@ class Announcement extends Model
         'description',
         'content',
         'language',
+        'type',
         'date',
         'alias',
         'image',
@@ -32,6 +34,7 @@ class Announcement extends Model
     protected $casts = [
         'date' => 'integer',
         'status' => 'integer',
+        'type' => AnnouncementTypeEnum::class,
         'created_by' => 'integer',
         'updated_by' => 'integer',
         'created_at' => 'integer',

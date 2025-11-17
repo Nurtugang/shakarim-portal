@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\AnnouncementTypeEnum;
 use App\Models\Announcement;
 use App\Filament\Resources\AnnouncementResource\Pages;
 use Filament\Forms;
@@ -41,6 +42,11 @@ class AnnouncementResource extends Resource
                         'ru' => 'Русский',
                         'en' => 'English',
                     ])
+                    ->required(),
+                Forms\Components\Select::make('type')
+                    ->label('Тип')
+                    ->options(AnnouncementTypeEnum::getOptions())
+                    ->default(AnnouncementTypeEnum::ANNOUNCEMENT->value)
                     ->required(),
                 Forms\Components\Textarea::make('description')
                     ->label('Описание')
@@ -92,6 +98,12 @@ class AnnouncementResource extends Resource
                         'en' => 'info',
                         default => 'gray',
                     }),
+                Tables\Columns\TextColumn::make('type')
+                    ->label('Тип')
+                    ->badge()
+                    ->formatStateUsing(fn ($state) => $state?->getLabel() ?? 'Хабарландыру')
+                    ->color(fn ($state) => $state?->getColor() ?? 'blue')
+                    ->icon(fn ($state) => $state?->getIcon() ?? 'heroicon-o-megaphone'),
                 Tables\Columns\TextColumn::make('date')
                     ->label('Дата')
                     ->date()
@@ -107,6 +119,8 @@ class AnnouncementResource extends Resource
                         'ru' => 'Русский',
                         'en' => 'English',
                     ]),
+                Tables\Filters\SelectFilter::make('type')
+                    ->options(AnnouncementTypeEnum::getOptions()),
                 Tables\Filters\TernaryFilter::make('status'),
             ])
             ->headerActions([
