@@ -61,7 +61,7 @@
                                 <p><strong>{{ __('Приемная ректора:') }}  </strong><a href="tel:+77222316029"><strong>+7 (7222) 31-60-29</strong></a></p>
                             </li>
                             <li>
-                                <p><strong>{{ __('Приемная комиссия:') }} </strong><a href="tel:+77055525398"><strong>+7 (705) 552-53-98</strong></a></p>
+                                <p><strong>{{ __('Приемная комиссия') }}: </strong><a href="tel:+77055525398"><strong>+7 (705) 552-53-98</strong></a></p>
                             </li>
                             <li>
                                 <p><strong>{{ __('Канцелярия:') }} </strong><a href="tel:+77222313175"><strong>+7 (7222) 31-31-75</strong></a><strong>, </strong><a href="mailto:kense@shakarim.kz"><strong>kense@shakarim.kz</strong></a></p>

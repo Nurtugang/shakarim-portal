@@ -192,7 +192,7 @@
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'qabyldau-komissiiasymen-bailanystary']) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-phone mr-1.5 md:mr-2 text-xs"></i>
-                            <span class="font-body text-xs md:text-sm">{{ __('Контакты') }}</span>
+                            <span class="font-body text-xs md:text-sm">{{ __('Приемная комиссия') }}</span>
                         </a>
                     </div>
                 </div>
@@ -411,7 +411,7 @@
                 <div class="space-y-6 md:space-y-8">
                     <!-- Events -->
                     <div class="bg-white rounded-xl shadow-md p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-shakarim-blue mb-4 md:mb-6">{{ __('Events') }}</h3>
+                        <h3 class="text-lg md:text-xl font-bold text-shakarim-blue mb-4 md:mb-6">{{ __('Объявления') }}</h3>
                         <div class="space-y-3 md:space-y-4 grid grid-cols-1 gap-3 md:gap-4">
                             @foreach($announcements as $item)
                                 <a href="{{ route('announcements.show', ['locale' => app()->getLocale(), 'id' => $item->id]) }}">
