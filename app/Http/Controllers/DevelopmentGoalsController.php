@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DevelopmentGoal;
 use App\Models\DevelopmentGoalEducation;
+use App\Models\DevelopmentGoalsEducationContent;
 use App\Models\DevelopmentGoalDocument;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,12 @@ class DevelopmentGoalsController extends Controller
         $locale = app()->getLocale();
         
         $goals = DevelopmentGoal::inLanguage($locale)
-            ->ordered()
-            ->get();
+        ->with(['news' => function($query) use ($locale) {
+            $query->where('status', 1)
+                ->orderBy('date', 'desc');
+        }])
+        ->ordered()
+        ->get();
         
         $firstGoal = $goals->first();
         
@@ -34,12 +39,16 @@ class DevelopmentGoalsController extends Controller
             ->orderBy('title')
             ->get();
         
+        $educationContent = DevelopmentGoalsEducationContent::first();
+        
         return view('development-goals.index', compact(
             'goals',
             'firstGoal',
             'educationProgramsFlat',
             'documents',
-            'reports'
+            'reports',
+            'locale',
+            'educationContent'
         ));
     }
 }

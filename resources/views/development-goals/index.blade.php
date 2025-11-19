@@ -97,6 +97,35 @@
                                     <div class="prose max-w-none">
                                         {!! $firstGoal->content !!}
                                     </div>
+                                    
+                                    @if($firstGoal->news && $firstGoal->news->count() > 0)
+                                    <div class="mt-8">
+                                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                            <i class="fas fa-newspaper mr-2"></i>{{ __('Связанные новости') }}
+                                        </h3>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            @foreach($firstGoal->news as $item)
+                                            <div class="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                                                <div class="h-32 w-full overflow-hidden bg-gray-100">
+                                                    <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
+                                                        <img src="{{ $item->getThumbnailUrl() ?: asset('img/university_building.webp') }}" 
+                                                            alt="{{ $item->{'title_' . app()->getLocale()} }}" 
+                                                            class="w-full h-full object-cover hover:scale-105 transition">
+                                                    </a>
+                                                </div>
+                                                <div class="p-4">
+                                                    <div class="text-xs text-gray-500 mb-2">{{ $item->date?->format('d.m.Y') }}</div>
+                                                    <h4 class="font-semibold text-sm text-shakarim-blue line-clamp-2">
+                                                        <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
+                                                            {{ $item->{'title_' . app()->getLocale()} }}
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    @endif
                                 @else
                                     <p class="text-gray-500 text-center">{{ __('Цели развития не найдены') }}</p>
                                 @endif
@@ -110,21 +139,11 @@
             <div id="content-education" class="dev-tab-content hidden">
                 <div class="bg-white rounded-xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6">{{ __('Образование для устойчивого развития') }}</h2>
-                    
-                    <!-- Intro Text -->
+                    @if($educationContent && $educationContent->{'content_' . $locale})
                     <div class="prose max-w-none mb-8">
-                        <div class="bg-blue-50 border-l-4 border-shakarim-blue p-6 rounded-r-lg my-6">
-                            <h3 class="font-bold text-gray-800 mb-3">{{ __('Ключевые элементы образовательной политики:') }}</h3>
-                            <ol class="space-y-3 text-gray-700">
-                                <li>
-                                    <strong>1. {{ __('Включение универсальных модулей об устойчивом развитии') }}</strong>
-                                </li>
-                                <li class="mt-4">
-                                    <strong>2. {{ __('Реализация отдельных образовательных программ с фокусом на ЦУР') }}</strong>
-                                </li>
-                            </ol>
-                        </div>
+                        {!! $educationContent->{'content_' . $locale} !!}
                     </div>
+                    @endif
 
                     <!-- Table Section -->
                     <div class="mb-8">
@@ -499,7 +518,7 @@
         .dev-tab-content a {
             color: #0000EE;
         }
-
+        
         /* Table responsive */
         @media (max-width: 768px) {
             table {
@@ -536,7 +555,15 @@
             const goalsData = {!! json_encode($goals->keyBy('id')->map(function($goal) {
                 return [
                     'title' => $goal->title,
-                    'content' => $goal->content
+                    'content' => $goal->content,
+                    'news' => $goal->news->map(function($item) {
+                        return [
+                            'title' => $item->{'title_' . app()->getLocale()},
+                            'date' => $item->date?->format('d.m.Y'),
+                            'thumbnail' => $item->getThumbnailUrl() ?: asset('img/university_building.webp'),
+                            'url' => route('news.show', ['news' => $item, 'locale' => app()->getLocale()])
+                        ];
+                    })
                 ];
             })) !!};
 
@@ -553,10 +580,16 @@
                     this.classList.remove('border-gray-200');
                     
                     if (goalsData[goalId]) {
-                        goalContent.innerHTML = `
-                            <h2 class="text-2xl font-bold text-gray-800 mb-6">${goalsData[goalId].title}</h2>
-                            <div class="prose max-w-none">${goalsData[goalId].content}</div>
-                        `;
+                        let newsHtml = '';
+                        if (goalsData[goalId].news && goalsData[goalId].news.length > 0) {
+                            newsHtml = '<div class="mt-8"><h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-newspaper mr-2"></i>{{ __('Связанные новости') }}</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4">';
+                            goalsData[goalId].news.forEach(item => {
+                                newsHtml += '<div class="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"><div class="h-32 w-full overflow-hidden bg-gray-100"><a href="' + item.url + '"><img src="' + item.thumbnail + '" alt="' + item.title + '" class="w-full h-full object-cover hover:scale-105 transition"></a></div><div class="p-4"><div class="text-xs text-gray-500 mb-2">' + item.date + '</div><h4 class="font-semibold text-sm text-shakarim-blue line-clamp-2"><a href="' + item.url + '">' + item.title + '</a></h4></div></div>';
+                            });
+                            newsHtml += '</div></div>';
+                        }
+                        
+                        goalContent.innerHTML = '<h2 class="text-2xl font-bold text-gray-800 mb-6">' + goalsData[goalId].title + '</h2><div class="prose max-w-none">' + goalsData[goalId].content + '</div>' + newsHtml;
                     }
                 });
             });

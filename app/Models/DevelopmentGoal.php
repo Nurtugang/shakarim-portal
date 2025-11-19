@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class DevelopmentGoal extends Model
 {
@@ -116,6 +117,11 @@ class DevelopmentGoal extends Model
     public function getEducationProgramsForLanguage(string $language)
     {
         return $this->educationPrograms()->where('language', $language)->get();
+    }
+
+    public function news(): BelongsToMany
+    {
+        return $this->belongsToMany(News::class, 'development_goal_news');
     }
 
 }

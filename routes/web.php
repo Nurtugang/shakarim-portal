@@ -29,6 +29,7 @@ use App\Http\Controllers\Academy\AccreditationController;
 use App\Http\Controllers\Academy\AcademySchoolsController;
 
 
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\MinorController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\RectorBlogController;
@@ -123,6 +124,9 @@ Route::group([
     Route::get('/rector-blog/{post:slug}', [RectorBlogController::class, 'show'])->name('rector.post');
 
     Route::get('/development-goals', [DevelopmentGoalsController::class, 'index'])->name('development-goals.index');
+
+    Route::get('/university/board', [BoardController::class, 'index'])->name('university.board-directors.index');
+
     
     Route::get('/minors', [MinorController::class, 'index'])->name('minor.index');
     Route::get('/minor/{id}', [MinorController::class, 'show'])->name('minor.show');
@@ -149,10 +153,6 @@ Route::group([
     Route::get('/university/about', function (string $locale) {
         return view('university.about.index');
     })->name('university.about.index');
-
-    Route::get('/university/board', function (string $locale) {
-        return view('university.board.index');
-    })->name('university.board.index');
 
     Route::get('/university/contacts', function (string $locale) {
         return view('university.contacts.index');

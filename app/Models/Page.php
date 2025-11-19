@@ -80,10 +80,6 @@ class Page extends Model
     {
         return $this->hasMany(PageRequest::class);
     }
-    // public function getUrlAttribute()
-    // {
-    //     return route('page', ['locale' => app()->getLocale(), 'page' => $this]);
-    // }
 
     public function getUrl()
     {
@@ -117,5 +113,10 @@ class Page extends Model
         static::deleted(function () {
             Cache::forget('menu');
         });
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

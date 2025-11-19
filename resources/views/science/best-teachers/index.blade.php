@@ -24,13 +24,21 @@
                         <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">
                             {{ __('Обладатели звания «Лучший преподаватель вуза»') }}
                         </h1>
-                            <a href="{{ Storage::url('best-teachers-docs/Конкурсная комиссия.pdf') }}" 
+                        <a href="{{ Storage::url('best-teachers-docs/Конкурсная комиссия.pdf') }}" 
                             target="_blank"
                             rel="noopener noreferrer"
                             class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm"
                             style="color: white !important;">
                             <i class="fas fa-external-link-alt mr-2"></i>
                             {{ __('Протокол №1 конкурсной комиссии «Лучший преподаватель вуза – 2025') }}
+                        </a>
+                        <a href="{{ Storage::url('best-teachers-docs/Лучший преподаватель Вуза 2025 Выписка УС,.pdf') }}" 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm"
+                            style="color: white !important;">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            {{ __('Выписка Ученого совета') }}
                         </a>
                         
                         <p class="text-gray-600 mt-2">{{ __('Преподаватели, удостоенные звания за выдающиеся достижения в образовательной деятельности') }}</p>

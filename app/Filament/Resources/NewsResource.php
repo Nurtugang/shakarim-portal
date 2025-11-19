@@ -81,6 +81,13 @@ class NewsResource extends Resource
                             ->label('Дата публикации')
                             ->default(now())
                             ->required(),
+                        Forms\Components\Select::make('developmentGoals')
+                            ->label('Цели развития')
+                            ->relationship('developmentGoals', 'title')
+                            ->multiple()
+                            ->searchable()
+                            ->preload()
+                            ->columnSpanFull(),
                     ])->columnSpan(8),
                 Section::make()
                     ->schema([

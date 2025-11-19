@@ -52,10 +52,6 @@ class AppServiceProvider extends ServiceProvider
                     PdfViewBlock::class,
                     ListBlock::class,
                     ImageCarouselBlock::class,
-                    // GalleryBlock::class,
-                    // InfoBlock::class,
-                    // FullSliderBlock::class,
-                    // ContactsListBlock::class,
                 ]);
         });
         

@@ -36,7 +36,7 @@ class News extends Model
         'date' => 'datetime',
         'status' => 'boolean',
         'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'updated_at' => 'datetime',
     ];
 
     public function getSlugOptions(): SlugOptions
@@ -355,5 +355,10 @@ class News extends Model
 
         \Log::info("getThumbnailUrl: thumbnail не найден, используем оригинал news/{$this->image}");
         return Storage::disk('public')->url('news/' . $this->image);
+    }
+
+    public function developmentGoals(): BelongsToMany
+    {
+        return $this->belongsToMany(DevelopmentGoal::class, 'development_goal_news');
     }
 }

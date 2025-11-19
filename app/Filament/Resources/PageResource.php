@@ -10,6 +10,7 @@ use App\Filament\Resources\PageResource\RelationManagers\FilesRelationManager;
 use App\Filament\Resources\PageResource\RelationManagers\ListsRelationManager;
 use App\Filament\Resources\PageResource\RelationManagers\RequestsRelationManager;
 use App\Models\Menu;
+use App\Models\User;
 use App\Models\Page;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -44,7 +45,8 @@ class PageResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::PRESS]);
+        return Auth::user()->hasAnyRole([RolesEnum::ADMIN, RolesEnum::PRESS, RolesEnum::STRUCTURE, RolesEnum::USER, 
+                                         RolesEnum::SCIENCE, RolesEnum::CAMPUS_LIFE, RolesEnum::DEVELOPMENT]);
     }
 
     public static function form(Form $form): Form
@@ -202,8 +204,20 @@ class PageResource extends Resource
                     ->default(1),
                 Forms\Components\Toggle::make('is_news_page')
                     ->label('Это страница новостей')
-                    ->default(0),    
+                    ->default(0),
+                Section::make('Управление доступом')
+                        ->description('Выберите пользователей, которые смогут просматривать эту страницу. Если ни один пользователь не выбран, страница будет доступна всем.')
+                        ->collapsible()
+                        ->schema([
+                            Select::make('users')
+                                ->label('Разрешить доступ пользователям')
+                                ->relationship('users', 'name')
+                                ->multiple()
+                                ->preload()
+                                ->searchable()
+                        ]),    
                 ]),
+                
             ]);
     }
 
@@ -248,14 +262,22 @@ class PageResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->when(
-            Auth::user()->hasRole(RolesEnum::STRUCTURE),
-            function (Builder $query) {
-                return $query->whereHas('menu', function (Builder $query) {
-                    $query->where('structure_id', Auth::user()->structure_id);
-                });
-            } 
-        );
+        $user = Auth::user();
+        $query = parent::getEloquentQuery();
+
+        if ($user->hasRole(RolesEnum::ADMIN)) {
+            return $query;
+        }
+
+        if ($user->hasRole(RolesEnum::STRUCTURE)) {
+            return $query->whereHas('menu', function (Builder $subQuery) use ($user) {
+                $subQuery->where('structure_id', $user->structure_id);
+            });
+        }
+
+        return $query->whereHas('users', function (Builder $subQuery) use ($user) {
+            $subQuery->where('users.id', $user->id);
+        });
     }
 
     public static function getRelations(): array
