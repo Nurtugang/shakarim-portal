@@ -26,6 +26,9 @@
                             <button onclick="showTab('boardofdirectors')" id="tab-boardofdirectors" class="tab-button active whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                                 {{ __('Директорлар кеңесі')}}
                             </button>
+                            <button onclick="showTab('committees')" id="tab-committees" class="tab-button whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                {{ __('Комитеттер')}}
+                            </button>
                             <button onclick="showTab('board')" id="tab-board" class="tab-button whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                                 {{ __('Басқарма')}}
                             </button>
@@ -48,6 +51,10 @@
                                 <button onclick="showTab('boardofdirectors')" id="desktop-tab-boardofdirectors" class="desktop-tab-button active w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
                                     <i class="fas fa-users-cog mr-2"></i>
                                     {{ __('Директорлар кеңесі')}}
+                                </button>
+                                <button onclick="showTab('committees')" id="desktop-tab-committees" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
+                                    <i class="fas fa-layer-group mr-2"></i>
+                                    {{ __('Комитеттер')}}
                                 </button>
                                 <button onclick="showTab('board')" id="desktop-tab-board" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
                                     <i class="fas fa-sitemap mr-2"></i>
@@ -109,6 +116,16 @@
                                     
                                     <!-- Detailed Information -->
                                     <div id="nurbaev-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                        <!-- Meta Info -->
+                                        <div class="mb-6">
+                                            <ul class="space-y-1 text-sm text-gray-700">
+                                                <li><strong>{{ __('Туған күні:') }}</strong> {{ __('12 желтоқсан 1966 жыл') }}</li>
+                                                <li><strong>{{ __('Азаматтығы:') }}</strong> {{ __('Қазақстан Республикасы') }}</li>
+                                            </ul>
+                                            <ul class="space-y-1 text-sm text-gray-700 mt-3">
+                                                <li><strong>{{ __('Директорлар кеңесіне сайланған күні:') }}</strong> {{ __('13.10.2025, бұйрық №476') }}</li>
+                                            </ul>
+                                        </div>
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
@@ -136,7 +153,11 @@
                                                     <li>{{ __('«KUSTO GROUP» ЖШС Басқарушы директоры, Қазақстан Республикасы Премьер-Министрінің штаттан тыс кеңесшісі (2019- 2022)') }}</li>
                                                     <li>{{ __('«QazaqGeography» РҚБ Басқару кеңесінің Төрағасы (30.10.2019-03.06.2020)') }}</li>
                                                     <li>{{ __('«QazaqGeography» РҚБ Басқарма Төрағасы (04.06.2020 – қазіргі уақытқа дейін)') }}</li>
-                                                    <li>{{ __('Л. Н. Гумилев атындағы Еуразия ұлттық университеті» КеАқ директорлар кеңесінің мүшесі, тәуелсіз директор (21.04.2021- қазіргі уақытқа дейін)') }}</li>
+                                                    <li>{{ __('Л. Н. Гумилев атындағы Еуразия ұлттық университеті» КеАқ директорлар кеңесінің мүшесі, тәуелсіз директор (21.04.2021-22.08.2023)') }}</li>
+                                                    <li>{{ __('«Gateway Ventures (CA) LTD» ЖШС басқарушы директоры (2023-2024)') }}</li>
+                                                    <li>{{ __('«Gateway Ventures (CA) LTD» ЖШС Директорлар кеңесінің мүшесі, өңірлік директор (Астана) (2024 жылдан бастап қазіргі уақытқа дейін)') }}</li>
+                                                    <li>{{ __('«НАО Футбольный клуб Елімай» директорлар кеңесінің төрағасы (10.08.2025 жылдан бастап қазіргі уақытқа дейін)') }}</li>
+                                                    <li>{{ __('«Шәкәрім университеті» КеАҚ директорлар кеңесінің төрағасы') }}</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -179,6 +200,17 @@
                                     
                                     <!-- Detailed Information -->
                                     <div id="orynbekov-board-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                        <!-- Meta Info -->
+                                        <div class="mb-6">
+                                            <ul class="space-y-1 text-sm text-gray-700">
+                                                <li><strong>{{ __('Туған күні:') }}</strong> {{ __('24 шілде 1983 жыл') }}</li>
+                                                <li><strong>{{ __('Азаматтығы:') }}</strong> {{ __('Қазақстан Республикасы') }}</li>
+                                            </ul>
+                                            <ul class="space-y-1 text-sm text-gray-700 mt-3">
+                                                <li><strong>{{ __('Директорлар кеңесіне алғашқы сайланған күні:') }}</strong> {{ __('21.07.2023 жыл, бұйрық №326') }}</li>
+                                                <li><strong>{{ __('Директорлар кеңесінің қолданыстағы құрамына сайланған күні:') }}</strong> {{ __('13.10.2025, бұйрық №476') }}</li>
+                                            </ul>
+                                        </div>
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
@@ -242,6 +274,16 @@
                                     
                                     <!-- Detailed Information -->
                                     <div id="kozhakhmet-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                        <!-- Meta Info -->
+                                        <div class="mb-6">
+                                            <ul class="space-y-1 text-sm text-gray-700">
+                                                <li><strong>{{ __('Туған күні:') }}</strong> {{ __('13 ақпан 1984 жыл') }}</li>
+                                                <li><strong>{{ __('Азаматтығы:') }}</strong> {{ __('Қазақстан Республикасы') }}</li>
+                                            </ul>
+                                            <ul class="space-y-1 text-sm text-gray-700 mt-3">
+                                                <li><strong>{{ __('Директорлар кеңесіне сайланған күні:') }}</strong> {{ __('13.10.2025, бұйрық №476') }}</li>
+                                            </ul>
+                                        </div>
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
@@ -260,6 +302,7 @@
                                                     <li>{{ __('Солтүстік Қазақстан облысы әкімінің орынбасары. Білім саласын жетекшілік етті (2017-2019)') }}</li>
                                                     <li>{{ __('Ақпарат және қоғамдық даму министрлігі Жастар және отбасы істері комитетінің төрағасы (2019-2020)') }}</li>
                                                     <li>{{ __('Ақпарат және қоғамдық даму министрлігі Азаматтық қоғам істері комитетінің төрағасы (2020-2023)') }}</li>
+                                                    <li>{{ __('Қазақстан Республикасы Ғылым және жоғары білім министрлігінің аппарат басшысы (12.2023 жылдан бастап қазіргі уақытқа дейін)') }}</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -272,7 +315,7 @@
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
-                                            <img src="{{ Storage::url('board/6c892a85aefa1d0f92d8b59205ff4656.webp') }}" 
+                                            <img src="{{ Storage::url('board/Karibaeva .webp') }}" 
                                                 alt="{{ __('Кәрібаева Мамыр Қуанышқызы') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('karibaeva-details')" 
@@ -302,6 +345,17 @@
                                     
                                     <!-- Detailed Information -->
                                     <div id="karibaeva-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                        <!-- Meta Info -->
+                                        <div class="mb-6">
+                                            <ul class="space-y-1 text-sm text-gray-700">
+                                                <li><strong>{{ __('Туған күні:') }}</strong> {{ __('31 тамыз 1970 жыл') }}</li>
+                                                <li><strong>{{ __('Азаматтығы:') }}</strong> {{ __('Қазақстан Республикасы') }}</li>
+                                            </ul>
+                                            <ul class="space-y-1 text-sm text-gray-700 mt-3">
+                                                <li><strong>{{ __('Директорлар кеңесіне алғашқы сайланған күні:') }}</strong> {{ __('23.08.2023 жыл, бұйрық №433') }}</li>
+                                                <li><strong>{{ __('Директорлар кеңесінің қолданыстағы құрамына сайланған күні:') }}</strong> {{ __('13.10.2025, бұйрық №476') }}</li>
+                                            </ul>
+                                        </div>
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
@@ -359,6 +413,16 @@
                                     
                                     <!-- Detailed Information -->
                                     <div id="makhmutova-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                        <!-- Meta Info -->
+                                        <div class="mb-6">
+                                            <ul class="space-y-1 text-sm text-gray-700">
+                                                <li><strong>{{ __('Туған күні:') }}</strong> {{ __('16 қазан 1963 жыл') }}</li>
+                                                <li><strong>{{ __('Азаматтығы:') }}</strong> {{ __('Қазақстан Республикасы') }}</li>
+                                            </ul>
+                                            <ul class="space-y-1 text-sm text-gray-700 mt-3">
+                                                <li><strong>{{ __('Директорлар кеңесіне сайланған күні:') }}</strong> {{ __('13.10.2025, бұйрық №476') }}</li>
+                                            </ul>
+                                        </div>
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
@@ -371,6 +435,14 @@
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Еңбек өтілі') }}</h4>
                                                 <ul class="space-y-1 text-sm text-gray-700 list-disc list-inside">
+                                                    <li>{{ __('1985 – 1987 жж. - Алматы қ. №48 орта мектепте физика және информатика пәндерінің оқытушысы') }}</li>
+                                                    <li>{{ __('1987 – 1993 жж. – Қазақ энергетика ғылыми-зерттеу институтының инженері') }}</li>
+                                                    <li>{{ __('1997 – 1997 жж. - Қазақстан Республикасы Президенті жанындағы стратегиялық ресурстарды бақылау агенттігінің Бақылау-талдау бөлімінің консультанты') }}</li>
+                                                    <li>{{ __('1997 – 1999 жж.  - «Семей» қаржы-өнеркәсіптік тобы, бағалы қағаздар және инвестициялар бөлімінің менеджері') }}</li>
+                                                    <li>{{ __('1999 – 2003 жж. - Қазақстан Республикасы Білім және ғылым министрлігінің Экономика институты, мемлекеттік қаржы зерттеулері бөлімінің басшысы') }}</li>
+                                                    <li>{{ __('2001 жылдан қазіргі уақытқа дейін – сарапшы, кеңесші, Open Society Institute/Local Government Initiative (OSI/LGI) Ondrej Simek, Дүниежүзілік банк Anwar Shah, Қазақстандағы ЕО Делегациясы / COWI, Asian Development Bank TA Project “Central Asia”, ДБ институты Migara de Silva, USAID Regional Trade Liberalization and Customs Evaluation Project/USAID өңірлік сауданы ырықтандыру және кеденді бағалау жобасы, UNDP Support to Reform Process in Uzbekistan project, Windrush Ventures Limited (Тони Блэр офисі), Экономикалық ынтымақтастық және даму ұйымы (ЭЫДҰ) Nelly Petkova, State of Asia-pacific cities 2014 Report, Экономикалық және қаржылық зерттеулер орталығы (CEFIR) Ирина Денисова, RCS Global (Дүниежүзілік банктің мердігері) Харрисон Митчелл, Беларусь ҰҒА агроөнеркәсіптік кешенінің жүйелік зерттеулер институты, United Nations Development Policy and Analysis Division (UN DESA), Application Européenne de Technologies et de Services (AETS) – Қазақстандағы ЕО Делегациясы үшін. Жобаның іске асыру серіктесі: Altair Asesores, FAO UN – БҰҰ Азық-түлік және ауыл шаруашылығы ұйымы, БҰҰ Халықаралық көші-қон ұйымы (МОМ) The UN Migration Agency') }}</li>
+                                                    <li>{{ __('2022 ж. – оқытушы, Халықаралық Бизнес Университеті, Бизнес мектебі магистратурасы') }}</li>
+                                                    <li>{{ __('2022 – қазіргі уақытқа дейін – Public Policy Research Center (PPRC) директоры, Қамқоршылық кеңесінің мүшесі') }}</li>
                                                     <li>{{ __('Алматыдағы Public Policy Research Center (PPRC) директоры және құрылтайшысы.') }}</li>
                                                     <li>{{ __('Үкіметке және халықаралық ұйымдарға (АДБ, Дүниежүзілік банк, ХВҚ, БҰҰДБ, ХКҰ, ЭСКАТО, ЮНИСЕФ, FAO, UN Women, ЭЫДҰ, БҰҰ Экономикалық және әлеуметтік мәселелер департаменті, Windrush Ventures Limited (Tony Blair кеңсесі ретінде сауда жасайтын), Қазақстандағы Еуропалық Одақ Делегациясы және т.б.) кеңес береді.') }}</li>
                                                     <li>{{ __('Ұлттық экономика министрлігі, Ұлттық Банк және Қаржы нарығын реттеу және дамыту агенттігі жанындағы Сараптамалық кеңестердің мүшесі.') }}</li>
@@ -386,13 +458,13 @@
                                 </div>
                             </div>
 
-                            <!-- Мукашев Балтабек Кумарбекович -->
+                            <!-- Мукашев Балтабек Кумарович -->
                             <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
                                 <div class="p-6">
                                     <div class="flex flex-row md:flex-row gap-4 md:gap-6">
                                         <div class="flex-shrink-0 flex flex-col items-center md:items-start">
                                             <img src="{{ Storage::url('board/d97de3dad96ec2f6928b841d33cdce1f.webp') }}" 
-                                                alt="{{ __('Мукашев Балтабек Кумарбекович') }}" 
+                                                alt="{{ __('Мукашев Балтабек Кумарович') }}" 
                                                 class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover">
                                             <button onclick="toggleDetails('mukashev-details')" 
                                                 class="mt-3 md:hidden inline-flex items-center px-3 py-1.5 bg-shakarim-blue text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
@@ -404,7 +476,7 @@
                                         </div>
                                         <div class="flex-grow">
                                             <h3 class="text-sm md:text-xl font-bold text-shakarim-blue mb-2 text-left">
-                                                {{ __('Мукашев Балтабек Кумарбекович') }}
+                                                {{ __('Мукашев Балтабек Кумарович') }}
                                             </h3>
                                             <p class="text-sm md:text-lg font-medium text-gray-700 mb-4 text-left">
                                                 {{ __('Директорлар кеңесінің мүшесі, тәуелсіз директор') }}
@@ -421,6 +493,17 @@
                                     
                                     <!-- Detailed Information -->
                                     <div id="mukashev-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                        <!-- Meta Info -->
+                                        <div class="mb-6">
+                                            <ul class="space-y-1 text-sm text-gray-700">
+                                                <li><strong>{{ __('Туған күні:') }}</strong> {{ __('22 қаңтар 1968 жыл') }}</li>
+                                                <li><strong>{{ __('Азаматтығы:') }}</strong> {{ __('Қазақстан Республикасы') }}</li>
+                                            </ul>
+                                            <ul class="space-y-1 text-sm text-gray-700 mt-3">
+                                                <li><strong>{{ __('Директорлар кеңесіне алғашқы сайланған күні:') }}</strong> {{ __('20.10.2022 жыл, бұйрық №118') }}</li>
+                                                <li><strong>{{ __('Директорлар кеңесінің қолданыстағы құрамына сайланған күні:') }}</strong> {{ __('13.10.2025, бұйрық №476') }}</li>
+                                            </ul>
+                                        </div>
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
@@ -441,6 +524,205 @@
                                                     <li class="ml-4">{{ __('Әл-қарал (биотехнологиялық холдинг)') }}</li>
                                                 </ul>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Committees Tab -->
+                    <div id="content-committees" class="tab-content hidden">
+                        <div class="space-y-6">
+                            <!-- Audit Committee -->
+                            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                                <button onclick="toggleCommittee('audit-committee')" class="w-full p-6 text-left hover:bg-gray-50 transition-colors">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-xl font-bold text-shakarim-blue">{{ __('Аудит жөніндегі комитеті') }}</h3>
+                                        <svg class="w-6 h-6 transform transition-transform" id="audit-committee-arrow" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div id="audit-committee" class="border-t border-gray-200">
+                                    <div class="p-6">
+                                        <div class="overflow-x-auto">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">№</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('ТАӘ') }}</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Лауазымы') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url('board/Makhmutova.webp') }}" alt="">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ __('Махмутова Меруерт Маутханқызы') }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-900">{{ __('Комитет төрағасы, тәуелсіз директор') }}</td>
+                                                    </tr>
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url('board/d97de3dad96ec2f6928b841d33cdce1f.webp') }}" alt="">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ __('Мукашев Балтабек Кумарович') }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-900">{{ __('Комитет мүшесі, тәуелсіз директор') }}</td>
+                                                    </tr>
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">3</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url('board/ac8d0fcaaf30d8b99fb27c4076b091c8.webp') }}" alt="">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ __('Нұрбаев Орман Кәрімұлы') }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-900">{{ __('Комитет мүшесі, тәуелсіз директор') }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HR and Remuneration Committee -->
+                            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                                <button onclick="toggleCommittee('hr-committee')" class="w-full p-6 text-left hover:bg-gray-50 transition-colors">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-xl font-bold text-shakarim-blue">{{ __('Кадр және сыйақылар жөніндегі комитеті') }}</h3>
+                                        <svg class="w-6 h-6 transform transition-transform" id="hr-committee-arrow" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div id="hr-committee" class="hidden border-t border-gray-200">
+                                    <div class="p-6">
+                                        <div class="overflow-x-auto">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">№</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('ТАӘ') }}</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Лауазымы') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url('board/d97de3dad96ec2f6928b841d33cdce1f.webp') }}" alt="">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ __('Мукашев Балтабек Кумарович') }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-900">{{ __('Комитет төрағасы, тәуелсіз директор') }}</td>
+                                                    </tr>
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url('board/Makhmutova.webp') }}" alt="">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ __('Махмутова Меруерт Маутханқызы') }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-900">{{ __('Комитет мүшесі, тәуелсіз директор') }}</td>
+                                                    </tr>
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">3</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url('board/ac8d0fcaaf30d8b99fb27c4076b091c8.webp') }}" alt="">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ __('Нұрбаев Орман Кәрімұлы') }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-900">{{ __('Комитет мүшесі, тәуелсіз директор') }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Strategic Planning Committee -->
+                            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                                <button onclick="toggleCommittee('strategy-committee')" class="w-full p-6 text-left hover:bg-gray-50 transition-colors">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-xl font-bold text-shakarim-blue">{{ __('Стратегиялық жоспарлау жөніндегі комитеті') }}</h3>
+                                        <svg class="w-6 h-6 transform transition-transform" id="strategy-committee-arrow" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div id="strategy-committee" class="hidden border-t border-gray-200">
+                                    <div class="p-6">
+                                        <div class="overflow-x-auto">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">№</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('ТАӘ') }}</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Лауазымы') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url('board/Makhmutova.webp') }}" alt="">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ __('Махмутова Меруерт Маутханқызы') }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-900">{{ __('Комитет төрағасы, тәуелсіз директор') }}</td>
+                                                    </tr>
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url('board/55627f971685a1d174693a4a8b1c9474.webp') }}" alt="">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ __('Орынбеков Думан Рымғалиұлы') }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-900">{{ __('Комитет мүшесі, Қоғамның Басқарма төрағасы – Ректор') }}</td>
+                                                    </tr>
+                                                    <tr class="hover:bg-gray-50">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">3</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url('board/Karibaeva .webp') }}" alt="">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">{{ __('Кәрібаева Мамыр Қуанышқызы') }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 text-sm text-gray-900">{{ __('Комитет мүшесі, ҚМЖК өкілі') }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -485,6 +767,14 @@
                                     
                                     <!-- Detailed Information -->
                                     <div id="board-orynbekov-details" class="hidden mt-6 pt-6 border-t border-gray-200">
+                                        <!-- Meta Info -->
+                                        <div class="mb-6">
+                                            <ul class="space-y-1 text-sm text-gray-700">
+                                                <li><strong>{{ __('Директорлар кеңесіне сайланған күні:') }}</strong> {{ __('13.10.2025') }}</li>
+                                                <li><strong>{{ __('Азаматтығы:') }}</strong> {{ __('Қазақстан Республикасы') }}</li>
+                                                <li><strong>{{ __('Туған күні:') }}</strong> {{ __('24 шілде 1983 жыл') }}</li>
+                                            </ul>
+                                        </div>
                                         <div class="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 class="text-lg font-semibold text-shakarim-blue mb-3">{{ __('Білімі') }}</h4>
@@ -1335,5 +1625,29 @@
     .flex.overflow-x-auto::-webkit-scrollbar-thumb:hover {
         background: #94a3b8;
     }
+
+    function toggleCommittee(committeeId) {
+        const committee = document.getElementById(committeeId);
+        const arrow = document.getElementById(committeeId + '-arrow');
+        
+        if (committee.classList.contains('hidden')) {
+            committee.classList.remove('hidden');
+            arrow.classList.add('rotate-180');
+        } else {
+            committee.classList.add('hidden');
+            arrow.classList.remove('rotate-180');
+        }
+    }
+
+    // Open first committee by default
+    document.addEventListener('DOMContentLoaded', function() {
+        const auditCommittee = document.getElementById('audit-committee');
+        const auditArrow = document.getElementById('audit-committee-arrow');
+        if (auditCommittee) {
+            auditCommittee.classList.remove('hidden');
+            auditArrow.classList.add('rotate-180');
+        }
+    });
+</script>
 </style>
 </x-layout>
