@@ -32,6 +32,7 @@ class Announcement extends Model
     ];
 
     protected $casts = [
+        'content' => 'array',
         'date' => 'integer',
         'status' => 'integer',
         'type' => AnnouncementTypeEnum::class,
@@ -204,4 +205,60 @@ class Announcement extends Model
         }
     }
 
+    /**
+     * Извлекает текст из JSON-контента Tiptap
+     * 
+     * @return string
+     */
+    public function getPlainText(): string
+    {
+        $content = $this->content;
+        
+        // Если контент null или пустой
+        if (empty($content)) {
+            return '';
+        }
+        
+        // Если это уже строка (старый HTML), возвращаем как есть
+        if (is_string($content)) {
+            return strip_tags($content);
+        }
+        
+        // Если это массив (JSON), извлекаем текст
+        if (is_array($content)) {
+            return $this->extractTextFromTiptapJson($content);
+        }
+        
+        return '';
+    }
+
+    /**
+     * Рекурсивно извлекает текст из JSON-структуры Tiptap
+     * 
+     * @param array $node
+     * @return string
+     */
+    private function extractTextFromTiptapJson(array $node): string
+    {
+        $text = '';
+        
+        // Если у узла есть текстовое содержимое
+        if (isset($node['text'])) {
+            $text .= $node['text'];
+        }
+        
+        // Если у узла есть дочерние элементы
+        if (isset($node['content']) && is_array($node['content'])) {
+            foreach ($node['content'] as $child) {
+                $text .= $this->extractTextFromTiptapJson($child);
+                
+                // Добавляем пробел между блочными элементами
+                if (isset($child['type']) && in_array($child['type'], ['paragraph', 'heading', 'listItem'])) {
+                    $text .= ' ';
+                }
+            }
+        }
+        
+        return $text;
+    }
 }

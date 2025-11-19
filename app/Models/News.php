@@ -33,6 +33,10 @@ class News extends Model
     ];
 
     protected $casts = [
+        'content_kk' => 'array',
+        'content_ru' => 'array',
+        'content_en' => 'array',
+        'content_cn' => 'array',
         'date' => 'datetime',
         'status' => 'boolean',
         'created_at' => 'datetime',
@@ -360,5 +364,63 @@ class News extends Model
     public function developmentGoals(): BelongsToMany
     {
         return $this->belongsToMany(DevelopmentGoal::class, 'development_goal_news');
+    }
+
+    /**
+     * Извлекает текст из JSON-контента Tiptap
+     * 
+     * @param string $locale Локаль (kk, ru, en, cn)
+     * @return string
+     */
+    public function getPlainText(string $locale): string
+    {
+        $content = $this->{'content_' . $locale};
+        
+        // Если контент null или пустой
+        if (empty($content)) {
+            return '';
+        }
+        
+        // Если это уже строка (старый HTML), возвращаем как есть
+        if (is_string($content)) {
+            return strip_tags($content);
+        }
+        
+        // Если это массив (JSON), извлекаем текст
+        if (is_array($content)) {
+            return $this->extractTextFromTiptapJson($content);
+        }
+        
+        return '';
+    }
+
+    /**
+     * Рекурсивно извлекает текст из JSON-структуры Tiptap
+     * 
+     * @param array $node
+     * @return string
+     */
+    private function extractTextFromTiptapJson(array $node): string
+    {
+        $text = '';
+        
+        // Если у узла есть текстовое содержимое
+        if (isset($node['text'])) {
+            $text .= $node['text'];
+        }
+        
+        // Если у узла есть дочерние элементы
+        if (isset($node['content']) && is_array($node['content'])) {
+            foreach ($node['content'] as $child) {
+                $text .= $this->extractTextFromTiptapJson($child);
+                
+                // Добавляем пробел между блочными элементами
+                if (isset($child['type']) && in_array($child['type'], ['paragraph', 'heading', 'listItem'])) {
+                    $text .= ' ';
+                }
+            }
+        }
+        
+        return $text;
     }
 }

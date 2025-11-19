@@ -391,7 +391,7 @@
                                                 </h3>
                                             </a>
                                             <p class="text-gray-600 mb-2 md:mb-4 line-clamp-2 md:line-clamp-3 text-sm md:text-xs">
-                                                {{ \Illuminate\Support\Str::limit(html_entity_decode(strip_tags($item->{'content_' . app()->getLocale()})), 140) }}
+                                                {{ \Illuminate\Support\Str::limit($item->getPlainText(app()->getLocale()), 140) }}
                                             </p>
                                         </div>
                                     </div>

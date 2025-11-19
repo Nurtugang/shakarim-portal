@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
+use FilamentTiptapEditor\Enums\TiptapOutput;
 
 class AnnouncementResource extends Resource
 {
@@ -53,7 +54,9 @@ class AnnouncementResource extends Resource
                     ->rows(3),
                 TiptapEditor::make('content')
                     ->label('Содержание')
-                    ->required(),
+                    ->required()
+                    ->profile('default')
+                    ->output(TiptapOutput::Json),
                 Forms\Components\FileUpload::make('image')
                     ->label('Изображение')
                     ->image()

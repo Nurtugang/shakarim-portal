@@ -16,6 +16,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
+use FilamentTiptapEditor\Enums\TiptapOutput;
 use Illuminate\Support\Facades\Storage;
 
 class NewsResource extends Resource
@@ -44,7 +45,9 @@ class NewsResource extends Resource
                                             ->label('Заголовок kk')
                                             ->maxLength(255),
                                         TiptapEditor::make('content_kk')
-                                            ->label('Контент kk'),
+                                            ->label('Контент kk')
+                                            ->profile('default')
+                                            ->output(TiptapOutput::Json),
                                     ]),
                                 Tabs\Tab::make('ru')
                                     ->schema([
@@ -54,7 +57,9 @@ class NewsResource extends Resource
                                             ->maxLength(255),
                                         TiptapEditor::make('content_ru')
                                             ->label('Контент RU')
-                                            ->required(),
+                                            ->required()
+                                            ->profile('default')
+                                            ->output(TiptapOutput::Json),
                                     ]),
                                 Tabs\Tab::make('en')
                                     ->schema([
@@ -62,7 +67,9 @@ class NewsResource extends Resource
                                             ->label('Заголовок EN')
                                             ->maxLength(255),
                                         TiptapEditor::make('content_en')
-                                            ->label('Контент EN'),
+                                            ->label('Контент EN')
+                                            ->profile('default')
+                                            ->output(TiptapOutput::Json),
                                     ]),
                                 Tabs\Tab::make('cn')
                                     ->schema([
@@ -70,7 +77,9 @@ class NewsResource extends Resource
                                             ->label('Заголовок CN')
                                             ->maxLength(255),
                                         TiptapEditor::make('content_cn')
-                                            ->label('Контент CN'),
+                                            ->label('Контент CN')
+                                            ->profile('default')
+                                            ->output(TiptapOutput::Json),
                                     ])    
 
                             ]),

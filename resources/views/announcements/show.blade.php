@@ -82,8 +82,8 @@
                         @endif
                         
                         <!-- Article Content -->
-                        <div class="p-3 md:p-6 dynamic-content">
-                            {!! $announcement->content !!}
+                        <div class="p-6 dynamic-content">
+                            {!! tiptap_converter()->asHTML($announcement->content) !!}
                         </div>
 
                         <!-- Article Footer -->
@@ -232,9 +232,7 @@
             const title = encodeURIComponent(document.title);
             const announcementTitle = encodeURIComponent('{{ $announcement->name }}');
             
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = `{!! strip_tags($announcement->content) !!}`;
-            const description = encodeURIComponent(tempDiv.textContent.substring(0, 100) + '...');
+            const description = encodeURIComponent('{{ \Illuminate\Support\Str::limit($announcement->getPlainText(), 100) }}');
             
             let shareUrl = '';
             

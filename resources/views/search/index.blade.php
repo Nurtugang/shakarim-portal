@@ -52,9 +52,13 @@
                                         {{ $item->{'title_' . app()->getLocale()} }}
                                     </a>
                                 </h3>
-                                <p class="text-gray-600 text-sm mt-2">
-                                    {{ Str::limit(html_entity_decode(strip_tags($item->{'content_' . app()->getLocale()} ?? '')), 150) }}
+                                </a>
+                                <p class="text-sm text-gray-600 mt-2">
+                                    {{ Str::limit($item->description ?? $item->getPlainText(), 150) }}
                                 </p>
+                            </div>{{ Str::limit($item->getPlainText(app()->getLocale()), 150) }}
+                                </p>
+                            </div>
                             </div>
                         @endforeach
                     </div>

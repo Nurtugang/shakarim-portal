@@ -75,7 +75,7 @@
                         @endif
                         <!-- Article Content -->
                         <div class="p-3 md:p-6 dynamic-content">
-                            {!! $news->{'content_' . app()->getLocale()} !!}
+                            {!! tiptap_converter()->asHTML($news->{'content_' . app()->getLocale()}) !!}
                         </div>
 
                         <!-- Article Footer -->
@@ -347,9 +347,7 @@
             const title = encodeURIComponent(document.title);
             const newsTitle = encodeURIComponent('{{ $news->{"title_" . app()->getLocale()} }}');
             
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = `{!! strip_tags($news->{'content_' . app()->getLocale()}) !!}`;
-            const description = encodeURIComponent(tempDiv.textContent.substring(0, 100) + '...');
+            const description = encodeURIComponent('{{ \Illuminate\Support\Str::limit($news->getPlainText(app()->getLocale()), 100) }}');
             
             let shareUrl = '';
             
