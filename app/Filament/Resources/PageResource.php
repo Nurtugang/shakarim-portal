@@ -269,14 +269,18 @@ class PageResource extends Resource
             return $query;
         }
 
-        if ($user->hasRole(RolesEnum::STRUCTURE)) {
-            return $query->whereHas('menu', function (Builder $subQuery) use ($user) {
-                $subQuery->where('structure_id', $user->structure_id);
+        return $query->where(function (Builder $q) use ($user) {
+            
+            $q->whereHas('users', function (Builder $subQuery) use ($user) {
+                $subQuery->where('users.id', $user->id);
             });
-        }
 
-        return $query->whereHas('users', function (Builder $subQuery) use ($user) {
-            $subQuery->where('users.id', $user->id);
+            if ($user->hasRole(RolesEnum::STRUCTURE)) {
+                $q->orWhereHas('menu', function (Builder $subQuery) use ($user) {
+                    $subQuery->where('structure_id', $user->structure_id);
+                });
+            }
+
         });
     }
 
