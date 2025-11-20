@@ -32,7 +32,7 @@
                             <i class="fas fa-external-link-alt mr-2"></i>
                             {{ __('Протокол №1 конкурсной комиссии «Лучший преподаватель вуза – 2025') }}
                         </a>
-                        <a href="{{ Storage::url('best-teachers-docs/Лучший преподаватель Вуза 2025 Выписка УС,.pdf') }}" 
+                        <a href="{{ Storage::url('best-teachers-docs/Лучший преподаватель Вуза 2025 Выписка УС,_page-0001 (1).pdf') }}" 
                             target="_blank"
                             rel="noopener noreferrer"
                             class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm"

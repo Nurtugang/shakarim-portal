@@ -18,28 +18,20 @@ class PagePolicy
 
     public function viewAny(User $user): bool
     {
-        // Разрешаем видеть список, если у пользователя есть хоть какие-то права на страницы
-        return $user->hasAnyRole([RolesEnum::ADMIN, RolesEnum::PRESS, RolesEnum::STRUCTURE, RolesEnum::USER]);
+        return $user->hasAnyRole([RolesEnum::ADMIN, RolesEnum::PRESS, RolesEnum::STRUCTURE, RolesEnum::USER, RolesEnum::SCIENCE, RolesEnum::CAMPUS_LIFE, RolesEnum::DEVELOPMENT]);
     }
 
     public function view(?User $user, Page $page): bool
     {
-        // Если страница публичная (нет привязанных пользователей), доступ есть у всех.
         if ($page->users->isEmpty()) {
             return true;
         }
-
-        // Если страница приватная, а пользователь - гость, то доступа нет.
         if (is_null($user)) {
             return false;
         }
-
-        // Пользователь "Структуры" может видеть страницы своего подразделения.
         if ($user->hasRole(RolesEnum::STRUCTURE) && optional($page->menu)->structure_id === $user->structure_id) {
             return true;
         }
-
-        // Проверяем, есть ли пользователь в списке разрешенных для этой страницы.
         return $page->users->contains($user->id);
     }
 
@@ -50,18 +42,23 @@ class PagePolicy
 
     public function update(User $user, Page $page): bool
     {
-        // Пользователь "Структуры" может редактировать страницы своего подразделения.
+        // Разрешаем редактировать, если выполняется ХОТЯ БЫ ОДНО из условий:
+
+        // 1. Пользователь "Структуры" и страница его подразделения
         if ($user->hasRole(RolesEnum::STRUCTURE) && optional($page->menu)->structure_id === $user->structure_id) {
             return true;
         }
         
-        // Пользователь, привязанный напрямую, также может редактировать.
-        return $page->users->contains($user->id);
+        // 2. Пользователь напрямую привязан к этой странице
+        if ($page->users->contains($user->id)) {
+            return true;
+        }
+
+        return false;
     }
 
     public function delete(User $user, Page $page): bool
     {
-        // Удалять может только "Структура" для своих страниц (или админ через before).
         if ($user->hasRole(RolesEnum::STRUCTURE) && optional($page->menu)->structure_id === $user->structure_id) {
             return true;
         }
