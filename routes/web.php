@@ -162,6 +162,8 @@ Route::group([
         return view('university.endowment.index');
     })->name('university.endowment.index');
     
+    Route::get('/academy/graduates', [\App\Http\Controllers\GraduateController::class, 'index'])->name('academy.graduates.index');
+    
 });
 
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');
