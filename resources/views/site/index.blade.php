@@ -323,35 +323,71 @@
                 <div class="bg-white rounded-xl p-4 md:p-8 shadow-lg">
                     <div class="flex items-center mb-4 md:mb-6">
                         <i class="fas fa-trophy text-2xl md:text-3xl text-shakarim-blue mr-2 md:mr-4"></i>
-                        <h3 class="font-heading font-bold text-lg md:text-2xl text-shakarim-blue">{{ __('Shakarim University in Rankings') }}</h3>
+                        <h3 class="font-heading font-bold text-md md:text-2xl text-shakarim-blue">{{ __('Shakarim University in Rankings') }}</h3>
                     </div>
                     <div class="space-y-4 md:space-y-6">
-                        <div class="flex flex-col items-start justify-between md:flex-row">
+                        <!-- QS World University Rankings -->
+                        <div class="flex flex-col md:flex-row items-center justify-between">
                             <div>
-                                <div class="text-lg md:text-2xl font-heading font-bold text-shakarim-blue">{{ __('QS World University Rankings') }}</div>
-                                <div class="text-xs md:text-sm font-body text-gray-600 mb-1">{{ __('2026 newly entered') }}</div>
+                                <div class="text-md md:text-xl font-heading font-bold text-shakarim-blue mb-1">
+                                    QS World University Rankings
+                                </div>
+                                <div class="text-xs md:text-sm font-body text-gray-600">
+                                    {{ __('2026 newly entered') }}
+                                </div>
                             </div>
-                            <div class="text-2xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-1 md:mt-0">1401+</div>
+                            <div class="w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
+                                1401+
+                            </div>
                         </div>
 
-                        <div class="flex flex-col items-start justify-between md:flex-row">
-                            <div class="border-t border-gray-200 pt-3 md:pt-4">
-                                <div class="text-lg md:text-2xl font-heading font-bold text-shakarim-blue mb-1">{{ __('QS Sustainability Rankings') }}</div>
-                                <div class="text-xs md:text-sm font-body text-gray-600 mb-2">{{ __('In 2025 ranking') }}</div>
-                                <div class="text-xs md:text-sm font-body text-gray-600"></div>
+                        <!-- QS Sustainability Rankings -->
+                        <div class="pt-1 flex flex-col md:flex-row items-center justify-between">
+                            <div>
+                                <div class="text-md md:text-xl font-heading font-bold text-shakarim-blue mb-1">
+                                    QS Sustainability Rankings
+                                </div>
+                                <div class="text-xs md:text-sm font-body text-gray-600">
+                                    {{ __('In 2026 rankings') }}
+                                </div>
                             </div>
-                            <div class="text-2xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-1 md:mt-0 md:text-right">1351-1400</div>
+                            <div class="w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
+                                1501+
+                            </div>
                         </div>
 
-                        <div class="flex flex-col items-start justify-between md:flex-row">
-                            <div class="border-t border-gray-200 pt-3 md:pt-4">
-                                <div class="text-lg md:text-2xl font-heading font-bold text-shakarim-blue mb-1">{{ __('UI Green Metric') }}</div>
-                                <div class="text-xs md:text-sm font-body text-gray-600">{{ __('In Kazakhstan') }}</div>
+                        <!-- QS Asia -->
+                        <div class="pt-1 flex flex-col md:flex-row items-center justify-between">
+                            <div>
+                                <div class="text-md md:text-xl font-heading font-bold text-shakarim-blue mb-1">
+                                    QS World University Rankings: Asia
+                                </div>
+                                <div class="text-xs md:text-sm font-body text-gray-600">
+                                    {{ __('In 2026 rankings') }}
+                                </div>
                             </div>
-                            <div class="text-2xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20 mt-1 md:mt-4">#8</div>
+                            <div class="w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
+                                493
+                            </div>
+                        </div>
+
+                        <!-- UI Green Metric -->
+                        <div class="pt-1 flex flex-col md:flex-row items-center justify-between">
+                            <div>
+                                <div class="text-md md:text-xl font-heading font-bold text-shakarim-blue mb-1">
+                                    UI Green Metric
+                                </div>
+                                <div class="text-xs md:text-sm font-body text-gray-600">
+                                    {{ __('In Kazakhstan') }}
+                                </div>
+                            </div>
+                            <div class="w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
+                                #8
+                            </div>
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
