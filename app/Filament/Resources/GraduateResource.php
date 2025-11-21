@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use App\Enums\RolesEnum;
+use Illuminate\Support\Facades\Auth;
 
 class GraduateResource extends Resource
 {
@@ -23,11 +24,9 @@ class GraduateResource extends Resource
 
     protected static ?int $navigationSort = 10;
 
-    public static function shouldRegisterNavigation(): bool
+    public static function canViewAny(): bool
     {
-        $user = auth()->user();
-        if (!$user) return false;
-        return $user->hasRole([RolesEnum::ADMIN, 'academics']);
+        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::EDUCATION]);
     }
 
     public static function form(Form $form): Form

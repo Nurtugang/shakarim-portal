@@ -33,19 +33,7 @@ class MinorResource extends Resource
 
     public static function canViewAny(): bool
     {
-        $user = Auth::user();
-        
-        // Доступ для администраторов
-        if ($user->hasRole(RolesEnum::ADMIN)) {
-            return true;
-        }
-        
-        // Доступ для структуры с ID 70
-        if ($user->structure_id == 70) {
-            return true;
-        }
-        
-        return false;
+        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::EDUCATION]);
     }
 
     public static function form(Form $form): Form
