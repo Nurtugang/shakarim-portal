@@ -165,7 +165,7 @@ Route::group([
     
     Route::get('/academy/graduates', [GraduateController::class, 'index'])->name('graduates.index');
     Route::get('/partnership/internship', [InternshipController::class, 'index'])->name('internship.index');
-    
+    Route::get('/academy/op', [\App\Http\Controllers\Academy\EducationalProgramsController::class, 'index'])->name('academy.op.index');
 });
 
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');
