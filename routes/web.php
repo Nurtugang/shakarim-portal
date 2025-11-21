@@ -28,10 +28,11 @@ use App\Http\Controllers\Science\SciencePurchasesOfferController;
 use App\Http\Controllers\Academy\AccreditationController;
 use App\Http\Controllers\Academy\AcademySchoolsController;
 
-
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\MinorController;
 use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\GraduateController;
+use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\RectorBlogController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RectorQuestionController;
@@ -162,7 +163,8 @@ Route::group([
         return view('university.endowment.index');
     })->name('university.endowment.index');
     
-    Route::get('/academy/graduates', [\App\Http\Controllers\GraduateController::class, 'index'])->name('academy.graduates.index');
+    Route::get('/academy/graduates', [GraduateController::class, 'index'])->name('graduates.index');
+    Route::get('/partnership/internship', [InternshipController::class, 'index'])->name('internship.index');
     
 });
 

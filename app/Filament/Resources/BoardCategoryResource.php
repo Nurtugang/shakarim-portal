@@ -26,7 +26,7 @@ class BoardCategoryResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return Auth::user()->hasAnyRole([RolesEnum::ADMIN]);
+        return Auth::user()->hasAnyRole([RolesEnum::ADMIN, RolesEnum::DEVELOPMENT]);
     }
 
     public static function getModelLabel(): string

@@ -51,19 +51,7 @@ class AwardResource extends Resource
 
     public static function canViewAny(): bool
     {
-        $user = Auth::user();
-        
-        // Доступ для администраторов и роли SCIENCE
-        if ($user->hasRole([RolesEnum::ADMIN, RolesEnum::SCIENCE])) {
-            return true;
-        }
-        
-        // Доступ для структуры с ID 44
-        if ($user->structure_id == 44) {
-            return true;
-        }
-        
-        return false;
+        return Auth::user()->hasAnyRole([RolesEnum::ADMIN, RolesEnum::DEVELOPMENT]);
     }
 
     public static function form(Form $form): Form
