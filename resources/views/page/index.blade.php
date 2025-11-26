@@ -44,9 +44,6 @@
                         <x-page-files :files="$files" />
                     </div>
                     @endif
-                    @if (count($lists)>0)
-                    <x-page-lists :lists="$lists" :page="$page" />
-                    @endif
                 </div>
             </div>
     </section>

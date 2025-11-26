@@ -282,14 +282,6 @@
                     </div>
                     @endif
 
-                    <!-- Policies Section -->
-                    @if(app()->getLocale() == 'en')
-                    <div class="mt-8 space-y-4">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Sustainable Development Policies</h3>
-                        {{-- ... Ваш код для политик ... --}}
-                    </div>
-                    @endif
-
                     <!-- Empty State -->
                     @if($documents->count() === 0 && $reports->count() === 0)
                     <div class="text-center py-16">

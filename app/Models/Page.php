@@ -55,11 +55,6 @@ class Page extends Model
         return $this->hasMany(PageFile::class,'page_id')->orderBy('created_at','desc');
     }
 
-    public function lists()
-    {
-        return $this->hasMany(PageList::class,'page_id');
-    }
-
     public function getTopParentMenu()
     {
         $menu = $this->menu;

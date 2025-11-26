@@ -34,7 +34,7 @@
         <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
             <a href="{{ route('site.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
             <span class="mx-1">&#8250;</span>
-            <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => 1]) }}" class="hover:text-shakarim-blue">{{ __('Образование') }}</a>
+            <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => 10]) }}" class="hover:text-shakarim-blue">{{ __('Образование') }}</a>
             <span class="mx-1">&#8250;</span>
             <span class="text-shakarim-blue font-semibold">{{ __('Образовательные программы') }}</span>
         </nav>

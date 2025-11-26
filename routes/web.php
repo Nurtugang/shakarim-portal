@@ -72,7 +72,6 @@ Route::group([
 ], function () {
     Route::get('/', SiteController::class)->name('site.index');
     Route::get('/page/{page:slug?}',[PageController::class,'index'])->name('page');
-    Route::get('/list/{pageList:slug}',[PageController::class,'listItem'])->name('list.item');
 
     Route::get('/news',[NewsController::class,'index'])->name('news');
     Route::get('/news/{news:alias}',[NewsController::class,'show'])->name('news.show');
@@ -166,6 +165,11 @@ Route::group([
     Route::get('/academy/graduates', [GraduateController::class, 'index'])->name('graduates.index');
     Route::get('/partnership/internship', [InternshipController::class, 'index'])->name('internship.index');
     Route::get('/academy/op', [\App\Http\Controllers\Academy\EducationalProgramsController::class, 'index'])->name('academy.op.index');
+    
+    // Mobile App showcase page
+    Route::get('/app', function (string $locale) {
+        return view('app.index');
+    })->name('app.index');
 });
 
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');

@@ -6,7 +6,7 @@
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
                 <a href="{{ route('site.index', app()->getLocale()) }}" class="hover:text-shakarim-blue">{{ __('Главная страница')}}</a>
                 <span>&#8250;</span>
-                <span class="text-shakarim-blue font-semibold">{{ __('Награды')}}</span>
+                <span class="text-shakarim-blue font-semibold">{{ __('Mobile App')}}</span>
             </nav>
         </div>
     </section>

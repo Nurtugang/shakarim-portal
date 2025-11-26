@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Models\NewsTag;
 use App\Models\NewsCategory;
-use App\Models\PageList;
 use App\Models\NewsComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
