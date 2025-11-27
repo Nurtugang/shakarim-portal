@@ -1,4 +1,8 @@
 <x-layout>
+
+    @section('meta_title', $structure->locale_title . ' - Shakarim University')
+    @section('meta_description', $structure->filteredData->leader_name . '. ' . $structure->filteredData->leader_position . ' - Shakarim University' )
+
     <!-- Breadcrumbs -->
     <section class="bg-gray-100 py-3 border-b">
         <div class="max-w-7xl mx-auto px-4">

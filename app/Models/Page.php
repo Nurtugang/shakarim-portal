@@ -114,4 +114,32 @@ class Page extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    /**
+     * Получить заголовок на текущем языке.
+     */
+    public function getLocaleTitleAttribute()
+    {
+        $locale = app()->getLocale();
+        
+        if (!empty($this->{'title_' . $locale})) {
+            return $this->{'title_' . $locale};
+        }
+
+        return $this->title_ru ?? $this->title_kk ?? $this->title_en;
+    }
+
+    /**
+     * Получить чистый текст контента на текущем языке.
+     */
+    public function getLocaleContentTextAttribute()
+    {
+        $locale = app()->getLocale();
+
+        if (!empty($this->{'content_text_' . $locale})) {
+            return $this->{'content_text_' . $locale};
+        }
+
+        return $this->content_text_ru ?? $this->content_text_kk ?? $this->content_text_en;
+    }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\Student;
+namespace App\Filament\Resources\CampusLife;
 
 use App\Enums\RolesEnum;
-use App\Filament\Resources\Student\StudentParlamentResource\Pages;
+use App\Filament\Resources\CampusLife\StudentParlamentResource\Pages;
 use App\Models\Student\StudentParlament;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;

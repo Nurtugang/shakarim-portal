@@ -43,7 +43,7 @@ class Organization extends Model
             return null;
         }
 
-        return Storage::url('organizations/' . $this->image);
+        return Storage::url($this->image);
     }
 
     /**
@@ -71,7 +71,7 @@ class Organization extends Model
             return null;
         }
 
-        return Storage::url('organizations/' . $this->dean_image);
+        return Storage::url($this->dean_image);
     }
 
     /**

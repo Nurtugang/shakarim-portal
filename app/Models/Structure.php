@@ -20,6 +20,15 @@ class Structure extends Model
         'link'
     ];
 
+    // Атрибут для получения названия отдела на текущем языке
+    public function getLocaleTitleAttribute()
+    {
+        $locale = app()->getLocale();
+        $value = $this->{'title_' . $locale};
+
+        return $value ?: $this->title_ru; 
+    }
+
     public function children()
     {
         return $this->hasMany(Structure::class, 'parent_id')

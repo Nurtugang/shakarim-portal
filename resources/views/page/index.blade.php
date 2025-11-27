@@ -1,4 +1,8 @@
-<x-layout :metaTitle="$page ? $page->{'title_'.app()->getLocale()} : ''">
+<x-layout>
+
+    @section('meta_title', $page->locale_title . ' - Shakarim University')
+    @section('meta_description', $page->locale_content_text . ' - Shakarim University')
+
     <!-- Breadcrumbs and Section -->
     @if($page->menu)
     <section class="bg-gray-100 py-3 border-b">

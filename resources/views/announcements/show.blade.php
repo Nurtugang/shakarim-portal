@@ -1,4 +1,8 @@
 <x-layout>
+
+    @section('meta_title', $announcement->name . ' - Shakarim University')
+    @section('meta_description', Str::limit(strip_tags($announcement->content), 155))
+
     <link rel="stylesheet" href="{{ asset('css/custom/dynamic-content.css') }}">
     
     <!-- Breadcrumbs -->

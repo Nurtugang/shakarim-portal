@@ -3,14 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shakarim University - Главная</title>
+
+    <title>@yield('meta_title', 'Shakarim University')</title>
+    <meta name="description" content="@yield('meta_description', 'Shakarim University (каз. Шәкәрім университеті) — высшее учебное заведение Абайской области. Современный учебно-методический, научный и культурный центр северо-восточного региона Казахстана, а так же, самый крупный ВУЗ области Абай.')">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}" />
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('logo_sgu.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('logo_sgu.png') }}">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Shakarim University">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('meta_title', 'Shakarim University')">
+    <meta property="og:description" content="@yield('meta_description', 'Shakarim University (каз. Шәкәрім университеті) — высшее учебное заведение Абайской области. Современный учебно-методический, научный и культурный центр северо-восточного региона Казахстана, а так же, самый крупный ВУЗ области Абай.')">
+    <meta property="og:image" content="@yield('meta_image', asset('logo.webp'))">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom/base.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bvi/bvi.min.css') }}">
+
+    @foreach($hreflangs as $lang)
+        <link rel="alternate" hreflang="{{ $lang['code'] }}" href="{{ $lang['url'] }}" />
+        
+        @if($lang['is_default'])
+            <link rel="alternate" hreflang="x-default" href="{{ $lang['url'] }}" />
+        @endif
+    @endforeach
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @filamentStyles
     
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollegeOrUniversity",
+        "name": "Shakarim University",
+        "url": "{{ url('/') }}",
+        "logo": "{{ asset('logo.webp') }}",
+        "sameAs": [
+            "https://www.instagram.com/shakarim_university",
+            "https://www.facebook.com/universitet.shakarim.1"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Glinka street, 20A",
+            "addressLocality": "Semey",
+            "postalCode": "071412",
+            "addressCountry": "KZ"
+        }
+    }
+    </script>
 </head>
 <body class="font-body bg-white min-h-screen flex flex-col">
     <!-- Top Bar -->

@@ -1,4 +1,8 @@
 <x-layout>
+    
+    @section('meta_title', $news->locale_title . ' - Shakarim University')
+    @section('meta_description', Str::limit(strip_tags($news->locale_content), 155))
+    
     <link rel="stylesheet" href="{{ asset('css/custom/dynamic-content.css') }}">
     
     <!-- Breadcrumbs -->

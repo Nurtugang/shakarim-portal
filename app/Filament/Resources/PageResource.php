@@ -7,7 +7,6 @@ use App\Enums\RolesEnum;
 use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
 use App\Filament\Resources\PageResource\RelationManagers\FilesRelationManager;
-use App\Filament\Resources\PageResource\RelationManagers\ListsRelationManager;
 use App\Filament\Resources\PageResource\RelationManagers\RequestsRelationManager;
 use App\Models\Menu;
 use App\Models\User;
@@ -288,7 +287,6 @@ class PageResource extends Resource
     {
         return [
             FilesRelationManager::class,
-            ListsRelationManager::class,
             RequestsRelationManager::class,
         ];
     }

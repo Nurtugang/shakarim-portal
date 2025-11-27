@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\Science;
+namespace App\Filament\Resources\CampusLife;
 
 use App\Enums\RolesEnum;
-use App\Filament\Resources\Science\ScienceOrganizationResource\Pages;
+use App\Filament\Resources\CampusLife\SocialOrganizationResource\Pages;
 use App\Models\Organization;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden; // Не забудьте импортировать Hidden
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
@@ -18,45 +19,47 @@ use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
-class ScienceOrganizationResource extends Resource
+class SocialOrganizationResource extends Resource
 {
     protected static ?string $model = Organization::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-library';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group'; 
 
-    protected static ?string $navigationGroup = 'Наука';
+    protected static ?string $navigationGroup = 'Campus Life';
 
     protected static ?int $navigationSort = 1;
 
     public static function getNavigationLabel(): string
     {
-        return 'Научные кружки';
+        return 'Студентческие организации';
     }
 
     public static function getPluralModelLabel(): string
     {
-        return 'Научные кружки';
+        return 'Студентческие организации';
     }
 
     public static function getModelLabel(): string
     {
-        return 'научный кружок';
+        return 'организация';
     }
 
     public static function canViewAny(): bool
     {
-        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::SCIENCE]);
+        return Auth::user()->hasRole([RolesEnum::ADMIN, RolesEnum::CAMPUS_LIFE]); 
     }
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->where('category_id', 1);
+        return parent::getEloquentQuery()->where('category_id', 2);
     }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                Hidden::make('category_id')->default(2),
+
                 Section::make('Основная информация')
                     ->schema([
                         Tabs::make('Label')
@@ -72,19 +75,21 @@ class ScienceOrganizationResource extends Resource
                                     ]),
                                 Tabs\Tab::make('Казахский')
                                     ->schema([
-                                        TextInput::make('name_kk')->label('Название (KK)'),
-                                        TextInput::make('dean_kk')->label('Руководитель (KK)'),
+                                        TextInput::make('name_kk')->label('Название (KK)')->required(),
+                                        TextInput::make('dean_kk')->label('Руководитель (KK)')->required(),
                                         TiptapEditor::make('target_kk')
                                             ->label('Цель (KK)')
-                                            ->profile('default'),
+                                            ->profile('default')
+                                            ->required(),
                                     ]),
                                 Tabs\Tab::make('Английский')
                                     ->schema([
-                                        TextInput::make('name_en')->label('Название (EN)'),
-                                        TextInput::make('dean_en')->label('Руководитель (EN)'),
+                                        TextInput::make('name_en')->label('Название (EN)')->required(),
+                                        TextInput::make('dean_en')->label('Руководитель (EN)')->required(),
                                         TiptapEditor::make('target_en')
                                             ->label('Цель (EN)')
-                                            ->profile('default'),
+                                            ->profile('default')
+                                            ->required(),
                                     ]),
                             ])->columnSpanFull(),
                     ]),
@@ -93,13 +98,13 @@ class ScienceOrganizationResource extends Resource
                         TextInput::make('phone')->label('Телефон')->required(),
                         TextInput::make('insta')->label('Instagram'),
                         FileUpload::make('image')
-                            ->label('Логотип кружка')
-                            ->directory('organizations/science')
+                            ->label('Логотип организации')
+                            ->directory('organizations/social') // Можно разделить папки загрузки
                             ->image()
                             ->imageEditor(),
                         FileUpload::make('dean_image')
                             ->label('Фото руководителя')
-                            ->directory('organizations/science')
+                            ->directory('organizations/social')
                             ->image()
                             ->imageEditor(),
                     ]),
@@ -154,9 +159,9 @@ class ScienceOrganizationResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListScienceOrganizations::route('/'),
-            'create' => Pages\CreateScienceOrganization::route('/create'),
-            'edit' => Pages\EditScienceOrganization::route('/{record}/edit'),
+            'index' => Pages\ListSocialOrganizations::route('/'),
+            'create' => Pages\CreateSocialOrganization::route('/create'),
+            'edit' => Pages\EditSocialOrganization::route('/{record}/edit'),
         ];
     }
 }

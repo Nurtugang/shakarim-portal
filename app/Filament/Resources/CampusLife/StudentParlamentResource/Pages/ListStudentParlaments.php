@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Student\StudentParlamentResource\Pages;
+namespace App\Filament\Resources\CampusLife\StudentParlamentResource\Pages;
 
-use App\Filament\Resources\Student\StudentParlamentResource;
+use App\Filament\Resources\CampusLife\StudentParlamentResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

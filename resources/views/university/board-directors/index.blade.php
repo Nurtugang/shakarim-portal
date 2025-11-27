@@ -1,4 +1,7 @@
-<x-layout metaTitle="{{ __('Корпоративтік басқару') }}">
+<x-layout>
+
+@section('meta_title', __('Корпоративтік басқару') . ' - Shakarim University')
+@section('meta_description', __('Корпоративтік басқару') . ' - Shakarim University')
 
 <!-- Breadcrumbs and Section -->
 
@@ -25,7 +28,7 @@
                     <!-- Mobile horizontal tabs -->
                     <div class="lg:hidden mb-6">
                         <div class="flex overflow-x-auto space-x-2 pb-2">
-                            @foreach($categories as $category)
+                            @foreach($categories->slice(0,1) as $category)
                                 <button onclick="showTab('category-{{ $category->id }}')" id="tab-category-{{ $category->id }}" class="tab-button whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors @if($loop->first) active @endif">
                                     {{ $category->title }}
                                 </button>
@@ -41,7 +44,7 @@
                         <div class="bg-white rounded-xl shadow-lg p-6">
                             <h3 class="text-lg font-semibold text-gray-800 mb-4">{{ __('Разделы')}}</h3>
                             <nav class="space-y-2">
-                                @foreach($categories as $category)
+                                @foreach($categories->take(1) as $category)
                                 <button onclick="showTab('category-{{ $category->id }}')" id="desktop-tab-category-{{ $category->id }}" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors @if($loop->first) active @endif">
                                     @if($category->icon_class)
                                         <i class="{{ $category->icon_class }} mr-2 w-4 text-center"></i>
@@ -53,6 +56,14 @@
                                     <i class="fas fa-users mr-2"></i>
                                     {{ __('board_committees.tab_label') }}
                                 </button>
+                                @foreach($categories->slice(1, 5) as $category)
+                                <button onclick="showTab('category-{{ $category->id }}')" id="desktop-tab-category-{{ $category->id }}" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
+                                    @if($category->icon_class)
+                                        <i class="{{ $category->icon_class }} mr-2 w-4 text-center"></i>
+                                    @endif
+                                    <span>{{ $category->title }}</span>
+                                </button>
+                                @endforeach
                             </nav>
                         </div>
                     </div>
@@ -166,10 +177,10 @@
                     // Manual overrides from known Storage paths (to ensure exact matches)
                     $manualPhotoMap = [
                         // Нурбаев / Нұрбаев
-                        'Нурбаев Орман Каримович' => Storage::url('board/ac8d0fcaaf30d8b99fb27c4076b091c8.webp'),
-                        'Нұрбаев Орман Кәрімұлы' => Storage::url('board/ac8d0fcaaf30d8b99fb27c4076b091c8.webp'),
-                        'Nurbayev Orman' => Storage::url('board/ac8d0fcaaf30d8b99fb27c4076b091c8.webp'),
-                        '努尔巴耶夫·奥尔曼·卡里姆乌兹' => Storage::url('board/ac8d0fcaaf30d8b99fb27c4076b091c8.webp'),
+                        'Нурбаев Орман Каримович' => Storage::url('board_directors/01KAD7BH22E8G43N80NHSD48NM.jpg'),
+                        'Нұрбаев Орман Кәрімұлы' => Storage::url('board_directors/01KAD7BH22E8G43N80NHSD48NM.jpg'),
+                        'Nurbayev Orman' => Storage::url('board_directors/01KAD7BH22E8G43N80NHSD48NM.jpg'),
+                        '努尔巴耶夫·奥尔曼·卡里姆乌兹' => Storage::url('board_directors/01KAD7BH22E8G43N80NHSD48NM.jpg'),
                         // Орынбеков
                         'Орынбеков Думан Рымгалиевич' => Storage::url('board/55627f971685a1d174693a4a8b1c9474.webp'),
                         'Орынбеков Думан Рымғалиұлы' => Storage::url('board/55627f971685a1d174693a4a8b1c9474.webp'),

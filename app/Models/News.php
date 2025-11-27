@@ -46,6 +46,22 @@ class News extends Model
             ->saveSlugsTo('alias');
     }
 
+    // Атрибут для получения заголовка на текущем языке
+    public function getLocaleTitleAttribute()
+    {
+        $locale = app()->getLocale();
+        $value = $this->{'title_' . $locale};
+
+        return $value ?: $this->title_ru; 
+    }
+
+    // Атрибут для контента
+    public function getLocaleContentAttribute()
+    {
+        $locale = app()->getLocale();
+        return $this->{'content_' . $locale} ?: $this->content_ru;
+    }
+
     /**
      * Создать изображение из файла в зависимости от расширения
      */
@@ -60,8 +76,6 @@ class News extends Model
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $mimeType = finfo_file($finfo, $path);
         finfo_close($finfo);
-
-        \Log::info("Обрабатываем файл: {$path}, MIME-тип: {$mimeType}");
 
         try {
             switch ($mimeType) {
