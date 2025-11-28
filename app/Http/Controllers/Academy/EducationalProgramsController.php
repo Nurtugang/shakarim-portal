@@ -9,6 +9,7 @@ use App\Models\DirectionClassification;
 use App\Models\EducationalProgramGroup;
 use App\Models\EducationalProgram;
 use App\Models\Academy\Accreditation;
+use App\Models\Minor; // <--- Добавил импорт
 
 class EducationalProgramsController extends Controller
 {
@@ -16,12 +17,12 @@ class EducationalProgramsController extends Controller
     {
         $locale = $locale ?? app()->getLocale();
 
-        // Accreditation codes set (first token before space)
+        // --- ЛОГИКА ОП (Старая) ---
         $accrCodes = Accreditation::query()
             ->select('name')
             ->get()
             ->map(function($row){
-                return strtok($row->name, ' '); // first token
+                return strtok($row->name, ' '); 
             })
             ->filter()
             ->unique()
@@ -31,7 +32,7 @@ class EducationalProgramsController extends Controller
         $data = [];
 
         foreach ($levels as $level) {
-            // Preload hierarchy for level
+            // ... (Ваш старый код цикла levels без изменений) ...
             $classifications = DirectionClassification::with(['programGroups.programs'])
                 ->where('education_level', $level)
                 ->orderBy('code')
@@ -51,7 +52,6 @@ class EducationalProgramsController extends Controller
                             $code = $p->code;
                             $accredited = $accrCodes->has($code);
                             
-                            // Get accreditation file based on locale
                             $accreditationFileField = match($locale) {
                                 'kk' => 'accreditation_file_kk',
                                 'en' => 'accreditation_file_en',
@@ -97,10 +97,13 @@ class EducationalProgramsController extends Controller
             $data[$level] = $fieldBlocks;
         }
 
+        // Загружаем майноры для текущего языка
+        $minors = Minor::where('language', $locale)->orderBy('id', 'desc')->get();
+
         return view('academy.op.index', [
             'hierarchy' => $data,
+            'minors' => $minors,
             'locale' => $locale,
         ]);
     }
 }
-

@@ -4,34 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo; // <--- ВАЖНО!
+use Illuminate\Support\Facades\Storage;
 
 class Award extends Model
 {
     use HasFactory;
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'awards';
 
-    /**
-     * Indicates if the model should be timestamped with Laravel's default timestamps.
-     * Мы используем integer, поэтому отключаем стандартное поведение.
-     *
-     * @var bool
-     */
     public $timestamps = false;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
-        'category_kk', 'category_ru', 'category_en', 'category_cn',
-        'reward_kk', 'reward_ru', 'reward_en', 'reward_cn',
+        'award_category_id', // Мы решили оставить это поле для удобства фильтрации
+        'award_reward_id',
         'position_kk', 'position_ru', 'position_en', 'position_cn',
         'fullname_kk', 'fullname_ru', 'fullname_en', 'fullname_cn',
         'year',
@@ -41,42 +27,48 @@ class Award extends Model
         'updated_at',
     ];
 
-    /**
-     * The attributes that should be cast.
-     * Преобразуем Unix-таймстемпы в объекты Carbon для удобной работы.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'created_at' => 'timestamp',
         'updated_at' => 'timestamp',
     ];
 
-    // --- АКСЕССОРЫ ДЛЯ ЛОКАЛИЗАЦИИ ---
+    // --- ОБЯЗАТЕЛЬНЫЕ СВЯЗИ ДЛЯ FILAMENT ---
 
-    /**
-     * Получить локализованную категорию.
-     */
-    public function getCategoryAttribute(): ?string
+    // 1. Связь с категорией (без этого метода падает ошибка relationship null)
+    public function category(): BelongsTo
     {
-        $locale = app()->getLocale();
-        $column = "category_{$locale}";
-        return $this->{$column} ?? $this->category_ru ?? $this->category_kk;
+        return $this->belongsTo(AwardCategory::class, 'award_category_id');
     }
 
-    /**
-     * Получить локализованную награду.
-     */
+    // 2. Связь с видом награды (имя метода rewardData используется в ресурсе)
+    public function rewardData(): BelongsTo
+    {
+        return $this->belongsTo(AwardReward::class, 'award_reward_id');
+    }
+
+    // --- ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ ---
+
+    public function getImageUrl(): ?string
+    {
+        if (!$this->image) {
+            return null;
+        }
+        return Storage::url($this->image);
+    }
+
+    // --- АКСЕССОРЫ ---
+
+    public function getCategoryNameAttribute(): ?string
+    {
+        // Пытаемся взять из прямой связи, если нет - через награду
+        return $this->category?->name ?? $this->rewardData?->category?->name;
+    }
+
     public function getRewardAttribute(): ?string
     {
-        $locale = app()->getLocale();
-        $column = "reward_{$locale}";
-        return $this->{$column} ?? $this->reward_ru ?? $this->reward_kk;
+        return $this->rewardData?->name;
     }
 
-    /**
-     * Получить локализованную должность.
-     */
     public function getPositionAttribute(): ?string
     {
         $locale = app()->getLocale();
@@ -84,9 +76,6 @@ class Award extends Model
         return $this->{$column} ?? $this->position_ru ?? $this->position_kk;
     }
 
-    /**
-     * Получить локализованное полное имя.
-     */
     public function getFullnameAttribute(): ?string
     {
         $locale = app()->getLocale();

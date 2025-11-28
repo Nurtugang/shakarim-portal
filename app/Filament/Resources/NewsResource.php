@@ -3,8 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Models\News;
-use App\Models\NewsCategory;
-use App\Models\NewsTag;
 use App\Filament\Resources\NewsResource\Pages;
 use App\Filament\Resources\NewsResource\RelationManagers\CommentsRelationManager;
 use Filament\Forms;
@@ -17,6 +15,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\Facades\Storage;
+
+use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
+use Filament\Notifications\Notification;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class NewsResource extends Resource
 {
@@ -40,14 +44,71 @@ class NewsResource extends Resource
                             ->tabs([
                                 Tabs\Tab::make('kk')
                                     ->schema([
+                                        Forms\Components\Actions::make([
+                                            Action::make('translate_kk_ru')
+                                                ->label('Перевести с Русского')
+                                                ->icon('heroicon-m-language')
+                                                ->color('info')
+                                                ->action(function (Get $get, Set $set) {
+                                                    $titleRu = $get('title_ru');
+                                                    $contentRu = $get('content_ru');
+
+                                                    if (!$titleRu && !$contentRu) {
+                                                        Notification::make()->title('Русские поля пусты')->warning()->send();
+                                                        return;
+                                                    }
+
+                                                    $tr = new GoogleTranslate();
+                                                    $tr->setSource('ru');
+                                                    $tr->setTarget('kk');
+
+                                                    if ($titleRu) $set('title_kk', $tr->translate($titleRu));
+                                                    
+                                                    if ($contentRu) {
+                                                        $htmlContent = is_array($contentRu) ? tiptap_converter()->asHTML($contentRu) : $contentRu;
+                                                        if ($htmlContent) $set('content_kk', $tr->translate($htmlContent));
+                                                    }
+                                                    Notification::make()->title('Переведено с Русского')->success()->send();
+                                                }),
+                                        ]),
+
                                         Forms\Components\TextInput::make('title_kk')
                                             ->label('Заголовок kk')
                                             ->maxLength(255),
                                         TiptapEditor::make('content_kk')
                                             ->label('Контент kk'),
                                     ]),
+
                                 Tabs\Tab::make('ru')
                                     ->schema([
+                                        Forms\Components\Actions::make([
+                                            Action::make('translate_ru_kk')
+                                                ->label('Перевести с Казахского')
+                                                ->icon('heroicon-m-language')
+                                                ->color('success')
+                                                ->action(function (Get $get, Set $set) {
+                                                    $titleKk = $get('title_kk');
+                                                    $contentKk = $get('content_kk');
+
+                                                    if (!$titleKk && !$contentKk) {
+                                                        Notification::make()->title('Казахские поля пусты')->warning()->send();
+                                                        return;
+                                                    }
+
+                                                    $tr = new GoogleTranslate();
+                                                    $tr->setSource('kk');
+                                                    $tr->setTarget('ru');
+
+                                                    if ($titleKk) $set('title_ru', $tr->translate($titleKk));
+                                                    
+                                                    if ($contentKk) {
+                                                        $htmlContent = is_array($contentKk) ? tiptap_converter()->asHTML($contentKk) : $contentKk;
+                                                        if ($htmlContent) $set('content_ru', $tr->translate($htmlContent));
+                                                    }
+                                                    Notification::make()->title('Переведено с Казахского')->success()->send();
+                                                }),
+                                        ]),
+
                                         Forms\Components\TextInput::make('title_ru')
                                             ->label('Заголовок RU')
                                             ->required()
@@ -56,16 +117,122 @@ class NewsResource extends Resource
                                             ->label('Контент RU')
                                             ->required(),
                                     ]),
+
                                 Tabs\Tab::make('en')
                                     ->schema([
+                                        Forms\Components\Actions::make([
+                                            Action::make('translate_en_ru')
+                                                ->label('Перевести с Русского')
+                                                ->icon('heroicon-m-language')
+                                                ->color('info')
+                                                ->action(function (Get $get, Set $set) {
+                                                    $titleRu = $get('title_ru');
+                                                    $contentRu = $get('content_ru');
+
+                                                    if (!$titleRu && !$contentRu) {
+                                                        Notification::make()->title('Русские поля пусты')->warning()->send();
+                                                        return;
+                                                    }
+
+                                                    $tr = new GoogleTranslate();
+                                                    $tr->setSource('ru');
+                                                    $tr->setTarget('en');
+
+                                                    if ($titleRu) $set('title_en', $tr->translate($titleRu));
+                                                    if ($contentRu) {
+                                                        $htmlContent = is_array($contentRu) ? tiptap_converter()->asHTML($contentRu) : $contentRu;
+                                                        if ($htmlContent) $set('content_en', $tr->translate($htmlContent));
+                                                    }
+                                                    Notification::make()->title('Переведено с Русского')->success()->send();
+                                                }),
+                                            
+                                            Action::make('translate_en_kk')
+                                                ->label('Перевести с Казахского')
+                                                ->icon('heroicon-m-language')
+                                                ->color('success')
+                                                ->action(function (Get $get, Set $set) {
+                                                    $titleKk = $get('title_kk');
+                                                    $contentKk = $get('content_kk');
+
+                                                    if (!$titleKk && !$contentKk) {
+                                                        Notification::make()->title('Казахские поля пусты')->warning()->send();
+                                                        return;
+                                                    }
+
+                                                    $tr = new GoogleTranslate();
+                                                    $tr->setSource('kk');
+                                                    $tr->setTarget('en');
+
+                                                    if ($titleKk) $set('title_en', $tr->translate($titleKk));
+                                                    if ($contentKk) {
+                                                        $htmlContent = is_array($contentKk) ? tiptap_converter()->asHTML($contentKk) : $contentKk;
+                                                        if ($htmlContent) $set('content_en', $tr->translate($htmlContent));
+                                                    }
+                                                    Notification::make()->title('Переведено с Казахского')->success()->send();
+                                                }),
+                                        ]),
+
                                         Forms\Components\TextInput::make('title_en')
                                             ->label('Заголовок EN')
                                             ->maxLength(255),
                                         TiptapEditor::make('content_en')
                                             ->label('Контент EN'),
                                     ]),
+
                                 Tabs\Tab::make('cn')
                                     ->schema([
+                                        Forms\Components\Actions::make([
+                                            Action::make('translate_cn_ru')
+                                                ->label('Перевести с Русского')
+                                                ->icon('heroicon-m-language')
+                                                ->color('warning')
+                                                ->action(function (Get $get, Set $set) {
+                                                    $titleRu = $get('title_ru');
+                                                    $contentRu = $get('content_ru');
+
+                                                    if (!$titleRu && !$contentRu) {
+                                                        Notification::make()->title('Русские поля пусты')->warning()->send();
+                                                        return;
+                                                    }
+
+                                                    $tr = new GoogleTranslate();
+                                                    $tr->setSource('ru');
+                                                    $tr->setTarget('zh-CN');
+
+                                                    if ($titleRu) $set('title_cn', $tr->translate($titleRu));
+                                                    if ($contentRu) {
+                                                        $htmlContent = is_array($contentRu) ? tiptap_converter()->asHTML($contentRu) : $contentRu;
+                                                        if ($htmlContent) $set('content_cn', $tr->translate($htmlContent));
+                                                    }
+                                                    Notification::make()->title('Переведено с Русского')->success()->send();
+                                                }),
+
+                                            Action::make('translate_cn_kk')
+                                                ->label('Перевести с Казахского')
+                                                ->icon('heroicon-m-language')
+                                                ->color('success')
+                                                ->action(function (Get $get, Set $set) {
+                                                    $titleKk = $get('title_kk');
+                                                    $contentKk = $get('content_kk');
+
+                                                    if (!$titleKk && !$contentKk) {
+                                                        Notification::make()->title('Казахские поля пусты')->warning()->send();
+                                                        return;
+                                                    }
+
+                                                    $tr = new GoogleTranslate();
+                                                    $tr->setSource('kk');
+                                                    $tr->setTarget('zh-CN');
+
+                                                    if ($titleKk) $set('title_cn', $tr->translate($titleKk));
+                                                    if ($contentKk) {
+                                                        $htmlContent = is_array($contentKk) ? tiptap_converter()->asHTML($contentKk) : $contentKk;
+                                                        if ($htmlContent) $set('content_cn', $tr->translate($htmlContent));
+                                                    }
+                                                    Notification::make()->title('Переведено с Казахского')->success()->send();
+                                                }),
+                                        ]),
+                                        
                                         Forms\Components\TextInput::make('title_cn')
                                             ->label('Заголовок CN')
                                             ->maxLength(255),
@@ -91,12 +258,10 @@ class NewsResource extends Resource
                     ])->columnSpan(8),
                 Section::make()
                     ->schema([
-                        // --- ГЛАВНОЕ ИЗОБРАЖЕНИЕ ---
                         Forms\Components\FileUpload::make('image')
                             ->label('Загрузить/заменить главное изображение')
                             ->image()->imageEditor()->disk('public')->directory('news')->visibility('public'),
-
-                        // --- ИЗОБРАЖЕНИЕ ДЛЯ СЛАЙДЕРА ---
+                        
                         Placeholder::make('image_slider_preview')
                             ->label('Текущее изображение для слайдера')
                             ->content(function ($record) {

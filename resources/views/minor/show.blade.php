@@ -5,14 +5,14 @@
     <section class="bg-gray-100 py-3 border-b">
         <div class="max-w-7xl mx-auto px-4">
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
-                <a href="{{ url('/') }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
-                <span>&#8250;</span>
-                <a href="{{ route('minor.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">
-                    {{ __('Minor') }}
-                </a>
-                <span>&#8250;</span>
-                <span class="text-shakarim-blue font-semibold">{{ $minor->title }}</span>
-            </nav>
+            <a href="{{ route('site.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __('Главная страница') }}</a>
+            <span class="mx-1">&#8250;</span>
+            <a href="{{ route('menu.show', ['locale' => app()->getLocale(), 'menu' => 10]) }}" class="hover:text-shakarim-blue">{{ __('Образование') }}</a>
+            <span class="mx-1">&#8250;</span>
+            <a href="{{ route('academy.op.index', ['locale' => app()->getLocale()]) }}" class="hover:text-shakarim-blue">{{ __('Образовательные программы') }}</a>
+            <span class="mx-1">&#8250;</span>
+            <span class="text-shakarim-blue font-semibold">{{ $minor->title }}</span>
+        </nav>
         </div>
     </section>
 

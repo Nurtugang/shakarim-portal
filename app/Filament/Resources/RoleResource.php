@@ -20,29 +20,18 @@ class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-lock-open';
+    protected static ?string $navigationIcon = 'heroicon-o-shield-check';
 
-    protected static ?int $navigationSort = 3;
-
-    // public static function canAccess(): bool
-    // {
-    //     $user = auth()->user();
-    //     return $user->hasRole('Admin');
-    // }
+    protected static ?int $navigationSort = 11;
 
     public static function getNavigationLabel(): string
     {
-        return __('Roles');
+        return __('Роли');
     }
 
     public static function getPluralLabel(): ?string
     {
         return static::getNavigationLabel();
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Permissions');
     }
 
     public static function form(Form $form): Form
@@ -91,7 +80,6 @@ class RoleResource extends Resource
                 //
             ])
             ->actions([
-              //  Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -105,11 +93,6 @@ class RoleResource extends Resource
             //
         ];
     }
-
-    // public static function getEloquentQuery(): Builder
-    // {
-    //     return parent::getEloquentQuery()->where('name','!=','Admin');
-    // }
 
     public static function getPages(): array
     {

@@ -28,7 +28,7 @@ class MenuResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationLabel = 'Меню';
+    protected static ?string $navigationLabel = 'Меню сайта';
 
     protected static ?string $modelLabel = 'Меню';
 

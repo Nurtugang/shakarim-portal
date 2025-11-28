@@ -20,7 +20,7 @@ class StructureResource extends Resource
 {
     protected static ?string $model = Structure::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
 
     protected static ?int $navigationSort = 5;
 

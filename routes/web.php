@@ -10,7 +10,6 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\EventController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StructureController;
@@ -38,10 +37,10 @@ use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RectorQuestionController;
 use App\Http\Controllers\DevelopmentGoalsController;
 
-use App\Http\Controllers\Student\StudentParlamentController;
+use App\Http\Controllers\Student\StudentBoardController;
+use App\Http\Controllers\AwardController;
 
 
-use App\Models\Award;
 use App\Models\PageFile;
 use App\Models\Nirs\NirsMainContent;
 use App\Models\Nirs\NirsConference;
@@ -106,11 +105,7 @@ Route::group([
         return view('science.srws.index', compact('mainContent', 'conferences', 'itemsByYear'));
         
     })->name('science.srws.index');
-    Route::get('/awards', function () {
-        $groupedAwards = Award::orderBy('sort')->orderBy('year', 'desc')->get()->groupBy(['category', 'reward']);
-
-        return view('awards.index', compact('groupedAwards'));
-    })->name('awards.index');
+    Route::get('/awards', [AwardController::class, 'index'])->name('awards.index');
 
     Route::get('/accreditation', [AccreditationController::class, 'index'])->name('academy.accreditation.index');
     Route::get('/academy/schools', [AcademySchoolsController::class, 'index'])->name('academy.schools');
@@ -134,7 +129,9 @@ Route::group([
     Route::get('/vacancies', [VacancyController::class, 'index'])->name('vacancy.index');
     Route::get('/vacancy/{id}', [VacancyController::class, 'show'])->name('vacancy.show');
 
-    Route::get('/student/parlament', [StudentParlamentController::class, 'index'])->name('student.parlament.index');
+    Route::get('/student/parlament', [StudentBoardController::class, 'parliament'])->name('student.parliament');
+    Route::get('/student/majilis', [StudentBoardController::class, 'majilis'])->name('student.majilis');
+    Route::get('/student/senate', [StudentBoardController::class, 'senate'])->name('student.senate');
     
 
     Route::get('/organization/science', [OrganizationController::class, 'science'])->name('organization.science');
@@ -176,4 +173,3 @@ Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name(
 Route::post('/science/offers/store', [SciencePurchasesOfferController::class, 'store'])->name('science.offers.store');
 
 Route::post('/rector-question', [RectorBlogController::class, 'storeQuestion'])->name('rector.question.store');
-Route::get('/events', EventController::class);

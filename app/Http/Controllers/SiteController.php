@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TextWidget;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,21 +22,12 @@ class SiteController extends Controller
             ->limit(4)
             ->get();
 
-        $events = \App\Models\Event::orderBy('start_date')
-            ->where('active', true)
-            ->limit(3)
-            ->get();
-        
         $announcements = \App\Models\Announcement::where('status', 1)
             ->where('language', app()->getLocale())
             ->orderBy('date', 'desc')
             ->limit(4)
             ->get();
 
-        $welcome = TextWidget::query()->where('key','welcome')->first();
-        $card = TextWidget::query()->where('key','card')->first();
-        $schools = TextWidget::query()->where('key','schools')->first();
-
-        return view('site.index', compact('sliderNews','news','events','welcome','card','schools', 'announcements'));
+        return view('site.index', compact('sliderNews','news', 'announcements'));
     }
 }

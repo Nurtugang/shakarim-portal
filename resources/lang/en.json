@@ -413,5 +413,18 @@
     "Связанные новости": "Related News",
     "Организации-партнеры по стажировкам": "Partner organizations for internships",
     "На данный момент нет информации.": "No information available at the moment.",
-    "Сотрудничество": "Partnership"
+    "Сотрудничество": "Partnership",
+    "ОБЛАСТЬ ОБРАЗОВАНИЯ": "FIELD OF EDUCATION",
+    "КОД И КЛАССИФИКАЦИЯ": "CODE AND CLASSIFICATION",
+    "КОД ГРУППЫ": "GROUP CODE",
+    "ОБРАЗОВАТЕЛЬНАЯ ПРОГРАММА": "EDUCATIONAL PROGRAM",
+    "АККРЕДИТАЦИЯ": "ACCREDITATION",
+    "Аккредитована": "Accredited",
+    "НАИМЕНОВАНИЕ ПРОГРАММЫ": "PROGRAM NAME",
+    "КРАТКОЕ ОПИСАНИЕ": "BRIEF DESCRIPTION",
+    "ДЕЙСТВИЕ": "ACTION",
+    "Бакалавриат": "Bachelor's Degree",
+    "Магистратура": "Master's Degree",
+    "Докторантура": "PhD"
+
 }

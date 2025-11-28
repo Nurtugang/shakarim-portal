@@ -6,7 +6,7 @@
             <nav class="text-sm text-gray-500 flex flex-wrap items-center gap-x-2" aria-label="Breadcrumb">
                 <a href="{{ route('site.index', app()->getLocale()) }}" class="hover:text-shakarim-blue">{{ __('Главная страница')}}</a>
                 <span>&#8250;</span>
-                <span class="text-shakarim-blue font-semibold">{{ __('Mobile App')}}</span>
+                <span class="text-shakarim-blue font-semibold">{{ __('Награды')}}</span>
             </nav>
         </div>
     </section>
@@ -17,7 +17,7 @@
             <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-8">{{ __('Награды')}}</h1>
 
             <div class="flex flex-col lg:flex-row gap-8">
-                <!-- Sidebar Navigation (ОСТАЕТСЯ БЕЗ ИЗМЕНЕНИЙ) -->
+                <!-- Sidebar Navigation -->
                 <div class="lg:w-1/4">
                     <!-- Mobile horizontal tabs -->
                     <div class="lg:hidden mb-6">
@@ -70,7 +70,7 @@
                                                         <!-- Image -->
                                                         <div class="flex-shrink-0 w-32 h-32 md:w-40 md:h-40">
                                                             @if($award->image)
-                                                                <img src="{{ Storage::url('awards/' . $award->image) }}" alt="{{ $award->fullname }}"
+                                                                <img src="{{ Storage::url($award->image) }}" alt="{{ $award->fullname }}"
                                                                      class="w-full h-full object-cover rounded-full shadow-md">
                                                             @else
                                                                 <div class="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">
