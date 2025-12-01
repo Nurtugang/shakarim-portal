@@ -425,6 +425,16 @@
     "ДЕЙСТВИЕ": "ACTION",
     "Бакалавриат": "Bachelor's Degree",
     "Магистратура": "Master's Degree",
-    "Докторантура": "PhD"
+    "Докторантура": "PhD",
+    "Курсы повышения квалификации и переподготовки": "Advanced Training and Retraining Courses",
+    "Наименование курса": "Course Name",
+    "Часы": "Hours",
+    "Форма": "Form",
+    "Список курсов": "Course List",
+    "Сертификаты": "Certificates",
+    "Реестр выданных сертификатов": "Issued Certificates Register",
+    "Название курса / сертификата": "Course / Certificate Name",
+    "Образовательная программа": "Educational Program",
+    "Описание курса отсутствует.": "Course description is missing."
 
 }

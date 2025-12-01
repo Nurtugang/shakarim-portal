@@ -139,7 +139,7 @@
                             </div>
                             <div class="bg-gray-50 rounded-lg p-4 text-center">
                                 <div class="w-24 h-32 mx-auto mb-3 rounded-lg overflow-hidden">
-                                    <img src="/storage/pages/51bdccff-21ad-4362-96e8-0fac6c691934.svg" alt="{{ __('СУХОВ И.Я.') }}" class="w-full h-full object-cover">
+                                    <img src="/storage/pages/suhov.jpg" alt="{{ __('СУХОВ И.Я.') }}" class="w-full h-full object-cover">
                                 </div>
                                 <h4 class="font-semibold text-sm">{{ __('СУХОВ И.Я.') }}</h4>
                                 <p class="text-xs text-gray-600 mt-1">{{ __('Директор Семипалатинского учительского института 01.1936 - 03.1937 гг.') }}</p>

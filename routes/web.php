@@ -39,7 +39,7 @@ use App\Http\Controllers\DevelopmentGoalsController;
 
 use App\Http\Controllers\Student\StudentBoardController;
 use App\Http\Controllers\AwardController;
-
+use App\Http\Controllers\CourseController;
 
 use App\Models\PageFile;
 use App\Models\Nirs\NirsMainContent;
@@ -132,7 +132,9 @@ Route::group([
     Route::get('/student/parlament', [StudentBoardController::class, 'parliament'])->name('student.parliament');
     Route::get('/student/majilis', [StudentBoardController::class, 'majilis'])->name('student.majilis');
     Route::get('/student/senate', [StudentBoardController::class, 'senate'])->name('student.senate');
-    
+
+    Route::get('/academy/courses', [CourseController::class, 'index'])->name('courses.index');
+    Route::get('/academy/courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 
     Route::get('/organization/science', [OrganizationController::class, 'science'])->name('organization.science');
     Route::get('/organization/social', [OrganizationController::class, 'social'])->name('organization.social');
@@ -163,7 +165,6 @@ Route::group([
     Route::get('/partnership/internship', [InternshipController::class, 'index'])->name('internship.index');
     Route::get('/academy/op', [\App\Http\Controllers\Academy\EducationalProgramsController::class, 'index'])->name('academy.op.index');
     
-    // Mobile App showcase page
     Route::get('/app', function (string $locale) {
         return view('app.index');
     })->name('app.index');

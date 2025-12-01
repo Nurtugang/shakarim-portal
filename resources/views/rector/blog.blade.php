@@ -28,7 +28,7 @@
         </div>
 
         <div class="grid lg:grid-cols-3 gap-6">
-            <!-- Мобильная форма вопроса (показывается только на мобилке) -->
+            <!-- Мобильная форма вопроса -->
             <div class="lg:hidden bg-white rounded-lg shadow-md p-4 mb-6">
                 <h3 class="text-lg font-bold text-shakarim-blue mb-4">{{ __('Задать вопрос') }}</h3>
                 
@@ -60,7 +60,7 @@
                 </form>
             </div>
 
-            <!-- Вопросы и ответы -->
+            <!-- Вопросы и ответы (Основная колонка) -->
             <div class="lg:col-span-2">
                 <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">{{ __('Вопросы и ответы') }}</h2>
                 
@@ -87,6 +87,12 @@
                             </div>
                         @endforeach
                     </div>
+
+                    <!-- Пагинация -->
+                    <div class="mt-8">
+                        {{ $questions->withQueryString()->links() }}
+                    </div>
+
                 @else
                     <div class="text-center py-8">
                         <p class="text-gray-500">{{ __('Пока нет вопросов') }}</p>
@@ -102,7 +108,8 @@
                     
                     @if($posts->count() > 0)
                         <div class="space-y-4">
-                            @foreach($posts->take(5) as $post)
+                            <!-- Здесь убрали take(5), так как лимит уже задан в контроллере -->
+                            @foreach($posts as $post)
                                 <div class="flex gap-3 pb-4 border-b border-gray-200 last:border-b-0 last:pb-0">
                                     <!-- Картинка поста -->
                                     <div class="flex-shrink-0">
@@ -132,7 +139,7 @@
                     @endif
                 </div>
 
-                <!-- Форма вопроса (только на десктопе) -->
+                <!-- Форма вопроса (Десктоп) -->
                 <div class="hidden lg:block bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-bold text-shakarim-blue mb-6">{{ __('Задать вопрос') }}</h3>
                     

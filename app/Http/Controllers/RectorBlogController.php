@@ -11,12 +11,12 @@ class RectorBlogController extends Controller
     {
         $posts = RectorPost::where('active', true)
             ->latest()
-            ->paginate(6);
+            ->take(5)
+            ->get();
 
         $questions = RectorQuestion::where('is_published', true)
             ->latest()
-            ->take(50)
-            ->get();
+            ->paginate(5);
 
         return view('rector.blog', compact('posts', 'questions'));
     }

@@ -53,11 +53,11 @@
                                 <div class="text-xs md:text-sm font-body text-slate-200">{{ __('AI Agents') }}</div>
                             </div>
                             <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">2</div>
+                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">3</div>
                                 <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Ready solutions') }}</div>
                             </div>
                             <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">3</div>
+                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">2</div>
                                 <div class="text-xs md:text-sm font-body text-slate-200">{{ __('In development') }}</div>
                             </div>
                             <div>
@@ -275,11 +275,11 @@
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Bachelor programs') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">62</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">60</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Master programs') }}</div>
                         </div>
                         <div>
-                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">13</div>
+                            <div class="text-3xl md:text-4xl font-heading font-bold text-shakarim-blue mb-1 md:mb-2">10</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('PhD programs') }}</div>
                         </div>
                         <div>
@@ -290,24 +290,10 @@
                             <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">90%</div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Graduate employment rate') }}</div>
                         </div>
-                        @php
-                            $studentCount = 6554;
-                            try {
-                                $response = Illuminate\Support\Facades\Http::timeout(5)->get('https://api.semgu.kz/dashboard/students/index.php');
-
-                                if ($response->successful()) {
-                                    $data = $response->json();
-                                    if (isset($data['fulldata']['full'])) {
-                                        $studentCount = $data['fulldata']['full'];
-                                    }
-                                }
-                            } catch (\Exception $e) {
-                            }
-                        @endphp
 
                         <div>
                             <div class="text-3xl md:text-4xl font-heading font-bold text-slate-600 mb-1 md:mb-2">
-                                {{ $studentCount }}
+                                {{ $regularStudents }}
                             </div>
                             <div class="text-xs md:text-sm font-body text-gray-600">{{ __('Students') }}</div>
                         </div>
@@ -524,7 +510,7 @@
                         <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Стратегия развития и ответы на вопросы') }}</p>
                     </div>
                 </a>
-                <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'tagylymdama-boiynsa-seriktes-uiymdar']) }}" class="group">
+                <a href="{{ route('internship.index', ['locale' => app()->getLocale()]) }}" class="group">
                     <div class="group bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center h-full flex flex-col justify-center">
                         <i class="fas fa-briefcase text-2xl md:text-3xl text-shakarim-blue group-hover:text-white mb-2 md:mb-4 transition-colors"></i>
                         <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-xs md:text-base">{{ __('Career') }}</h3>
