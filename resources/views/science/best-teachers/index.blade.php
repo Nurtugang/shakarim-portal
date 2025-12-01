@@ -24,6 +24,28 @@
                         <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">
                             {{ __('Обладатели звания «Лучший преподаватель вуза»') }}
                         </h1>
+                        <div class="text-gray-600 mt-4 mb-6 space-y-4">
+                            <p>{{ __('Звание «Лучший преподаватель вуза» – это одна из наиболее престижных национальных наград в сфере высшего образования Казахстана, учреждённая Министерством науки и высшего образования РК. Она направлена на признание выдающегося вклада преподавателей вузов в развитие образования, науки и подготовку конкурентоспособных специалистов.') }}</p>
+                            <div>
+                                <strong class="text-shakarim-blue">{{ __('Цель:') }}</strong>
+                                <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                    <li>{{ __('Повышение статуса преподавательской профессии.') }}</li>
+                                    <li>{{ __('Поддержка наиболее результативных и талантливых педагогов.') }}</li>
+                                    <li>{{ __('Стимулирование научно-исследовательской и образовательной активности.') }}</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong class="text-shakarim-blue">{{ __('Кто может претендовать:') }}</strong>
+                                <p class="mt-2">{{ __('Преподаватели вузов Казахстана, имеющие высокие показатели:') }}</p>
+                                <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                    <li>{{ __('значимые научные публикации (в WoS/Scopus, КОКНВО);') }}</li>
+                                    <li>{{ __('участие и руководство научными проектами;') }}</li>
+                                    <li>{{ __('разработка образовательных программ и инновационных методик обучения;') }}</li>
+                                    <li>{{ __('вклад в международное сотрудничество;') }}</li>
+                                    <li>{{ __('подготовка студентов-победителей олимпиад, конкурсов и стартапов.') }}</li>
+                                </ul>
+                            </div>
+                        </div>
                         <a href="{{ Storage::url('best-teachers-docs/Конкурсная комиссия.pdf') }}" 
                             target="_blank"
                             rel="noopener noreferrer"
@@ -31,6 +53,14 @@
                             style="color: white !important;">
                             <i class="fas fa-external-link-alt mr-2"></i>
                             {{ __('Протокол №1 конкурсной комиссии «Лучший преподаватель вуза – 2025') }}
+                        </a>
+                        <a href="https://adilet.zan.kz/rus/docs/V1500010506" 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm"
+                            style="color: white !important;">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            {{ __('Правила') }}
                         </a>
                         <a href="{{ Storage::url('best-teachers-docs/Лучший преподаватель Вуза 2025 Выписка УС,_page-0001 (1).pdf') }}" 
                             target="_blank"

@@ -26,6 +26,7 @@ use App\Http\Controllers\Science\SciencePurchasesOfferController;
 
 use App\Http\Controllers\Academy\AccreditationController;
 use App\Http\Controllers\Academy\AcademySchoolsController;
+use App\Http\Controllers\Academy\DiplomasController;
 
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\MinorController;
@@ -102,8 +103,8 @@ Route::group([
                                                 ->get()
                                                 ->groupBy('year');
 
-        // Для секции "Научные студенческие кружки"
-        $organizations = \App\Models\Organization::all();
+        // Для секции "Научные студенческие кружки" - только научные (category_id = 1)
+        $organizations = \App\Models\Organization::where('category_id', 1)->get();
         $locale = app()->getLocale();
 
         return view('science.students.index', compact('mainContent', 'conferences', 'itemsByYear', 'organizations', 'locale'));
@@ -139,6 +140,8 @@ Route::group([
     Route::get('/academy/courses', [CourseController::class, 'index'])->name('courses.index');
     Route::get('/academy/courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 
+    Route::get('/academy/diplomas', [DiplomasController::class, 'index'])->name('academy.diplomas.index');
+
     Route::get('/organization/science', [OrganizationController::class, 'science'])->name('organization.science');
     Route::get('/organization/social', [OrganizationController::class, 'social'])->name('organization.social');
     Route::get('/organization/{organization:id}', function ($locale, App\Models\Organization $organization) {
@@ -172,6 +175,9 @@ Route::group([
         return view('app.index');
     })->name('app.index');
 });
+
+Route::get('/diplomas/download/{id}', [DiplomasController::class, 'download'])->name('diplomas.download');
+Route::post('/academy/diplomas/login', [DiplomasController::class, 'login'])->name('diplomas.login');
 
 Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name('offers.store');
 Route::post('/science/offers/store', [SciencePurchasesOfferController::class, 'store'])->name('science.offers.store');

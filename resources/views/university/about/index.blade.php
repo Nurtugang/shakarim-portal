@@ -132,16 +132,16 @@
                             </div>
                             <div class="bg-gray-50 rounded-lg p-4 text-center">
                                 <div class="w-24 h-32 mx-auto mb-3 rounded-lg overflow-hidden">
-                                    <img src="/storage/pages/0db5cb02-a8a6-414a-89a7-c192d63fbb3b.svg" alt="{{ __('МУХАМБЕТОВА') }}" class="w-full h-full object-cover">
+                                    <img src="/storage/pages/MUKHAMBETOVA.jpg" alt="{{ __('МУХАМБЕТОВА ХАРИРА МУХАМБЕТОВНА') }}" class="w-full h-full object-cover">
                                 </div>
-                                <h4 class="font-semibold text-sm">{{ __('МУХАМБЕТОВА') }}</h4>
+                                <h4 class="font-semibold text-sm">{{ __('МУХАМБЕТОВА ХАРИРА МУХАМБЕТОВНА') }}</h4>
                                 <p class="text-xs text-gray-600 mt-1">{{ __('Директор Семипалатинского учительского института 03.1935-12.1935 гг.') }}</p>
                             </div>
                             <div class="bg-gray-50 rounded-lg p-4 text-center">
                                 <div class="w-24 h-32 mx-auto mb-3 rounded-lg overflow-hidden">
-                                    <img src="/storage/pages/suhov.jpg" alt="{{ __('СУХОВ И.Я.') }}" class="w-full h-full object-cover">
+                                    <img src="/storage/pages/suhov.jpg" alt="{{ __('СУХОВ ЯКОВ ИВАНОВИЧ') }}" class="w-full h-full object-cover">
                                 </div>
-                                <h4 class="font-semibold text-sm">{{ __('СУХОВ И.Я.') }}</h4>
+                                <h4 class="font-semibold text-sm">{{ __('СУХОВ ЯКОВ ИВАНОВИЧ') }}</h4>
                                 <p class="text-xs text-gray-600 mt-1">{{ __('Директор Семипалатинского учительского института 01.1936 - 03.1937 гг.') }}</p>
                             </div>
                             <div class="bg-gray-50 rounded-lg p-4 text-center">

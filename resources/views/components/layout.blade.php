@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>@yield('meta_title', 'Shakarim University')</title>
+
     <meta name="description" content="@yield('meta_description', 'Shakarim University (каз. Шәкәрім университеті) — высшее учебное заведение Абайской области. Современный учебно-методический, научный и культурный центр северо-восточного региона Казахстана, а так же, самый крупный ВУЗ области Абай.')">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="@yield('meta_robots', 'index, follow')">
+
     <link rel="canonical" href="{{ url()->current() }}" />
 
     <link rel="icon" type="image/x-icon" href="{{ asset('logo_sgu.png') }}">
