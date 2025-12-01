@@ -92,7 +92,7 @@ Route::group([
     Route::get('/science/aspirants', [AspirantController::class, 'index'])->name('science.aspirants');
     Route::get('/science/projects', [ScientificProjectsController::class, 'index'])->name('science.projects.index');
     Route::get('/science/projects/{id}', [ScientificProjectsController::class, 'show'])->name('science.projects.show');
-    Route::get('/science/srws', function () {
+    Route::get('/science/students', function () {
         $mainContent = \App\Models\Nirs\NirsMainContent::find(1);
 
         $conferences = \App\Models\Nirs\NirsConference::orderBy('created_at', 'desc')->get();
@@ -102,9 +102,12 @@ Route::group([
                                                 ->get()
                                                 ->groupBy('year');
 
-        return view('science.srws.index', compact('mainContent', 'conferences', 'itemsByYear'));
-        
-    })->name('science.srws.index');
+        // Для секции "Научные студенческие кружки"
+        $organizations = \App\Models\Organization::all();
+        $locale = app()->getLocale();
+
+        return view('science.students.index', compact('mainContent', 'conferences', 'itemsByYear', 'organizations', 'locale'));
+    })->name('science.students.index');
     Route::get('/awards', [AwardController::class, 'index'])->name('awards.index');
 
     Route::get('/accreditation', [AccreditationController::class, 'index'])->name('academy.accreditation.index');
