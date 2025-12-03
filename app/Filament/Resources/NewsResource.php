@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Models\News;
 use App\Filament\Resources\NewsResource\Pages;
 use App\Filament\Resources\NewsResource\RelationManagers\CommentsRelationManager;
+use App\Filament\Resources\NewsResource\RelationManagers\ImagesRelationManager;
 use Filament\Forms;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
@@ -354,6 +355,7 @@ class NewsResource extends Resource
     {
         return [
             CommentsRelationManager::class,
+            ImagesRelationManager::class,
         ];
     }
 

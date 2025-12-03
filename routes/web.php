@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Localization;
 
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NewsImageController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\MenuController;
@@ -76,6 +77,10 @@ Route::group([
     Route::get('/news',[NewsController::class,'index'])->name('news');
     Route::get('/news/{news:alias}',[NewsController::class,'show'])->name('news.show');
     Route::post('/news/{news:alias}/comment', [NewsController::class, 'storeComment'])->name('news.comment.store');
+
+    // News images: upload single image and delete
+    Route::post('/news/{news}/images', [NewsImageController::class, 'store'])->name('news.images.store');
+    Route::delete('/news/{news}/images/{image}', [NewsImageController::class, 'destroy'])->name('news.images.destroy');
 
     Route::get('/structure', [StructureController::class,'index'])->name('structure.index');
     Route::get('/structure/{structure:slug}', [StructureController::class,'show'])->name('structure.show');
