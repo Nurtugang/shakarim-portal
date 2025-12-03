@@ -377,4 +377,12 @@ class News extends Model
     {
         return $this->belongsToMany(DevelopmentGoal::class, 'development_goal_news');
     }
+
+    /**
+     * Additional images attached to the news (ordered by insertion time ascending)
+     */
+    public function images()
+    {
+        return $this->hasMany(NewsImage::class, 'news_id')->orderBy('created_at', 'asc');
+    }
 }

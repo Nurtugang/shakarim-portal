@@ -68,10 +68,9 @@
                                 {{ $news->{'title_' . app()->getLocale()} }}
                             </h1>
                         </div>
-                        <!-- News Image -->
+                        <!-- Main image (kept before content) -->
                         @if($news->image)
                             <div class="p-3 md:p-6">
-                                {{-- ВЫЗЫВАЕМ НОВЫЙ МЕТОД 'getMainImageUrl()' --}}
                                 <img src="{{ $news->getMainImageUrl() }}" 
                                     alt="{{ $news->{'title_' . app()->getLocale()} }}" 
                                     class="w-full h-auto max-w-full mx-auto rounded-lg shadow-lg">
@@ -81,6 +80,13 @@
                         <div class="p-3 md:p-6 dynamic-content">
                             {!! $news->{'content_' . app()->getLocale()} !!}
                         </div>
+
+                        <!-- Gallery slider after article content (only if there are images) -->
+                        @if($news->images && $news->images->count() > 0)
+                            <div class="p-3 md:p-6">
+                                @include('news.partials.images-slider', ['news' => $news])
+                            </div>
+                        @endif
 
                         <!-- Article Footer -->
                         <div class="p-3 md:p-6 bg-gray-50 border-t border-gray-100">
