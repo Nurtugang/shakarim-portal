@@ -174,10 +174,14 @@
                     b.classList.toggle('border-transparent', !isActive);
                     b.classList.toggle('text-gray-500', !isActive);
                 });
+                window.history.replaceState(null, '', '#' + key);
             }
 
-            const first = btns[0];
-            if(first){ activate(first.dataset.tab); }
+            // Проверяем якорь при загрузке страницы
+            const hash = window.location.hash.slice(1);
+            const initialTab = hash && Array.from(btns).some(b => b.dataset.tab === hash) ? hash : btns[0]?.dataset.tab;
+            
+            if(initialTab){ activate(initialTab); }
 
             btns.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
         })();
