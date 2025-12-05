@@ -20,6 +20,8 @@ class ImagesRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    protected static ?string $title = 'Карусель изображений';
+
     public function form(Form $form): Form
     {
         return $form

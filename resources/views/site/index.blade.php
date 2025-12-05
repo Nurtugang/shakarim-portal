@@ -142,16 +142,22 @@
                         <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800">{{ __('University') }}</h3>
                     </div>
                     <div class="space-y-1.5 md:space-y-2">
+                        <a href="{{ route('university.about.index', ['locale' => app()->getLocale()]) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-info-circle mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Об университете') }}</span>
+                        </a>
                         <a href="https://shakarim.kz/" target="_blank" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-user-circle mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Шәкәрім Құдайбердіұлы') }}</span>
                         </a>
-                        <a href="{{ route('awards.index', app()->getLocale()) }}" 
+                        <a href="{{ route('university.endowment.index', ['locale' => app()->getLocale()]) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
-                            <i class="fas fa-trophy mr-1.5 md:mr-2 text-xs"></i>
-                            <span class="font-body text-xs md:text-sm">{{ __('Награды') }}</span>
+                            <i class="fas fa-donate mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Endowment') }}</span>
                         </a>
+                    </a>
                         <a href="{{ route('app.index', app()->getLocale()) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-mobile-alt mr-1.5 md:mr-2 text-xs"></i>
@@ -169,11 +175,6 @@
                         <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800">{{ __('For Applicants') }}</h3>
                     </div>
                     <div class="space-y-1.5 md:space-y-2">
-                        <a href="{{ route('university.about.index', ['locale' => app()->getLocale()]) }}" 
-                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
-                            <i class="fas fa-info-circle mr-1.5 md:mr-2 text-xs"></i>
-                            <span class="font-body text-xs md:text-sm">{{ __('Об университете') }}</span>
-                        </a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-vr-cardboard mr-1.5 md:mr-2 text-xs"></i>
@@ -189,6 +190,11 @@
                             <i class="fas fa-phone mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Приемная комиссия') }}</span>
                         </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bilim-alusynyn-zolsiltemesi']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-map-marked-alt mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Путеводитель обучающегося') }}</span>
+                        </a>
                     </div>
                 </div>
 
@@ -201,6 +207,11 @@
                         <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800">{{ __('For Students') }}</h3>
                     </div>
                     <div class="space-y-1.5 md:space-y-2">
+                        <a href="{{ route('academy.schools', ['locale' => app()->getLocale()]) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-school mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Высшие/Исследовательские школы') }}</span>
+                        </a>
                         <a href="https://platonus.shakarim.kz/" target="_blank" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-laptop mr-1.5 md:mr-2 text-xs"></i>
@@ -215,11 +226,6 @@
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-book mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Библиотека') }}</span>
-                        </a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bilim-alusynyn-zolsiltemesi']) }}" 
-                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
-                            <i class="fas fa-map-marked-alt mr-1.5 md:mr-2 text-xs"></i>
-                            <span class="font-body text-xs md:text-sm">{{ __('Путеводитель обучающегося') }}</span>
                         </a>
                     </div>
                 </div>
@@ -524,11 +530,11 @@
                         <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Partnerships and exchange programs') }}</p>
                     </div>
                 </a>
-                <a href="{{ route('university.endowment.index', ['locale' => app()->getLocale()]) }}" class="group">
+                <a href="{{ route('awards.index', ['locale' => app()->getLocale()]) }}" class="group">
                     <div class="group bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg hover:bg-shakarim-blue transition text-center h-full flex flex-col justify-center">
-                        <i class="fas fa-donate text-2xl md:text-3xl text-shakarim-blue group-hover:text-white mb-2 md:mb-4 transition-colors"></i>
-                        <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-xs md:text-base">{{ __('Endowment') }}</h3>
-                        <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Make a contribution to the development of the university') }}</p>
+                        <i class="fas fa-trophy text-2xl md:text-3xl text-shakarim-blue group-hover:text-white mb-2 md:mb-4 transition-colors"></i>
+                        <h3 class="font-semibold font-heading mb-1 md:mb-2 text-gray-800 group-hover:text-white transition-colors text-xs md:text-base">{{ __('Награды') }}</h3>
+                        <p class="text-xs md:text-sm text-gray-600 font-body group-hover:text-white transition-colors">{{ __('Награды, полученные сотрудниками нашего университета') }}</p>
                     </div>
                 </a>
                 <a target="_blank" href="https://t.me/ShakarimAdmissionBot" class="group">

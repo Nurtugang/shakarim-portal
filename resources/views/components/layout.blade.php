@@ -56,7 +56,12 @@
             "addressCountry": "KZ"
         }
     }
-    </script>
+
+    
+</script>
+
+@include('components.metrika')
+
 </head>
 <body class="font-body bg-white min-h-screen flex flex-col">
     <!-- Top Bar -->
@@ -270,6 +275,11 @@
                         </div>
                     </div>
                     @endif
+
+                    <div class="flex  pt-8">
+                        @include('components.metrika_widget')
+                    </div>
+                    d
                     </div>
                         @foreach($footer_menu as $section)
                             <div>
