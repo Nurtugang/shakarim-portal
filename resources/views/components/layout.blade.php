@@ -279,7 +279,6 @@
                     <div class="flex  pt-8">
                         @include('components.metrika_widget')
                     </div>
-                    d
                     </div>
                         @foreach($footer_menu as $section)
                             <div>
