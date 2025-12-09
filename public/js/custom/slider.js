@@ -4,6 +4,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const dots = document.querySelectorAll('.slider-container .slide-dot');
     const totalSlides = slides.length;
     let slideInterval; // Переменная для хранения таймера
+    
+    // Set background images for mobile
+    function setMobileBackgrounds() {
+        if (window.innerWidth <= 1024) {
+            slides.forEach(slide => {
+                const imageBox = slide.querySelector('.slide-image-box');
+                const slideInner = slide.querySelector('.slide-inner');
+                if (imageBox && slideInner) {
+                    const bgImage = imageBox.style.backgroundImage;
+                    if (bgImage) {
+                        slideInner.style.backgroundImage = bgImage;
+                    }
+                }
+            });
+        } else {
+            slides.forEach(slide => {
+                const slideInner = slide.querySelector('.slide-inner');
+                if (slideInner) {
+                    slideInner.style.backgroundImage = '';
+                }
+            });
+        }
+    }
+    
+    // Initial setup
+    setMobileBackgrounds();
+    
+    // Re-run on window resize
+    window.addEventListener('resize', setMobileBackgrounds);
 
     // Основная функция, которая показывает нужный слайд
     function showSlide(index) {

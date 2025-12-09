@@ -3,122 +3,120 @@
 <x-layout>
 
     <!-- Hero Section with Slider -->
-    <section class="relative bg-white overflow-hidden">
-        <div class="slider-container relative h-64 md:h-[400px]">
+    <section>
+        <div class="max-w-full mx-auto">
+            <div class="slider-container overflow-hidden">
 
-            @foreach($sliderNews as $slideNews)
-                <div class="slide @if($loop->first) active @else opacity-0 transition-opacity duration-700 @endif absolute inset-0 flex"
-                    style="background-image: url('{{ $slideNews->getSliderImageUrl() }}'); background-size: cover; background-position: center;">
-                    <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
-                        <div class="text-center">
-                            <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">
-                                {{ $slideNews->{'title_' . app()->getLocale()} }}
-                            </h2>
-                            <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => $slideNews->alias]) }}">
-                                <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
-                                    {{ __('More') }}
-                                </button>
-                            </a>
+                @foreach($sliderNews as $slideNews)
+                    <div class="slide @if($loop->first) active @endif">
+                        <div class="slide-inner">
+                            <div class="slide-content">
+                                <div class="content-wrapper">
+                                    <h2 class="slide-title">{{ $slideNews->{'title_' . app()->getLocale()} }}</h2>
+                                    <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => $slideNews->alias]) }}">
+                                        <button class="slide-button">{{ __('More') }}</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="slide-image-box" style="background-image: url('{{ $slideNews->getSliderImageUrl() }}');"></div>
                         </div>
                     </div>
-                    <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('{{ $slideNews->getSliderImageUrl() }}');"></div>
-                </div>
-            @endforeach
+                @endforeach
 
-            <!-- Slide: Tokayev -->
-            <div class="slide @if($sliderNews->isEmpty()) active @else opacity-0 transition-opacity duration-700 @endif absolute inset-0 flex"
-                style="background-image: url('/img/tokaev.webp'); background-size: cover; background-position: top;">
-                <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
-                    <div class="text-center">
-                        <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Message from the Head of State Kassym-Jomart Tokayev to the people of Kazakhstan') }}</h2>
-                        <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'duman-orynbekov-sakarim-universitetinin-rektory-texnologiialyq-serpilis-pen-cifrlyq-transformaciia-sakarim-universitetinin-zoldaudan-tuyndaityn-zana-bastamalarga-ulesi']) }}">
-                            <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
-                                {{ __('More') }}
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-top" style="background-image: url('/img/tokaev.webp');"></div>
-            </div>
-
-            <!-- Slide: AI Sana -->
-            <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                style="background-image: url('/img/ai_sana.webp'); background-size: cover; background-position: center;">
-                <div class="w-full md:w-1/2 bg-slate-700 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
-                    <div class="text-center">
-                        <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">{{ __('Shakarim University AI-Sana Program Results') }}</h2>
-                        <div class="grid grid-cols-4 gap-2 md:gap-4 mb-3 md:mb-6">
-                            <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">5</div>
-                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('AI Agents') }}</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">3</div>
-                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Ready solutions') }}</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">2</div>
-                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('In development') }}</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl md:text-4xl font-heading font-bold text-yellow-400">∞</div>
-                                <div class="text-xs md:text-sm font-body text-slate-200">{{ __('Opportunities') }}</div>
+                <!-- Slide: Tokayev -->
+                <div class="slide @if($sliderNews->isEmpty()) active @endif">
+                    <div class="slide-inner">
+                        <div class="slide-content">
+                            <div class="content-wrapper">
+                                <h2 class="slide-title">{{ __('Message from the Head of State Kassym-Jomart Tokayev to the people of Kazakhstan') }}</h2>
+                                <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'duman-orynbekov-sakarim-universitetinin-rektory-texnologiialyq-serpilis-pen-cifrlyq-transformaciia-sakarim-universitetinin-zoldaudan-tuyndaityn-zana-bastamalarga-ulesi']) }}">
+                                    <button class="slide-button">{{ __('More') }}</button>
+                                </a>
                             </div>
                         </div>
-                        <a target="_blank" href="https://aisana.shakarim.kz/">
-                            <button class="bg-white text-slate-700 px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
-                                {{ __('More') }}
-                            </button>
-                        </a>
+                        <div class="slide-image-box" style="background-image: url('/img/tokaev.webp');"></div>
                     </div>
                 </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/ai_sana.webp');"></div>
-            </div>
 
-            <!-- Slide: QS -->
-            <div class="slide absolute inset-0 flex opacity-0 transition-opacity duration-700"
-                style="background-image: url('/img/qs_world_university_rankings_asia.webp'); background-size: cover; background-position: center;">
-                <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
-                    <div class="w-full md:w-1/2 bg-slate-600 bg-opacity-90 md:bg-opacity-100 text-white flex items-center justify-center p-4 md:p-8">
-                        <div class="text-center">
-                            <h2 class="text-xl md:text-4xl font-heading font-bold mb-3 md:mb-6">
-                                {{ __('QS World University Rankings 2026') }}
-                            </h2>
-                            <div class="flex justify-center items-center gap-6 text-yellow-400 font-heading font-bold mb-2">
-                                <div class="text-3xl md:text-6xl">1401+ <span class="text-white text-xl md:text-3xl"><br>{{ __('в мире') }}</span></div>
-                                <div class="text-3xl md:text-6xl">493 <span class="text-white text-xl md:text-3xl"><br>{{ __('в Азии') }}</span></div>
-                            </div>
-                            <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'shakarim-university-aziianyn-uzdik-500-universitetinin-qatarynda']) }}">
-                                <button class="mt-3 md:mt-6 bg-white text-shakarim-blue px-4 py-2 md:px-6 md:py-2 rounded-lg font-body font-semibold hover:bg-gray-100 transition text-sm md:text-base">
-                                    {{ __('Подробнее') }}
-                                </button>
-                            </a>
+                <!-- Slide: AI Sana -->
+                <div class="slide">
+                    <div class="slide-inner">
+                        <div class="slide-content">
+                            <div class="content-wrapper">
+                                <h2 class="slide-title">{{ __('Shakarim University AI-Sana Program Results') }}</h2>
+                                <div class="slide-stats">
+                                    <div class="stat">
+                                        <span class="stat-number">5</span>
+                                        <span class="stat-label">{{ __('AI Agents') }}</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">3</span>
+                                        <span class="stat-label">{{ __('Ready solutions') }}</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">2</span>
+                                        <span class="stat-label">{{ __('In development') }}</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">∞</span>
+                                        <span class="stat-label">{{ __('Opportunities') }}</span>
+                                    </div>
+                                </div>
+                                <a target="_blank" href="https://aisana.shakarim.kz/">
+                                    <button class="slide-button">{{ __('More') }}</button>
+                                </a>
                             </div>
                         </div>
+                        <div class="slide-image-box" style="background-image: url('/img/ai_sana.webp');"></div>
                     </div>
-                <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/img/qs.jpg');"></div>
-            </div>
-
-            @php
-                $totalSlides = $sliderNews->count() + 3;
-            @endphp
-
-            @if($totalSlides > 1)
-                <!-- Slide Navigation -->
-                <div class="absolute bottom-3 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-                    @for ($i = 0; $i < $totalSlides; $i++)
-                        <button class="slide-dot @if($i == 0) active @endif w-2 h-2 md:w-3 md:h-3 rounded-full" data-slide="{{ $i }}"></button>
-                    @endfor
                 </div>
 
-                <!-- Navigation Arrows -->
-                <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10 hidden md:block" onclick="previousSlide()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-3 rounded-full hover:bg-opacity-30 transition z-10 hidden md:block" onclick="nextSlide()">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            @endif
+                <!-- Slide: QS -->
+                <div class="slide">
+                    <div class="slide-inner">
+                        <div class="slide-content">
+                            <div class="content-wrapper">
+                                <h2 class="slide-title">{{ __('QS World University Rankings 2026') }}</h2>
+                                <div class="slide-stats">
+                                    <div class="stat">
+                                        <span class="stat-number">1401+</span>
+                                        <span class="stat-label">{{ __('в мире') }}</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">493</span>
+                                        <span class="stat-label">{{ __('в Азии') }}</span>
+                                    </div>
+                                </div>
+                                <a href="{{ route('news.show', ['locale' => app()->getLocale(), 'news' => 'shakarim-university-aziianyn-uzdik-500-universitetinin-qatarynda']) }}">
+                                    <button class="slide-button">{{ __('Подробнее') }}</button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="slide-image-box" style="background-image: url('/img/qs_world_university_rankings_asia.webp');"></div>
+                    </div>
+                </div>
+
+                @php
+                    $totalSlides = $sliderNews->count() + 3;
+                @endphp
+
+                @if($totalSlides > 1)
+                    <!-- Navigation Arrows -->
+                    <button class="nav-arrow prev" onclick="previousSlide()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow next" onclick="nextSlide()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <!-- Navigation Dots -->
+                    <div class="slide-dots">
+                        @for ($i = 0; $i < $totalSlides; $i++)
+                            <button class="slide-dot @if($i == 0) active @endif" data-slide="{{ $i }}"></button>
+                        @endfor
+                    </div>
+                @endif
+            </div>
         </div>
     </section>
 
