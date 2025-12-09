@@ -74,14 +74,6 @@
                         <p class="text-gray-600 mt-2">{{ __('Преподаватели, удостоенные звания за выдающиеся достижения в образовательной деятельности') }}</p>
                     </div>
 
-                    <!-- Ссылка на PDF -->
-                    <div class="mb-6">
-                        <a href="{{ asset('storage/documents/best-teacher-' . app()->getLocale() . '.pdf') }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-shakarim-dark transition-colors duration-200">
-                            <i class="fas fa-file-pdf mr-2"></i>
-                            {{ __('Скачать полный список') }}
-                        </a>
-                    </div>
-
                     <!-- Проверка на наличие данных -->
                     @if($bestTeachers->count() > 0)
                         <!-- Научные направления с преподавателями -->

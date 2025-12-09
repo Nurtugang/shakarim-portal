@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
-use App\Enums\RolesEnum; // <-- Импортируем Enum
+use App\Enums\RolesEnum;
 
 class DiplomasController extends Controller
 {
@@ -26,16 +26,12 @@ class DiplomasController extends Controller
      */
     private function hasAccess($user): bool
     {
-        // Получаем массив строковых значений ролей (например ['admin', 'science'])
         $allowedRoles = array_map(fn($role) => $role->value, $this->getAllowedRoles());
 
-        // Проверяем через Spatie (если есть трейт HasRoles)
         if (method_exists($user, 'hasRole')) {
             return $user->hasRole($allowedRoles);
         }
 
-        // РЕЗЕРВНЫЙ ВАРИАНТ (если Spatie нет, но есть связь roles)
-        // Проверяем, есть ли у пользователя хоть одна роль из списка
         return $user->roles()->whereIn('name', $allowedRoles)->exists();
     }
 
@@ -53,7 +49,6 @@ class DiplomasController extends Controller
             abort(403, 'Доступ запрещен. У вашего аккаунта недостаточно прав.');
         }
 
-        // --- ДАЛЕЕ СТАНДАРТНАЯ ЛОГИКА ---
         $baseUrl = env('HUBM_API_URL');
         $token   = env('HUBM_API_TOKEN_2');
         
@@ -101,15 +96,16 @@ class DiplomasController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            // Сразу после входа проверяем роль
             if (!$this->hasAccess(Auth::user())) {
-                Auth::logout(); // Если роль не та, сразу выкидываем
+                Auth::logout();
                 return back()->withErrors([
                     'email' => 'У вас нет прав доступа к этому разделу.',
                 ]);
             }
             
-            return redirect()->route('academy.diplomas.index');
+            return redirect()->route('academy.diplomas.index', [
+                'locale' => app()->getLocale() 
+            ]);
         }
 
         return back()->withErrors([
@@ -119,7 +115,6 @@ class DiplomasController extends Controller
 
     public function download($id)
     {
-        // Защита от скачивания по прямой ссылке
         if (!Auth::check() || !$this->hasAccess(Auth::user())) {
             abort(403);
         }

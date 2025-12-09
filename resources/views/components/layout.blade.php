@@ -11,8 +11,8 @@
 
     <link rel="canonical" href="{{ url()->current() }}" />
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('logo_sgu.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('logo_sgu.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.ico') }}">
     
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Shakarim University">

@@ -163,6 +163,11 @@
                             <i class="fas fa-mobile-alt mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Mobile App') }}</span>
                         </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-vr-cardboard mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Виртуальный тур') }}</span>
+                        </a>
                     </div>
                 </div>
 
@@ -175,25 +180,30 @@
                         <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800">{{ __('For Applicants') }}</h3>
                     </div>
                     <div class="space-y-1.5 md:space-y-2">
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'virtualdy-tur']) }}" 
+                        <a href="{{ route('academy.op.index', ['locale' => app()->getLocale()]) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
-                            <i class="fas fa-vr-cardboard mr-1.5 md:mr-2 text-xs"></i>
-                            <span class="font-body text-xs md:text-sm">{{ __('Виртуальный тур') }}</span>
+                            <i class="fas fa-book-open mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Білім беру бағдарламалары') }}</span>
                         </a>
-                        <a href="{{ route('organization.social', ['locale' => app()->getLocale()]) }}" 
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'xalyqaralyq-bagdarlamamlar']) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
-                            <i class="fas fa-heart mr-1.5 md:mr-2 text-xs"></i>
-                            <span class="font-body text-xs md:text-sm">{{ __('Студенческая жизнь') }}</span>
+                            <i class="fas fa-globe mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Халықаралық бағдарламамлар') }}</span>
+                        </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'akademiialyq-utqyrlyq']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-exchange-alt mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Академиялық ұтқырлық') }}</span>
+                        </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'kampus-resurstary-men-qyzmetter']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-building mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Кампус ресурстары') }}</span>
                         </a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'qabyldau-komissiiasymen-bailanystary']) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-phone mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Приемная комиссия') }}</span>
-                        </a>
-                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bilim-alusynyn-zolsiltemesi']) }}" 
-                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
-                            <i class="fas fa-map-marked-alt mr-1.5 md:mr-2 text-xs"></i>
-                            <span class="font-body text-xs md:text-sm">{{ __('Путеводитель обучающегося') }}</span>
                         </a>
                     </div>
                 </div>
@@ -226,6 +236,11 @@
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-book mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Библиотека') }}</span>
+                        </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'bilim-alusynyn-zolsiltemesi']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-map-marked-alt mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Путеводитель обучающегося') }}</span>
                         </a>
                     </div>
                 </div>
@@ -314,7 +329,7 @@
                     </div>
                     <div class="space-y-4 md:space-y-6">
                         <!-- QS World University Rankings -->
-                        <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="flex flex-col md:flex-row justify-between">
                             <div>
                                 <div class="text-md md:text-xl font-heading font-bold text-shakarim-blue mb-1">
                                     QS World University Rankings
@@ -323,13 +338,13 @@
                                     {{ __('2026 newly entered') }}
                                 </div>
                             </div>
-                            <div class="w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
+                            <div class="ml-auto w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
                                 1401+
                             </div>
                         </div>
 
                         <!-- QS Sustainability Rankings -->
-                        <div class="pt-1 flex flex-col md:flex-row items-center justify-between">
+                        <div class="pt-1 flex flex-col md:flex-row justify-between">
                             <div>
                                 <div class="text-md md:text-xl font-heading font-bold text-shakarim-blue mb-1">
                                     QS Sustainability Rankings
@@ -338,13 +353,13 @@
                                     {{ __('In 2026 rankings') }}
                                 </div>
                             </div>
-                            <div class="w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
+                            <div class="ml-auto w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
                                 1501+
                             </div>
                         </div>
 
                         <!-- QS Asia -->
-                        <div class="pt-1 flex flex-col md:flex-row items-center justify-between">
+                        <div class="pt-1 flex flex-col md:flex-row justify-between">
                             <div>
                                 <div class="text-md md:text-xl font-heading font-bold text-shakarim-blue mb-1">
                                     QS World University Rankings: Asia
@@ -353,13 +368,13 @@
                                     {{ __('In 2026 rankings') }}
                                 </div>
                             </div>
-                            <div class="w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
+                            <div class="ml-auto w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
                                 493
                             </div>
                         </div>
 
                         <!-- UI Green Metric -->
-                        <div class="pt-1 flex flex-col md:flex-row items-center justify-between">
+                        <div class="pt-1 flex flex-col md:flex-row justify-between">
                             <div>
                                 <div class="text-md md:text-xl font-heading font-bold text-shakarim-blue mb-1">
                                     UI Green Metric
@@ -368,8 +383,8 @@
                                     {{ __('In Kazakhstan') }}
                                 </div>
                             </div>
-                            <div class="w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
-                                #8
+                            <div class="ml-auto w-24 md:w-40 text-right text-xl md:text-5xl font-heading font-bold text-shakarim-blue opacity-20">
+                                #5
                             </div>
                         </div>
 
