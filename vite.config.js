@@ -9,7 +9,8 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/tiptap/extensions.js',
                 'resources/js/tiptap/iframe.js',
-                `resources/css/filament/admin/theme.css` 
+                `resources/css/filament/admin/theme.css`,
+                'resources/css/custom/slider.css',
             ],
             
             refresh: true,
