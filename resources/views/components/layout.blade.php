@@ -11,8 +11,10 @@
 
     <link rel="canonical" href="{{ url()->current() }}" />
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon_light.ico') }}" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.ico') }}" media="(prefers-color-scheme: light)">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon_light.ico') }}" media="(prefers-color-scheme: dark)">
     
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Shakarim University">
