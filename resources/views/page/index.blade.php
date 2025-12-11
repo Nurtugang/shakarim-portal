@@ -1,3 +1,5 @@
+@vite(['resources/css/custom/image-lightbox.css'])
+
 <x-layout>
 
     @section('meta_title', $page->locale_title . ' - Shakarim University')

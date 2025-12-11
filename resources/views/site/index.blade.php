@@ -124,13 +124,6 @@
     <!-- Useful Links Section -->
     <section class="py-6 md:py-8 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-6 md:mb-8">
-                <h2 class="text-xl md:text-2xl font-heading font-bold text-shakarim-blue">
-                    {{ __('Useful Links') }}
-                </h2>
-                <p class="text-sm text-gray-600 font-body mt-1">{{ __('Quick access to important resources') }}</p>
-            </div>
-            
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
                 <!-- University Block -->
                 <div class="bg-white rounded-xl p-3 md:p-6 shadow-md border-2 border-transparent hover:border-shakarim-blue hover:shadow-xl transition-all duration-300">
@@ -411,7 +404,7 @@
                                                 @if($item->image)
                                                     <img src="{{ $item->getThumbnailUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @else
-                                                    <img src="{{ asset('img/university_building.webp') }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                    <img src="{{ asset('img/stub.webp') }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
                                                 @endif
                                             </a>
 

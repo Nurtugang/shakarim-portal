@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/js/tiptap/iframe.js',
                 `resources/css/filament/admin/theme.css`,
                 'resources/css/custom/slider.css',
+                'resources/css/custom/image-lightbox.css',
             ],
             
             refresh: true,

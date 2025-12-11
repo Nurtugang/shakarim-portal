@@ -224,6 +224,12 @@ class AwardResource extends Resource
                     ->searchable(),
             ])
             ->actions([
+                Tables\Actions\Action::make('replicate')
+                    ->label('Дублировать')
+                    ->icon('heroicon-o-document-duplicate')
+                    ->url(fn (Award $record): string => static::getUrl('create', [
+                        'replicate' => $record->id,
+                    ])),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])

@@ -110,7 +110,7 @@
                                             <div class="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
                                                 <div class="h-32 w-full overflow-hidden bg-gray-100">
                                                     <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
-                                                        <img src="{{ $item->getThumbnailUrl() ?: asset('img/university_building.webp') }}" 
+                                                        <img src="{{ $item->getThumbnailUrl() ?: asset('img/stub.webp') }}" 
                                                             alt="{{ $item->{'title_' . app()->getLocale()} }}" 
                                                             class="w-full h-full object-cover hover:scale-105 transition">
                                                     </a>
@@ -368,7 +368,7 @@
                             return [
                                 'title' => $item->{'title_' . app()->getLocale()},
                                 'date' => $item->date?->format('d.m.Y'),
-                                'thumbnail' => $item->getThumbnailUrl() ?: asset('img/university_building.webp'),
+                                'thumbnail' => $item->getThumbnailUrl() ?: asset('img/stub.webp'),
                                 'url' => route('news.show', ['news' => $item, 'locale' => app()->getLocale()])
                             ];
                         })

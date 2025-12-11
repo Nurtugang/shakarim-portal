@@ -37,7 +37,7 @@ class NewsSchoolsApiController extends Controller
         $allTagIds = [];
         
         // Путь к изображению по умолчанию
-        $defaultImage = asset('img/university_building.webp');
+        $defaultImage = asset('img/stub.webp');
 
         foreach ($news as $item) {
             // Определяем пути к файлам для проверки
@@ -92,7 +92,7 @@ class NewsSchoolsApiController extends Controller
         $result = [];
         
         // Путь к изображению по умолчанию
-        $defaultImage = asset('img/university_building.webp');
+        $defaultImage = asset('img/stub.webp');
 
         foreach ($announcements as $item) {
             // Определяем пути к файлам для проверки
