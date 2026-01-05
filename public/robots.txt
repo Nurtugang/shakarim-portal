@@ -2,6 +2,7 @@ User-agent: *
 Disallow: /search
 Disallow: /admin/    # Закройте админку
 Disallow: *?locale=  # Если есть параметры запросов, дублирующие контент
+Disallow: */academy/diplomas # Дипломы
 Allow: /
 
-Sitemap: https://shakarim.edu.kz/sitemap.xml
+Sitemap: https://shakarim.university/sitemap.xml

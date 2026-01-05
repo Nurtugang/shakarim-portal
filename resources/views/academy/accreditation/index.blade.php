@@ -69,6 +69,7 @@
                                     <div class="flex items-center mb-6">
                                         <h3 class="text-2xl font-bold text-gray-800">{{ __('Рейтинги 2026')}}</h3>
                                     </div>
+
                                     <!-- QS World University Rankings 2026 -->
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div class="bg-gradient-to-br from-yellow-50 to-amber-50 border-yellow-500 rounded-lg p-6">
@@ -91,6 +92,27 @@
                                             {{ __('QS Asia University Rankings 2026')}}
                                         </p>
                                     </div>
+
+                                    <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                                        <div class="flex items-center mb-3">
+                                            <h4 class="font-bold text-green-800">QS Sustainability Rankings 2026</h4>
+                                        </div>
+
+                                        <p class="text-gray-700 text-sm mb-3">
+                                            {{ __('Shakarim University представлен в международном рейтинге QS Sustainability Rankings 2026, заняв позицию 1501+ среди 2 001 университета мира. В рамках оценки устойчивого развития университет продемонстрировал высокие результаты по ключевым направлениям:')}}
+                                        </p>
+
+                                        <div class="space-y-1 text-xs">
+                                            <ul class="list-disc list-inside mb-2 text-gray-600">
+                                                <li>{{ __('5-е место в Центральной Азии по показателю Social Impact, отражающему вклад университета в социальное развитие и взаимодействие с обществом;')}}</li>
+                                                <br>
+                                                <li>{{ __('1-е место в Центральной Азии по направлениям Environmental Research и Health & Wellbeing, что свидетельствует о развитии экологических исследований и инициатив в сфере благополучия;')}}</li>
+                                                <br>
+                                                <li>{{ __('258-е место в Азии по показателю Governance, оценивающему эффективность модели управления университетом.')}}</li>
+                                            </ul>
+                                        </div>
+
+                                        </div>
                                     </div>
                                     
                                 </div>
@@ -143,6 +165,16 @@
                                             </div>
                                             <p class="text-gray-700 text-sm">
                                                 {{ __('В 2025 году Шәкәрім Университет дебютировал в престижном глобальном рейтинге THE Impact Rankings, который оценивает вклад университетов в Цели устойчивого развития ООН.')}}
+                                            </p>
+                                        </div>
+
+                                        <!-- GreenMetric Rankings -->
+                                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
+                                            <div class="flex items-center mb-3">
+                                                <h4 class="font-bold text-amber-800">GreenMetric World University Rankings 2025</h4>
+                                            </div>
+                                            <p class="text-gray-700 text-sm">
+                                                {{ __('Согласно данным глобального «зеленого» рейтинга UI GreenMetric, который оценивает стремление университетов к развитию экологической инфраструктуры, устойчивому развитию и охране окружающей среды, Shakarim University вошел в число самых экологичных вузов мира. В общемировом списке он занял 538-е место. В этом году оценивание охватило 1 745 университетов из 105 стран. Среди казахстанских вузов Shakarim University вошел в топ-5, укрепив позиции одного из лидеров «зеленого» образования в стране.')}}
                                             </p>
                                         </div>
                                     </div>
@@ -241,6 +273,15 @@
                                             </p>
                                         </div>
 
+                                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
+                                            <div class="flex items-center mb-3">
+                                                <h4 class="font-bold text-amber-800">GreenMetric World University Rankings 2023</h4>
+                                            </div>
+                                            <p class="text-gray-700 text-sm">
+                                                {{ __('Университет занял 812-е место в мировом рейтинге GreenMetric 2023, который оценивает усилия вузов по развитию экологически чистой инфраструктуры, продвижению устойчивых практик и охране окружающей среды.')}}
+                                            </p>
+                                        </div>
+
                                         <!-- Scientific Publications -->
                                         <div class="bg-teal-50 border border-teal-200 rounded-lg p-6">
                                             <div class="flex items-center mb-3">
@@ -248,6 +289,15 @@
                                             </div>
                                             <p class="text-gray-700 text-sm">
                                                 {{ __('20-е место среди 97 университетов Казахстана в рейтинге вузов по научным публикациям по данным Независимого агентства по обеспечению качества в образовании.')}}
+                                            </p>
+                                        </div>
+
+                                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                                            <div class="flex items-center mb-3">
+                                                <h4 class="font-bold text-blue-800">QS Asia University Rankings 2023</h4>
+                                            </div>
+                                            <p class="text-gray-700 text-sm">
+                                                {{ __('Университет в рейтинге QS Asia University Rankings 2023 занял позицию #501–550 среди 985 университетов Азии. В рамках оценки показателей интернационализации университет также продемонстрировал высокие результаты в сфере академической мобильности, заняв 52-е место среди университетов Азии по количеству выезжающих обучающихся по программам академической мобильности.')}}
                                             </p>
                                         </div>
                                     </div>

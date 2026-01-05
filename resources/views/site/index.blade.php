@@ -144,12 +144,7 @@
                             <i class="fas fa-user-circle mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Шәкәрім Құдайбердіұлы') }}</span>
                         </a>
-                        <a href="{{ route('university.endowment.index', ['locale' => app()->getLocale()]) }}" 
-                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
-                            <i class="fas fa-donate mr-1.5 md:mr-2 text-xs"></i>
-                            <span class="font-body text-xs md:text-sm">{{ __('Endowment') }}</span>
-                        </a>
-                    </a>
+                        
                         <a href="{{ route('app.index', app()->getLocale()) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-mobile-alt mr-1.5 md:mr-2 text-xs"></i>
@@ -159,6 +154,11 @@
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-vr-cardboard mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Виртуальный тур') }}</span>
+                        </a>
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'sybailas-zemqorlyqsyz-universitet']) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-globe mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Сыбайлас жемқорлықсыз университет') }}</span>
                         </a>
                     </div>
                 </div>
@@ -265,6 +265,12 @@
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-lightbulb mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Маркет инноваций') }}</span>
+                        </a>
+                        <a href="{{ route('university.endowment.index', ['locale' => app()->getLocale()]) }}" 
+                            class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                                <i class="fas fa-donate mr-1.5 md:mr-2 text-xs"></i>
+                                <span class="font-body text-xs md:text-sm">{{ __('Endowment') }}</span>
+                            </a>
                         </a>
                     </div>
                 </div>
