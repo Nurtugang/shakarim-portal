@@ -543,6 +543,73 @@
     .flex.overflow-x-auto::-webkit-scrollbar-thumb:hover {
         background: #94a3b8;
     }
+
+    /* Mobile styles for leader cards - below 768px */
+    @media (max-width: 767px) {
+        /* Grid with 1 column for leader cards */
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+            grid-template-columns: 1fr;
+        }
+
+        /* Leader card - main container */
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > div,
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > a > div {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 12px;
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* Image container - left column */
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > div .w-24.h-32,
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > a > div .w-24.h-32 {
+            width: 80px;
+            height: 100px;
+            margin: 0 !important;
+            grid-column: 1;
+            grid-row: 1 / 3;
+        }
+
+        /* Heading - name, right column top */
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > div > h4,
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > a > div > h4 {
+            margin: 0;
+            font-size: 0.875rem;
+            font-weight: 700;
+            line-height: 1.2;
+            grid-column: 2;
+            grid-row: 1;
+            align-self: start;
+        }
+
+        /* Paragraph - description, right column bottom */
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > div > p,
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > a > div > p {
+            font-size: 0.75rem;
+            line-height: 1.3;
+            margin: 4px 0 0 0;
+            grid-column: 2;
+            grid-row: 2;
+            align-self: start;
+        }
+
+        /* Remove text-center class effect */
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > div.text-center,
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > a > div.text-center {
+            text-align: left;
+        }
+
+        /* Remove mx-auto and mb-3 from image */
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 .mx-auto {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 .mb-3 {
+            margin-bottom: 0 !important;
+        }
+    }
 </style>
 
 
