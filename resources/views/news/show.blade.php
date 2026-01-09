@@ -65,8 +65,8 @@
                                 </div>
                             </div>
                             <h1 class="text-md sm:text-lg md:text-xl lg:text-2xl font-heading font-bold text-shakarim-blue leading-tight">
-                                {{ $ws->{'title_' . app()->getLocale()} }}
-                            </h1>ne
+                                {{ $news->{'title_' . app()->getLocale()} }}
+                            </h1>
                         </div>
                         <!-- Main image (kept before content) -->
                         @if($news->image)

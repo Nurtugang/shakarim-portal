@@ -12,8 +12,8 @@ class InfrastructureApiController extends Controller
         $lang = $request->get('lang', 'kk');
         if (!in_array($lang, ['kk', 'ru', 'en'])) $lang = 'kk';
 
-        $baseUrl = asset('storage/carousel/');
-        $pageUrl = asset('storage/pages/');
+        $baseUrl = asset('storage/mobile/carousel');
+        $pageUrl = asset('storage/mobile/pages');
 
         $translate = function($kk, $ru, $en) use ($lang) {
             if ($lang === 'ru') return $ru;
