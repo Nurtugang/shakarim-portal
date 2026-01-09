@@ -57,7 +57,7 @@
                                             <i class="fas fa-map-marker-alt text-blue-200"></i>
                                         </div>
                                         <span class="text-blue-100 text-xs">
-                                            {{ $structure->filteredData->address ?? '071412 Республика Казахстан, область Абай, город Семей, ул. Глинки, 20 "Д"' }}
+                                            {{ $structure->filteredData->address ?? '071410 Республика Казахстан, область Абай, город Семей, ул. Глинки, 20 "Д"' }}
                                         </span>
                                     </div>
 

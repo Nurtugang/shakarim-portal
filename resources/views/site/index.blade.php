@@ -579,7 +579,7 @@
 
                 <!-- Partners container -->
                 <div class="overflow-x-auto scrollbar-hide mx-8" id="partnersContainer">
-                    <div id="partnersWrapper" class="flex justify-start items-center gap-6 md:gap-8 py-4">
+                    <div id="partnersWrapper" class="flex justify-start items-center gap-1 md:gap-8 py-4">
                         <div class="partner-item flex-shrink-0 w-20 md:w-28 h-20 flex items-center justify-center p-2">
                             <a href="https://farabi.university/" target="_blank"><img src="{{ Storage::url('partners/farabi.webp') }}" alt="farabi" class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"></a>
                         </div>

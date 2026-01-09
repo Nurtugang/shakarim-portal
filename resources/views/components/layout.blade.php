@@ -54,7 +54,7 @@
             "@type": "PostalAddress",
             "streetAddress": "Glinka street, 20A",
             "addressLocality": "Semey",
-            "postalCode": "071412",
+            "postalCode": "071410",
             "addressCountry": "KZ"
         }
     }
@@ -306,7 +306,7 @@
                     <div class="space-y-3 text-sm text-blue-200">
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-map-marker-alt text-blue-300"></i>
-                            <p>{{ __('071412, Semey, Glinka street, 20A') }}</p>
+                            <p>{{ __('071410, Semey, Glinka street, 20A') }}</p>
                         </div>
                         
                         <div class="flex items-center space-x-2">
@@ -353,7 +353,7 @@
                 </div>
             </div>
             <div class="mt-8 text-center text-sm text-blue-200">
-                <p>&copy; 1934-2025 {{ __('NP JSC "Shakarim University". All rights reserved.') }}</p>
+                <p>&copy; 1934-2026 {{ __('NP JSC "Shakarim University". All rights reserved.') }}</p>
             </div>
         </div>
     </footer>
