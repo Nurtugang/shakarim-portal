@@ -32,7 +32,7 @@ class StructureController extends Controller
     public function show(string $locale,Structure $structure)
     {
         $structure->load(['filteredData','employees' => function ($query) {
-            $query->where('is_active', true);
+            $query->where('is_active', true)->orderBy('sort');
         }]);
 
         if(!$structure->data){

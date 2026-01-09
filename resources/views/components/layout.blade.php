@@ -13,15 +13,15 @@
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon_light.ico') }}" media="(prefers-color-scheme: dark)">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.ico') }}" media="(prefers-color-scheme: light)">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon_light.ico') }}" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('logo-192x192.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
     
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Shakarim University">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('meta_title', 'Shakarim University')">
     <meta property="og:description" content="@yield('meta_description', 'Shakarim University (каз. Шәкәрім университеті) — высшее учебное заведение Абайской области. Современный учебно-методический, научный и культурный центр северо-восточного региона Казахстана, а так же, самый крупный ВУЗ области Абай.')">
-    <meta property="og:image" content="@yield('meta_image', asset('logo.webp'))">
+    <meta property="og:image" content="@yield('meta_image', asset('logo.png'))">
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -45,7 +45,7 @@
         "@type": "CollegeOrUniversity",
         "name": "Shakarim University",
         "url": "{{ url('/') }}",
-        "logo": "{{ asset('logo.webp') }}",
+        "logo": "https://shakarim.university/logo.png",
         "sameAs": [
             "https://www.instagram.com/shakarim_university",
             "https://www.facebook.com/universitet.shakarim.1"
