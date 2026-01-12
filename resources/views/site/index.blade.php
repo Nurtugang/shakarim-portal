@@ -393,14 +393,33 @@
         </div>
     </section>
 
-    <!-- News & Events -->
+<!-- News & Events -->
     <section class="py-6 md:py-8 pb-8 md:pb-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
                 <!-- News -->
-                <div class="lg:col-span-2">
-                    <h2 class="text-lg md:text-2xl font-bold text-shakarim-blue mb-4 md:mb-8">{{ __('News') }}</h2>
-                    <div class="space-y-4 md:space-y-6">
+                <div class="lg:col-span-2" x-data="{ viewMode: 'list' }">
+                    <div class="flex items-center justify-between mb-4 md:mb-8">
+                        <h2 class="text-lg md:text-2xl font-bold text-shakarim-blue">{{ __('News') }}</h2>
+                        <!-- Buttons (Скрыты на мобильных: hidden md:flex) -->
+                        <div class="hidden md:flex space-x-2">
+                            <button @click="viewMode = 'grid'" 
+                                    :class="viewMode === 'grid' ? 'bg-shakarim-blue text-white' : 'bg-gray-100 text-gray-700'"
+                                    class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-lg hover:bg-shakarim-blue hover:text-white transition duration-200"
+                                    title="{{ __('Сетка')}}">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button @click="viewMode = 'list'" 
+                                    :class="viewMode === 'list' ? 'bg-shakarim-blue text-white' : 'bg-gray-100 text-gray-700'"
+                                    class="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-lg hover:bg-shakarim-blue hover:text-white transition duration-200"
+                                    title="{{ __('Список')}}">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- LIST VIEW (Default) -->
+                    <div x-show="viewMode === 'list'" class="space-y-4 md:space-y-6">
                         @foreach($news as $item)
                             <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
                                 <div class="flex flex-col md:flex-row h-auto md:h-48">
@@ -408,12 +427,11 @@
                                         <div class="h-32 md:h-full overflow-hidden bg-gray-100">
                                             <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
                                                 @if($item->image)
-                                                    <img src="{{ $item->getThumbnailUrl() }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                    <img src="{{ $item->getThumbnailUrl() }}" alt="News" class="w-full h-full object-cover object-center">
                                                 @else
-                                                    <img src="{{ asset('img/stub.webp') }}" alt="news" alt="News" class="w-full h-full object-cover object-center">
+                                                    <img src="{{ asset('img/stub.webp') }}" alt="News" class="w-full h-full object-cover object-center">
                                                 @endif
                                             </a>
-
                                         </div>
                                     </div>
                                     <div class="p-3 md:p-4 w-full md:w-2/3 flex flex-col justify-between">
@@ -435,6 +453,40 @@
                             </article>
                         @endforeach
                     </div>
+
+                    <!-- GRID VIEW -->
+                    <div x-show="viewMode === 'grid'" style="display: none;" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        @foreach($news as $item)
+                            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full">
+                                <div class="h-48 overflow-hidden bg-gray-100 relative">
+                                    <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
+                                        @if($item->image)
+                                            <img src="{{ $item->getThumbnailUrl() }}" alt="News" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
+                                        @else
+                                            <img src="{{ asset('img/stub.webp') }}" alt="News" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300">
+                                        @endif
+                                    </a>
+                                </div>
+                                <div class="p-4 flex flex-col flex-1 justify-between">
+                                    <div>
+                                        <div class="text-xs text-gray-500 mb-2">
+                                            {{ $item->getFormattedDate() }}
+                                        </div>
+                                        <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
+                                            <h3 class="text-sm md:text-base font-semibold mb-3 hover:text-shakarim-blue cursor-pointer line-clamp-3">
+                                                {{ $item->{'title_' . app()->getLocale()} }}
+                                            </h3>
+                                        </a>
+                                    </div>
+                                    <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}" 
+                                       class="text-shakarim-blue text-sm hover:underline mt-auto">
+                                        {{ __('Подробнее') }} &rarr;
+                                    </a>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+
                     <div class="text-center mt-6 md:mt-8">
                         <a href="{{ route('news', ['locale' => app()->getLocale()]) }}" 
                         class="bg-shakarim-blue text-white px-6 py-2 md:px-8 md:py-3 rounded-lg hover:bg-blue-700 transition text-sm md:text-base">

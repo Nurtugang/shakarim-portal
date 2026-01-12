@@ -23,24 +23,43 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 <!-- Main Content -->
-                <div class="lg:col-span-3">
+                <div class="lg:col-span-3" x-data="{ viewMode: 'grid' }">
                     <!-- Заголовок с информацией о фильтре -->
                     <div class="mb-8 mt-2">
                         @if($selectedTag || $selectedCategory)
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-                                <div>
-                                    <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">
-                                        @if($selectedCategory && $selectedTag)
-                                            {{ $selectedCategory->{'label_' . app()->getLocale()} }} - {{ $selectedTag->name }}
-                                        @elseif($selectedCategory)
-                                            {{ $selectedCategory->{'label_' . app()->getLocale()} }}
-                                        @else
-                                            {{ $selectedTag->name }}
-                                        @endif
-                                    </h1>
-                                    <p class="text-gray-600 mt-2">{{ __('Найдено новостей:')}}' {{ $news->total() }}</p>
+                            <div class="flex flex-col space-y-4">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex-1">
+                                        <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">
+                                            @if($selectedCategory && $selectedTag)
+                                                {{ $selectedCategory->{'label_' . app()->getLocale()} }} - {{ $selectedTag->name }}
+                                            @elseif($selectedCategory)
+                                                {{ $selectedCategory->{'label_' . app()->getLocale()} }}
+                                            @else
+                                                {{ $selectedTag->name }}
+                                            @endif
+                                        </h1>
+                                        <p class="text-gray-600 mt-2">{{ __('Найдено новостей:')}} {{ $news->total() }}</p>
+                                    </div>
+                                    <!-- Кнопки переключения вида -->
+                                    @if($news->count() > 0)
+                                        <div class="hidden md:flex space-x-2">
+                                            <button @click="viewMode = 'grid'" 
+                                                    :class="viewMode === 'grid' ? 'bg-shakarim-blue text-white' : 'bg-gray-100 text-gray-700'"
+                                                    class="inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-shakarim-blue hover:text-white transition duration-200"
+                                                    title="{{ __('Сетка')}}">
+                                                <i class="fas fa-th"></i>
+                                            </button>
+                                            <button @click="viewMode = 'list'" 
+                                                    :class="viewMode === 'list' ? 'bg-shakarim-blue text-white' : 'bg-gray-100 text-gray-700'"
+                                                    class="inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-shakarim-blue hover:text-white transition duration-200"
+                                                    title="{{ __('Список')}}">
+                                                <i class="fas fa-list"></i>
+                                            </button>
+                                        </div>
+                                    @endif
                                 </div>
-                                <div class="flex space-x-2">
+                                <div class="flex flex-wrap gap-2">
                                     @if($selectedTag)
                                         <a href="{{ route('news', array_merge(['locale' => app()->getLocale()], $selectedCategory ? ['category' => $selectedCategory->id] : [])) }}" 
                                            class="inline-flex items-center px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full hover:bg-red-200 transition duration-200">
@@ -63,17 +82,37 @@
                                 </div>
                             </div>
                         @else
-                            <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">{{ __('Жаңалықтар')}}</h1>
+                            <div class="flex items-start justify-between gap-4">
+                                <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue">{{ __('Жаңалықтар')}}</h1>
+                                <!-- Кнопки переключения вида -->
+                                @if($news->count() > 0)
+                                    <div class="hidden md:flex space-x-2">
+                                        <button @click="viewMode = 'grid'" 
+                                                :class="viewMode === 'grid' ? 'bg-shakarim-blue text-white' : 'bg-gray-100 text-gray-700'"
+                                                class="inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-shakarim-blue hover:text-white transition duration-200"
+                                                title="{{ __('Сетка')}}">
+                                            <i class="fas fa-th"></i>
+                                        </button>
+                                        <button @click="viewMode = 'list'" 
+                                                :class="viewMode === 'list' ? 'bg-shakarim-blue text-white' : 'bg-gray-100 text-gray-700'"
+                                                class="inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-shakarim-blue hover:text-white transition duration-200"
+                                                title="{{ __('Список')}}">
+                                            <i class="fas fa-list"></i>
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
                         @endif
                     </div>
 
                     <!-- Проверка на наличие новостей -->
                     @if($news->count() > 0)
-                        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
+                        <!-- Вид сеткой -->
+                        <div x-show="viewMode === 'grid'" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
                             @foreach ($news as $item)
                                 <div class="border rounded-lg bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
                                     <!-- Изображение новости -->
-                                    <div class="h-48 w-full overflow-hidden bg-gray-100">
+                                    <div class="w-full h-48 overflow-hidden bg-gray-100">
                                         <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}">
                                                 @if($item->image)
                                                     <img src="{{ $item->getThumbnailUrl() }}"
@@ -118,6 +157,65 @@
                                         class="border border-shakarim-blue text-shakarim-blue rounded px-4 py-2 text-sm hover:bg-shakarim-blue hover:text-white transition w-max mt-auto">
                                                 {{ __('Подробнее')}}
                                         </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Вид списком -->
+                        <div x-show="viewMode === 'list'" class="space-y-6 mb-12">
+                            @foreach ($news as $item)
+                                <div class="border rounded-lg bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                                    <div class="flex flex-col md:flex-row">
+                                        <!-- Изображение новости -->
+                                        <div class="w-full md:w-64 bg-gray-100 flex-shrink-0 relative min-h-[200px] md:min-h-full">
+                                            <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}" class="block w-full h-full">
+                                                @if($item->image)
+                                                    <img src="{{ $item->getThumbnailUrl() }}"
+                                                        alt="{{ $item->{'title_' . app()->getLocale()} }}" 
+                                                        class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105">
+                                                @else
+                                                    <img src="{{ asset('img/stub.webp') }}"
+                                                        alt="{{ $item->{'title_' . app()->getLocale()} }}" 
+                                                        class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105">
+                                                @endif
+                                            </a>
+                                        </div>
+                                        
+                                        <!-- Контент -->
+                                        <div class="p-6 flex flex-col justify-between flex-1">
+                                            <div>
+                                                <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+                                                    <span class="text-gray-400 text-sm">
+                                                        {{ $item->date?->format('d.m.Y') }}
+                                                    </span>
+                                                    <div class="flex items-center gap-2">
+                                                        <span class="text-gray-500 text-xs">
+                                                            <i class="far fa-eye mr-1"></i>{{ number_format($item->views, 0, ',', ' ') }}
+                                                        </span>
+                                                        @if ($item->category)
+                                                            <a href="{{ route('news', ['locale' => app()->getLocale(), 'category' => $item->category->id]) }}"
+                                                            class="bg-shakarim-light text-white text-xs font-semibold px-3 py-1 rounded hover:bg-shakarim-blue transition">
+                                                                {{ $item->category->{'label_' . app()->getLocale()} }}
+                                                            </a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                
+                                                <h3 class="font-semibold text-shakarim-blue mb-3 text-lg md:text-xl leading-relaxed">
+                                                    <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}" class="hover:text-shakarim-dark">
+                                                        {{ $item->{'title_' . app()->getLocale()} }}
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            
+                                            <div class="mt-4">
+                                                <a href="{{ route('news.show', ['news' => $item, 'locale' => app()->getLocale()]) }}"
+                                                class="border border-shakarim-blue text-shakarim-blue rounded px-4 py-2 text-sm hover:bg-shakarim-blue hover:text-white transition inline-block">
+                                                    {{ __('Подробнее')}}
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
