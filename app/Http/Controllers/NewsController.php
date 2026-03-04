@@ -33,7 +33,7 @@ class NewsController extends Controller
             }
         }
 
-        $news = $query->orderBy('created_at', 'desc')
+        $news = $query->orderBy('date', 'desc')
             ->paginate(9);
         
         $news->appends($request->query());

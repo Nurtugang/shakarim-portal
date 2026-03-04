@@ -87,7 +87,8 @@ class Page extends Model
     {
         static::saving(function ($page) {
             foreach (['kk', 'ru', 'en'] as $locale) {
-                $jsonContent =  tiptap_converter()->asHTML($page->{"content_{$locale}"});
+                $contentSource = $page->{"content_{$locale}"};
+                $jsonContent = is_array($contentSource) ? tiptap_converter()->asHTML($contentSource) : $contentSource;
                 $page->{"content_text_{$locale}"} = strip_tags($jsonContent ?? '');
             }
         });

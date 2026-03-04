@@ -21,6 +21,10 @@
                     {{ __('Цели развития') }}
                 </h1>
                 <p class="text-gray-600 mt-2">{{ __('Цели устойчивого развития ООН в Шәкәрім Университет') }}</p>
+                <a href="https://forms.gle/nfkdmNv4oaQ89pSa6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 mt-2 text-shakarim-blue hover:underline font-medium">
+                    <i class="fas fa-external-link-alt text-sm"></i>
+                    {{ __('Тест для определения уровня грамотности в области устойчивого развития') }}
+                </a>
             </div>
 
             <!-- Tab Navigation -->
@@ -37,6 +41,12 @@
                         <a href="#documents" onclick="showDevTab('documents', event)" id="tab-documents" class="dev-tab-button whitespace-nowrap px-4 py-3 text-sm font-medium transition-colors border-b-2">
                             <i class="fas fa-file-pdf mr-2"></i>{{ __('Документы') }}
                         </a>
+                        <a href="#keywords" onclick="showDevTab('keywords', event)" id="tab-keywords" class="dev-tab-button whitespace-nowrap px-4 py-3 text-sm font-medium transition-colors border-b-2">
+                            <i class="fas fa-key mr-2"></i>{{ __('Ключевые слова по ЦУР') }}
+                        </a>
+                        <a href="#working-group" onclick="showDevTab('working-group', event)" id="tab-working-group" class="dev-tab-button whitespace-nowrap px-4 py-3 text-sm font-medium transition-colors border-b-2">
+                            <i class="fas fa-users mr-2"></i>{{ __('Рабочая группа по устойчивому развитию') }}
+                        </a>
                     </div>
                 </div>
 
@@ -52,6 +62,12 @@
                             </a>
                             <a href="#documents" onclick="showDevTab('documents', event)" id="desktop-tab-documents" class="desktop-dev-tab-button py-4 px-1 border-b-2 font-medium text-sm transition-colors">
                                 <i class="fas fa-file-pdf mr-2"></i>{{ __('Документы') }}
+                            </a>
+                            <a href="#keywords" onclick="showDevTab('keywords', event)" id="desktop-tab-keywords" class="desktop-dev-tab-button py-4 px-1 border-b-2 font-medium text-sm transition-colors">
+                                <i class="fas fa-key mr-2"></i>{{ __('Ключевые слова по ЦУР') }}
+                            </a>
+                            <a href="#working-group" onclick="showDevTab('working-group', event)" id="desktop-working-group" class="desktop-dev-tab-button py-4 px-1 border-b-2 font-medium text-sm transition-colors">
+                                <i class="fas fa-users mr-2"></i>{{ __('Рабочая группа по устойчивому развитию') }}
                             </a>
                         </nav>
                     </div>
@@ -290,6 +306,57 @@
                     @endif
                 </div>
             </div>
+
+            <!-- Tab 4: Keywords -->
+            <div id="content-keywords" class="dev-tab-content hidden">
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">{{ __('Ключевые слова по ЦУР') }}</h2>
+                    
+                    @if(isset($keywords) && $keywords->count() > 0)
+                        <div class="space-y-3 mb-8">
+                            @foreach($keywords as $doc)
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-file-pdf text-red-500 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-medium text-gray-800">{{ $doc->title }}</h3>
+                                        <p class="text-xs text-gray-500">PDF {{ __('документ') }}</p>
+                                    </div>
+                                </div>
+                                <a href="{{ $doc->getFileUrl() }}" 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center px-4 py-2 bg-shakarim-blue hover:bg-shakarim-dark text-white rounded-lg transition text-sm"
+                                style="color: white !important;">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    {{ __('Открыть') }}
+                                </a>
+                            </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="text-center py-16 text-gray-500">
+                             {{ __('Документы не найдены') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+            
+            <!-- Tab 5: Working group -->
+            <div id="content-working-group" class="dev-tab-content hidden">
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">{{ __('Рабочая группа по устойчивому развитию') }}</h2>
+                    @if($workingGroupContent && $workingGroupContent->{'content_' . $locale})
+                    <div class="prose max-w-none mb-8">
+                        {!! $workingGroupContent->{'content_' . $locale} !!}
+                    </div>
+                    @endif
+                    
+                    
+                </div>
+            </div>
         </div>
     </section>
 
@@ -338,7 +405,7 @@
             if (desktopBtn) desktopBtn.classList.add('active');
 
             // Обновляем хеш только если это основной таб (а не под-цель)
-            if (['goals', 'education', 'documents'].includes(tabName)) {
+            if (['goals', 'education', 'documents', 'keywords', 'working-group'].includes(tabName)) {
                 updateHash(tabName);
             }
         }
@@ -420,7 +487,7 @@
                     if (hash.startsWith('goal-')) {
                         initialTab = 'goals';
                         initialGoalId = hash.split('-')[1];
-                    } else if (['goals', 'education', 'documents'].includes(hash)) {
+                    } else if (['goals', 'education', 'documents', 'keywords'].includes(hash)) {
                         initialTab = hash;
                     }
                 }
@@ -435,7 +502,7 @@
             } else {
                 // Резервная логика, если целей нет, но табы есть
                 const hash = window.location.hash.substring(1);
-                if (hash && ['goals', 'education', 'documents'].includes(hash)) {
+                if (hash && ['goals', 'education', 'documents', 'keywords', 'working-group'].includes(hash)) {
                     showDevTab(hash);
                 } else {
                     showDevTab('goals');

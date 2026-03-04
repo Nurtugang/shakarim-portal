@@ -37,6 +37,7 @@ use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\RectorBlogController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RectorQuestionController;
+use App\Http\Controllers\PublicReceptionController;
 use App\Http\Controllers\DevelopmentGoalsController;
 
 use App\Http\Controllers\Student\StudentBoardController;
@@ -127,6 +128,8 @@ Route::group([
     Route::get('/rector-blog', [RectorBlogController::class, 'index'])->name('rector.blog');
     Route::get('/rector-blog/{post:slug}', [RectorBlogController::class, 'show'])->name('rector.post');
 
+    Route::get('/public-reception', [PublicReceptionController::class, 'index'])->name('public-reception.index');
+
     Route::get('/development-goals', [DevelopmentGoalsController::class, 'index'])->name('development-goals.index');
 
     Route::get('/university/board', [BoardController::class, 'index'])->name('university.board-directors.index');
@@ -188,3 +191,4 @@ Route::post('/offers', [SciencePurchasesOfferController::class, 'store'])->name(
 Route::post('/science/offers/store', [SciencePurchasesOfferController::class, 'store'])->name('science.offers.store');
 
 Route::post('/rector-question', [RectorBlogController::class, 'storeQuestion'])->name('rector.question.store');
+Route::post('/public-reception', [PublicReceptionController::class, 'store'])->name('public-reception.store');

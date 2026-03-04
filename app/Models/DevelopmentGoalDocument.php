@@ -26,6 +26,8 @@ class DevelopmentGoalDocument extends Model
     // Document types
     const TYPE_DOCUMENT = 1; // Regular document
     const TYPE_REPORT = 2;   // Report
+    const TYPE_KEYWORD = 3;  // Keywords on SDG
+    const TYPE_WORKING_GROUP = 4;  // WORKING GROUP
 
     /**
      * Scope для фильтрации по языку
@@ -60,6 +62,19 @@ class DevelopmentGoalDocument extends Model
     }
 
     /**
+     * Scope для ключевых слов
+     */
+    public function scopeKeywords(Builder $query): Builder
+    {
+        return $query->where('type', self::TYPE_KEYWORD);
+    }
+
+    public function scopeWorkingGroups(Builder $query): Builder
+    {
+        return $query->where('type', self::TYPE_WORKING_GROUP);
+    }
+
+    /**
      * Получить полный URL документа
      */
     public function getFileUrl(): string
@@ -76,6 +91,14 @@ class DevelopmentGoalDocument extends Model
     }
 
     /**
+     * Проверка, является ли ключевым словом
+     */
+    public function isKeyword(): bool
+    {
+        return $this->type === self::TYPE_KEYWORD;
+    }
+
+    /**
      * Проверка, является ли обычным документом
      */
     public function isDocument(): bool
@@ -88,6 +111,10 @@ class DevelopmentGoalDocument extends Model
      */
     public function getTypeNameAttribute(): string
     {
-        return $this->type === self::TYPE_REPORT ? 'report' : 'document';
+        return match ($this->type) {
+            self::TYPE_REPORT => 'report',
+            self::TYPE_KEYWORD => 'keyword',
+            default => 'document',
+        };
     }
 }

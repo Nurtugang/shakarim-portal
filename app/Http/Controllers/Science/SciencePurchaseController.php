@@ -13,7 +13,11 @@ class SciencePurchaseController extends Controller
     public function index()
     {
 
-        $data = SciencePurchasesIrn::query()->with('sciencePurchases')->orderBy('id','desc')->get();
+        $data = SciencePurchasesIrn::query()
+            ->where('is_visible', true)
+            ->with(['sciencePurchases' => function($query) {
+                $query->where('is_visible', true);
+            }])->orderBy('id','desc')->get();
 
     //    dd($data);
 

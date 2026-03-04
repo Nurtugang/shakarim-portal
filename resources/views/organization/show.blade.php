@@ -17,7 +17,7 @@
                 @if($organization->category_id == 1)
                     <a href="{{ route('organization.science', $locale) }}" class="hover:text-shakarim-blue">{{ __('Научные студенческие кружки') }}</a>
                 @else
-                    <a href="{{ route('organization.social', $locale) }}" class="hover:text-shakarim-blue">{{ __('Студентческие организации') }}</a>
+                    <a href="{{ route('organization.social', $locale) }}" class="hover:text-shakarim-blue">{{ __('Студенческие организации') }}</a>
                 @endif
                 <span>&#8250;</span>
                 <span class="text-shakarim-blue font-semibold line-clamp-1" title="{{ $name }}">

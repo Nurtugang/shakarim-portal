@@ -49,6 +49,9 @@ class SciencePurchasesIrnResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(100),
+                Forms\Components\Toggle::make('is_visible')
+                    ->label('Виден на сайте')
+                    ->default(true),
             ]);
     }
 
@@ -58,6 +61,8 @@ class SciencePurchasesIrnResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\ToggleColumn::make('is_visible')
+                    ->label('Виден на сайте'),
             ])
             ->filters([
                 //

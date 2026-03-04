@@ -36,7 +36,11 @@
 
                 <!-- Контент -->
                 <div class="prose prose-lg max-w-none tiptap-content">
-                    {!! tiptap_converter()->asHTML($post->{'content_'.app()->getLocale()}) !!}
+                    @php
+                        $content = $post->{'content_'.app()->getLocale()};
+                        $htmlContent = is_array($content) ? tiptap_converter()->asHTML($content) : $content;
+                    @endphp
+                    {!! $htmlContent !!}
                 </div>
             </div>
         </article>
@@ -97,7 +101,11 @@
                                     </a>
                                 </h4>
                                 <p class="text-sm text-gray-600 line-clamp-2">
-                                    {{ \Illuminate\Support\Str::limit(strip_tags(tiptap_converter()->asHTML($otherPost->{'content_'.app()->getLocale()})), 100) }}
+                                    @php
+                                        $otherContent = $otherPost->{'content_'.app()->getLocale()};
+                                        $otherHtmlContent = is_array($otherContent) ? tiptap_converter()->asHTML($otherContent) : $otherContent;
+                                    @endphp
+                                    {{ \Illuminate\Support\Str::limit(strip_tags($otherHtmlContent), 100) }}
                                 </p>
                             </div>
                         </div>

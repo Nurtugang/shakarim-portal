@@ -31,12 +31,12 @@ class SocialOrganizationResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return 'Студентческие организации';
+        return 'Студенческие организации';
     }
 
     public static function getPluralModelLabel(): string
     {
-        return 'Студентческие организации';
+        return 'Студенческие организации';
     }
 
     public static function getModelLabel(): string

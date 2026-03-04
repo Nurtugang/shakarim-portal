@@ -50,11 +50,11 @@
                                             <span class="stat-label">{{ __('AI Agents') }}</span>
                                         </div>
                                         <div class="stat">
-                                            <span class="stat-number">3</span>
+                                            <span class="stat-number">5</span>
                                             <span class="stat-label">{{ __('Ready solutions') }}</span>
                                         </div>
                                         <div class="stat">
-                                            <span class="stat-number">2</span>
+                                            <span class="stat-number">0</span>
                                             <span class="stat-label">{{ __('In development') }}</span>
                                         </div>
                                         <div class="stat">
@@ -121,6 +121,18 @@
         </div>
     </section>
 
+    @php
+        $referendumBannerPath = 'banners/referendum.png';
+        $referendumBannerUrl = Storage::disk('public')->exists($referendumBannerPath)
+            ? Storage::url($referendumBannerPath)
+            : 'https://farabi.university/static/img/content/referendum.png';
+    @endphp
+    <section class="referendum-banner" style="width: 100%; padding:0;margin:20px; overflow: hidden; background: #fff;">
+        <a href="https://www.election.gov.kz/kaz/" style="display: flex; justify-content: center; align-items: center; width: 100%;" tabindex="0">
+            <img src="{{ $referendumBannerUrl }}" alt="Референдум 15 марта" title="Референдум 15 марта - Әркайсымыздың дауысымыз маңызды! Важен голос каждого из нас!" style="width: 50%; height: auto; display: block; max-height: 150px; object-fit: cover;">
+        </a>
+    </section>
+
     <!-- Useful Links Section -->
     <section class="py-6 md:py-8 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4">
@@ -172,10 +184,10 @@
                         <h3 class="font-heading font-bold text-sm md:text-lg text-gray-800">{{ __('For Applicants') }}</h3>
                     </div>
                     <div class="space-y-1.5 md:space-y-2">
-                        <a href="{{ route('academy.op.index', ['locale' => app()->getLocale()]) }}" 
+                        <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'pandik-olimpiadalar-men-baiqaular']) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-book-open mr-1.5 md:mr-2 text-xs"></i>
-                            <span class="font-body text-xs md:text-sm">{{ __('Білім беру бағдарламалары') }}</span>
+                            <span class="font-body text-xs md:text-sm">{{ __('Конкурсы и Предметные олимпиады') }}</span>
                         </a>
                         <a href="{{ route('page', ['locale' => app()->getLocale(), 'page' => 'xalyqaralyq-bagdarlamamlar']) }}" 
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
@@ -196,6 +208,11 @@
                         class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
                             <i class="fas fa-phone mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Приемная комиссия') }}</span>
+                        </a>
+                        <a href="{{ route('public-reception.index', ['locale' => app()->getLocale()]) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-envelope mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Общественный прием') }}</span>
                         </a>
                     </div>
                 </div>
@@ -392,7 +409,126 @@
             </div>
         </div>
     </section>
+    <!-- YouTube Channels -->
+    <section class="py-6 md:py-10 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Main YouTube Channel Block - Full Width -->
+            <a href="https://www.youtube.com/@ShakarimUniversity-v4m/videos" target="_blank" rel="noopener noreferrer" 
+               class="group bg-gradient-to-r from-shakarim-blue via-blue-700 to-blue-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row items-center justify-between p-6 md:p-10 text-white mb-4 md:mb-6">
+                <div class="flex-1 text-center md:text-left mb-4 md:mb-0 md:mr-8">
+                    <h3 class="font-heading font-bold text-2xl md:text-3xl mb-3">Shakarim Media</h3>
+                    <p class="text-sm md:text-lg text-blue-100 mb-4 max-w-2xl">{{ __('Видео материалы о жизни и деятельности университета') }}</p>
+                    <span class="inline-flex items-center text-sm md:text-base font-medium text-white group-hover:underline">
+                        {{ __('Перейти на YouTube') }}
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="w-24 h-24 md:w-36 md:h-36 rounded-full bg-white/10 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <svg class="w-12 h-12 md:w-16 md:h-16 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </div>
+            </a>
 
+            <!-- Video Preview Block -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <!-- Video 1 -->
+                <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 w-full cursor-pointer">
+                    <div class="relative aspect-video bg-gray-200 overflow-hidden">
+                        <img src="{{ Storage::url('banners/mqdefault_6s.webp') }}" 
+                             alt="{{ __('Видео университета') }}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+                        <a href="javascript:void(0)" class="absolute inset-0 flex items-center justify-center js-video-button" data-video-id="GRHlEur_w2s">
+                            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                <svg class="w-8 h-8 md:w-10 md:h-10 text-shakarim-blue ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-4 md:p-5">
+                        <h4 class="font-heading font-bold text-shakarim-blue text-base md:text-lg mb-1">{{ __('Основной YouTube канал') }}</h4>
+                        <p class="text-sm text-gray-500">{{ __('Официальный канал университета') }}</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 w-full cursor-pointer">
+                    <div class="relative aspect-video bg-gray-200 overflow-hidden">
+                        <img src="{{ Storage::url('banners/mqdefault_55.webp') }}" 
+                             alt="{{ __('Видео университета') }}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+                        <a href="javascript:void(0)" class="absolute inset-0 flex items-center justify-center js-video-button" data-video-id="2Wug2boH_Xk">
+                            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                <svg class="w-8 h-8 md:w-10 md:h-10 text-shakarim-blue ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-4 md:p-5">
+                        <h4 class="font-heading font-bold text-shakarim-blue text-base md:text-lg mb-1">{{ __('Второй YouTube канал') }}</h4>
+                        <p class="text-sm text-gray-500">{{ __('Шәкәрім университеті') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="relative w-full max-w-4xl">
+            <button id="closeVideoModal" class="absolute -top-10 right-0 md:-right-10 z-10 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <div class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
+                <iframe id="videoIframe" class="w-full h-full" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('videoModal');
+            var iframe = document.getElementById('videoIframe');
+            var closeBtn = document.getElementById('closeVideoModal');
+            var videoButtons = document.querySelectorAll('.js-video-button');
+
+            videoButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var videoId = this.getAttribute('data-video-id');
+                    iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                iframe.src = '';
+                document.body.style.overflow = '';
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+        });
+    </script>
 <!-- News & Events -->
     <section class="py-6 md:py-8 pb-8 md:pb-16">
         <div class="max-w-7xl mx-auto px-4">

@@ -25,13 +25,15 @@ class SciencePurchase extends Model
         'deadlines_en',
         'payment_terms',
         'contacts',
-        'status'
+        'status',
+        'is_visible'
     ];
 
     protected $casts = [
         'status' => SciencePurchasesEnum::class,
         'price' => 'float',
-        'quantity' => 'integer',
+        'quantity' => 'float',
+        'is_visible' => 'boolean',
     ];
 
     public function irn(){

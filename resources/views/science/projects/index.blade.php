@@ -76,12 +76,27 @@
                                                                 <span class="text-sm text-gray-600 ml-1">{{ $project->localized_supervisor }}</span>
                                                             </div>
                                                             
-                                                            <!-- Project Duration -->
-                                                            <div class="mb-3">
+                                                            <!-- Project Duration, Icon & SDG Title -->
+                                                            <div class="mb-3 flex items-center gap-3">
                                                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                                                     <i class="fas fa-clock mr-1"></i>
                                                                     {{ $project->years }}
                                                                 </span>
+
+                                                                @if(!empty($project->icon_path) || !empty($project->sdg_title))
+                                                                    <span class="inline-flex items-center text-xs text-gray-700">
+                                                                        @if(!empty($project->icon_path))
+                                                                            <img 
+                                                                                src="{{ Storage::url($project->icon_path) }}" 
+                                                                                alt="{{ $project->sdg_title }}"
+                                                                                class="w-5 h-5 object-contain mr-2"
+                                                                            >
+                                                                        @endif
+                                                                        @if(!empty($project->sdg_title))
+                                                                            <span>{{ $project->sdg_title }}</span>
+                                                                        @endif
+                                                                    </span>
+                                                                @endif
                                                             </div>
                                                             
                                                             <!-- Project Preview -->

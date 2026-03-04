@@ -79,6 +79,7 @@
                 @foreach($categories as $category)
                 <div id="content-category-{{ $category->id }}" class="tab-content @if(!$loop->first) hidden @endif">
                     <div class="grid gap-6">
+                    
                         @forelse($category->boards as $member)
                         <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
                             <div class="p-6">
@@ -154,11 +155,165 @@
                                 @endif
                             </div>
                         </div>
+
+                        
                         @empty
                             <div class="bg-gray-50 rounded-lg p-6 text-center">
                                 <p class="text-gray-500">{{ __('В этой категории пока нет информации.') }}</p>
                             </div>
                         @endforelse
+                        @if($loop->first)
+                        <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+    <div class="p-6">
+        <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+            <div class="flex-shrink-0 flex flex-col items-center md:items-start">
+                <img src="/storage/board_directors/12333.jpeg" 
+                     alt="" 
+                     class="w-24 h-24 md:w-40 md:h-40 rounded-lg object-cover bg-gray-200">
+                
+                <button onclick="toggleDetails('member-details-meyrmano')" 
+                    class="mt-3 md:hidden inline-flex items-center px-3 py-1.5 bg-shakarim-blue text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
+                    <span>{{ __('Подробнее') }}</span>
+                    <svg class="w-3 h-3 ml-1 transform transition-transform" id="member-arrow-mobile-meyrmano" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="flex-grow">
+                <h3 class="text-sm md:text-xl font-bold text-shakarim-blue mb-2 text-left">
+                    @if(app()->getLocale() === 'en')
+    S<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;e<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;r<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;i<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;k <span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;
+    M<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;e<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;i<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;r<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;m<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;a<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;n<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;o<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;v
+                    @else
+    М<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;е<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;й<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;p<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;м<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;a<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;н<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;o<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;в <span style="font-size:0;color:transparent;position:absolute">.</span>&#8203; 
+    C<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;e<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;p<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;и<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;к <span style="font-size:0;color:transparent;position:absolute">.</span>&#8203; 
+    К<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;a<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;с<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;ы<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;м<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;х<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;a<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;н<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;o<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;в<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;и<span style="font-size:0;color:transparent;position:absolute">.</span>&#8203;ч
+                    @endif
+                </h3>
+                <p class="text-sm md:text-lg font-medium text-gray-700 mb-4 text-left">
+                    @if(app()->getLocale() === 'kk')
+                        Директорлар кеңесінің мүшесі, тәуелсіз директор
+                    @elseif(app()->getLocale() === 'en')
+                        Member of the Board of Directors, Independent Director
+                    @else
+                        Член Совета директоров, независимый директор
+                    @endif
+                </p>
+                
+                <button onclick="toggleDetails('member-details-meyrmano')" 
+                    class="mt-4 inline-flex items-center px-4 py-2 bg-shakarim-blue text-white rounded-lg hover:bg-blue-700 transition-colors desktop-only">
+                    <span>{{ __('Подробнее') }}</span>
+                    <svg class="w-4 h-4 ml-2 transform transition-transform" id="member-arrow-meyrmano" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div id="member-details-meyrmano" class="hidden mt-6 pt-6 border-t border-gray-200">
+            
+            @if(app()->getLocale() === 'kk')
+            <div class="prose max-w-none mb-6">
+                <p><strong>Туған күні:</strong> 1974 жылғы 2 наурыз</p>
+                <p><strong>Азаматтығы:</strong> Қазақстан Республикасы</p>
+                <p><strong>Директорлар кеңесіне алғашқы сайланған күні:</strong> 09.02.2026 жыл, №52 бұйрық</p>
+            </div>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <div class="prose max-w-none">
+                    <h4 class="text-lg font-bold mb-2">Білімі</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Семей қаласындағы Семипалатинск мемлекеттік медицина академиясы, жалпы практика дәрігері, жалпы хирургия мамандығы (1997 ж.).</li>
+                        <li>Нагасаки университеті, Медицина ғылымдарының жоғары мектебі, медицина ғылымдары саласы бойынша PhD (2004 ж.).</li>
+                        <li>Қоғамдық денсаулық сақтау саласындағы жоғары оқу орнынан кейінгі білім беру бағдарламасы, Лондон университеті, Лондон гигиена және тропикалық медицина мектебі, Ұлыбритания (2012 ж.).</li>
+                        <li>PEAKS көшбасшылық бағдарламасы, Йель университеті, АҚШ (2024 ж.).</li>
+                    </ul>
+                </div>
+                <div class="prose max-w-none">
+                    <h4 class="text-lg font-bold mb-2">Еңбек өтілі</h4>
+                    <ul class="list-none p-0 space-y-1">
+                        <li><strong>2006–2009</strong> Нагасаки университетінің медицина факультеті молекулалық патология кафедрасының доценті.</li>
+                        <li><strong>2009–2018</strong> APU университетінің доценті, Жапония.</li>
+                        <li><strong>2018 –</strong> APU университетінің профессоры, Жапония.</li>
+                        <li><strong>2019–2021</strong> APU университеті деканының орынбасары, Жапония.</li>
+                        <li><strong>2021–2022</strong> APU университетінің Студенттер ісі жөніндегі комитетінің мүшесі, Жапония.</li>
+                        <li><strong>2022–2025</strong> APU университетінің академиялық жұмыс жөніндегі деканы, Жапония.</li>
+                        <li><strong>2025 –</strong> Ритцумейкан Азия-Тынық мұхиты университетінің (APU) вице-президенті, Жапония.</li>
+                        <li><strong>2025 –</strong> Ритцумейкан Траст Директорлар кеңесі.</li>
+                        <li><strong>2025 –</strong> Халықаралық білім берудің Азия-Тынық мұхиты қауымдастығының (APAIE) консультативтік кеңесінің мүшесі.</li>
+                    </ul>
+                </div>
+            </div>
+
+            @elseif(app()->getLocale() === 'en')
+            <div class="prose max-w-none mb-6">
+                <p><strong>Date of birth:</strong> March 2, 1974</p>
+                <p><strong>Nationality:</strong> Republic of Kazakhstan</p>
+                <p><strong>Date of first election to the Board of Directors:</strong> February 9, 2026, Order No. 52</p>
+            </div>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <div class="prose max-w-none">
+                    <h4 class="text-lg font-bold mb-2">Education</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Semipalatinsk State Medical Academy, Semey, General Practitioner, specializing in General Surgery (1997).</li>
+                        <li>Nagasaki University, Graduate School of Medical Sciences, PhD in Medical Sciences (2004).</li>
+                        <li>Post-Graduate Program in Public Health, University of London, London School of Hygiene and Tropical Medicine, UK (2012).</li>
+                        <li>Leadership program PEAKS, Yale University, USA (2024).</li>
+                    </ul>
+                </div>
+                <div class="prose max-w-none">
+                    <h4 class="text-lg font-bold mb-2">Work Experience</h4>
+                    <ul class="list-none p-0 space-y-1">
+                        <li><strong>2006–2009</strong> Associate Professor, Faculty of Medicine, Nagasaki University.</li>
+                        <li><strong>2009–2018</strong> Associate Professor, APU.</li>
+                        <li><strong>2018 –</strong> Professor, APU.</li>
+                        <li><strong>2019–2021</strong> Vice Dean, APU.</li>
+                        <li><strong>2021–2022</strong> Member of the Student Affairs Committee, APU.</li>
+                        <li><strong>2022–2025</strong> Dean of Academic Affairs, APU.</li>
+                        <li><strong>2025 –</strong> Vice President, Ritsumeikan Asia Pacific University (APU), Japan.</li>
+                        <li><strong>2025 –</strong> Assistant to the Trustees of the Ritsumeikan Trust, Japan.</li>
+                        <li><strong>2025 –</strong> Advisory Council Member, Asia-Pacific Association for International Education (APAIE).</li>
+                    </ul>
+                </div>
+            </div>
+
+            @else
+            <div class="prose max-w-none mb-6">
+                <p><strong>Дата рождения:</strong> 2 марта 1974 года</p>
+                <p><strong>Гражданство:</strong> Республика Казахстан</p>
+                <p><strong>Дата первого избрания в состав Совета директоров:</strong> 09.02.2026 года, приказ №52</p>
+            </div>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <div class="prose max-w-none">
+                    <h4 class="text-lg font-bold mb-2">Образование</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Семипалатинская Государственная Медицинская Академия, г. Семей, врач общей практики, специальность общая хирургия (1997).</li>
+                        <li>Университет Нагасаки, Высшая Школа Медицинских наук, PhD в области медицинских наук (2004).</li>
+                        <li>Программа последипломного образования в области общественного здравоохранения, Лондонский университет, Лондонская школа гигиены и тропической медицины, Великобритания (2012).</li>
+                        <li>Программа лидерства PEAKS, Йельский университет, США (2024).</li>
+                    </ul>
+                </div>
+                <div class="prose max-w-none">
+                    <h4 class="text-lg font-bold mb-2">Опыт работы</h4>
+                    <ul class="list-none p-0 space-y-1">
+                        <li><strong>2006–2009</strong> Доцент кафедры молекулярной патологии медицинского факультета Университета Нагасаки.</li>
+                        <li><strong>2009–2018</strong> Доцент, Университет APU, Япония.</li>
+                        <li><strong>2018 –</strong> Профессор, Университет APU, Япония.</li>
+                        <li><strong>2019–2021</strong> Заместитель декана, Университет APU, Япония.</li>
+                        <li><strong>2021–2022</strong> Член Комитета по делам студентов Университет APU, Япония.</li>
+                        <li><strong>2022–2025</strong> Декан по Академической работе Университет APU, Япония.</li>
+                        <li><strong>2025 –</strong> Вице-Президент, Ритцумейкан Азиатско-Тихоокеанский Университет(APU), Япония.</li>
+                        <li><strong>2025 –</strong> Совет Директоров, Ритцумейкан Траст.</li>
+                        <li><strong>2025 –</strong> Член консультативного совета, Азиатско-Тихоокеанская ассоциация международного образования (APAIE).</li>
+                    </ul>
+                </div>
+            </div>
+            @endif
+
+        </div>
+    </div>
+</div>
+                        @endif
                     </div>
                     @if($category->additional_content)
                         <div class="mt-8 p-8 border-t border-gray-200 prose max-w-none">

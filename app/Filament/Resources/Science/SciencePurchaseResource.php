@@ -58,6 +58,7 @@ class SciencePurchaseResource extends Resource
                     Forms\Components\Select::make('irn_id')
                     ->label('ИРН проекта')
                     ->relationship('irn', 'name')
+                    ->searchable()
                     ->required(),
                     Tabs::make('')
                 ->tabs([
@@ -118,11 +119,15 @@ class SciencePurchaseResource extends Resource
                 
                 Forms\Components\TextInput::make('price')
                     ->label('Планируемая стоимость')
-                    ->required()
-                    ->maxLength(20),
+		    ->required()
+	    	    ->numeric()
+	            ->step(0.01)
+                    ->minValue(0),
                 Forms\Components\TextInput::make('quantity')
                     ->label('Количество')
-                    ->numeric()
+		    ->numeric()
+	    	    ->step(0.01)
+	    	    ->minValue(0)
                     ->default(1)
                     ->required(),
                 Forms\Components\TextInput::make('payment_terms')
@@ -135,6 +140,9 @@ class SciencePurchaseResource extends Resource
                 Select::make('status')
                 ->options(SciencePurchasesEnum::class)
                     ->required(),
+                Forms\Components\Toggle::make('is_visible')
+                    ->label('Виден на сайте')
+                    ->default(true),
                 ])
             ]);
     }
@@ -160,6 +168,8 @@ class SciencePurchaseResource extends Resource
                 Tables\Columns\TextColumn::make('contacts')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\ToggleColumn::make('is_visible')
+                    ->label('Виден на сайте'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

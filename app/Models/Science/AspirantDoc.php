@@ -15,6 +15,7 @@ class AspirantDoc extends Model
         'name_kk',
         'name_ru',
         'name_en',
+        'name_cn',
         'aspirant_id',
         'filename',
         'created_at'
@@ -71,6 +72,18 @@ class AspirantDoc extends Model
     public function getIsDocAttribute(): bool
     {
         return in_array($this->file_extension, ['doc', 'docx']);
+    }
+
+    /**
+     * Получить форматированную дату
+     */
+    public function getFormattedDateAttribute(): string
+    {
+        if (!$this->created_at) {
+            return '';
+        }
+
+        return \Carbon\Carbon::createFromTimestamp($this->created_at)->format('d.m.Y');
     }
 
     /**

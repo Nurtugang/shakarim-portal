@@ -62,6 +62,8 @@ class DevelopmentGoalDocumentResource extends Resource
                             ->options([
                                 DevelopmentGoalDocument::TYPE_DOCUMENT => 'Документ',
                                 DevelopmentGoalDocument::TYPE_REPORT => 'Отчет',
+                                DevelopmentGoalDocument::TYPE_KEYWORD => 'Ключевые слова',
+                                DevelopmentGoalDocument::TYPE_WORKING_GROUP => 'Рабочая группа по устойчивому развитию ',
                             ])
                             ->required()
                             ->native(false)

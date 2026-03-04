@@ -48,6 +48,16 @@ class ScientificProjectResource extends Resource
                             ->placeholder('Например, 2022-2024')
                             ->required()
                             ->maxLength(10),
+                        Forms\Components\FileUpload::make('icon_path')
+                            ->label('Иконка проекта')
+                            ->image()
+                            ->directory('scientific-projects/icons')
+                            ->imagePreviewHeight('50')
+                            ->maxSize(1024)
+                            ->helperText('Загрузите небольшую иконку, которая будет отображаться рядом с периодом реализации проекта'),
+                        Forms\Components\TextInput::make('sdg_title')
+                            ->label('Название ЦУР-а')
+                            ->maxLength(255),
                         Forms\Components\TextInput::make('month')
                             ->label('Длительность (месяцев)')
                             ->required()

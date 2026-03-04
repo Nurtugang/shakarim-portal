@@ -10,6 +10,11 @@ class SciencePurchasesIrn extends Model
     
     protected $fillable = [
         'name',
+        'is_visible',
+    ];
+
+    protected $casts = [
+        'is_visible' => 'boolean',
     ];
 
     public function sciencePurchases(){

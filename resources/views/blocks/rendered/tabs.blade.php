@@ -47,7 +47,11 @@
                 <div id="content-tab-{{ $index }}" class="tab-content {{ $index !== 0 ? 'hidden' : '' }}">
                     <div class="bg-white rounded-xl shadow-lg p-6">
                         <div class="prose max-w-none">
-                            {!! tiptap_converter()->asHTML($tab['text'] ?? '') !!}
+                            @php
+                                $tabContent = $tab['text'] ?? '';
+                                $tabHtml = is_array($tabContent) ? tiptap_converter()->asHTML($tabContent) : $tabContent;
+                            @endphp
+                            {!! $tabHtml !!}
                         </div>
                     </div>
                 </div>
@@ -132,6 +136,7 @@
         if (activeDesktopTabButton) {
             activeDesktopTabButton.classList.add('active');
         }
+        window.location.hash = tabId;
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -145,6 +150,27 @@
         desktopTabButtons.forEach(button => {
             button.classList.add('bg-gray-100', 'text-gray-600', 'hover:bg-gray-200');
         });
+        // Проверяем наличие якоря в URL при загрузке страницы
+        const hash = window.location.hash.substring(1); // Убираем символ #
+        if (hash && hash.startsWith('tab-')) {
+            // Открываем вкладку из якоря
+            showTab(hash);
+            
+            // Прокручиваем страницу к блоку с вкладками
+            setTimeout(() => {
+                const tabsBlock = document.querySelector('.tabs-block');
+                if (tabsBlock) {
+                    tabsBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
+    });
+    // Обрабатываем изменение якоря (например, при использовании кнопок "назад" и "вперед" в браузере)
+    window.addEventListener('hashchange', function() {
+        const hash = window.location.hash.substring(1);
+        if (hash && hash.startsWith('tab-')) {
+            showTab(hash);
+        }
     });
 </script>
 @endif

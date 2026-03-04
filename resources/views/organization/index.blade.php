@@ -12,7 +12,7 @@
                 @endif
                 <span>&#8250;</span>
                 <span class="text-shakarim-blue font-semibold">
-                    {{ request()->is('*/organization/science') ? __('Научные студенческие кружки') : __('Студентческие организации') }}
+                    {{ request()->is('*/organization/science') ? __('Научные студенческие кружки') : __('Студенческие организации') }}
                 </span>
             </nav>
         </div>
@@ -23,7 +23,7 @@
         <div class="max-w-7xl mx-auto px-4">
             {{-- ЗАГОЛОВОК СТРАНИЦЫ --}}
             <h1 class="text-2xl md:text-3xl font-heading font-bold text-shakarim-blue mb-6 md:mb-8">
-                {{ request()->is('*/organization/science') ? __('Научные студенческие кружки') : __('Студентческие организации') }}
+                {{ request()->is('*/organization/science') ? __('Научные студенческие кружки') : __('Студенческие организации') }}
             </h1>
 
             {{-- ИНФОРМАЦИЯ, КОТОРАЯ ОТОБРАЖАЕТСЯ ТОЛЬКО НА СТРАНИЦЕ 'science' --}}

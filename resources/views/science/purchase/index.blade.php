@@ -85,6 +85,9 @@
                               {{ __('Төлем шарттары')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
+                              {{ __('Контакты')}}
+                            </th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider border-r border-shakarim-light last:border-r-0 break-words max-w-[200px]">
                               {{ __('Мәртебесі')}}
                             </th>
                             <th class="px-4 py-4 text-left text-sm font-semibold uppercase tracking-wider break-words max-w-[200px]">
@@ -127,6 +130,9 @@
                               </td>
                               <td class="px-4 py-4 text-sm text-gray-700 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
                                 {{ $purchase->payment_terms }}
+                              </td>
+                              <td class="px-4 py-4 text-sm text-gray-700 border-r border-gray-200 last:border-r-0 break-words hyphens-auto max-w-[200px]">
+                                {{ $purchase->contacts }}
                               </td>
                               <td class="px-4 py-4 text-sm border-r border-gray-200 last:border-r-0">
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 whitespace-nowrap">

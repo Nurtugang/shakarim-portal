@@ -35,7 +35,11 @@
                 <!-- Контент из админки -->
                 <div class="tiptap-content">
                     <div class="content tiptap-content font-sf">
-                        {!! tiptap_converter()->asHTML($page->{'content_'.app()->getLocale()}) !!}
+                        @php
+                            $content = $page->{'content_'.app()->getLocale()};
+                            $htmlContent = is_array($content) ? tiptap_converter()->asHTML($content) : $content;
+                        @endphp
+                        {!! $htmlContent !!}
                     </div>
                 </div>
 

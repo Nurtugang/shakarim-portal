@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DevelopmentGoal;
 use App\Models\DevelopmentGoalEducation;
 use App\Models\DevelopmentGoalsEducationContent;
+use App\Models\DevelopmentWorkingGroupContent;
 use App\Models\DevelopmentGoalDocument;
 use Illuminate\Http\Request;
 
@@ -38,8 +39,25 @@ class DevelopmentGoalsController extends Controller
             ->reports()
             ->orderBy('title')
             ->get();
+
+        $keywords = DevelopmentGoalDocument::inLanguage($locale)
+            ->keywords()
+            ->orderBy('title')
+            ->get();
+        
+        $workingGroups = DevelopmentGoalDocument::inLanguage($locale)
+            ->workingGroups()
+            ->orderBy('title')
+            ->get();
         
         $educationContent = DevelopmentGoalsEducationContent::first();
+        
+        // Безопасное получение контента рабочей группы (таблица может не существовать до миграции)
+        try {
+            $workingGroupContent = DevelopmentWorkingGroupContent::first();
+        } catch (\Exception $e) {
+            $workingGroupContent = null;
+        }
         
         return view('development-goals.index', compact(
             'goals',
@@ -47,8 +65,11 @@ class DevelopmentGoalsController extends Controller
             'educationProgramsFlat',
             'documents',
             'reports',
+            'keywords',
             'locale',
-            'educationContent'
+            'educationContent',
+            'workingGroups',
+            'workingGroupContent'
         ));
     }
 }

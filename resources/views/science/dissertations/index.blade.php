@@ -71,7 +71,11 @@
                                 </button>
                                 <div x-show="activeIndex === {{ $loop->index }}" x-collapse class="p-6 border-t border-gray-200">
                                     <div class="prose max-w-none tiptap-content">
-                                        {!! tiptap_converter()->asHTML($dissertation->{'content_'.app()->getLocale()}) !!}
+                                        @php
+                                            $content = $dissertation->{'content_'.app()->getLocale()};
+                                            $htmlContent = is_array($content) ? tiptap_converter()->asHTML($content) : $content;
+                                        @endphp
+                                        {!! $htmlContent !!}
                                     </div>
                                 </div>
                             </div>

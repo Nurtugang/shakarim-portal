@@ -128,7 +128,11 @@
                                             </a>
                                         </h4>
                                         <p class="text-xs md:text-sm text-gray-600 mt-1 line-clamp-2">
-                                            {{ \Illuminate\Support\Str::limit(strip_tags(tiptap_converter()->asHTML($post->{'content_'.app()->getLocale()})), 60) }}
+                                            @php
+                                                $content = $post->{'content_'.app()->getLocale()};
+                                                $htmlContent = is_array($content) ? tiptap_converter()->asHTML($content) : $content;
+                                            @endphp
+                                            {{ \Illuminate\Support\Str::limit(strip_tags($htmlContent), 60) }}
                                         </p>
                                     </div>
                                 </div>
