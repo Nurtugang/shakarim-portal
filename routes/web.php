@@ -195,3 +195,7 @@ Route::post('/science/offers/store', [SciencePurchasesOfferController::class, 's
 
 Route::post('/rector-question', [RectorBlogController::class, 'storeQuestion'])->name('rector.question.store');
 Route::post('/public-reception', [PublicReceptionController::class, 'store'])->name('public-reception.store');
+
+Route::post('/chat/ask', [\App\Http\Controllers\ChatController::class, 'ask'])
+    ->name('chat.ask')
+    ->middleware('throttle:5,1');

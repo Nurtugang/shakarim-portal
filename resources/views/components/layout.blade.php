@@ -8,6 +8,7 @@
 
     <meta name="description" content="@yield('meta_description', 'Shakarim University (каз. Шәкәрім университеті) — высшее учебное заведение Абайской области. Современный учебно-методический, научный и культурный центр северо-восточного региона Казахстана, а так же, самый крупный ВУЗ области Абай.')">
     <meta name="robots" content="@yield('meta_robots', 'index, follow')">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="canonical" href="{{ url()->current() }}" />
 
@@ -387,6 +388,34 @@
         <i class="fas fa-arrow-up text-sm md:text-base"></i>
     </button>
 
+    <div id="chat-widget" class="fixed bottom-20 right-4 md:bottom-20 md:right-6 z-50 flex flex-col items-end">
+        <div id="chat-window" class="hidden bg-white w-80 sm:w-96 shadow-2xl rounded-xl overflow-hidden flex flex-col border border-gray-200 mb-4 transition-all duration-300">
+            <div class="bg-shakarim-blue text-white p-4 font-semibold flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-robot text-xl"></i>
+                    <span>Shakarim AI</span>
+                </div>
+                <button id="close-chat" class="hover:text-gray-200 transition"><i class="fas fa-times text-lg"></i></button>
+            </div>
+            
+            <div id="chat-messages" class="p-4 h-80 overflow-y-auto flex flex-col space-y-3 bg-gray-50 text-sm">
+                <div class="bg-blue-100 text-blue-900 self-start p-3 rounded-lg rounded-tl-none max-w-[85%] shadow-sm">
+                    {{ __('Привет! Я Shakarim AI, ваш виртуальный помощник. Я могу помочь вам с информацией о поступлении, академических программах, мероприятиях и многом другом. Просто задайте свой вопрос, и я постараюсь помочь!') }}
+                </div>
+            </div>
+            
+            <div class="p-3 border-t bg-white flex items-center gap-2">
+                <input type="text" id="chat-input" placeholder="Введите ваш вопрос..." class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-shakarim-blue text-sm transition">
+                <button id="chat-send" class="bg-shakarim-blue text-white w-10 h-10 rounded-lg hover:bg-blue-700 transition flex items-center justify-center">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <button id="chat-toggle" class="w-14 h-14 bg-shakarim-blue text-white rounded-full shadow-lg hover:shadow-xl hover:bg-blue-700 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-shakarim-blue transform hover:scale-105">
+            <i class="fas fa-comments text-2xl"></i>
+        </button>
+    </div>
+
     <!-- Scripts для каждой страницы наследующий этот шаблон -->
     @livewireScripts
     @filamentScripts
@@ -438,5 +467,16 @@
     <script src="{{ asset('js/custom/search.js') }}"></script>
     <script src="{{ asset('js/custom/cookie.js') }}"></script>
 
+
+    <script>
+        window.chatTranslations = {
+            thinking: "{{ __('Думаю...') }}",
+            empty: "{{ __('Извините, ответ пуст.') }}",
+            serverError: "{{ __('Ошибка связи с сервером.') }}",
+            tooManyRequests: "{{ __('Слишком много запросов. Пожалуйста, подождите минуту.') }}"
+        };
+    </script>
+    <script src="{{ asset('js/custom/chat.js') }}"></script>
+    
 </body>
 </html>
