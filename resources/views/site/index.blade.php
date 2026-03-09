@@ -38,6 +38,20 @@
                         </div>
                     </div>
 
+                    <div class="slide @if($sliderNews->isEmpty()) active @endif">
+                        <div class="slide-inner">
+                            <div class="slide-content">
+                                <div class="content-wrapper">
+                                    <h2 class="slide-title">{{ __('Admissions Office for applicants to Shakarim University') }}</h2>
+                                    <a href="https://promo.shakarim.kz/ru/">
+                                        <button class="slide-button">{{ __('More') }}</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="slide-image-box" style="background-image: url('/img/jpg.jpg');"></div>
+                        </div>
+                    </div>
+
                     <!-- Slide: AI Sana -->
                     <div class="slide">
                         <div class="slide-inner">
