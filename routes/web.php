@@ -39,6 +39,7 @@ use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RectorQuestionController;
 use App\Http\Controllers\PublicReceptionController;
 use App\Http\Controllers\DevelopmentGoalsController;
+use App\Http\Controllers\PsychologicalSupportController;
 
 use App\Http\Controllers\Student\StudentBoardController;
 use App\Http\Controllers\AwardController;
@@ -174,7 +175,9 @@ Route::group([
     Route::get('/university/endowment', function (string $locale) {
         return view('university.endowment.index');
     })->name('university.endowment.index');
-    
+
+    Route::get('/university/psychological-support/', [PsychologicalSupportController::class, 'index'])->name('university.psychological-support.index');
+
     Route::get('/academy/graduates', [GraduateController::class, 'index'])->name('graduates.index');
     Route::get('/partnership/internship', [InternshipController::class, 'index'])->name('internship.index');
     Route::get('/academy/op', [\App\Http\Controllers\Academy\EducationalProgramsController::class, 'index'])->name('academy.op.index');

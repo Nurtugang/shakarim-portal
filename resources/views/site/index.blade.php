@@ -265,6 +265,11 @@
                             <i class="fas fa-map-marked-alt mr-1.5 md:mr-2 text-xs"></i>
                             <span class="font-body text-xs md:text-sm">{{ __('Путеводитель обучающегося') }}</span>
                         </a>
+                        <a href="{{ route('university.psychological-support.index', ['locale' => app()->getLocale()]) }}" 
+                        class="flex items-center px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-50 rounded-lg hover:bg-shakarim-blue hover:text-white transition-colors duration-200">
+                            <i class="fas fa-heartbeat mr-1.5 md:mr-2 text-xs"></i>
+                            <span class="font-body text-xs md:text-sm">{{ __('Служба психологической поддержки') }}</span>
+                        </a>
                     </div>
                 </div>
 
