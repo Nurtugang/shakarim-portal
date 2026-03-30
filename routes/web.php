@@ -185,6 +185,10 @@ Route::group([
     Route::get('/app', function (string $locale) {
         return view('app.index');
     })->name('app.index');
+
+    Route::get('/events/nauryz-decade', function (string $locale) {
+        return view('events.nauryz-decade.index');
+    })->name('events.nauryz-decade');
 });
 
 Route::get('/diplomas/download/{id}', [DiplomasController::class, 'download'])->name('diplomas.download');

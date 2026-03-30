@@ -33,10 +33,10 @@
                                     {{ $category->title }}
                                 </button>
                             @endforeach
-                            <!-- <button onclick="showTab('category-committees')" id="tab-category-committees" class="tab-button whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                            <button onclick="showTab('category-committees')" id="tab-category-committees" class="tab-button whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                                 <i class="fas fa-shield-alt mr-2"></i>
                                 {{ __('board_committees.tab_label') }}
-                            </button> -->
+                            </button>
                             @foreach($categories->slice(1,5) as $category)
                                 <button onclick="showTab('category-{{ $category->id }}')" id="tab-category-{{ $category->id }}" class="tab-button whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors @if($loop->first) active @endif">
                                     {{ $category->title }}
@@ -57,10 +57,10 @@
                                     <span>{{ $category->title }}</span>
                                 </button>
                                 @endforeach
-                                <!-- <button onclick="showTab('category-committees')" id="desktop-tab-category-committees" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
+                                <button onclick="showTab('category-committees')" id="desktop-tab-category-committees" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
                                     <i class="fas fa-users mr-2"></i>
                                     {{ __('board_committees.tab_label') }}
-                                </button> -->
+                                </button>
                                 @foreach($categories->slice(1, 5) as $category)
                                 <button onclick="showTab('category-{{ $category->id }}')" id="desktop-tab-category-{{ $category->id }}" class="desktop-tab-button w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors">
                                     @if($category->icon_class)
@@ -360,6 +360,9 @@
                         'Мұқашев Балтабек Құмарұлы' => Storage::url('board/d97de3dad96ec2f6928b841d33cdce1f.webp'),
                         'Mukashev Baltabek' => Storage::url('board/d97de3dad96ec2f6928b841d33cdce1f.webp'),
                         '穆卡舍夫·巴尔塔别克·库马尔乌兹' => Storage::url('board/d97de3dad96ec2f6928b841d33cdce1f.webp'),
+                        'Мейрманов Серик Касымханович' => Storage::url('board_directors/12333.jpeg'),
+                        'Meirmanov Serik Kasyimkhanovich' => Storage::url('board_directors/12333.jpeg'),
+                        '梅尔曼诺夫·谢里克·卡西姆汉诺维奇' => Storage::url('board_directors/12333.jpeg'),
                     ];
                     // Manual map takes precedence
                     $photoByName = array_merge($photoByName, $manualPhotoMap);

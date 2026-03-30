@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const firstYear = document.querySelector('[id^="year-"]');
     if (firstYear && firstYear.classList.contains('hidden')) {
         const yearId = firstYear.id;
-        toggleCollapse(yearId);
+        // toggleCollapse(yearId);
     }
 });
 </script>

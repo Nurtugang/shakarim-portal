@@ -45,6 +45,20 @@
                                             {{ $project->month }} {{ __('ай') }}
                                         </span>
                                     @endif
+                                    @if(!empty($project->icon_path) || !empty($project->sdg_title))
+                                        <span class="inline-flex items-center text-xs text-white-700">
+                                            @if(!empty($project->icon_path))
+                                                <img 
+                                                    src="{{ Storage::url($project->icon_path) }}" 
+                                                    alt="{{ $project->sdg_title }}"
+                                                    class="w-5 h-5 object-contain mr-2"
+                                                >
+                                            @endif
+                                            @if(!empty($project->sdg_title))
+                                                <span>{{ $project->sdg_title }}</span>
+                                            @endif
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                         </div>

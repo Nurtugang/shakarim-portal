@@ -53,7 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Добавляем класс 'active' только НУЖНОМУ слайду и точке
         slides[index].classList.add('active');
-        dots[index].classList.add('active');
+        if (dots[index]) {
+            dots[index].classList.add('active');
+        }
 
         // Обновляем текущий индекс
         currentSlide = index;

@@ -111,7 +111,7 @@
                     </div>
 
                     @php
-                        $totalSlides = $sliderNews->count() + 3;
+                        $totalSlides = $sliderNews->count() + 4; // 4 static slides: Tokayev, Admissions, AI Sana, QS
                     @endphp
 
                     @if($totalSlides > 1)
@@ -134,19 +134,7 @@
             </div>
         </div>
     </section>
-
-    @php
-        $referendumBannerPath = 'banners/referendum.png';
-        $referendumBannerUrl = Storage::disk('public')->exists($referendumBannerPath)
-            ? Storage::url($referendumBannerPath)
-            : 'https://farabi.university/static/img/content/referendum.png';
-    @endphp
-    <section class="referendum-banner" style="width: 100%; padding:0;margin:20px; overflow: hidden; background: #fff;">
-        <a href="https://www.election.gov.kz/kaz/" style="display: flex; justify-content: center; align-items: center; width: 100%;" tabindex="0">
-            <img src="{{ $referendumBannerUrl }}" alt="Референдум 15 марта" title="Референдум 15 марта - Әркайсымыздың дауысымыз маңызды! Важен голос каждого из нас!" style="width: 50%; height: auto; display: block; max-height: 150px; object-fit: cover;">
-        </a>
-    </section>
-
+ 
     <!-- Useful Links Section -->
     <section class="py-6 md:py-8 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4">
@@ -311,6 +299,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Nauryz Decade Banner -->
+    <section class="py-8 md:py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <a href="{{ route('events.nauryz-decade', ['locale' => app()->getLocale()]) }}" 
+               class="block overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                <img src="{{ asset('storage/nauryz/banner.jpeg') }}" 
+                     alt="{{ __('Декада Наурызнама') }}" 
+                     class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-300">
+            </a>
         </div>
     </section>
 
