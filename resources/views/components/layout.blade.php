@@ -389,24 +389,52 @@
     </button>
 
     <div id="chat-widget" class="fixed bottom-20 right-4 md:bottom-20 md:right-6 z-50 flex flex-col items-end">
-        <div id="chat-window" class="hidden bg-white w-80 sm:w-96 shadow-2xl rounded-xl overflow-hidden flex flex-col border border-gray-200 mb-4 transition-all duration-300">
-            <div class="bg-shakarim-blue text-white p-4 font-semibold flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-robot text-xl"></i>
-                    <span>Shakarim AI</span>
+        <div id="chat-window" class="hidden bg-white w-[22rem] sm:w-[25rem] shadow-2xl rounded-3xl overflow-hidden flex flex-col border border-slate-200 mb-4 transition-all duration-300">
+            <div class="bg-shakarim-blue text-white px-5 py-4 font-semibold flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <img src="{{ asset('img/chat_avatar.webp') }}" alt="Shakarim AI" class="w-10 h-10 rounded-full object-cover border border-white/30 shadow-sm">
+                    <div class="leading-tight">
+                        <span class="block text-base font-semibold">Shakarim AI</span>
+                        <span class="block text-xs text-blue-100">{{ __('Онлайн-помощник') }}</span>
+                    </div>
                 </div>
-                <button id="close-chat" class="hover:text-gray-200 transition"><i class="fas fa-times text-lg"></i></button>
+                <div class="flex items-center gap-1">
+                    <button id="collapse-chat" class="w-9 h-9 rounded-full hover:bg-white/10 transition flex items-center justify-center" type="button" aria-label="{{ __('Свернуть чат') }}">
+                        <i class="fas fa-minus text-sm"></i>
+                    </button>
+                    <button id="close-chat" class="w-9 h-9 rounded-full hover:bg-white/10 transition flex items-center justify-center" type="button" aria-label="{{ __('Закрыть чат') }}">
+                        <i class="fas fa-times text-sm"></i>
+                    </button>
+                </div>
             </div>
             
-            <div id="chat-messages" class="p-4 h-80 overflow-y-auto flex flex-col space-y-3 bg-gray-50 text-sm">
-                <div class="bg-blue-100 text-blue-900 self-start p-3 rounded-lg rounded-tl-none max-w-[85%] shadow-sm">
-                    {{ __('Привет! Я Shakarim AI, ваш виртуальный помощник. Я могу помочь вам с информацией о поступлении, академических программах, мероприятиях и многом другом. Просто задайте свой вопрос, и я постараюсь помочь!') }}
+            <div id="chat-messages" class="px-4 py-5 h-[26rem] overflow-y-auto flex flex-col gap-4 bg-slate-50 text-sm">
+                <div id="chat-role-screen" class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
+                    <p class="text-base font-semibold text-slate-900 mb-2">{{ __('Здравствуйте! Кем вы являетесь?') }}</p>
+                    <p class="text-sm text-slate-500 mb-4">{{ __('Выберите роль, и я лучше подстрою ответы под ваш вопрос.') }}</p>
+                    <div class="flex flex-col gap-2">
+                        <button type="button" class="chat-role-option w-full text-left px-4 py-3 rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-shakarim-blue hover:bg-blue-50 transition" data-role="{{ __('Я студент') }}">
+                            {{ __('Я студент') }}
+                        </button>
+                        <button type="button" class="chat-role-option w-full text-left px-4 py-3 rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-shakarim-blue hover:bg-blue-50 transition" data-role="{{ __('Я преподаватель') }}">
+                            {{ __('Я преподаватель') }}
+                        </button>
+                        <button type="button" class="chat-role-option w-full text-left px-4 py-3 rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-shakarim-blue hover:bg-blue-50 transition" data-role="{{ __('Другое') }}">
+                            {{ __('Другое') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 self-start max-w-[92%]">
+                    <img src="{{ asset('img/chat_avatar.webp') }}" alt="Shakarim AI" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
+                    <div class="bg-white text-slate-700 p-4 rounded-2xl rounded-tl-md shadow-sm border border-slate-200">
+                        {{ __('Привет! Я Shakarim AI, ваш виртуальный помощник. Я могу помочь вам с информацией о поступлении, академических программах, мероприятиях и многом другом. Просто задайте свой вопрос, и я постараюсь помочь!') }}
+                    </div>
                 </div>
             </div>
             
-            <div class="p-3 border-t bg-white flex items-center gap-2">
-                <input type="text" id="chat-input" placeholder="Введите ваш вопрос..." class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-shakarim-blue text-sm transition">
-                <button id="chat-send" class="bg-shakarim-blue text-white w-10 h-10 rounded-lg hover:bg-blue-700 transition flex items-center justify-center">
+            <div class="p-4 border-t border-slate-200 bg-white flex items-center gap-3">
+                <input type="text" id="chat-input" placeholder="{{ __('Введите ваш вопрос...') }}" class="flex-1 border border-slate-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-shakarim-blue text-sm transition text-slate-700 placeholder:text-slate-400">
+                <button id="chat-send" class="bg-shakarim-blue text-white w-11 h-11 rounded-2xl hover:bg-blue-700 transition flex items-center justify-center shadow-sm">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
@@ -473,7 +501,10 @@
             thinking: "{{ __('Думаю...') }}",
             empty: "{{ __('Извините, ответ пуст.') }}",
             serverError: "{{ __('Ошибка связи с сервером.') }}",
-            tooManyRequests: "{{ __('Слишком много запросов. Пожалуйста, подождите минуту.') }}"
+            tooManyRequests: "{{ __('Слишком много запросов. Пожалуйста, подождите минуту.') }}",
+            chooseRoleFirst: "{{ __('Сначала выберите вашу роль на стартовом экране, чтобы я мог точнее ответить.') }}",
+            roleSelectedPrefix: "{{ __('Роль выбрана:') }}",
+            roleSelectedHint: "{{ __('Теперь можете задать вопрос.') }}"
         };
     </script>
     <script src="{{ asset('js/custom/chat.js') }}"></script>

@@ -1,83 +1,156 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const chatToggle = document.getElementById('chat-toggle');
     const chatWindow = document.getElementById('chat-window');
+    const collapseChat = document.getElementById('collapse-chat');
     const closeChat = document.getElementById('close-chat');
     const chatInput = document.getElementById('chat-input');
     const chatSend = document.getElementById('chat-send');
     const chatMessages = document.getElementById('chat-messages');
+    const chatRoleScreen = document.getElementById('chat-role-screen');
+    const roleButtons = document.querySelectorAll('.chat-role-option');
+    const botAvatar = '/img/chat_avatar.webp';
 
-    // Открытие/закрытие окна чата
-    chatToggle.addEventListener('click', () => {
-        chatWindow.classList.toggle('hidden');
-        if (!chatWindow.classList.contains('hidden')) chatInput.focus();
-    });
-    closeChat.addEventListener('click', () => chatWindow.classList.add('hidden'));
+    let selectedRole = null;
 
-    // Функция отправки
+    const openChat = () => {
+        chatWindow.classList.remove('hidden');
+        chatInput.focus();
+    };
+
+    const hideChat = () => {
+        chatWindow.classList.add('hidden');
+    };
+
+    const escapeHtml = (value) =>
+        value
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+
+    const scrollToBottom = () => {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const renderUserMessage = (message) => {
+        chatMessages.insertAdjacentHTML(
+            'beforeend',
+            `
+                <div class="self-end max-w-[88%] bg-shakarim-blue text-white px-4 py-3 rounded-2xl rounded-br-md shadow-sm break-words">
+                    ${escapeHtml(message)}
+                </div>
+            `
+        );
+    };
+
+    const renderBotMessage = (message, extraClasses = '') => {
+        chatMessages.insertAdjacentHTML(
+            'beforeend',
+            `
+                <div class="flex items-start gap-3 self-start max-w-[92%] ${extraClasses}">
+                    <img src="${botAvatar}" alt="Shakarim AI" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
+                    <div class="bg-white text-slate-700 px-4 py-3 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 break-words">
+                        ${message}
+                    </div>
+                </div>
+            `
+        );
+    };
+
+    const setSelectedRole = (role) => {
+        selectedRole = role;
+
+        roleButtons.forEach((button) => {
+            const isActive = button.dataset.role === role;
+            button.classList.toggle('border-shakarim-blue', isActive);
+            button.classList.toggle('bg-blue-50', isActive);
+            button.classList.toggle('text-shakarim-blue', isActive);
+        });
+
+        if (chatRoleScreen) {
+            chatRoleScreen.classList.add('hidden');
+        }
+
+        renderBotMessage(`${window.chatTranslations.roleSelectedPrefix} <strong>${escapeHtml(role)}</strong>. ${window.chatTranslations.roleSelectedHint}`);
+        scrollToBottom();
+    };
+
     const sendMessage = async () => {
         const question = chatInput.value.trim();
         if (!question) return;
 
-        // Рендер сообщения пользователя
-        chatMessages.innerHTML += `
-            <div class="bg-shakarim-blue text-white self-end p-3 rounded-lg rounded-tr-none max-w-[85%] shadow-sm">
-                ${question}
-            </div>`;
-        chatInput.value = '';
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+        if (!selectedRole) {
+            openChat();
+            renderBotMessage(window.chatTranslations.chooseRoleFirst);
+            scrollToBottom();
+            return;
+        }
 
-        // Индикатор загрузки
+        renderUserMessage(question);
+        chatInput.value = '';
+        scrollToBottom();
+
         const loadingId = 'loading-' + Date.now();
-        chatMessages.innerHTML += `
-            <div id="${loadingId}" class="bg-gray-200 text-gray-600 self-start p-3 rounded-lg rounded-tl-none text-xs italic">
-                <i class="fas fa-spinner fa-spin mr-1"></i> ${window.chatTranslations.thinking}
-            </div>`;
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+        chatMessages.insertAdjacentHTML(
+            'beforeend',
+            `
+                <div id="${loadingId}" class="flex items-start gap-3 self-start max-w-[92%]">
+                    <img src="${botAvatar}" alt="Shakarim AI" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
+                    <div class="bg-white text-slate-500 px-4 py-3 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 text-xs italic">
+                        <i class="fas fa-spinner fa-spin mr-1"></i> ${window.chatTranslations.thinking}
+                    </div>
+                </div>
+            `
+        );
+        scrollToBottom();
 
         try {
-            // Запрос к своему Laravel контроллеру
+            const finalQuestion = `[Роль: ${selectedRole}] ${question}`;
+
             const response = await fetch('/chat/ask', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
-                body: JSON.stringify({ question: question })
+                body: JSON.stringify({ question: finalQuestion })
             });
 
+            document.getElementById(loadingId)?.remove();
+
             if (response.status === 429) {
-                document.getElementById(loadingId).remove();
-                chatMessages.innerHTML += `
-                    <div class="bg-yellow-100 text-yellow-900 self-start p-3 rounded-lg rounded-tl-none max-w-[85%] shadow-sm">
-                        ${window.chatTranslations.tooManyRequests}
-                    </div>`;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+                renderBotMessage(window.chatTranslations.tooManyRequests);
+                scrollToBottom();
                 return;
             }
 
             const data = await response.json();
-            document.getElementById(loadingId).remove();
-
-            // Рендер ответа от API
             const answer = data.answer || window.chatTranslations.empty;
-            chatMessages.innerHTML += `
-                <div class="bg-blue-100 text-blue-900 self-start p-3 rounded-lg rounded-tl-none max-w-[85%] shadow-sm">
-                    ${answer}
-                </div>`;
+            renderBotMessage(answer);
         } catch (error) {
-            document.getElementById(loadingId).remove();
-            chatMessages.innerHTML += `
-                <div class="bg-red-100 text-red-900 self-start p-3 rounded-lg rounded-tl-none max-w-[85%] shadow-sm">
-                    ${window.chatTranslations.serverError}
-                </div>`;
+            document.getElementById(loadingId)?.remove();
+            renderBotMessage(window.chatTranslations.serverError);
         }
-        
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        scrollToBottom();
     };
 
-    // Обработчики клика и Enter
+    chatToggle.addEventListener('click', openChat);
+    collapseChat?.addEventListener('click', hideChat);
+    closeChat?.addEventListener('click', hideChat);
+
+    roleButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            setSelectedRole(button.dataset.role);
+            openChat();
+        });
+    });
+
     chatSend.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
+    chatInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
     });
 });

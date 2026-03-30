@@ -141,7 +141,7 @@
             ? Storage::url($referendumBannerPath)
             : 'https://farabi.university/static/img/content/referendum.png';
     @endphp
-    <section class="referendum-banner" style="width: 100%; padding:0;margin:20px; overflow: hidden; background: #fff;">
+    <section class="referendum-banner mx-4 my-5 overflow-hidden bg-white">
         <a href="https://www.election.gov.kz/kaz/" style="display: flex; justify-content: center; align-items: center; width: 100%;" tabindex="0">
             <img src="{{ $referendumBannerUrl }}" alt="Референдум 15 марта" title="Референдум 15 марта - Әркайсымыздың дауысымыз маңызды! Важен голос каждого из нас!" style="width: 50%; height: auto; display: block; max-height: 150px; object-fit: cover;">
         </a>
