@@ -388,59 +388,59 @@
         <i class="fas fa-arrow-up text-sm md:text-base"></i>
     </button>
 
-    <div id="chat-widget" class="fixed bottom-20 right-4 md:bottom-20 md:right-6 z-50 flex flex-col items-end">
-        <div id="chat-window" class="hidden bg-white w-[22rem] sm:w-[25rem] shadow-2xl rounded-3xl overflow-hidden flex flex-col border border-slate-200 mb-4 transition-all duration-300">
-            <div class="bg-shakarim-blue text-white px-5 py-4 font-semibold flex justify-between items-center">
+    <div id="chat-widget" class="fixed bottom-3 right-3 md:right-6 md:bottom-20 z-50 flex flex-col items-end pointer-events-none">
+        <div id="chat-window" class="hidden pointer-events-auto bg-white fixed left-3 right-3 bottom-3 w-auto max-w-none h-[min(72vh,36rem)] md:static md:w-full md:max-w-[25rem] md:h-auto md:max-h-[min(42rem,calc(100vh-8rem))] shadow-2xl rounded-[1.5rem] md:rounded-3xl overflow-hidden flex flex-col border border-slate-200 mb-0 md:mb-4 transition-all duration-300">
+            <div class="bg-shakarim-blue text-white px-3.5 py-3 md:px-5 md:py-4 font-semibold flex justify-between items-center">
                 <div class="flex items-center gap-3">
-                    <img src="{{ asset('img/chat_avatar.webp') }}" alt="Shakarim AI" class="w-10 h-10 rounded-full object-cover border border-white/30 shadow-sm">
+                    <img src="{{ asset('img/chat_avatar.webp') }}" alt="Shakarim AI" class="w-9 h-9 md:w-10 md:h-10 rounded-full object-cover border border-white/30 shadow-sm">
                     <div class="leading-tight">
-                        <span class="block text-base font-semibold">Shakarim AI</span>
+                        <span class="block text-sm md:text-base font-semibold">Shakarim AI</span>
                         <span class="block text-xs text-blue-100">{{ __('Онлайн-помощник') }}</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-1">
-                    <button id="collapse-chat" class="w-9 h-9 rounded-full hover:bg-white/10 transition flex items-center justify-center" type="button" aria-label="{{ __('Свернуть чат') }}">
+                    <button id="collapse-chat" class="w-8 h-8 md:w-9 md:h-9 rounded-full hover:bg-white/10 transition flex items-center justify-center" type="button" aria-label="{{ __('Свернуть чат') }}">
                         <i class="fas fa-minus text-sm"></i>
                     </button>
-                    <button id="close-chat" class="w-9 h-9 rounded-full hover:bg-white/10 transition flex items-center justify-center" type="button" aria-label="{{ __('Закрыть чат') }}">
+                    <button id="close-chat" class="w-8 h-8 md:w-9 md:h-9 rounded-full hover:bg-white/10 transition flex items-center justify-center" type="button" aria-label="{{ __('Закрыть чат') }}">
                         <i class="fas fa-times text-sm"></i>
                     </button>
                 </div>
             </div>
             
-            <div id="chat-messages" class="px-4 py-5 h-[26rem] overflow-y-auto flex flex-col gap-4 bg-slate-50 text-sm">
-                <div id="chat-role-screen" class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
-                    <p class="text-base font-semibold text-slate-900 mb-2">{{ __('Здравствуйте! Кем вы являетесь?') }}</p>
-                    <p class="text-sm text-slate-500 mb-4">{{ __('Выберите роль, и я лучше подстрою ответы под ваш вопрос.') }}</p>
-                    <div class="flex flex-col gap-2">
-                        <button type="button" class="chat-role-option w-full text-left px-4 py-3 rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-shakarim-blue hover:bg-blue-50 transition" data-role="{{ __('Я студент') }}">
+            <div id="chat-messages" class="flex-1 min-h-0 px-2.5 py-3 md:px-4 md:py-5 overflow-y-auto flex flex-col gap-2.5 md:gap-4 bg-slate-50 text-sm">
+                <div id="chat-role-screen" class="bg-white border border-slate-200 rounded-2xl p-3 md:p-4 shadow-sm">
+                    <p class="text-sm md:text-base font-semibold text-slate-900 mb-1.5 md:mb-2">{{ __('Здравствуйте! Кем вы являетесь?') }}</p>
+                    <p class="text-xs md:text-sm text-slate-500 mb-2.5 md:mb-4">{{ __('Выберите роль, и я лучше подстрою ответы под ваш вопрос.') }}</p>
+                    <div class="grid grid-cols-2 gap-2 md:flex md:flex-col md:gap-2">
+                        <button type="button" class="chat-role-option w-full text-left px-3 py-2 md:px-4 md:py-3 rounded-xl md:rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-shakarim-blue hover:bg-blue-50 transition text-[13px] md:text-sm leading-tight" data-role="{{ __('Я студент') }}">
                             {{ __('Я студент') }}
                         </button>
-                        <button type="button" class="chat-role-option w-full text-left px-4 py-3 rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-shakarim-blue hover:bg-blue-50 transition" data-role="{{ __('Я преподаватель') }}">
+                        <button type="button" class="chat-role-option w-full text-left px-3 py-2 md:px-4 md:py-3 rounded-xl md:rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-shakarim-blue hover:bg-blue-50 transition text-[13px] md:text-sm leading-tight" data-role="{{ __('Я преподаватель') }}">
                             {{ __('Я преподаватель') }}
                         </button>
-                        <button type="button" class="chat-role-option w-full text-left px-4 py-3 rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-shakarim-blue hover:bg-blue-50 transition" data-role="{{ __('Другое') }}">
+                        <button type="button" class="chat-role-option col-span-2 w-full text-left px-3 py-2 md:px-4 md:py-3 rounded-xl md:rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-shakarim-blue hover:bg-blue-50 transition text-[13px] md:text-sm leading-tight" data-role="{{ __('Другое') }}">
                             {{ __('Другое') }}
                         </button>
                     </div>
                 </div>
-                <div class="flex items-start gap-3 self-start max-w-[92%]">
+                <div class="flex items-start gap-2.5 md:gap-3 self-start max-w-[94%] md:max-w-[92%]">
                     <img src="{{ asset('img/chat_avatar.webp') }}" alt="Shakarim AI" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
-                    <div class="bg-white text-slate-700 p-4 rounded-2xl rounded-tl-md shadow-sm border border-slate-200">
+                    <div class="bg-white text-slate-700 p-3 md:p-4 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 text-[13px] md:text-sm leading-6 md:leading-6">
                         {{ __('Привет! Я Shakarim AI, ваш виртуальный помощник. Я могу помочь вам с информацией о поступлении, академических программах, мероприятиях и многом другом. Просто задайте свой вопрос, и я постараюсь помочь!') }}
                     </div>
                 </div>
             </div>
             
-            <div class="p-4 border-t border-slate-200 bg-white flex items-center gap-3">
-                <input type="text" id="chat-input" placeholder="{{ __('Введите ваш вопрос...') }}" class="flex-1 border border-slate-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-shakarim-blue text-sm transition text-slate-700 placeholder:text-slate-400">
-                <button id="chat-send" class="bg-shakarim-blue text-white w-11 h-11 rounded-2xl hover:bg-blue-700 transition flex items-center justify-center shadow-sm">
+            <div class="p-2.5 md:p-4 border-t border-slate-200 bg-white flex items-center gap-2 md:gap-3">
+                <input type="text" id="chat-input" placeholder="{{ __('Введите ваш вопрос...') }}" class="flex-1 min-w-0 border border-slate-200 rounded-2xl px-3 py-2.5 md:px-4 md:py-3 focus:outline-none focus:ring-2 focus:ring-shakarim-blue text-[13px] md:text-sm transition text-slate-700 placeholder:text-slate-400">
+                <button id="chat-send" class="bg-shakarim-blue text-white w-10 h-10 md:w-11 md:h-11 rounded-2xl hover:bg-blue-700 transition flex items-center justify-center shadow-sm flex-shrink-0">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
         </div>
-        <button id="chat-toggle" class="w-14 h-14 bg-shakarim-blue text-white rounded-full shadow-lg hover:shadow-xl hover:bg-blue-700 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-shakarim-blue transform hover:scale-105">
-            <i class="fas fa-comments text-2xl"></i>
+        <button id="chat-toggle" class="pointer-events-auto w-12 h-12 md:w-14 md:h-14 bg-shakarim-blue text-white rounded-full shadow-lg hover:shadow-xl hover:bg-blue-700 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-shakarim-blue transform hover:scale-105 self-end">
+            <i class="fas fa-comments text-xl md:text-2xl"></i>
         </button>
     </div>
 

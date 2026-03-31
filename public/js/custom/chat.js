@@ -11,14 +11,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const botAvatar = '/img/chat_avatar.webp';
 
     let selectedRole = null;
+    const mobileMediaQuery = window.matchMedia('(max-width: 767px)');
+
+    const syncBodyScrollLock = () => {
+        document.body.classList.toggle('overflow-hidden', mobileMediaQuery.matches && !chatWindow.classList.contains('hidden'));
+        chatToggle.classList.toggle('hidden', !chatWindow.classList.contains('hidden'));
+    };
+
+    const focusInputIfHelpful = () => {
+        if (!mobileMediaQuery.matches) {
+            chatInput.focus();
+        }
+    };
 
     const openChat = () => {
         chatWindow.classList.remove('hidden');
-        chatInput.focus();
+        syncBodyScrollLock();
+        focusInputIfHelpful();
     };
 
     const hideChat = () => {
         chatWindow.classList.add('hidden');
+        syncBodyScrollLock();
     };
 
     const escapeHtml = (value) =>
@@ -37,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatMessages.insertAdjacentHTML(
             'beforeend',
             `
-                <div class="self-end max-w-[88%] bg-shakarim-blue text-white px-4 py-3 rounded-2xl rounded-br-md shadow-sm break-words">
+                <div class="self-end max-w-[92%] md:max-w-[88%] bg-shakarim-blue text-white px-3.5 py-3 md:px-4 rounded-2xl rounded-br-md shadow-sm break-words text-[13px] md:text-sm">
                     ${escapeHtml(message)}
                 </div>
             `
@@ -48,9 +62,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chatMessages.insertAdjacentHTML(
             'beforeend',
             `
-                <div class="flex items-start gap-3 self-start max-w-[92%] ${extraClasses}">
+                <div class="flex items-start gap-2.5 md:gap-3 self-start max-w-[94%] md:max-w-[92%] ${extraClasses}">
                     <img src="${botAvatar}" alt="Shakarim AI" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
-                    <div class="bg-white text-slate-700 px-4 py-3 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 break-words">
+                    <div class="bg-white text-slate-700 px-3.5 py-3 md:px-4 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 break-words text-[13px] md:text-sm">
                         ${message}
                     </div>
                 </div>
@@ -95,9 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chatMessages.insertAdjacentHTML(
             'beforeend',
             `
-                <div id="${loadingId}" class="flex items-start gap-3 self-start max-w-[92%]">
+                <div id="${loadingId}" class="flex items-start gap-2.5 md:gap-3 self-start max-w-[94%] md:max-w-[92%]">
                     <img src="${botAvatar}" alt="Shakarim AI" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
-                    <div class="bg-white text-slate-500 px-4 py-3 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 text-xs italic">
+                    <div class="bg-white text-slate-500 px-3.5 py-3 md:px-4 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 text-xs italic">
                         <i class="fas fa-spinner fa-spin mr-1"></i> ${window.chatTranslations.thinking}
                     </div>
                 </div>
@@ -139,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
     chatToggle.addEventListener('click', openChat);
     collapseChat?.addEventListener('click', hideChat);
     closeChat?.addEventListener('click', hideChat);
+    window.addEventListener('resize', syncBodyScrollLock);
 
     roleButtons.forEach((button) => {
         button.addEventListener('click', () => {
