@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const syncBodyScrollLock = () => {
         document.body.classList.toggle('overflow-hidden', mobileMediaQuery.matches && !chatWindow.classList.contains('hidden'));
-        chatToggle.classList.toggle('hidden', !chatWindow.classList.contains('hidden'));
+        chatToggle.classList.toggle('hidden', mobileMediaQuery.matches && !chatWindow.classList.contains('hidden'));
     };
 
     const focusInputIfHelpful = () => {
