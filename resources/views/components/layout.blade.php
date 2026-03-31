@@ -392,9 +392,9 @@
         <div id="chat-window" class="hidden pointer-events-auto bg-white fixed left-3 right-3 bottom-3 w-auto max-w-none h-[min(72vh,36rem)] md:static md:w-full md:max-w-[25rem] md:h-auto md:max-h-[min(42rem,calc(100vh-8rem))] shadow-2xl rounded-[1.5rem] md:rounded-3xl overflow-hidden flex flex-col border border-slate-200 mb-0 md:mb-4 transition-all duration-300">
             <div class="bg-shakarim-blue text-white px-3.5 py-3 md:px-5 md:py-4 font-semibold flex justify-between items-center">
                 <div class="flex items-center gap-3">
-                    <img src="{{ asset('img/chat_avatar.webp') }}" alt="Shakarim AI" class="w-9 h-9 md:w-10 md:h-10 rounded-full object-cover border border-white/30 shadow-sm">
+                    <img src="{{ asset('img/chat_avatar.webp') }}" alt="AI-Sha" class="w-9 h-9 md:w-10 md:h-10 rounded-full object-cover border border-white/30 shadow-sm">
                     <div class="leading-tight">
-                        <span class="block text-sm md:text-base font-semibold">Shakarim AI</span>
+                        <span class="block text-sm md:text-base font-semibold">AI-Sha</span>
                         <span class="block text-xs text-blue-100">{{ __('Онлайн-помощник') }}</span>
                     </div>
                 </div>
@@ -425,9 +425,9 @@
                     </div>
                 </div>
                 <div class="flex items-start gap-2.5 md:gap-3 self-start max-w-[94%] md:max-w-[92%]">
-                    <img src="{{ asset('img/chat_avatar.webp') }}" alt="Shakarim AI" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
+                    <img src="{{ asset('img/chat_avatar.webp') }}" alt="AI-Sha" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
                     <div class="bg-white text-slate-700 p-3 md:p-4 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 text-[13px] md:text-sm leading-6 md:leading-6">
-                        {{ __('Привет! Я Shakarim AI, ваш виртуальный помощник. Я могу помочь вам с информацией о поступлении, академических программах, мероприятиях и многом другом. Просто задайте свой вопрос, и я постараюсь помочь!') }}
+                        {{ __('Привет! Я AI-Sha, ваш виртуальный помощник. Я могу помочь вам с информацией о поступлении, академических программах, мероприятиях и многом другом. Просто задайте свой вопрос, и я постараюсь помочь!') }}
                     </div>
                 </div>
             </div>

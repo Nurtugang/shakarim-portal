@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
             'beforeend',
             `
                 <div class="flex items-start gap-2.5 md:gap-3 self-start max-w-[94%] md:max-w-[92%] ${extraClasses}">
-                    <img src="${botAvatar}" alt="Shakarim AI" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
+                    <img src="${botAvatar}" alt="AI-Sha" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
                     <div class="bg-white text-slate-700 px-3.5 py-3 md:px-4 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 break-words text-[13px] md:text-sm">
                         ${message}
                     </div>
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
             'beforeend',
             `
                 <div id="${loadingId}" class="flex items-start gap-2.5 md:gap-3 self-start max-w-[94%] md:max-w-[92%]">
-                    <img src="${botAvatar}" alt="Shakarim AI" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
+                    <img src="${botAvatar}" alt="AI-Sha" class="w-8 h-8 rounded-full object-cover shadow-sm flex-shrink-0 mt-1">
                     <div class="bg-white text-slate-500 px-3.5 py-3 md:px-4 rounded-2xl rounded-tl-md shadow-sm border border-slate-200 text-xs italic">
                         <i class="fas fa-spinner fa-spin mr-1"></i> ${window.chatTranslations.thinking}
                     </div>
