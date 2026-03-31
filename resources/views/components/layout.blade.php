@@ -507,7 +507,8 @@
             roleSelectedHint: "{{ __('Теперь можете задать вопрос.') }}"
         };
     </script>
-    <script src="{{ asset('js/custom/chat.js') }}"></script>
+    <script src="{{ asset('js/custom/chat.js') }}?v={{ filemtime(public_path('js/custom/chat.js')) }}"></script>
+
     
 </body>
 </html>
